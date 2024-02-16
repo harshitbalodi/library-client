@@ -1,6 +1,6 @@
 import {  useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
-import Shift from "../components/Shift";
+import SeatGrid from "../components/SeatGrid";
 
 const Hall = ({shifts}) => {
     const id = useParams().id;
@@ -26,7 +26,7 @@ const Hall = ({shifts}) => {
                 </tr>
             </tbody>
         </table>
-        <Shift shift={hall}/>
+        <SeatGrid shift={hall}/>
     </div>
   )
 }

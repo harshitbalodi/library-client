@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import '../index.css';
 import { useNavigate } from 'react-router-dom';
 
-const Shift = ({ shift }) => {
+const SeatGrid = ({ shift }) => {
     const navigate = useNavigate();
     const [seats, setSeats] = useState(() => {
         const initialSeats = Array(32).fill({ vacant: true });
@@ -26,7 +26,7 @@ const Shift = ({ shift }) => {
     }
 
     return (
-        <div className='hall'>
+        <div className='seatgrid-container'>
             <div className='hall-details'>
                 <div className='hall-name' onClick={handleNavigation}>{shift.name}</div>
                 <div className='timing'>Timing {shift.start_time} - {shift.end_time}</div>
@@ -38,6 +38,9 @@ const Shift = ({ shift }) => {
                         className={`seat ${seat.empty ? 'dummy' : (seat.vacant ? 'vacant' : 'occupied')}`}
                         onClick={() => toggleSeatStatus(index)}
                     >
+                    {
+                        index < shift.capacity && <div className='seat-number'>{index+1}</div>
+                    }
                     </div>
                 ))}
             </div>
@@ -45,4 +48,4 @@ const Shift = ({ shift }) => {
     );
 };
 
-export default Shift;
+export default SeatGrid;

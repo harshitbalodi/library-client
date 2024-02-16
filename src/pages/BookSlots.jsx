@@ -1,16 +1,16 @@
 import '../index.css'
-import Shift from "../components/Shift";
+import SeatGrid from "../components/SeatGrid";
 
-const BookSlots = ({shifts, setShifts}) => {
-  
-  return shifts&&(
+const BookSlots = ({ shifts, setShifts }) => {
+
+  return shifts && (
     <div>
-      <div className="main-container">
-      {
-        shifts.map(shift=>{
-          return <Shift  key={shift.id} shift={shift}/>
-        })
-      } 
+      <div className="booking-container">
+        {
+          shifts.map(shift => {
+            return <SeatGrid key={shift.id} shift={shift} />
+          })
+        }
       </div>
     </div>
   )
