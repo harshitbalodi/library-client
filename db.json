@@ -1,0 +1,194 @@
+{
+    "shift": [
+        {
+            "id": 100000,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 9,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100011,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100022,
+            "name": "Swatantra",
+            "start_time": "05:10:00",
+            "end_time": "12:10:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100033,
+            "name": "Swatantra",
+            "start_time": "05:10:00",
+            "end_time": "12:10:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100044,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100055,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100066,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 9,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100076,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 9,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100086,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 9,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100096,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 9,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100106,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 9,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100116,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 2,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100136,
+            "name": "Swatantra",
+            "start_time": "05:11:00",
+            "end_time": "22:11:00",
+            "capacity": 2,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100141,
+            "name": "Swatantra",
+            "start_time": "07:11:00",
+            "end_time": "22:11:00",
+            "capacity": 5,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100168,
+            "name": "Swatantra",
+            "start_time": "05:10:00",
+            "end_time": "12:10:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100181,
+            "name": "aaa",
+            "start_time": "08:00:00",
+            "end_time": "05:00:00",
+            "capacity": 10,
+            "fee": 2222,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100192,
+            "name": "Swatantra",
+            "start_time": "05:10:00",
+            "end_time": "12:10:00",
+            "capacity": 10,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100203,
+            "name": "file",
+            "start_time": "07:11:00",
+            "end_time": "22:11:00",
+            "capacity": 5,
+            "fee": 1500,
+            "is_deleted": false,
+            "hall": 100147
+        },
+        {
+            "id": 100211,
+            "name": "hhhh",
+            "start_time": "10:00:00",
+            "end_time": "11:00:00",
+            "capacity": 2,
+            "fee": 1000,
+            "is_deleted": false,
+            "hall": 100147
+        }
+    ]
+}
