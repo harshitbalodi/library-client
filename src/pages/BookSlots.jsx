@@ -1,5 +1,6 @@
 import '../index.css'
 import SeatGrid from "../components/SeatGrid";
+import AddHall from '../components/AddHall';
 
 const BookSlots = ({ shifts, setShifts }) => {
 
@@ -11,6 +12,7 @@ const BookSlots = ({ shifts, setShifts }) => {
             return <SeatGrid key={shift.id} shift={shift} />
           })
         }
+        <AddHall/>
       </div>
     </div>
   )

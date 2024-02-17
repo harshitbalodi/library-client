@@ -26,7 +26,7 @@ function App() {
   }, [])
   return (
     <Router>
-      <div>
+      <div className="body-container">
         <Header />
         <div className="main-container">
           <div className="sidebar-container scrollable box">
