@@ -1,8 +1,10 @@
 import {  useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import SeatGrid from "../components/SeatGrid";
+import { useSelector } from "react-redux";
 
-const Hall = ({shifts}) => {
+const ShiftDetail = () => {
+    const shifts = useSelector(state => state.shifts);
     const id = useParams().id;
     const [hall, setHall] = useState(null);
     useEffect(() => {
@@ -14,6 +16,7 @@ const Hall = ({shifts}) => {
     sorry no such hall exist
   </div>:(
     <div>
+        <Link to="../"  path="relative">back to the page..</Link>
         <table>
             <tbody>
                 <tr>
@@ -31,4 +34,4 @@ const Hall = ({shifts}) => {
   )
 }
 
-export default Hall;
+export default ShiftDetail;

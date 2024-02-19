@@ -2,20 +2,24 @@ import Footer from "./components/Footer"
 import BookSlots from "./pages/BookSlots"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "./pages/LandingPage";
-import { useEffect, useState } from "react";
-import roomsServices from "./services/roomsServices";
-import Hall from "./pages/Hall";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
+import { useEffect } from "react";
+import shiftServices from "./services/shiftServices";
+import ShiftDetail from "./pages/ShiftDetail";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Nav from "./components/Navbar/Nav";
+import HallPage from "./pages/HallPage";
+import Dashboard from "./pages/Dashboard";
+import { useDispatch} from "react-redux";
+import { setShifts } from "./store/shiftSlice";
+
 
 function App() {
-  const [shifts, setShifts] = useState(null);
+  const dispatch = useDispatch();
   useEffect(() => {
     const getdata = async () => {
       try {
-        const { data } = await roomsServices.getall();
-        console.log(data);
-        setShifts(data);
+        const { data } = await shiftServices.getall();
+        dispatch(setShifts(data));
       } catch (error) {
         console.log(error);
       }
@@ -27,22 +31,18 @@ function App() {
   return (
     <Router>
       <div className="body-container">
-        <Header />
-        <div className="main-container">
-          <div className="sidebar-container scrollable box">
-            <Sidebar/>
-          </div>
-          <div className="navigation-container scrollable box">
+        <Nav />
+        <Sidebar />
+        <div className="navigation-container">
           <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/shift" element={<BookSlots shifts={shifts} setShifts={setShifts} />} />
-              <Route path="/shift/:id" element={<Hall shifts={shifts} />} />
-            
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/shift" element={<BookSlots />} />
+            <Route path="/shift/:id" element={<ShiftDetail/>} />
+            <Route path="/hall" element={<HallPage/>}/>
+            <Route path="dashboard" element={<Dashboard/>}/>
           </Routes>
-          </div>
         </div>
-
-        <Footer />
+        <Footer/>
       </div>
     </Router>
   )

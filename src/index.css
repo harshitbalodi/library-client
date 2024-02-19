@@ -1,55 +1,20 @@
 .body-container{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
-/* Header */
-.header-container{
-    width: 95%;
-    background-color: #ccc7c7;
-    border-radius: 15px;
-    padding: 15px;
-    margin: auto;
-    color: #eee;
-}
-
-/* main-container */
-.main-container{
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-    gap: 10px;
-    min-height: 100vh;
-    margin: 10px;
-}
-.sidebar-container{
-    background-color: beige;
-    grid-column: 1 / span 1;
-}
 .navigation-container{
-    grid-column: 2 / span 1;
+    min-height: 50vh;
 }
 
-/* .scrollable {
-    overflow-y: auto; 
-}
-.box {
-    padding: 20px;
-    border: 1px solid black;
-    overflow: auto; 
-} */
-/* Footer */
 .footer-container{
     width: 95%;
     background-color: #000000;
-    border-radius: 15px;
     padding: 15px;
-    margin: auto;
     color: #eee;
 }
 
-
-/* Grid-style */
-.booking-container{
+/* .booking-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
@@ -108,8 +73,9 @@
     background-color: rgb(194, 17, 17); 
     /* border-style: solid;
     border-width: 2px;
-    border-color: red; */
-}
+    border-color: red;} 
+*/
+/*
 .vacant:hover{
     background-color: rgb(179, 222, 172); 
 }
@@ -124,6 +90,7 @@
     align-items: center;
     color: white;
 }
+*/
 .addhall-container{
     max-width: 400px;
     display: flex;
@@ -143,20 +110,15 @@
 .plus-img{
     height: 100px;
     width: 100px;
+} 
+.booking-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 @media screen and (max-width: 540px) {
-    .main-container{
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: 10px;
-        min-height: 100vh;
-        margin: 10px;
-    }
-    .sidebar-container{
-        background-color: beige;
-        grid-column: 1 / span 1;
-    }
     .navigation-container{
         grid-column: 2 / span 1;
     }

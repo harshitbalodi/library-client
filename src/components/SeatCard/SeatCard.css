@@ -1,0 +1,87 @@
+.seatcard-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    width: 400px;
+    overflow-y: auto; 
+    height: 300px; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seatcard-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.seatcard-details {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hall-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timing {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.fee {
+    align-self: flex-end; /* Align to right */
+}
+
+.seatcard-seats {
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 200px;
+}
+.seatcard-seats:hover {
+    overflow: auto; 
+}
+
+.seat {
+    width: 55px;
+    height: 55px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat:hover {
+    background-color: #eee;
+    border: #ccc;
+}
+
+.occupied {
+    background-color: #99ff99;
+    border:#12fd12
+}
+
+.vacant {
+    background-color: rgb(195, 73, 73);
+}
+
+.vacant:hover {
+    background-color: rgb(179, 222, 172);
+}
+
+.seat-number {
+    color: white;
+}

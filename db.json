@@ -1,34 +1,4095 @@
 {
+    "desk":[
+        {
+            "id": 100023,
+            "seat_no": 1,
+            "is_vacant": false,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100024,
+            "seat_no": 2,
+            "is_vacant": false,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100025,
+            "seat_no": 3,
+            "is_vacant": false,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100026,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100027,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100028,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100029,
+            "seat_no": 7,
+            "is_vacant": false,
+            "is_active": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100034,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100035,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100036,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100037,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100038,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100039,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100040,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100041,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100042,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100043,
+            "seat_no": 10,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100033,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100056,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100057,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100058,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100059,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100060,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100061,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100062,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100063,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100064,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100065,
+            "seat_no": 10,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100055,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100067,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100068,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100069,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100070,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100071,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100072,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100073,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100074,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100075,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100066,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100077,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100078,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100079,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100080,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100081,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100082,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100083,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100084,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100085,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100076,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100087,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100088,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100089,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100090,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100091,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100092,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100093,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100094,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100095,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100086,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100097,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100098,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100099,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100100,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100101,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100102,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100103,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100104,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100105,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100096,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100107,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100108,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100109,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100110,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100111,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100112,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100113,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100114,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100115,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100106,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100117,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100116,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 2,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100118,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100116,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 2,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100137,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100136,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 2,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100138,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100136,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 2,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100142,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100141,
+                "name": "Swatantra",
+                "start_time": "07:11:00",
+                "end_time": "22:11:00",
+                "capacity": 5,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100143,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100141,
+                "name": "Swatantra",
+                "start_time": "07:11:00",
+                "end_time": "22:11:00",
+                "capacity": 5,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100144,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100141,
+                "name": "Swatantra",
+                "start_time": "07:11:00",
+                "end_time": "22:11:00",
+                "capacity": 5,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100145,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100141,
+                "name": "Swatantra",
+                "start_time": "07:11:00",
+                "end_time": "22:11:00",
+                "capacity": 5,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100146,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100141,
+                "name": "Swatantra",
+                "start_time": "07:11:00",
+                "end_time": "22:11:00",
+                "capacity": 5,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100169,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100170,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100171,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100172,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100173,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100174,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100175,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100176,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100177,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100178,
+            "seat_no": 10,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100168,
+                "name": "Swatantra",
+                "start_time": "05:10:00",
+                "end_time": "12:10:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100242,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100243,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100244,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100245,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100246,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100247,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100248,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100249,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100250,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100251,
+            "seat_no": 10,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100241,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 10,
+                "fee": 1000,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100253,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100254,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100255,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100256,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100257,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100258,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100259,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100260,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100261,
+            "seat_no": 9,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100262,
+            "seat_no": 10,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100263,
+            "seat_no": 11,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100264,
+            "seat_no": 12,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100265,
+            "seat_no": 13,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100266,
+            "seat_no": 14,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100267,
+            "seat_no": 15,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100268,
+            "seat_no": 16,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100269,
+            "seat_no": 17,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100270,
+            "seat_no": 18,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100271,
+            "seat_no": 19,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100272,
+            "seat_no": 20,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100273,
+            "seat_no": 21,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100274,
+            "seat_no": 22,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100275,
+            "seat_no": 23,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100276,
+            "seat_no": 24,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100277,
+            "seat_no": 25,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100278,
+            "seat_no": 26,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100279,
+            "seat_no": 27,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100280,
+            "seat_no": 28,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100281,
+            "seat_no": 29,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100282,
+            "seat_no": 30,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100283,
+            "seat_no": 31,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100284,
+            "seat_no": 32,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100285,
+            "seat_no": 33,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100286,
+            "seat_no": 34,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100287,
+            "seat_no": 35,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100288,
+            "seat_no": 36,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100289,
+            "seat_no": 37,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100290,
+            "seat_no": 38,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100291,
+            "seat_no": 39,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100292,
+            "seat_no": 40,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100293,
+            "seat_no": 41,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100294,
+            "seat_no": 42,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100295,
+            "seat_no": 43,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100296,
+            "seat_no": 44,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100297,
+            "seat_no": 45,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100298,
+            "seat_no": 46,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100299,
+            "seat_no": 47,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100300,
+            "seat_no": 48,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100301,
+            "seat_no": 49,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100302,
+            "seat_no": 50,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100303,
+            "seat_no": 51,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100304,
+            "seat_no": 52,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100305,
+            "seat_no": 53,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100306,
+            "seat_no": 54,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100307,
+            "seat_no": 55,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100308,
+            "seat_no": 56,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100309,
+            "seat_no": 57,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100310,
+            "seat_no": 58,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100311,
+            "seat_no": 59,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100312,
+            "seat_no": 60,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100313,
+            "seat_no": 61,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100314,
+            "seat_no": 62,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100315,
+            "seat_no": 63,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100316,
+            "seat_no": 64,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100317,
+            "seat_no": 65,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100318,
+            "seat_no": 66,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100319,
+            "seat_no": 67,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100320,
+            "seat_no": 68,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100321,
+            "seat_no": 69,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100322,
+            "seat_no": 70,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100323,
+            "seat_no": 71,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100324,
+            "seat_no": 72,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100325,
+            "seat_no": 73,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100326,
+            "seat_no": 74,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100327,
+            "seat_no": 75,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100328,
+            "seat_no": 76,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100329,
+            "seat_no": 77,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100330,
+            "seat_no": 78,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100331,
+            "seat_no": 79,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100332,
+            "seat_no": 80,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100333,
+            "seat_no": 81,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100334,
+            "seat_no": 82,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100335,
+            "seat_no": 83,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100336,
+            "seat_no": 84,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100337,
+            "seat_no": 85,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100338,
+            "seat_no": 86,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100339,
+            "seat_no": 87,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100340,
+            "seat_no": 88,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100341,
+            "seat_no": 89,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100342,
+            "seat_no": 90,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100343,
+            "seat_no": 91,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100344,
+            "seat_no": 92,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100345,
+            "seat_no": 93,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100346,
+            "seat_no": 94,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100347,
+            "seat_no": 95,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100348,
+            "seat_no": 96,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100349,
+            "seat_no": 97,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100350,
+            "seat_no": 98,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100351,
+            "seat_no": 99,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100352,
+            "seat_no": 100,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100252,
+                "name": "qq",
+                "start_time": "08:00:00",
+                "end_time": "09:00:00",
+                "capacity": 100,
+                "fee": 2,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1"
+                }
+            }
+        },
+        {
+            "id": 100355,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100354,
+                "name": "ww",
+                "start_time": "02:00:00",
+                "end_time": "05:00:00",
+                "capacity": 5,
+                "fee": 22,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100356,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100354,
+                "name": "ww",
+                "start_time": "02:00:00",
+                "end_time": "05:00:00",
+                "capacity": 5,
+                "fee": 22,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100357,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100354,
+                "name": "ww",
+                "start_time": "02:00:00",
+                "end_time": "05:00:00",
+                "capacity": 5,
+                "fee": 22,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100358,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100354,
+                "name": "ww",
+                "start_time": "02:00:00",
+                "end_time": "05:00:00",
+                "capacity": 5,
+                "fee": 22,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100359,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100354,
+                "name": "ww",
+                "start_time": "02:00:00",
+                "end_time": "05:00:00",
+                "capacity": 5,
+                "fee": 22,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100226,
+                    "name": "Hall 4"
+                }
+            }
+        },
+        {
+            "id": 100361,
+            "seat_no": 1,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100362,
+            "seat_no": 2,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100363,
+            "seat_no": 3,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100364,
+            "seat_no": 4,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100365,
+            "seat_no": 5,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100366,
+            "seat_no": 6,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100367,
+            "seat_no": 7,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        },
+        {
+            "id": 100368,
+            "seat_no": 8,
+            "is_vacant": true,
+            "is_active": true,
+            "shift": {
+                "id": 100360,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 8,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100148,
+                    "name": "Hall 2"
+                }
+            }
+        }
+    ] ,
+    "hall": [
+        {
+            "id": 100147,
+            "name": "Hall 1"
+        },
+        {
+            "id": 100148,
+            "name": "Swatantra"
+        }
+    ],
     "shift": [
-        {
-            "id": 100000,
-            "name": "Swatantra",
-            "start_time": "05:11:00",
-            "end_time": "22:11:00",
-            "capacity": 9,
-            "fee": 1000,
-            "is_deleted": false,
-            "hall": 100147
-        },
-        {
-            "id": 100011,
-            "name": "Swatantra",
-            "start_time": "05:11:00",
-            "end_time": "22:11:00",
-            "capacity": 10,
-            "fee": 1000,
-            "is_deleted": false,
-            "hall": 100147
-        },
         {
             "id": 100022,
             "name": "Swatantra",
             "start_time": "05:10:00",
             "end_time": "12:10:00",
-            "capacity": 10,
+            "capacity": 12,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100033,
@@ -38,7 +4099,10 @@
             "capacity": 10,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100044,
@@ -48,7 +4112,10 @@
             "capacity": 10,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100055,
@@ -58,7 +4125,10 @@
             "capacity": 10,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100066,
@@ -68,7 +4138,10 @@
             "capacity": 9,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100076,
@@ -78,7 +4151,10 @@
             "capacity": 9,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100086,
@@ -88,7 +4164,10 @@
             "capacity": 9,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100096,
@@ -98,7 +4177,10 @@
             "capacity": 9,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100106,
@@ -108,7 +4190,10 @@
             "capacity": 9,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100116,
@@ -118,7 +4203,10 @@
             "capacity": 2,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100136,
@@ -128,7 +4216,10 @@
             "capacity": 2,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100141,
@@ -138,7 +4229,10 @@
             "capacity": 5,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100168,
@@ -148,7 +4242,10 @@
             "capacity": 10,
             "fee": 1000,
             "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100181,
@@ -158,17 +4255,10 @@
             "capacity": 10,
             "fee": 2222,
             "is_deleted": false,
-            "hall": 100147
-        },
-        {
-            "id": 100192,
-            "name": "Swatantra",
-            "start_time": "05:10:00",
-            "end_time": "12:10:00",
-            "capacity": 10,
-            "fee": 1000,
-            "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         },
         {
             "id": 100203,
@@ -178,17 +4268,13 @@
             "capacity": 5,
             "fee": 1500,
             "is_deleted": false,
-            "hall": 100147
-        },
-        {
-            "id": 100211,
-            "name": "hhhh",
-            "start_time": "10:00:00",
-            "end_time": "11:00:00",
-            "capacity": 2,
-            "fee": 1000,
-            "is_deleted": false,
-            "hall": 100147
+            "hall": {
+                "id": 100147,
+                "name": "Hall 1"
+            }
         }
     ]
 }
+
+
+ 
