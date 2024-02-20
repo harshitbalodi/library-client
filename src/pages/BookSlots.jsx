@@ -5,19 +5,15 @@ import { useSelector } from 'react-redux';
 import SeatCard from '../components/SeatCard/SeatCard';
 
 const BookSlots = () => {
-  const shifts = useSelector(state => state.shifts);
-  return shifts && (
+  const halls = useSelector(state => state.halls);
+  return halls && (
     <div>
       <div className="booking-container">
-        {/* {
-          shifts.map(shift => {
-            return <SeatGrid key={shift.id} shift={shift} />
-          })
-        } */}
         {
-          shifts.map(shift => {
+          halls.map(hall=> hall.shifts.map(shift => {
             return <SeatCard key={shift.id} shift={shift} />
           })
+          ) 
         }
         <AddHall/>
       </div>

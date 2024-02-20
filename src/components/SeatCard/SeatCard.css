@@ -6,7 +6,7 @@
     margin: 20px;
     width: 400px;
     overflow-y: auto; 
-    height: 300px; 
+    height: 305px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -23,6 +23,8 @@
 
 .hall-name {
     font-weight: bold;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 5px;
 }
 
@@ -32,7 +34,7 @@
 }
 
 .fee {
-    align-self: flex-end; /* Align to right */
+    font-size: large;
 }
 
 .seatcard-seats {

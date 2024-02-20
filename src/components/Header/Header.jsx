@@ -1,9 +1,9 @@
-import './Nav.css';
+import './Header.css';
 import { toggleSidebar } from '../../store/sidebarSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const Nav = () => {
+const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleSidebar = () => {
@@ -20,7 +20,7 @@ const Nav = () => {
 
             <div className="middle-section">
                 <div className="search-bar">
-                    <input type="text" placeholder="Search" />
+                    <input className='search-input' type="text" placeholder="Search" />
                     <button className='search-btn'>Search</button>
                 </div>
             </div>
@@ -32,4 +32,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default Header;

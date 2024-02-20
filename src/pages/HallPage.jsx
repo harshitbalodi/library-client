@@ -1,36 +1,19 @@
-import { useEffect } from "react"
-import hallServices from "../services/hallServices"
-import { setHalls } from "../store/hallSlice"
-import { useDispatch, useSelector } from "react-redux"
-import HallCarousel from "../components/HallCarousel/HallCarousel"
+import { useSelector } from "react-redux"
+// import HallCarousel from "../components/HallCarousel/HallCarousel"
+import '../index.css';
+import CustomCarousel from "../components/CustomCarousel/CustomCarousel";
 
 const HallPage = () => {
-  const dispatch = useDispatch();
   const halls = useSelector(state => state.halls);
   console.log(halls);
-  console.log(halls);
-  useEffect(()=>{
-    const getdata = async () => {
-      try {
-        const { data } = await hallServices.getall();
-        console.log(data);
-        dispatch(setHalls(data));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getdata();
-  },[])
-
   return (
-    <div>HallPage
-      {
+    <div >HallPage
+       {
         halls.map(hall=>{
-          return <><div>{hall.name}</div>
-          <HallCarousel key={hall.id} hallId = {hall.id}/>
-          </>
+          return  <CustomCarousel key={hall.id} shifts={hall.shifts} name={hall.name}/>
         })
-      }
+      
+      } 
     </div>
   )
 }

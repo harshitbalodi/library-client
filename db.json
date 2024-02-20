@@ -1,4 +1,265 @@
 {
+    "student":[
+        {
+            "id": 100139,
+            "name": "Swatantra",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-22",
+            "paid": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100026,
+                "seat_no": 4,
+                "is_vacant": true,
+                "is_active": true,
+                "shift": {
+                    "id": 100022,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 7,
+                    "fee": 500,
+                    "is_deleted": false,
+                    "hall": 100147
+                }
+            }
+        },
+        {
+            "id": 100140,
+            "name": "Swatantra",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-22",
+            "paid": true,
+            "shift": {
+                "id": 100000,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 9,
+                "fee": 1000,
+                "is_deleted": true,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100008,
+                "seat_no": 8,
+                "is_vacant": false,
+                "is_active": true,
+                "shift": {
+                    "id": 100000,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 9,
+                    "fee": 1000,
+                    "is_deleted": true,
+                    "hall": 100147
+                }
+            }
+        },
+        {
+            "id": 100163,
+            "name": "Swatantra",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-23",
+            "paid": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100024,
+                "seat_no": 2,
+                "is_vacant": false,
+                "is_active": true,
+                "shift": {
+                    "id": 100022,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 7,
+                    "fee": 500,
+                    "is_deleted": false,
+                    "hall": 100147
+                }
+            }
+        },
+        {
+            "id": 100164,
+            "name": "Swatantra",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-23",
+            "paid": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100024,
+                "seat_no": 2,
+                "is_vacant": false,
+                "is_active": true,
+                "shift": {
+                    "id": 100022,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 7,
+                    "fee": 500,
+                    "is_deleted": false,
+                    "hall": 100147
+                }
+            }
+        },
+        {
+            "id": 100166,
+            "name": "Swatantra",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-23",
+            "paid": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100025,
+                "seat_no": 3,
+                "is_vacant": false,
+                "is_active": true,
+                "shift": {
+                    "id": 100022,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 7,
+                    "fee": 500,
+                    "is_deleted": false,
+                    "hall": 100147
+                }
+            }
+        },
+        {
+            "id": 100179,
+            "name": "Swatantra",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-23",
+            "paid": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100029,
+                "seat_no": 7,
+                "is_vacant": false,
+                "is_active": true,
+                "shift": {
+                    "id": 100022,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 7,
+                    "fee": 500,
+                    "is_deleted": false,
+                    "hall": 100147
+                }
+            }
+        },
+        {
+            "id": 100209,
+            "name": "file",
+            "image": "/media/default_image_male.jpg",
+            "joining_date": "2022-10-23",
+            "paid": true,
+            "shift": {
+                "id": 100022,
+                "name": "Swatantra",
+                "start_time": "05:11:00",
+                "end_time": "22:11:00",
+                "capacity": 7,
+                "fee": 500,
+                "is_deleted": false,
+                "hall": {
+                    "id": 100147,
+                    "name": "Hall 1",
+                    "is_deleted": false
+                }
+            },
+            "desk": {
+                "id": 100023,
+                "seat_no": 1,
+                "is_vacant": false,
+                "is_active": true,
+                "shift": {
+                    "id": 100022,
+                    "name": "Swatantra",
+                    "start_time": "05:11:00",
+                    "end_time": "22:11:00",
+                    "capacity": 7,
+                    "fee": 500,
+                    "is_deleted": false,
+                    "hall": 100147
+                }
+            }
+        }
+    ],
     "desk":[
         {
             "id": 100023,
@@ -4083,7 +4344,7 @@
             "name": "Swatantra",
             "start_time": "05:10:00",
             "end_time": "12:10:00",
-            "capacity": 12,
+            "capacity": 18,
             "fee": 1000,
             "is_deleted": false,
             "hall": {
@@ -4275,6 +4536,11 @@
         }
     ]
 }
+
+
+
+
+
 
 
  
