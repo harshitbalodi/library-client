@@ -1,52 +1,31 @@
-// import './Sidebar.css'; 
-// import { toggleSidebar } from '../../store/sidebarSlice';
-// import { useDispatch, useSelector } from 'react-redux';
-
-// const Sidebar = () => {
-//     const isOpen = useSelector(state => state.isSidebarOpen);
-//     const dispatch = useDispatch();
-//   const handleCloseSidebar = () => {
-//     dispatch(toggleSidebar());
-//   };
-
-//   const handleSidebarClick = (e) => {
-//     e.stopPropagation();
-//   };
-
-//   return (
-//     <div>
-//         {isOpen && (
-//         <div className="sidebar-overlay" onClick={handleCloseSidebar}>
-//           <div className="sidebar" onClick={handleSidebarClick}>
-//             <button className="close-button" onClick={handleCloseSidebar}>Close</button>
-
-//             <ul>
-//               <li><Link to='/'>Home</Link></li>
-//               <li><Link to='/dashboard'>Dashboard</Link></li>
-//               <li ><Link to='/shift'>Shifts</Link></li>
-//               <li><Link to='/hall'>Halls</Link></li>
-//             </ul>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Sidebar;
 import { Link } from 'react-router-dom';
+import './Sidebar.css';
+import HomeLogo from '../../assets/home-icon.svg';
+import DashboardLogo from '../../assets/dashboard-icon.svg';
+import ShiftLogo from '../../assets/shift-icon.svg'
+import HallLogo from '../../assets/hall-icon.svg'
+import { useLocation } from 'react-router-dom';
 
-import './Sidebar.css'; // Import CSS for styling
-
-const Sidebar = () => {
+const SidebarLink = ({ to, icon, label }) => {
+    const location = useLocation();
+    const isActive = location.pathname === to;
     return (
-        <div className="sidebar">
-             <div><Link to='/'>Home</Link></div> 
-             <div><Link to='/dashboard'>Dashboard</Link></div> 
-              <div><Link to='/shift'>Shifts</Link></div>
-              <div><Link to='/hall'>Halls</Link></div>
-        </div>
+      <Link to={to} className={`sidebar-link ${isActive ? 'active' : ''}`}>
+        <img src={icon} alt={`${label}-icon`} />
+        <div>{label}</div>
+      </Link>
     );
 };
 
-export default Sidebar;
+const Sidebar = () => {
+    return (
+      <div className="sidebar">
+        <SidebarLink to="/" icon={HomeLogo} label="Home" />
+        <SidebarLink to="/dashboard" icon={DashboardLogo} label="Dashboard" />
+        <SidebarLink to="/shift" icon={ShiftLogo} label="Shifts" />
+        <SidebarLink to="/hall" icon={HallLogo} label="Halls" />
+      </div>
+    );
+  };
+  
+  export default Sidebar;

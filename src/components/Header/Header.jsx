@@ -10,7 +10,7 @@ const Header = () => {
         dispatch(toggleSidebar());
     }
     return (
-        <nav className="nav">
+        <nav className="header">
             <div className="left-section">
                 <div className="menu-logo">
                     <div className="menu-icon" onClick={handleSidebar}>☰</div>

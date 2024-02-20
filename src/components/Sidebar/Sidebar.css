@@ -1,13 +1,50 @@
 .sidebar {
-    width: 110px; 
+    margin-top: 80px;
+    width: 45px;
     height: 100%;
-    display: inline-block;
-    overflow: hidden;
-    background-color: black;
-    position:sticky; 
+    overflow-y: auto;
+    background-color: #333;
+    transition: width 0.3s;
+    padding-top: 10px;
+    left: 0;
     top: 0;
-    left: 0; 
-    padding-left:5px;
+  }
+  
+  .sidebar:hover {
+    width: 90px;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
     color: white;
-}
-
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .sidebar:hover .sidebar-link {
+    opacity: 1;
+  }
+  
+  .sidebar-link img {
+    margin-bottom: 5px;
+  }
+  
+  .sidebar-link div {
+    opacity: 0; 
+    transition: opacity 0.3s;
+  }
+  
+  .sidebar:hover .sidebar-link div {
+    opacity: 1; /* Show labels when sidebar is hovered */
+  }
+  
+  .sidebar-link.active {
+    background-color: #555; 
+    color: white;
+    font-size: large; 
+    font: bold;
+  }
+  

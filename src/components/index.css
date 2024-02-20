@@ -31,9 +31,6 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.modal-content input{
-
-}
 
 .modal-overlay.active .modal-content {
   opacity: 1;
