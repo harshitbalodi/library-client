@@ -1,7 +1,7 @@
 import Footer from "./components/Footer"
 import BookSlots from "./pages/BookSlots"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from "./pages/LandingPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
 import { useEffect } from "react";
 import ShiftDetail from "./pages/ShiftDetail";
 import Sidebar from "./components/Sidebar/Sidebar";

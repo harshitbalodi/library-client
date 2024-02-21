@@ -2,6 +2,7 @@
   "name": "library-client",
   "private": true,
   "version": "0.0.0",
+  "author":"Harshit Balodi",
   "type": "module",
   "scripts": {
     "dev": "vite",

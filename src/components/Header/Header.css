@@ -42,7 +42,7 @@
   
   .search-bar {
     display: inline-block;
-    background-color: #F5F5F6;
+    /* background-color: #F5F5F6; */
   }
   
   .search-input {
@@ -66,25 +66,5 @@
     padding-right: 50px;
   }
   
-  @media screen and (max-width: 480px) {
-    .nav {
-      flex-direction: column; 
-      height: auto;
-      padding: 20px;
-    }
-    .left-section{
-        order:-1;
-        align-content: left;
-    }
-    
-    .middle-section {
-      text-align: center; /* Center search bar on smaller screens */
-    }
-  
-    .right-section {
-      padding: 20px; /* Add space between sections */
-      order: -1;
-      text-align: right;
-    }
-  }
+  /* */
   

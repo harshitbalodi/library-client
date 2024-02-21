@@ -17,8 +17,9 @@ body,p,div{
 .routes-container{
     margin-top: 80px;
     min-height: 50vh;
-    max-height: 100%;
+    width: 100%;
     padding: 10px;
+    position: relative;
 }
 
 .footer-container{
