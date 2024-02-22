@@ -3,6 +3,7 @@ import './CustomCarousel.css';
 import SeatCard from '../SeatCard/SeatCard';
 import RightArrow from '../../assets/arrow-circle-right.svg'
 import LeftArrow from '../../assets/arrow-circle-left.svg'
+import AddHall from '../AddHall/AddHall';
 
 
 const CustomCarousel = ({ shifts, name }) => {
@@ -21,7 +22,7 @@ const CustomCarousel = ({ shifts, name }) => {
       }
     };
 
-    handleResize(); 
+    handleResize();
 
     window.addEventListener('resize', handleResize);
 
@@ -35,7 +36,10 @@ const CustomCarousel = ({ shifts, name }) => {
   };
 
   const goToNextSlide = () => {
-    setCurrentSlide(prevSlide => Math.min(shifts.length - numberOfCarouselSlide, prevSlide + 1));
+    // setCurrentSlide(prevSlide => Math.min(shifts.length  - numberOfCarouselSlide, prevSlide + 1));
+    const nextSlide = currentSlide + 1;
+    const maxSlideIndex = Math.max(0, shifts.length - numberOfCarouselSlide);
+    setCurrentSlide(Math.min(nextSlide, maxSlideIndex));
   };
 
   return (
@@ -49,6 +53,7 @@ const CustomCarousel = ({ shifts, name }) => {
           {shifts.slice(currentSlide, currentSlide + numberOfCarouselSlide).map((shift) => (
             <SeatCard key={shift.id} shift={shift} />
           ))}
+          {currentSlide + numberOfCarouselSlide >= shifts.length && < AddHall />}
         </div>
         <div className="carousel-button next" onClick={goToNextSlide}>
           <img src={RightArrow} alt="<>&gt;</>" />

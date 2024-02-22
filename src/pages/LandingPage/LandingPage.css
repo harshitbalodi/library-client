@@ -80,3 +80,11 @@
     font-size: 2rem;
   }
 }
+@media screen and (max-width: 410px) {
+  .nav-btn {
+    margin-left: 3rem;
+  }
+  .typing-animation {
+    font-size: 1.6rem;
+  }
+}

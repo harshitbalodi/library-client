@@ -3,7 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import ThreeDots from '../../../assets/three-dots.svg';
 import "./Draggable.css";
 
-const Draggable = ({ id, title }) => {
+const Draggable = ({ id, component }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
@@ -23,7 +23,7 @@ const Draggable = ({ id, title }) => {
         <img className="dot-icon" src={ThreeDots}/>
       </div>
       <div className="draggable">
-        {title}
+        {component}
       </div>
 
     </div>

@@ -15,9 +15,7 @@ const AddHall = () => {
     }
   return (
     <div className="addhall-container" >
-        {/* <button > */}
           <img className="plus-img" src={PlusIcon} alt="add new hall"  onClick={handleOpenModal}/>
-        {/* </button> */}
         <FormModal isOpen={isModalOpen} onClose={(event)=>handleCloseModal(event)}/>
     </div>
   )

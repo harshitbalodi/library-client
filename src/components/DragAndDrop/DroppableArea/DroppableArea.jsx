@@ -6,12 +6,12 @@ import {
 import Draggable from "../Draggable/Draggable";
 import './DroppableArea.css'
 
-const DroppableArea = ({ tasks }) => {
+const DroppableArea = ({ components }) => {
     return (
         <div className="droppable">
-            <SortableContext items={tasks} strategy={horizontalListSortingStrategy}>
-                {tasks.map((task) => (
-                    <Draggable key={task.id} id={task.id} title={task.title} />
+            <SortableContext items={components} strategy={horizontalListSortingStrategy}>
+                {components.map((component) => (
+                    <Draggable key={component.id} id={component.id} component={component.component} />
                 ))}
             </SortableContext>
         </div>
