@@ -6,12 +6,12 @@
     margin: 20px;
     width: 400px;
     overflow-y: auto; 
-    height: 305px; 
+    height: 307px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .seatcard-container:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
@@ -38,7 +38,7 @@
 }
 
 .seatcard-seats {
-    background-color: #f7f7f7;
+    background-color: #faf7f7;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;

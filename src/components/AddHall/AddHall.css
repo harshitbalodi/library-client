@@ -1,0 +1,22 @@
+.addhall-container{
+    width: 400px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px; 
+    margin-bottom: 20px; 
+}
+.plus-img{
+    height: 150px;
+    width: 150px;
+    background-color: #c5c5c53c;
+    border-radius: 15px;
+    border: none;
+    transition: transform 0.3s ease;
+} 
+.plus-img:hover{
+    transform: scale(1.1);
+    box-shadow: 1px 1px 2px 2px #aaaaaa;
+}

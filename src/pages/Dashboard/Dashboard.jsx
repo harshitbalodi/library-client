@@ -8,8 +8,8 @@ import {
   closestCorners,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Row from "../../components/DragAndDrop/Row/Row";
 import "./Dashboard.css";
+import DroppableArea from "../../components/DragAndDrop/DroppableArea/DroppableArea";
 
 const  Dashboard=()=> {
   const [tasks, setTasks] = useState([
@@ -52,7 +52,7 @@ const  Dashboard=()=> {
         collisionDetection={closestCorners}
         onDragEnd={handleDragEnd}
       >
-        <Row id="toDo" tasks={tasks} />
+        <DroppableArea id="toDo" tasks={tasks} />
       </DndContext>
     </div>
   );

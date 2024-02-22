@@ -1,6 +1,7 @@
-import FormModal from "./FormModal";
+import FormModal from "../FormModal";
 import { useState } from "react";
-import './index.css';
+import './AddHall.css';
+import PlusIcon from '../../assets/plus-icon.svg';
 
 const AddHall = () => {
     const [isModalOpen, setIsModelOpen] = useState(false);
@@ -14,7 +15,9 @@ const AddHall = () => {
     }
   return (
     <div className="addhall-container" >
-        <button onClick={handleOpenModal}><img className="plus-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/500px-Plus_symbol.svg.png" alt="add new hall" /></button>
+        {/* <button > */}
+          <img className="plus-img" src={PlusIcon} alt="add new hall"  onClick={handleOpenModal}/>
+        {/* </button> */}
         <FormModal isOpen={isModalOpen} onClose={(event)=>handleCloseModal(event)}/>
     </div>
   )

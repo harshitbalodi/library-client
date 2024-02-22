@@ -1,9 +1,9 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import ThreeDots from '../../../assets/three-dots.svg';
+import "./Draggable.css";
 
-import "./Task.css";
-
-const Task = ({ id, title }) => {
+const Draggable = ({ id, title }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
@@ -13,16 +13,22 @@ const Task = ({ id, title }) => {
   };
 
   return (
-    <div
+    <div className="draggable-container"
       ref={setNodeRef}
       style={style}
       {...attributes}
       {...listeners}
-      className="task"
     >
-      {title}
+      <div className="slick-col">
+        <img className="dot-icon" src={ThreeDots}/>
+      </div>
+      <div className="draggable">
+        {title}
+      </div>
+
     </div>
+
   );
 };
 
-export default Task;
+export default Draggable;

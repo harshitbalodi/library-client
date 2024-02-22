@@ -3,19 +3,19 @@ import {
     horizontalListSortingStrategy
 } from "@dnd-kit/sortable";
 
-import Task  from "../Task/Task";
-import './Row.css'
+import Draggable from "../Draggable/Draggable";
+import './DroppableArea.css'
 
-const Row = ({ tasks }) => {
+const DroppableArea = ({ tasks }) => {
     return (
-        <div className="row">
+        <div className="droppable">
             <SortableContext items={tasks} strategy={horizontalListSortingStrategy}>
                 {tasks.map((task) => (
-                    <Task key={task.id} id={task.id} title={task.title} />
+                    <Draggable key={task.id} id={task.id} title={task.title} />
                 ))}
             </SortableContext>
         </div>
     );
 };
 
-export default Row;
+export default DroppableArea;

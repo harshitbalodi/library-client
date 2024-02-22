@@ -1,19 +1,12 @@
 import './Header.css';
-import { toggleSidebar } from '../../store/sidebarSlice';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handleSidebar = () => {
-        dispatch(toggleSidebar());
-    }
     return (
         <nav className="header">
             <div className="left-section">
                 <div className="menu-logo">
-                    <div className="menu-icon" onClick={handleSidebar}>☰</div>
                     <div className="logo" onClick={()=>navigate('/')}>Logo</div>
                 </div>
             </div>

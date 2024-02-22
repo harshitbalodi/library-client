@@ -13,10 +13,10 @@ const ShiftDetail = () => {
     }, [id, shifts]);
   return !hall?
   <div>
+     <Link to=".."  path="relative">back to the page..</Link>
     sorry no such hall exist
   </div>:(
     <div>
-        <Link to="../"  path="relative">back to the page..</Link>
         <table>
             <tbody>
                 <tr>

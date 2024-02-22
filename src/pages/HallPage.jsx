@@ -7,13 +7,16 @@ const HallPage = () => {
   const halls = useSelector(state => state.halls);
   console.log(halls);
   return (
-    <div >HallPage
-       {
-        halls.map(hall=>{
-          return  <CustomCarousel key={hall.id} shifts={hall.shifts} name={hall.name}/>
+    <div >
+      {
+        halls.map(hall => {
+          return (<div key={hall.id} >
+            <CustomCarousel shifts={hall.shifts} name={hall.name} />
+            <hr/>
+          </div>)
         })
-      
-      } 
+
+      }
     </div>
   )
 }

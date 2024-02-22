@@ -1,6 +1,5 @@
 import '../index.css'
-// import SeatGrid from "../components/SeatGrid";
-import AddHall from '../components/AddHall';
+import AddHall from '../components/AddHall/AddHall';
 import { useSelector } from 'react-redux';
 import SeatCard from '../components/SeatCard/SeatCard';
 

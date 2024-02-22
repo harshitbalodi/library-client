@@ -2,6 +2,7 @@ body,p,div{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 .body-container{
@@ -29,27 +30,6 @@ body,p,div{
     color: #443d3d;
 }
 
-.addhall-container{
-    width: 400px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    padding: 10px; 
-    margin-bottom: 20px; 
-}
-.plus-img{
-    height: 100px;
-    width: 100px;
-    background-color: #c5c5c53c;
-    border-radius: 5px;
-    border-style: none;
-    border-width: 0; 
-} 
-.plus-img:hover{
-    background-color: #dedede; 
-}
 .booking-container{
     display: flex;
     flex-direction: row;
