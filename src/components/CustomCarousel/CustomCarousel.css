@@ -21,10 +21,12 @@
   
   .prev {
     left: 10px;
+    z-index: 1;
   }
   
   .next {
     right: 10px;
+    z-index: 1;
   }
   div h1{
     color: #3E4152;

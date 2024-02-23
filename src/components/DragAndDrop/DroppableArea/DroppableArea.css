@@ -2,11 +2,12 @@
     /* background-color: #f2f2f3; */
     border-radius: 5px;
     padding: 15px;
-    max-width: max-content;
+    max-width: 100%;
     max-height: max-content;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: aliceblue;
     gap: 15px;
   }

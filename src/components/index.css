@@ -51,6 +51,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  z-index: 5;
 }
 
 .modal-overlay.active {
@@ -60,15 +61,15 @@
 
 .modal-content {
   background-color: #F7F7F7;
-  width: 50%; /* Adjusted width for desktop */
-  max-width: 600px; /* Added max-width for better responsiveness */
+  width: 50%; 
+  max-width: 600px; 
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 1.2rem; 
 }
 
 .modal-overlay.active .modal-content {

@@ -8,6 +8,7 @@
     overflow-y: auto; 
     height: 307px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 0;
 }
 
 .seatcard-container:hover {

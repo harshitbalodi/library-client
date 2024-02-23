@@ -38,25 +38,25 @@ const CustomCarousel = ({ shifts, name }) => {
   const goToNextSlide = () => {
     // setCurrentSlide(prevSlide => Math.min(shifts.length  - numberOfCarouselSlide, prevSlide + 1));
     const nextSlide = currentSlide + 1;
-    const maxSlideIndex = Math.max(0, shifts.length - numberOfCarouselSlide);
+    const maxSlideIndex = Math.max(0, shifts.length - numberOfCarouselSlide );
     setCurrentSlide(Math.min(nextSlide, maxSlideIndex));
   };
-
+ 
   return (
     <div>
       <h1 >{name}</h1>
       <div className="custom-carousel">
         <div className="carousel-button prev" onClick={goToPrevSlide}>
-          <img src={LeftArrow} alt='<>&lt;</>' />
+          <img src={LeftArrow} alt='&lt;' />
         </div>
         <div className="slides-container">
           {shifts.slice(currentSlide, currentSlide + numberOfCarouselSlide).map((shift) => (
             <SeatCard key={shift.id} shift={shift} />
           ))}
-          {currentSlide + numberOfCarouselSlide >= shifts.length && < AddHall />}
+          {currentSlide + numberOfCarouselSlide >= shifts.length && <AddHall />}
         </div>
         <div className="carousel-button next" onClick={goToNextSlide}>
-          <img src={RightArrow} alt="<>&gt;</>" />
+          <img src={RightArrow} alt="&gt;" />
         </div>
       </div>
     </div>

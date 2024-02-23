@@ -13,12 +13,14 @@ import DroppableArea from "../../components/DragAndDrop/DroppableArea/DroppableA
 import ShiftCapacity from "../../components/ShiftCapacity/ShiftCapacity";
 import NotRenewed from "../../components/NotRenewed/NotRenewed";
 import ExpiringSoon from "../../components/ExpiringSoon/ExpiringSoon";
+import AllStudents from "../../components/AllStudents/AllStudents";
 
 const  Dashboard=()=> {
   const [components, setComponents] = useState([
-    { id: 1,component:<ShiftCapacity/> },
+    { id: 1, component:<ShiftCapacity/> },
     { id: 2, component: <ExpiringSoon/> },
     { id: 3, component: <NotRenewed/>},
+    {id:4, component:<AllStudents/>}
   ]);
 
   const sensors = useSensors(

@@ -12,6 +12,7 @@ import { useDispatch} from "react-redux";
 import deskService from "./services/deskService";
 import { desksToHalls } from "./utils/helper";
 import { setHalls } from "./store/hallSlice";
+import StudentPage from "./pages/StudentPage/StudentPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function App() {
             <Route path="/shift/:id" element={<ShiftDetail/>} />
             <Route path="/hall" element={<HallPage/>}/>
             <Route path="dashboard" element={<Dashboard/>}/>
+            <Route path="/student/:id" element={<StudentPage/>}/>
           </Routes>
         </div>
         </div>

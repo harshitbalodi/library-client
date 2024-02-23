@@ -12,7 +12,7 @@ const HallPage = () => {
         halls.map(hall => {
           return (<div key={hall.id} >
             <CustomCarousel shifts={hall.shifts} name={hall.name} />
-            <hr/>
+            <hr />
           </div>)
         })
 
