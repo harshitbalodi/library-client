@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux"
-// import HallCarousel from "../components/HallCarousel/HallCarousel"
 import '../index.css';
 import CustomCarousel from "../components/CustomCarousel/CustomCarousel";
 

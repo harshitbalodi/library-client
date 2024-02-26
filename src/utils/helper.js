@@ -57,3 +57,25 @@ export const formatNumber = (num) => {
     num.toString().slice(1, num.toString().length)
   );
 };
+
+export const extractShifts =(halls)=>{
+  let allShifts=[]
+    halls.map(hall=>{
+      allShifts =[...allShifts, ...hall.shifts];
+    })
+  return allShifts;
+}
+
+export const sortShiftsByFee = (shifts, order) => {
+  return shifts
+    .slice()
+    .sort((a, b) => (order === "asc" ? a.fee - b.fee : b.fee - a.fee));
+};
+
+export const filterShiftsByTime = (shifts, startTime, endTime) => {
+  startTime = startTime+':00';
+  endTime = endTime+':00';
+  console.log(startTime,endTime);
+  return shifts.filter(shift =>  shift.start_time >= startTime && shift.end_time <= endTime);
+};
+

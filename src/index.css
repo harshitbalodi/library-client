@@ -30,12 +30,7 @@ body,p,div{
     color: #443d3d;
 }
 
-.booking-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
+
 
 .hall-page{
     max-width: 100%;

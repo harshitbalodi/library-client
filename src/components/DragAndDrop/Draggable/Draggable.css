@@ -7,7 +7,7 @@
     background-color: white;
     border-radius:0 5px 5px 0;
     box-shadow: #00000029 0px 1px 4px;
-    width: 475px; 
+    width: 450px; 
     overflow-y: auto; 
     height: 300px; 
     padding: 5px;
@@ -34,6 +34,12 @@
   max-width: max-content;
 }
 
+@media screen  and (max-width:750px){
+  .draggable{
+    width: 350px;
+  }
+
+}
 @media screen  and (max-width:500px){
   .draggable{
     width: 277px;

@@ -1,0 +1,25 @@
+.booking-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.sorting-options{
+    display: inline-block;
+    border: 1px solid #d4d5d9;
+    color: #282c3f;
+    font-size: 14px;
+    padding: 9px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    width: 190x;
+}
+.sorting-options:hover{
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,.08);
+}
+.sorting-options select{
+    border: none;
+    font: bold;
+    font-size: medium;
+}

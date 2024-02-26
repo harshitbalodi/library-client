@@ -1,5 +1,4 @@
 import Footer from "./components/Footer"
-import BookSlots from "./pages/BookSlots"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { useEffect } from "react";
@@ -13,7 +12,7 @@ import { desksToHalls } from "./utils/helper";
 import { setHalls } from "./store/hallSlice";
 import StudentPage from "./pages/StudentPage/StudentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-
+import ShiftPage from "./pages/ShiftPage/ShiftPage";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,7 +39,7 @@ function App() {
           <div className="routes-container">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/shift" element={<BookSlots />} />
+            <Route path="/shift" element={<ShiftPage />} />
             <Route path="/login" element={<LoginPage/>} />
             <Route path="/hall" element={<HallPage/>}/>
             <Route path="dashboard" element={<Dashboard/>}/>
