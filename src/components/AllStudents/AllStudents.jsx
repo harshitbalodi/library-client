@@ -1,18 +1,22 @@
 import { useEffect } from 'react';
 import './AllStudents.css';
 import studentService from '../../services/studentService';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStudents } from '../../store/studentsSlice';
+import NoProfilePicture from '../../assets/no-dp.jpg'
 
 const AllStudents = () => {
     const navigate = useNavigate();
-    const [students, setStudents] = useState(null);
+    const dispatch = useDispatch();
+    const students = useSelector(state => state.students);
+
     console.log(students);
     useEffect(() => {
         const getStudents=async()=>{
           try {
             const {data} = await studentService.getall();
-            setStudents(data);
+            dispatch(setStudents(data));
         } catch (error) {
             console.log(error);
         }  
@@ -20,18 +24,23 @@ const AllStudents = () => {
         getStudents();
     }, [])
     return (
-        <div className='all-students'>
-            All students
+        <div className='all-students-container'>
+            <div className='students-title'>
+               All students   
+            </div>
             <hr/>
-            {students &&
-                students.map(student => {
-                    return <div key={student.id} className='student' onClick={()=>navigate(`./student/${student.id}`)}>
-                        <img src="https://photosnow.net/wp-content/uploads/2023/12/no-dp32.jpg" alt="" className='student-profile-img' />
+            <div className='all-students'>
+              {
+              students.map(student => {
+                    return <div key={student.id} className='student' onClick={()=>navigate(`/student/${student.id}`)}>
+                        <img src={NoProfilePicture} alt="" className='student-profile-img' />
                         <div className='name'> {student.name}</div>
                         <div className='joining'>{student.joining_date}</div>
                     </div>
                 })
-            }
+            }  
+            </div>
+            
         </div>
     )
 }

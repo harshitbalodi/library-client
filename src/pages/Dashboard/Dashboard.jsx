@@ -14,14 +14,20 @@ import ShiftCapacity from "../../components/ShiftCapacity/ShiftCapacity";
 import NotRenewed from "../../components/NotRenewed/NotRenewed";
 import ExpiringSoon from "../../components/ExpiringSoon/ExpiringSoon";
 import AllStudents from "../../components/AllStudents/AllStudents";
+import searchIcon from '../../assets/search-icon.svg';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const  Dashboard=()=> {
+const Dashboard = () => {
   const [components, setComponents] = useState([
-    { id: 1, component:<ShiftCapacity/> },
-    { id: 2, component: <ExpiringSoon/> },
-    { id: 3, component: <NotRenewed/>},
-    {id:4, component:<AllStudents/>}
+    { id: 1, component: <ShiftCapacity /> },
+    { id: 2, component: <ExpiringSoon /> },
+    { id: 3, component: <NotRenewed /> },
+    { id: 4, component: <AllStudents /> }
   ]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const students = useSelector(state=> state.students);
+  const navigate = useNavigate();
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -45,9 +51,25 @@ const  Dashboard=()=> {
     });
   };
 
+   const handleSearch = (e) =>{
+    e.preventDefault();
+    console.log("search",e.target.search.value);
+    const searchQuery = e.target.search.value;
+    if(searchQuery.trim() === '') return;
+    setFilteredStudents(()=> students.filter(student=> student.name.toLowerCase().includes(searchQuery.toLowerCase().trim())));
+
+    if(setFilteredStudents.length === 1) navigate(`/student/${setFilteredStudents[0].id}`);
+   }
+   console.log(filteredStudents);
+
   return (
     <div className="Dashboard">
       <h1>Admin Dashboard</h1>
+      <form className="search-bar" onSubmit={(e)=>handleSearch(e)}>
+        <input className='search-input' name="search" type="text" placeholder="Search for student Detail" />
+        <button className='search-btn' ><img width={14.7} src={searchIcon} alt="" /></button>
+      </form>
+
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}

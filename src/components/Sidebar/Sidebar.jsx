@@ -5,8 +5,10 @@ import DashboardLogo from '../../assets/dashboard-icon.svg';
 import ShiftLogo from '../../assets/shift-icon.svg'
 import HallLogo from '../../assets/hall-icon.svg'
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const SidebarLink = ({ to, icon, label }) => {
+
     const location = useLocation();
     const isActive = location.pathname === to;
     return (
@@ -18,7 +20,9 @@ const SidebarLink = ({ to, icon, label }) => {
 };
 
 const Sidebar = () => {
-    return (
+    const sidebar = useSelector(state => state.sidebar);
+    console.log(sidebar);
+    return sidebar && (
       <div className="sidebar">
         <SidebarLink to="/" icon={HomeLogo} label="Home" />
         <SidebarLink to="/dashboard" icon={DashboardLogo} label="Dashboard" />

@@ -1,9 +1,9 @@
-import FormModal from "../FormModal";
+import ShiftForm from "../ShiftForm/ShiftForm";
 import { useState } from "react";
-import './AddHall.css';
+import './AddShift.css';
 import PlusIcon from '../../assets/plus-icon.svg';
 
-const AddHall = () => {
+const AddShift = ({hallName}) => {
     const [isModalOpen, setIsModelOpen] = useState(false);
 
     const handleOpenModal = ()=>{
@@ -16,9 +16,9 @@ const AddHall = () => {
   return (
     <div className="addhall-container" >
           <img className="plus-img" src={PlusIcon} alt="add new hall"  onClick={handleOpenModal}/>
-        <FormModal isOpen={isModalOpen} onClose={(event)=>handleCloseModal(event)}/>
+        <ShiftForm isOpen={isModalOpen} onClose={(event)=>handleCloseModal(event)}/>
     </div>
   )
 }
 
-export default AddHall
+export default AddShift

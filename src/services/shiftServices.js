@@ -6,4 +6,8 @@ const getall = async()=>{
     return response;
 }
 
-export default {getall};
+export const addShift = async(ShiftObj)=>{
+    const response = await axios.post(baseUrl, ShiftObj);
+    return response;
+}
+export default {getall, addShift};

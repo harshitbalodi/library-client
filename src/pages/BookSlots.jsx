@@ -1,7 +1,7 @@
 import '../index.css'
-import AddHall from '../components/AddHall/AddHall';
 import { useSelector } from 'react-redux';
 import SeatCard from '../components/SeatCard/SeatCard';
+import AddShift from '../components/AddShift/AddShift';
 
 const BookSlots = () => {
   const halls = useSelector(state => state.halls);
@@ -14,7 +14,7 @@ const BookSlots = () => {
           })
           ) 
         }
-        <AddHall/>
+        <AddShift/>
       </div>
     </div>
   )

@@ -1,9 +1,16 @@
+.all-students-container{
+    color: dimgray;
+}
+.students-title{
+    font: bold;
+    font-size: x-large;
+}
+
 .all-students{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-
 .student{
     display: flex;
     flex-direction: row;

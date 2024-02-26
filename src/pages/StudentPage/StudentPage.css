@@ -1,0 +1,17 @@
+.student-container{
+    display: flex;
+}
+.student-detail{
+    display: flex;
+    max-width: 650px;
+    margin:0 auto;
+}
+.student-data-section{
+    flex:1;
+}
+.student-image{
+    flex-shrink: 0;
+    margin-left: 20px;
+    width: 100px;
+    height: 100px;
+}

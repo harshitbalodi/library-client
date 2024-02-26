@@ -8,8 +8,8 @@ const LandingPage = () => {
   const [callforaction, setCallforAction] = useState(false);
   const [IsbuttonVisible, setIsButtonVisible] = useState(false);
   useEffect(() => {
-    const callForActionInterval = setInterval(() => setCallforAction(true), 3100);
-    const buttonVisibleInterval = setInterval(() => setIsButtonVisible(true), 5500);
+    const callForActionInterval = setInterval(() => setCallforAction(true), 2000);
+    const buttonVisibleInterval = setInterval(() => setIsButtonVisible(true), 3500);
 
     return () => {
       clearInterval(callForActionInterval);
