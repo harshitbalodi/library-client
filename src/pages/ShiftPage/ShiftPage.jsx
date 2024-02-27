@@ -20,17 +20,17 @@ const ShiftPage = () => {
 
 
   useEffect(() => {
-    if (halls){  
-      const hallstoShifts =extractShifts(halls);
+    if (halls) {
+      const hallstoShifts = extractShifts(halls);
       dispatch(setShifts(hallstoShifts));
       setFilteredShifts(hallstoShifts);
     }
-  }, [halls,dispatch])
+  }, [halls, dispatch])
 
   const handleSort = (e) => {
     console.log(e.target.value);
     const order = e.target.value;
-    if (order === 'default'){ 
+    if (order === 'default') {
       setFilteredShifts(shifts);
       return;
     }
@@ -41,55 +41,49 @@ const ShiftPage = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log('Start Time:', startTime);
-    console.log('End Time:', endTime+":00");
-    if(endTime < startTime) {
-      toast.error('start time should be smaller than the end time'); 
+    console.log('End Time:', endTime + ":00");
+    if (endTime < startTime) {
+      toast.error('start time should be smaller than the end time');
       return;
     }
     console.log(startTime.toString() < "05:10:00")
-    setFilteredShifts(()=>filterShiftsByTime(shifts,startTime.toString(),endTime.toString()))
+    setFilteredShifts(() => filterShiftsByTime(shifts, startTime.toString(), endTime.toString()))
   };
 
-  const handleClear=()=>{
+  const handleClear = () => {
     setEndTime("");
     setStartTime("");
     setFilteredShifts(shifts);
   }
   return !halls ? <Shimmer /> : (
-    <div className='shift-container'>
-      <ToastContainer/>
-      <div>
-        <div>Choose your preferable time window</div>
-        <form onSubmit={handleSearch}>
-          <label htmlFor="start-time">From </label>
-          <input
-            type="time"
-            id="start-time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            required
-          />
-          <label htmlFor="end-time">To </label>
-          <input
-            type="time"
-            id="end-time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            required
-          />
-          <button type="submit">Find Timeslot</button>
-          <button type='reset' onClick={handleClear}>clear</button>
-        </form>
-      </div>
-      <div className='sorting-options'>
-        <label htmlFor="fees">Sort by:</label>
-        <select name="fees" id="fees" onChange={(e) => handleSort(e)}>
-          <option value="default">default</option>
-          <option value="desc">High to Low</option>
-          <option value="asc">Low to high</option>
-        </select>
-      </div>
+    <div >
+      <ToastContainer className='shift-container'/>
+      <div className='filter-container'>
+        <div className='time-filter'>
+          <div className='time-filter-heading'>Choose your preferable time window</div>
 
+          <form className="time-filter-form" onSubmit={handleSearch}>
+            <div className="time-filter-inputs">
+              <label htmlFor="start-time"> From </label>
+              <input type="time" id="start-time" value={startTime} onChange={(e) => setStartTime(e.target.value)} required />
+              <label htmlFor="end-time">To </label>
+              <input type="time" id="end-time" value={endTime} onChange={(e) => setEndTime(e.target.value)} required />
+            </div>
+            <div className="time-filter-buttons">
+              <button type="submit" className="red-button">Find Timeslot</button>
+              <button type='reset' className="red-button" onClick={handleClear}>clear</button>
+            </div>
+          </form>
+        </div>
+        <div className='sorting-options'>
+          <label htmlFor="fees">Sort by:</label>
+          <select name="fees" id="fees" onChange={(e) => handleSort(e)}>
+            <option value="default">default</option>
+            <option value="desc">High to Low</option>
+            <option value="asc">Low to high</option>
+          </select>
+        </div>
+      </div>
 
       <div className="booking-container">
         {

@@ -13,20 +13,22 @@ import { setHalls } from "./store/hallSlice";
 import StudentPage from "./pages/StudentPage/StudentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ShiftPage from "./pages/ShiftPage/ShiftPage";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getdata = async () => {
       try {
-        const { data } = await deskService.getall();
-        const newHallData = desksToHalls(data);
+        const {data} = await deskService.getall();
+        console.log(data);
+        const newHallData = desksToHalls(data.data);
         dispatch(setHalls(newHallData));
       } catch (error) {
         console.log(error);
       }
     }
     getdata();
-  }, [])
+  }, [dispatch])
   return (
     <Router>
       <div className="body-container">

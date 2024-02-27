@@ -1,0 +1,90 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+  }
+  
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .modal-content {
+    background-color: #F7F7F7;
+    width: 50%; 
+    max-width: 600px; 
+    max-height: 80%;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 1.2rem; 
+    margin-top: 80px;
+  }
+  
+  .modal-overlay.active .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal-content form div {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content div h1{
+    text-align: center;
+  }
+  .modal-content label{
+    margin-right:10px ;
+  }
+  .modal-content form div input[type="text"],
+  .modal-content form div input[type="number"],
+  .modal-content form div input[type="time"] {
+    border-radius: 10px; /* Rounded input boxes */
+    padding: 10px;
+    font-size: inherit; /* Inherit font size */
+  }
+  
+  .modal-content form button {
+    margin-top: 20px;
+  }
+  
+  .modal-content form h2 {
+    text-align: center; /* Center the heading */
+  }
+  
+  .modal-content form button.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .modal-content {
+      width: 100%;
+      height: 80%;
+    }
+  } 

@@ -5,7 +5,7 @@ import RightArrow from '../../assets/arrow-circle-right.svg'
 import LeftArrow from '../../assets/arrow-circle-left.svg'
 import AddShift from '../AddShift/AddShift';
 
-const CustomCarousel = ({ shifts, name }) => {
+const CustomCarousel = ({  hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [numberOfCarouselSlide, setNumberOfCarousel] = useState(null);
 
@@ -36,22 +36,22 @@ const CustomCarousel = ({ shifts, name }) => {
 
   const goToNextSlide = () => {
     const nextSlide = currentSlide + 1;
-    const maxSlideIndex = Math.max(0, shifts.length - numberOfCarouselSlide +1);
+    const maxSlideIndex = Math.max(0, hall.shifts.length - numberOfCarouselSlide +1);
     setCurrentSlide(Math.min(nextSlide, maxSlideIndex));
   };
  
   return (
     <div>
-      <h1 >{name}</h1>
+      <h1 >{hall.name}</h1>
       <div className="custom-carousel">
         <div className="carousel-button prev" onClick={goToPrevSlide}>
           <img src={LeftArrow} alt='&lt;' />
         </div>
         <div className="slides-container">
-          {shifts.slice(currentSlide, currentSlide + numberOfCarouselSlide).map((shift) => (
+          {hall.shifts.slice(currentSlide, currentSlide + numberOfCarouselSlide).map((shift) => (
             <SeatCard key={shift.id} shift={shift} />
           ))}
-          {currentSlide + numberOfCarouselSlide > shifts.length && <AddShift />}
+          {currentSlide + numberOfCarouselSlide > hall.shifts.length && <AddShift hall={hall}/>}
         </div>
         <div className="carousel-button next" onClick={goToNextSlide}>
           <img src={RightArrow} alt="&gt;" />

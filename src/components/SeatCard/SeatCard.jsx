@@ -3,16 +3,11 @@ import './SeatCard.css';
 import {formatNumber} from '../../utils/helper';
 
 const SeatCard = ({ shift }) => {
-    const navigate = useNavigate();
 
     const toggleSeatStatus = (id) => {
         console.log("desk id is clicked",id);
     };
-
-    const handleNavigation = () => {
-        navigate(`./${shift.id}`);
-    };
-
+    
     return (
         <div className='seatcard-container'>
             <div className="seatcard-seats">
@@ -29,7 +24,7 @@ const SeatCard = ({ shift }) => {
                 ))}
             </div>
             <div className='seatcard-details'>
-                <div className='hall-name' onClick={handleNavigation}>{shift.name}</div>
+                <div className='hall-name'>{shift.name}</div>
                 <div className='timing'>Timing: {shift.start_time} - {shift.end_time}</div>
                 <div className='fee'>Fee: Rs {formatNumber(shift.fee)}</div>
             </div>

@@ -3,7 +3,8 @@ import { useState } from "react";
 import './AddShift.css';
 import PlusIcon from '../../assets/plus-icon.svg';
 
-const AddShift = ({hallName}) => {
+const AddShift = (props) => {
+    
     const [isModalOpen, setIsModelOpen] = useState(false);
 
     const handleOpenModal = ()=>{
@@ -16,7 +17,7 @@ const AddShift = ({hallName}) => {
   return (
     <div className="addhall-container" >
           <img className="plus-img" src={PlusIcon} alt="add new hall"  onClick={handleOpenModal}/>
-        <ShiftForm isOpen={isModalOpen} onClose={(event)=>handleCloseModal(event)}/>
+        <ShiftForm isOpen={isModalOpen} hall={props.hall} onClose={(event)=>handleCloseModal(event)}/>
     </div>
   )
 }
