@@ -11,18 +11,22 @@ import StudentPage from "./pages/StudentPage/StudentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ShiftPage from "./pages/ShiftPage/ShiftPage";
 import {setHallsThunk} from './store/hallSlice';
+import BookingPage from "./pages/BookingPage/BookingPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getdata = async () => {
       try {
         dispatch(setHallsThunk());
-        
       } catch (error) {
         console.log(error);
       }
     }
     getdata();
+    const clearId = setInterval(getdata,30000)
+    return ()=>clearInterval(clearId);
   }, [dispatch])
   return (
     <Router>
@@ -41,6 +45,8 @@ function App() {
             <Route path="/hall" element={<HallPage/>}/>
             <Route path="dashboard" element={<Dashboard/>}/>
             <Route path="/student/:id" element={<StudentPage/>}/>
+            <Route path="/booking" element={<BookingPage/>}/>
+            <Route path="*" element={<ErrorPage/>}/>
           </Routes>
         </div>
         </div>

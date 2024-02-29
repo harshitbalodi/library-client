@@ -4,19 +4,21 @@ import AddShift from '../../components/AddShift/AddShift';
 import Shimmer from '../../components/Shimmer/Shimmer';
 import './ShiftPage.css';
 import { useEffect, useState } from 'react';
-import {  filterShiftsByTime, sortShiftsByFee } from '../../utils/helper';
+import { filterShiftsByTime, sortShiftsByFee } from '../../utils/helper';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 const ShiftPage = () => {
-  const shifts = useSelector(state => state.shifts);
+  const [shifts, seat] = useSelector(state => [state.shifts, state.seat]);
   const [filteredShifts, setFilteredShifts] = useState([]);
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
+  const navigate = useNavigate();
 
-  console.log("shifts",shifts);
-  console.log(shifts);
+  console.log("seat", seat);
   useEffect(() => {
     if (shifts) {
       setFilteredShifts(shifts);
@@ -53,7 +55,7 @@ const ShiftPage = () => {
   }
   return !shifts ? <Shimmer /> : (
     <div >
-      <ToastContainer className='shift-container'/>
+      <ToastContainer />
       <div className='filter-container'>
         <div className='time-filter'>
           <div className='time-filter-heading'>Choose your preferable time window</div>
@@ -71,6 +73,7 @@ const ShiftPage = () => {
             </div>
           </form>
         </div>
+
         <div className='sorting-options'>
           <label htmlFor="fees">Sort by:</label>
           <select name="fees" id="fees" onChange={(e) => handleSort(e)}>
@@ -81,7 +84,12 @@ const ShiftPage = () => {
         </div>
       </div>
 
-      <div className="booking-container">
+      <div className='booking-btn'>
+        {seat && <Button onClick={() => navigate('/booking')} >Proceed</Button>}
+      </div>
+
+
+      <div className="shift-container">
         {
           filteredShifts.map(shift => {
             return <SeatCard key={shift.id} shift={shift} />

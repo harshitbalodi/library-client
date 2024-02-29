@@ -1,6 +1,7 @@
  .shift-container {
   max-width: 100%;
   height: 100%;
+  /* position: relative; */
 }
 
 .filter-container {
@@ -9,6 +10,7 @@
   flex-wrap: wrap;
   padding: 1rem;
   border-radius: 5px;
+  gap:10px;
 }
 
 .time-filter{
@@ -56,11 +58,17 @@
     font-size: medium;
   }
 
-.booking-container {
+.shift-container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+.booking-btn{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 3;
 }
 
 @media screen and (max-widh:500px){

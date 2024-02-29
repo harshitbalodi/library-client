@@ -3,13 +3,15 @@ import hallSlice from "./hallSlice";
 import shiftSlice from "./shiftSlice";
 import SidebarSlice from './SidebarSlice';
 import studentsSlice from "./studentsSlice";
+import seatSlice from "./seatSlice";
 
 const store = configureStore({
   reducer: {
     halls:hallSlice,
     shifts:shiftSlice,
     sidebar:SidebarSlice,
-    students:studentsSlice
+    students:studentsSlice,
+    seat:seatSlice
   },
 });
 

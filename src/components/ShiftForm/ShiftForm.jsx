@@ -69,7 +69,10 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
     return (
         <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={onClose}>
             <div className={`modal-content ${isOpen ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
-                <img src={CrossIcon} onClick={onClose} />
+                <div className='cross-icon-container'>
+                    <img title='close' src={CrossIcon} onClick={onClose} />
+                </div>
+                
                 <h2>Add new Shift</h2>
                 <form className="form" onSubmit={handleCreateShift}>
                     <div>

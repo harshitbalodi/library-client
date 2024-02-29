@@ -6,14 +6,27 @@ import shiftServices from '../../services/shiftServices';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import ModifyShiftForm from '../ModifyShiftForm/ModifyShiftForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setHallsThunk } from '../../store/hallSlice';
+import { setSeat } from '../../store/seatSlice';
 
 const SeatCard = ({ shift }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const dispatch = useDispatch();    
-    const toggleSeatStatus = (id) => {
-        console.log("desk id is clicked", id);
+    const seat = useSelector(state => state.seat);
+    const dispatch = useDispatch();
+
+    const BookSeat = (desk) => {
+        console.log("desk id is clicked", desk);
+        if (!desk.is_vacant || !desk.is_active) {
+            toast.error(`seat ${desk.seat_no} is already book or inactive`);
+            return;
+        }
+        if (seat && seat.id === desk.id) {
+            dispatch(setSeat(null));
+            return;
+        }
+        dispatch(setSeat({ ...desk, shift }));
+        toast.success(` seat ${desk.seat_no} in ${shift.name} is selected`);
     };
 
     const handleEdit = () => {
@@ -22,20 +35,20 @@ const SeatCard = ({ shift }) => {
     const handleDelete = async () => {
         const action = window.confirm('Do you really want to delete the shift');
         console.log(action);
-        if(action){
-             try {
-            const response = await shiftServices.deleteShift(shift.id);
-            console.log(response);
-            if (response.data.status === "error") {
-                toast.error(response.data.message);
-            } else {
-                toast.success(response.data.message);
-                dispatch(setHallsThunk());
+        if (action) {
+            try {
+                const response = await shiftServices.deleteShift(shift.id);
+                console.log(response);
+                if (response.data.status === "error") {
+                    toast.error(response.data.message);
+                } else {
+                    toast.success(response.data.message);
+                    dispatch(setHallsThunk());
+                }
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
             }
-        } catch (error) {
-            console.log(error);
-            toast.error(error.message);
-        }
         }
     }
 
@@ -45,8 +58,8 @@ const SeatCard = ({ shift }) => {
                 {shift.desks.map((desk, index) => (
                     <div
                         key={desk.id}
-                        className={`seat ${desk.is_vacant ? 'vacant' : 'occupied'}`}
-                        onClick={() => toggleSeatStatus(desk.id)}
+                        className={`seat ${seat && seat.id === desk.id ? "selected" : (desk.is_vacant ? 'vacant' : 'occupied')}`}
+                        onClick={() => BookSeat(desk, shift.name)}
                     >
                         {
                             index < shift.capacity && <div className='seat-number'>{index + 1}</div>
@@ -60,8 +73,8 @@ const SeatCard = ({ shift }) => {
                 <div className='fee'>Fee: Rs {formatNumber(shift.fee)}</div>
             </div>
             <div className='action-buttons'>
-                <div className='edit-img' onClick={handleEdit}><img src={EditIcon} alt="edit" /></div>
-                <div className='del-img' onClick={handleDelete}><img src={DeleteIcon} alt="del" /></div>
+                <div className='edit-img' title='edit card' onClick={handleEdit}><img src={EditIcon} alt="edit" /></div>
+                <div className='del-img' title='delete card' onClick={handleDelete}><img src={DeleteIcon} alt="del" /></div>
             </div>
             {isOpen && (<ModifyShiftForm
                 shift={shift}

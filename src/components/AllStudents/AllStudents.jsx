@@ -11,34 +11,34 @@ const AllStudents = () => {
     const dispatch = useDispatch();
     const students = useSelector(state => state.students);
     useEffect(() => {
-        const getStudents=async()=>{
-          try {
-            const {data} = await studentService.getall();
-            dispatch(setStudents(data));
-        } catch (error) {
-            console.log(error);
-        }  
+        const getStudents = async () => {
+            try {
+                const { data } = await studentService.getall();
+                dispatch(setStudents(data));
+            } catch (error) {
+                console.log(error);
+            }
         }
         getStudents();
     }, [])
     return (
         <div className='all-students-container'>
             <div className='students-title'>
-               All students   
+                All students
             </div>
-            <hr/>
+            <hr />
             <div className='all-students'>
-              {
-              students.map(student => {
-                    return <div key={student.id} className='student' onClick={()=>navigate(`/student/${student.id}`)}>
-                        <img src={NoProfilePicture} alt="" className='student-profile-img' />
-                        <div className='name'> {student.name}</div>
-                        <div className='joining'>{student.joining_date}</div>
-                    </div>
-                })
-            }  
+                {
+                    students.map(student => {
+                        return <div key={student.id} className='student' aria-label='go to student page' onClick={() => navigate(`/student/${student.id}`)}>
+                            <img src={NoProfilePicture} alt="" className='student-profile-img' />
+                            <div className='name'> {student.name}</div>
+                            <div className='joining'>{student.joining_date}</div>
+                        </div>
+                    })
+                }
             </div>
-            
+
         </div>
     )
 }

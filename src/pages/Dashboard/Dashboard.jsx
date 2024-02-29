@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   DndContext,
   KeyboardSensor,
@@ -14,7 +14,8 @@ import ShiftCapacity from "../../components/ShiftCapacity/ShiftCapacity";
 import NotRenewed from "../../components/NotRenewed/NotRenewed";
 import ExpiringSoon from "../../components/ExpiringSoon/ExpiringSoon";
 import AllStudents from "../../components/AllStudents/AllStudents";
-
+import LockIcon from '../../assets/lock.svg';
+import UnLockIcon from '../../assets/unlock.svg';
 import ShiftTimer from "../../components/ShiftTimer/ShiftTimer";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
@@ -26,7 +27,8 @@ const Dashboard = () => {
     { id: 4, component: <NotRenewed /> },
     { id: 5, component: <AllStudents /> }
   ]);
-
+  const [isLock, setIsLock] = useState(false);
+  console.log(isLock);
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -50,17 +52,37 @@ const Dashboard = () => {
     });
   };
 
+  const toggleLock = () => setIsLock((prevIsLock) => !prevIsLock);
   return (
     <div className="Dashboard">
       <h1>Admin Dashboard</h1>
+      <div className="lock-unlock">
+        {!isLock ? (<div onClick={toggleLock} title="lock Dashboard" >
+          <img src={LockIcon} alt="lock" />
+        </div>) :
+          (<div onClick={toggleLock} title="unlock Dashboard">
+            <img src={UnLockIcon} alt="lock" />
+          </div>)
+        }
+      </div>
       <SearchBar />
-      <DndContext
+
+      {!isLock ? <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
         onDragEnd={handleDragEnd}
       >
-        <DroppableArea id="toDo" components={components} />
+        <DroppableArea
+          id="toDo"
+          components={components}
+        />
       </DndContext>
+        :
+        <DroppableArea
+          id="toDo"
+          components={components}
+        />
+      }
     </div>
   );
 }

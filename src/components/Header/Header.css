@@ -29,6 +29,7 @@
   height: 40px;
   width: 40px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .logo {
@@ -39,4 +40,19 @@
   padding-right: 50px;
   text-decoration-line: underline;
   color: inherit;
+}
+
+.login-btn{
+  border: none;
+  font-size: large;
+  color: rgb(255, 255, 255);
+  background-color: #ff9e9e;
+  padding: 9px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.login-btn:hover{
+  background-color: #d36969;
+  transform: scale(1.05);
 }

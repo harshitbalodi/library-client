@@ -1,5 +1,7 @@
 .all-students-container{
     color: dimgray;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 .students-title{
     font: bold;
@@ -20,6 +22,7 @@
     padding: 5px;
     margin-top: 7px;
     align-items: center;
+    cursor: pointer;
 }
 .student:hover{
     transform: scale(1.02);

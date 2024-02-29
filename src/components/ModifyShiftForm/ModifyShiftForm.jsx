@@ -27,7 +27,7 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
 
   return (
     <div className="edit-form-container">
-      <img className="cross-icon" src={CrossIcon} alt="❌" onClick={() => setIsOpen(false)} />
+      <img title='close' className="cross-icon" src={CrossIcon} alt="❌" onClick={() => setIsOpen(false)} />
       <h3>Update Capacity</h3>
       <form className="updation-Form" onSubmit={(e) => handleSubmit(e)}>
         <div>

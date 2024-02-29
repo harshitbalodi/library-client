@@ -16,7 +16,7 @@ const AddShift = (props) => {
     }
   return (
     <div className="addhall-container" >
-          <img className="plus-img" src={PlusIcon} alt="add new hall"  onClick={handleOpenModal}/>
+          <img className="plus-img" title="add shift" src={PlusIcon} alt="add new hall"  onClick={handleOpenModal}/>
         <ShiftForm isOpen={isModalOpen} hall={props.hall} onClose={(event)=>handleCloseModal(event)}/>
     </div>
   )

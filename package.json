@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "author": "Harshit Balodi",
   "type": "module",
+  "proxy":"https://lms-umd5.onrender.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
