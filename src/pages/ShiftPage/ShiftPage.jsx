@@ -1,31 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SeatCard from '../../components/SeatCard/SeatCard';
 import AddShift from '../../components/AddShift/AddShift';
 import Shimmer from '../../components/Shimmer/Shimmer';
 import './ShiftPage.css';
 import { useEffect, useState } from 'react';
-import { extractShifts, filterShiftsByTime, sortShiftsByFee } from '../../utils/helper';
-import { setShifts } from '../../store/shiftSlice';
+import {  filterShiftsByTime, sortShiftsByFee } from '../../utils/helper';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
 const ShiftPage = () => {
-  const halls = useSelector(state => state.halls);
   const shifts = useSelector(state => state.shifts);
-  const dispatch = useDispatch();
   const [filteredShifts, setFilteredShifts] = useState([]);
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
 
-
+  console.log("shifts",shifts);
+  console.log(shifts);
   useEffect(() => {
-    if (halls) {
-      const hallstoShifts = extractShifts(halls);
-      dispatch(setShifts(hallstoShifts));
-      setFilteredShifts(hallstoShifts);
+    if (shifts) {
+      setFilteredShifts(shifts);
     }
-  }, [halls, dispatch])
+  }, [shifts])
 
   const handleSort = (e) => {
     console.log(e.target.value);
@@ -55,7 +51,7 @@ const ShiftPage = () => {
     setStartTime("");
     setFilteredShifts(shifts);
   }
-  return !halls ? <Shimmer /> : (
+  return !shifts ? <Shimmer /> : (
     <div >
       <ToastContainer className='shift-container'/>
       <div className='filter-container'>

@@ -10,8 +10,6 @@ const AllStudents = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const students = useSelector(state => state.students);
-
-    console.log(students);
     useEffect(() => {
         const getStudents=async()=>{
           try {

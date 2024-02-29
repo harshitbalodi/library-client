@@ -1,6 +1,6 @@
 export const desksToHalls = (desks) => {
   const hallsMap = {};
-
+  console.log("inside utils", desks);
   desks.forEach((desk) => {
     const { shift } = desk;
     const { hall } = shift;
@@ -79,3 +79,65 @@ export const filterShiftsByTime = (shifts, startTime, endTime) => {
   return shifts.filter(shift =>  shift.start_time >= startTime && shift.end_time <= endTime);
 };
 
+export const formatTime = (time) => {
+  if (!/^\d{2}:\d{2}:\d{2}$/.test(time)) {
+    throw new Error("Invalid time format. Expected HH:MM:SS");
+  }
+
+  const newTime = time.slice(0, 5);
+  if (newTime === "00:00") {
+    return "12:00 AM";
+  }
+
+  const [hours, minutes] = newTime.split(':').map(Number);
+  const timeHour = hours < 12 ? hours : hours - 12;
+  return `${timeHour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${hours < 12 ? 'AM' : 'PM'}`;
+};
+
+export const clubShiftsByTime=(shifts)=> {
+  const groupedShifts = {};
+
+  shifts.forEach(shift => {
+    const key = `${shift.start_time}-${shift.end_time}`;
+
+    if (!groupedShifts[key]) {
+      groupedShifts[key] = {
+        start_time: shift.start_time,
+        end_time: shift.end_time,
+        shifts: [],
+      };
+    }
+
+    groupedShifts[key].shifts.push({
+      id: shift.id,
+      name: shift.name,
+    });
+  });
+  return Object.values(groupedShifts);
+} 
+
+export const  getRemainingShiftTime=(shift)=>{
+  const now = new Date();
+  const start = new Date();
+  start.setHours(...shift.start_time.split(':'));
+  const end = new Date();
+  end.setHours(...shift.end_time.split(':'));
+
+  if (now < start) {
+    const timeDifference = start - now;
+    return {...shift,status:"time_remaining",value:0,time:formatTimeDifference(timeDifference),shifts:shift.shifts,timeDifference}; 
+  } else if (now > end) {
+    return {...shift,status:"ended",value:-1,shifts:shift.shifts};
+  } else {
+    const timeDifference = end - now;
+    return {...shift,status:"running",value:1,time:formatTimeDifference(timeDifference),timeDifference}; 
+  }
+}
+
+const formatTimeDifference=(differenceInMs)=> {
+  const hours = Math.floor(differenceInMs / (1000 * 60 * 60));
+  const minutes = Math.floor((differenceInMs % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((differenceInMs % (1000 * 60)) / 1000);
+
+  return ` ${hours<10?"0"+hours:hours}:${minutes<10?"0"+minutes:minutes}:${seconds<10?"0"+seconds:seconds}`;
+}

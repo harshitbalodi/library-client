@@ -1,90 +1,72 @@
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 5;
-  }
-  
-  .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  .modal-content {
-    background-color: #F7F7F7;
-    width: 50%; 
-    max-width: 600px; 
-    max-height: 80%;
-    overflow-y: auto;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    font-size: 1.2rem; 
-    margin-top: 80px;
-  }
-  
-  .modal-overlay.active .modal-content {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .modal-content form {
+.edit-form-container{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  transition: all 0.2s ease-in-out;
+  font-size: large;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  background-color: white;
+  z-index: 3;
+}
+
+.edit-form-container.hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cross-icon{
+  position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.cross-icon:hover {
+  transform: scale(1.1);
+  background-color: #eee;
+  border-radius: 5px;
+}
+.edit-form-container h3{
+  margin-bottom: 15px;
+  display: block;
+}
+.updation-Form{
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-  
-  .modal-content form div {
-    margin-bottom: 20px;
-  }
-  
-  .modal-content div h1{
-    text-align: center;
-  }
-  .modal-content label{
-    margin-right:10px ;
-  }
-  .modal-content form div input[type="text"],
-  .modal-content form div input[type="number"],
-  .modal-content form div input[type="time"] {
-    border-radius: 10px; /* Rounded input boxes */
-    padding: 10px;
-    font-size: inherit; /* Inherit font size */
-  }
-  
-  .modal-content form button {
-    margin-top: 20px;
-  }
-  
-  .modal-content form h2 {
-    text-align: center; /* Center the heading */
-  }
-  
-  .modal-content form button.close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  
-  @media screen and (max-width: 480px) {
-    .modal-content {
-      width: 100%;
-      height: 80%;
-    }
-  } 
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+.edit-form-container label{
+  margin-bottom: 5px;
+}
+
+#capacity{
+  width: 97%;
+  margin: 5px;
+  font-size: large;
+  border-radius: 5px;
+
+}
+.submit-btn{
+  width: 100%;
+  border: none;
+  padding: 5px;   
+  background-color: #ccc; 
+  font-size: large; 
+  border-radius: 7px;
+}
+.submit-btn:hover{
+  padding: 5px;   
+  background-color: #C34949; 
+  font-size: large; 
+  transform: scale(1.05);
+  color:white;
+}

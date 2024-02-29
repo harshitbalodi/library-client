@@ -5,5 +5,9 @@ const getall = async ()=>{
     const response =await axios.get(baseUrl);
     return response;
 }
+const Addhall = async(hallName)=>{
+    const response = await axios.post(baseUrl, {name:hallName});
+    return response;
+}
 
-export default {getall};
+export default {getall, Addhall};

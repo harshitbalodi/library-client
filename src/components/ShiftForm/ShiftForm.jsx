@@ -2,22 +2,24 @@ import Button from '../Button/Button';
 import './ShiftForm.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-// import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from "react-toastify";
 import shiftServices from '../../services/shiftServices';
+import { setHallsThunk } from '../../store/hallSlice';
 
 const ShiftForm = ({ isOpen, onClose, hall }) => {
     const halls = useSelector(state => state.halls);
-    console.log(halls);
     const [hallName, setHallName] = useState(hall?.name || '');
     const [shiftName, setShiftName] = useState('');
     const [capacity, setCapacity] = useState(0);
     const [fee, setFee] = useState(0);
     const [startAt, setStartAt] = useState('');
     const [endAt, setEndAt] = useState('');
+    const dispatch = useDispatch();
+
     let hallId = hall?.id;
     console.log("hallId", hallId);
-    const handleCreateHall = async (event) => {
+    const handleCreateShift = async (event) => {
         event.preventDefault();
         console.log('create hall clicked');
         console.log(hallName, capacity, startAt, endAt);
@@ -31,12 +33,12 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
         if(!hallId){
             const filteredHalls = halls.filter( hall=> hall.name === hallName);
             if(filteredHalls.length > 1){
-                // toast.error('more than 1 Hall with same name');
+                toast.error('more than 1 Hall with same name');
                 console.log('more than 1 Hall with same name');
                 return;
             }
             else if(filteredHalls.length === 0){
-                // toast.error('no Hall with such name,check all hall names');
+                toast.error('no Hall with such name,check all hall names');
                 console
                 return;
             }
@@ -48,26 +50,28 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
         if(shiftObj.hall){
             try{
                 const response = await shiftServices.addShift(shiftObj);
-                console.log(response);
+                if(response){ 
+                    dispatch(setHallsThunk());
+                    toast.success("new shift is created");
+                }
             }catch(error){
                 console.log(error);
             }
         }
-        setHallName('');
         setCapacity(0);
         setFee(0);
         setStartAt('');
         setEndAt('');
         setShiftName('');
+        onClose();
     };
 
     return (
         <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={onClose}>
-            {/* <ToastContainer/> */}
             <div className={`modal-content ${isOpen ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <img src={CrossIcon} onClick={onClose} />
                 <h2>Add new Shift</h2>
-                <form className="form" onSubmit={handleCreateHall}>
+                <form className="form" onSubmit={handleCreateShift}>
                     <div>
                         <label htmlFor="hall">Hall name</label>
                         <input

@@ -13,6 +13,13 @@ const addShift = async(ShiftObj)=>{
 
 export const deleteShift = async (id)=>{
     const response = await axios.delete(baseUrl+`/${id}`);
+    return response;
+}
+export const updateShift = async(id,shiftObj)=>{
+    console.log(id,"inside updateShift function",shiftObj);
+    
+    const response = await axios.patch(baseUrl+`/${id}`,shiftObj);
+    return response;
 }
 
-export default {getall, addShift, deleteShift};
+export default {getall, addShift, deleteShift, updateShift};

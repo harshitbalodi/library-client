@@ -4,25 +4,20 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import { useEffect } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
-import HallPage from "./pages/HallPage";
+import HallPage from "./pages/HallPage/HallPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { useDispatch} from "react-redux";
-import deskService from "./services/deskService";
-import { desksToHalls } from "./utils/helper";
-import { setHalls } from "./store/hallSlice";
 import StudentPage from "./pages/StudentPage/StudentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ShiftPage from "./pages/ShiftPage/ShiftPage";
-
+import {setHallsThunk} from './store/hallSlice';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getdata = async () => {
       try {
-        const {data} = await deskService.getall();
-        console.log(data);
-        const newHallData = desksToHalls(data.data);
-        dispatch(setHalls(newHallData));
+        dispatch(setHallsThunk());
+        
       } catch (error) {
         console.log(error);
       }
