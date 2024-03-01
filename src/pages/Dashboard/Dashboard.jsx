@@ -27,7 +27,7 @@ const Dashboard = () => {
     { id: 4, component: <NotRenewed /> },
     { id: 5, component: <AllStudents /> }
   ]);
-  const [isLock, setIsLock] = useState(false);
+  const [isLock, setIsLock] = useState(true);
   console.log(isLock);
   const sensors = useSensors(
     useSensor(PointerSensor),

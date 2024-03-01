@@ -14,9 +14,10 @@ const AllStudents = () => {
         const getStudents = async () => {
             try {
                 const { data } = await studentService.getall();
+                console.log("inside student component",data);
                 dispatch(setStudents(data));
             } catch (error) {
-                console.log(error);
+                console.log("error in student component",error);
             }
         }
         getStudents();
@@ -28,7 +29,7 @@ const AllStudents = () => {
             </div>
             <hr />
             <div className='all-students'>
-                {
+                {students &&
                     students.map(student => {
                         return <div key={student.id} className='student' aria-label='go to student page' onClick={() => navigate(`/student/${student.id}`)}>
                             <img src={NoProfilePicture} alt="" className='student-profile-img' />

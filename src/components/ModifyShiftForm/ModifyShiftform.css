@@ -13,7 +13,7 @@
   justify-content: center;
   flex-direction: row;
   background-color: white;
-  z-index: 3;
+  z-index: 1;
 }
 
 .edit-form-container.hidden{

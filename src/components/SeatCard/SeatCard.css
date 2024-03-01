@@ -70,10 +70,13 @@
   font-size: large;
   font-weight: bolder;
 }
+.inactive{
+  background-color: #eee;
+}
 .occupied {
-  /* background-color: #99ff99; */
-   /* border: #12fd12; */
-  background-color: rgb(223, 90, 90);
+  background-color: #99ff99;
+   border: #12fd12;
+  /* background-color: rgb(223, 90, 90); */
 }
 .occupied:hover {
   background-color: #eee;
@@ -81,10 +84,12 @@
 }
 .vacant {
   /* background-color: rgb(195, 73, 73); */
-  background-color: #f6f5f5;
+  /* background-color: #f6f5f5; */
+  background-color: rgb(211, 116, 116);
+
 }
 .vacant:hover {
-  background-color: rgb(222, 172, 172);
+  background-color: rgb(253, 26, 26);
 }
 .seat-number {
   color: white;

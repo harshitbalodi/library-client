@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './SeatCard.css';
 import { formatNumber, formatTime } from '../../utils/helper';
 import DeleteIcon from '../../assets/delete-icon.svg';
@@ -18,7 +19,6 @@ const SeatCard = ({ shift }) => {
     const BookSeat = (desk) => {
         console.log("desk id is clicked", desk);
         if (!desk.is_vacant || !desk.is_active) {
-            toast.error(`seat ${desk.seat_no} is already book or inactive`);
             return;
         }
         if (seat && seat.id === desk.id) {
@@ -26,7 +26,6 @@ const SeatCard = ({ shift }) => {
             return;
         }
         dispatch(setSeat({ ...desk, shift }));
-        toast.success(` seat ${desk.seat_no} in ${shift.name} is selected`);
     };
 
     const handleEdit = () => {
@@ -58,7 +57,7 @@ const SeatCard = ({ shift }) => {
                 {shift.desks.map((desk, index) => (
                     <div
                         key={desk.id}
-                        className={`seat ${seat && seat.id === desk.id ? "selected" : (desk.is_vacant ? 'vacant' : 'occupied')}`}
+                        className={`seat ${seat && seat.id === desk.id ? "selected" :!desk.is_active?"inactive": (desk.is_vacant ? 'vacant' : 'occupied')}`}
                         onClick={() => BookSeat(desk, shift.name)}
                     >
                         {

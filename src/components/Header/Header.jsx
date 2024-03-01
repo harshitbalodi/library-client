@@ -4,15 +4,19 @@ import HamburgerMenuIcon from '../../assets/hamburger-menu.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setSidebarInvisible, setSidebarVisible } from '../../store/SidebarSlice';
+import ArrowRight from '../../assets/arrow.svg';
+import { logOut } from '../../store/authSlice';
 
 const Header = () => {
     const navigate = useNavigate();
-    const sidebar = useSelector(state => state.sidebar);
+    const [sidebar, auth] = useSelector(state => [state.sidebar, state.auth]);
     const [isMenuLogo, setIsMenuLogo] = useState(false);
     const dispatch = useDispatch();
     const location = useLocation();
     const isActive = location.pathname === "/login";
-    console.log(isActive); 
+    const [isOpen, setIsOpen] = useState(false);
+    console.log(isActive);
+
     useEffect(() => {
         const handleResize = () => {
             setIsMenuLogo(window.innerWidth > 480);
@@ -29,6 +33,7 @@ const Header = () => {
             window.removeEventListener('resize', handleResize);
         }
     }, [])
+
     const handleClick = () => {
         console.log("clicked");
         if (sidebar) {
@@ -37,6 +42,19 @@ const Header = () => {
             dispatch(setSidebarVisible());
         }
     }
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+    
+      const handleLogout = () => {
+        console.log('Logout clicked');
+        dispatch(logOut());
+        localStorage.removeItem('refreshToken');
+      };
+    
+      const handleChangePassword = () => {
+        console.log('Change password clicked');
+      };
     return (
         <nav className="header">
             <div className="left-section">
@@ -46,9 +64,19 @@ const Header = () => {
                 </div>
             </div>
             <div className="right-section">
-                {!isActive && <Link to='/login' className="admin-login">
+                {!auth.refreshToken ? (!isActive && <Link to='/login' className="admin-login">
                     <button className='login-btn'>Admin Login</button>
-                </Link>}
+                </Link>) :
+                    <div className="dropdown-container">
+                        <button className='dropdown-button' onClick={toggleDropdown}>Logged In <img src={ArrowRight} className='dropdown-img' alt="" /></button>
+                        {isOpen && (
+                            <ul className="dropdown-menu">
+                                <li onClick={handleChangePassword}>Change password</li>
+                                <li onClick={handleLogout}>Logout</li>
+                            </ul>
+                        )}
+                    </div>
+                }
             </div>
         </nav>
     );

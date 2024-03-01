@@ -4,6 +4,7 @@ import shiftSlice from "./shiftSlice";
 import SidebarSlice from './SidebarSlice';
 import studentsSlice from "./studentsSlice";
 import seatSlice from "./seatSlice";
+import authSlice from "./authSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     shifts:shiftSlice,
     sidebar:SidebarSlice,
     students:studentsSlice,
-    seat:seatSlice
+    seat:seatSlice,
+    auth:authSlice
   },
 });
 
