@@ -3,7 +3,7 @@ import searchIcon from '../../assets/search-icon.svg';
 import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
 import { useNavigate } from "react-router-dom";
-import { formatNumber, formatTime } from "../../utils/helper";
+import { formatTime } from "../../utils/helper";
 import NoDp from '../../assets/no-dp.jpg';
 
 const SearchBar = () => {
@@ -32,6 +32,7 @@ const SearchBar = () => {
     }
 
     const filterStudents = () => {
+        if(!students) return;
         if (!searchQuery.trim()) {
             setFilteredStudents([]);
             return;
