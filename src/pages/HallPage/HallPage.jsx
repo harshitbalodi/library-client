@@ -16,11 +16,9 @@ const HallPage = () => {
   return !halls ? <Shimmer /> : (
     <div >
       <ToastContainer/>
-
       <div className='booking-btn'>
        { seat &&<Button onClick={()=>navigate('/booking')} >Proceed</Button>}
       </div>
-
       {
         halls.map(hall => {
           return (<div key={hall.id} >

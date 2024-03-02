@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
-
+import '../../components/SeatCard/SeatCard.css';
 
 const ShiftPage = () => {
   const [shifts, seat] = useSelector(state => [state.shifts, state.seat]);
@@ -88,6 +88,24 @@ const ShiftPage = () => {
         {seat && <Button onClick={() => navigate('/booking')} >Proceed</Button>}
       </div>
 
+      <div className='seat-instructions'>
+        <div className='seat-detail'>
+          <div className='seat vacant'></div>
+          vacant
+        </div>
+        <div className='seat-detail'> 
+          <div className='seat occupied'></div>
+          Occupied
+        </div>
+        <div className='seat-detail'>
+          <div className='seat selected'></div>
+          Selected
+        </div>
+        <div className='seat-detail'>
+          <div className='seat inactive'></div>
+          Inactive
+        </div>
+      </div>
 
       <div className="shift-container">
         {

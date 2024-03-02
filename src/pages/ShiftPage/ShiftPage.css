@@ -43,6 +43,19 @@
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.08);
 }
 
+.seat-instructions{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px;
+}
+.seat-detail{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .red-button{
     padding: 8px 16px;
     border: none;

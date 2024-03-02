@@ -48,25 +48,27 @@
   margin-bottom: 5px;
 }
 
-#capacity{
-  width: 97%;
+
+#capacity,#name,#start-time,#end-time{
+  width: 60%;
   margin: 5px;
   font-size: large;
   border-radius: 5px;
-
 }
 .submit-btn{
   width: 100%;
   border: none;
   padding: 5px;   
   background-color: #ccc; 
+  color: #fff;
   font-size: large; 
   border-radius: 7px;
+  cursor:pointer;
 }
-.submit-btn:hover{
+/* .submit-btn:hover{
   padding: 5px;   
   background-color: #C34949; 
   font-size: large; 
   transform: scale(1.05);
   color:white;
-}
+} */

@@ -5,16 +5,28 @@ import DeleteIcon from '../../assets/delete-icon.svg';
 import EditIcon from '../../assets/edit-icon.svg'
 import shiftServices from '../../services/shiftServices';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModifyShiftForm from '../ModifyShiftForm/ModifyShiftForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { setHallsThunk } from '../../store/hallSlice';
 import { setSeat } from '../../store/seatSlice';
+import ArrowDownWard from '../../assets/arrow-circle-right.svg';
+import deskService from '../../services/deskService';
 
 const SeatCard = ({ shift }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isHovering, setIsHovering] = useState(null);
     const seat = useSelector(state => state.seat);
     const dispatch = useDispatch();
+    console.log(shift);
+    useEffect(() => {
+        if (!seat || !shift) return;
+        shift.desks.forEach(desk => {
+            if (desk.id === seat.id && (!desk.is_active || !desk.is_vacant)) {
+                dispatch(setSeat(null));
+            }
+        })
+    }, [shift, seat])
 
     const BookSeat = (desk) => {
         console.log("desk id is clicked", desk);
@@ -31,6 +43,7 @@ const SeatCard = ({ shift }) => {
     const handleEdit = () => {
         setIsOpen(!isOpen);
     }
+
     const handleDelete = async () => {
         const action = window.confirm('Do you really want to delete the shift');
         console.log(action);
@@ -51,17 +64,59 @@ const SeatCard = ({ shift }) => {
         }
     }
 
+    const ChangeAvailablity = async (e, desk) => {
+        e.stopPropagation();
+        console.log(desk);
+        try {
+            const response = await deskService.updateDesk(desk.id, { is_active: !desk.is_active });
+            console.log(response);
+            dispatch(setHallsThunk());
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    const handleDropDown = (index) => {
+        isHovering === index ?
+            setIsHovering(null) :
+            setIsHovering(index);
+    }
+
     return (
         <div className='seatcard-container'>
             <div className="seatcard-seats">
                 {shift.desks.map((desk, index) => (
                     <div
                         key={desk.id}
-                        className={`seat ${seat && seat.id === desk.id ? "selected" :!desk.is_active?"inactive": (desk.is_vacant ? 'vacant' : 'occupied')}`}
+                        className={`seat ${seat && seat.id === desk.id
+                            ? "selected" : !desk.is_active
+                                ? "inactive"
+                                :
+                                (desk.is_vacant ? 'vacant' : 'occupied')}`}
                         onClick={() => BookSeat(desk, shift.name)}
+                        onMouseEnter={() => setIsHovering(index)}
+                        onMouseLeave={() => setIsHovering(null)}
                     >
                         {
-                            index < shift.capacity && <div className='seat-number'>{index + 1}</div>
+                            index < shift.capacity && (
+                                <div className={`seat-info ${isHovering === index ? "visible" : ""}`}>
+                                    {(!desk.is_active || desk.is_vacant) && (
+                                        <img className={`seat-img ${isHovering === index?'upward':'downward'}`} src={ArrowDownWard} onClick={() => handleDropDown(index)} alt="" />
+                                    )}
+                                    <div className='seat-number'>{index + 1}</div>
+                                    {isHovering === index && (
+                                        <div className="dropdown-content">
+                                            {!desk.is_active && (
+                                                <button onClick={(e) => ChangeAvailablity(e, desk)}>Activate Seat</button>
+                                            )}
+                                            {desk.is_vacant && desk.is_active && (
+                                                <button onClick={(e) => ChangeAvailablity(e, desk)}>Deactivate Seat</button>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            )
                         }
                     </div>
                 ))}

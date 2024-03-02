@@ -97,16 +97,18 @@
     margin-bottom: 10px;
     font-size: large; 
   }
+  
   .addhall-form button[type="submit"]{
     padding: 5px;   
     background-color: #ccc; 
     font-size: large; 
     border-radius: 7px;
+    cursor: pointer;
   }
+
   .addhall-form button[type="submit"]:hover{
-    padding: 5px;   
-    background-color: #C34949; 
-    font-size: large; 
-    transform: scale(1.05);
+    /* background-color: #C34949;  */
+    /* font-size: large;  */
+    /* transform: scale(1.03); */
     color:white;
   }

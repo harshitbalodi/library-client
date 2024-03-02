@@ -1,5 +1,5 @@
 .seatcard-container {
-    position: relative;
+  position: relative;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -11,10 +11,8 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   z-index: 0;
 }
-
 .seatcard-container:hover {
-  transform: scale(1.01);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .seatcard-details {
@@ -39,7 +37,7 @@
 }
 
 .seatcard-seats {
-  /* background-color: #faf7f7;  old background color*/
+  position: relative;
   background-color: #fffcfc;
   border-radius: 5px;
   border: 3px solid ghostwhite;
@@ -53,15 +51,12 @@
   overflow-x: hidden;
   height: 200px;
 }
-.seatcard-seats:hover {
-  overflow: auto;
-}
 
-.seat {
+.seat{
+  position: relative;
   width: 55px;
   height: 55px;
   margin: 5px;
-  border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px;
   display: flex;
@@ -70,37 +65,103 @@
   font-size: large;
   font-weight: bolder;
 }
+
+.seat-number{
+  text-align: center;
+  width: 100%;
+}
+
+.seat-img{
+  display: visible;
+  position: absolute;
+  width: 20px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: rotate 0.3s ease-in-out,opacity 0.2s ease;
+}
+.seat-img.downward{
+  transform: rotate(90deg);
+}
+.seat-img.upward{
+  transform: rotate(-90deg);
+}
+
+/* Style for seat information element */
+.seat-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Hide the info initially */
+  /* opacity: 0; */
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for dropdown content (optional) */
+.dropdown-content {
+  position: absolute;
+  top: 100%; /* Position below the seat info */
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 2;
+}
+.dropdown-content:hover{
+  background-color: #ffffff;
+  border: 1px solid blue;
+}
+.dropdown-content button{
+  border: none;
+  background-color: inherit;
+}
+
+/* Styles on hover */
+.seat:hover .seat-img {
+  opacity: 1; /* Show arrow and info on hover */
+}
+
+
+/* old css before dropdown  */
 .inactive{
-  background-color: #eee;
+  border:5px solid #eee;
+  color: #eee;
 }
+
 .occupied {
-  background-color: #99ff99;
-   border: #12fd12;
-  /* background-color: rgb(223, 90, 90); */
+  background-color: #eeeeee;
+  color: white;
+  border:2px solid #eeeeee;
+
 }
+
 .occupied:hover {
   background-color: #eee;
   border: #ccc;
 }
-.vacant {
-  /* background-color: rgb(195, 73, 73); */
-  /* background-color: #f6f5f5; */
-  background-color: rgb(211, 116, 116);
 
+.vacant {
+  background-color: #fff;
+  border:2px solid #1ea83c;
+  color: #1ea83c;
 }
+
 .vacant:hover {
-  background-color: rgb(253, 26, 26);
-}
-.seat-number {
-  color: white;
+  background-color: #1ea83c;
+  color: #fff;
 }
 
 .selected{
-  background-color: red;
-  transform: scale(1.1);
-}
-.selected:hover{
-  background-color: red;
+  background-color: #1ea83c;
+  border: 2px solid #1ea83c;
+  color: #fff;
 }
 
 .action-buttons {
