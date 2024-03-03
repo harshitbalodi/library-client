@@ -4,8 +4,9 @@ import HamburgerMenuIcon from '../../assets/hamburger-menu.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setSidebarInvisible, setSidebarVisible } from '../../store/SidebarSlice';
-import ArrowRight from '../../assets/arrow.svg';
+import ArrowDown from '../../assets/arrow-down-black.svg';
 import { logOut } from '../../store/authSlice';
+import NoDp from '../../assets/no-dp.jpg';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -52,9 +53,7 @@ const Header = () => {
         localStorage.removeItem('refreshToken');
       };
     
-      const handleChangePassword = () => {
-        console.log('Change password clicked');
-      };
+
     return (
         <nav className="header">
             <div className="left-section">
@@ -68,10 +67,10 @@ const Header = () => {
                     <button className='login-btn'>Admin Login</button>
                 </Link>) :
                     <div className="dropdown-container">
-                        <button className='dropdown-button' onClick={toggleDropdown}>Logged In <img src={ArrowRight} className='dropdown-img' alt="" /></button>
+                        <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
                         {isOpen && (
                             <ul className="dropdown-menu">
-                                <li onClick={handleChangePassword}>Change password</li>
+                                <li onClick={()=>navigate('/change-password')}>Change password</li>
                                 <li onClick={handleLogout}>Logout</li>
                             </ul>
                         )}

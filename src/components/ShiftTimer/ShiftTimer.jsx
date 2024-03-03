@@ -37,8 +37,6 @@ const ShiftTimer = () => {
 
   return (
     <div>
-      Shift Timer
-      <hr />
       <div className='timer-container'>
       {
         shiftsTimer && shiftsTimer.map(shifts=>{

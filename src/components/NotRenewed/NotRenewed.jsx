@@ -1,7 +1,6 @@
 const NotRenewed = () => {
   return (
-    <div>NotRenewed
-      <hr/>
+    <div>
     </div>
   )
 }

@@ -2,8 +2,6 @@
 const ExpiringSoon = () => {
   return (
     <div>
-      Expiring Soon
-      <hr/>  
     </div> 
   )
 }

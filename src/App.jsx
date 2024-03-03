@@ -14,7 +14,9 @@ import { setHallsThunk } from './store/hallSlice';
 import BookingPage from "./pages/BookingPage/BookingPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import TokenService from "./services/TokenService";
-import { setAccess, setToken } from "./store/authSlice";
+import { setToken } from "./store/authSlice";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import token from "./services/token";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ function App() {
         try {
           const {data} = await TokenService.authenticateUser(refreshToken);
           dispatch(setToken({refresh:refreshToken, access: data.access}));
+          token.setToken(data.access);
         } catch (error) {
           console.log(error);
         }
@@ -63,6 +66,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="/student/:id" element={<StudentPage />} />
               <Route path="/booking" element={<BookingPage />} />
+              <Route path="/change-password" element={<ChangePassword/>}/>
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Button from '../Button/Button';
 import './ShiftForm.css';
 import CrossIcon from '../../assets/cross-icon.svg';

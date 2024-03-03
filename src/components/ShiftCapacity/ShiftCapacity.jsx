@@ -1,8 +1,6 @@
 const ShiftCapacity = () => {
   return (
-    <div>
-      ShiftCapacity
-      <hr/>  
+    <div> 
     </div>
   )
 }

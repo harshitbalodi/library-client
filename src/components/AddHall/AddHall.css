@@ -28,8 +28,8 @@
   }
   
   .add-button:hover {
-    background-color: #C34949; 
-    transform:scale(1.1) ;
+    transform:scale(1.03) ;
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.1);
   }
   
   .plus-icon {
@@ -49,8 +49,8 @@
     font-size: large;
   }
   .addhall-form:hover {
-    box-shadow: 0 0 1px 2px #ece7e7;
-  }
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.1);
+  } 
   
   .addhall-form.hidden {
     opacity: 0;

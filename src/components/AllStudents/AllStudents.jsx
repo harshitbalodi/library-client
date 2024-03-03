@@ -24,10 +24,6 @@ const AllStudents = () => {
     }, [])
     return (
         <div className='all-students-container'>
-            <div className='students-title'>
-                All students
-            </div>
-            <hr />
             <div className='all-students'>
                 {students &&
                     students.map(student => {

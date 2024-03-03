@@ -11,7 +11,7 @@ const DroppableArea = ({ components }) => {
         <div className="droppable">
             <SortableContext items={components} strategy={horizontalListSortingStrategy}>
                 {components.map((component) => (
-                    <Draggable key={component.id} id={component.id} component={component.component} />
+                    <Draggable key={component.id} {...component} />
                 ))}
             </SortableContext>
         </div>

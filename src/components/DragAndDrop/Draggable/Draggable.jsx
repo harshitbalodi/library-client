@@ -1,12 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import ThreeDots from '../../../assets/three-dots.svg';
 import "./Draggable.css";
+import sixDots from '../../../assets/six-dots.svg';
+import { useState } from "react";
 
-const Draggable = ({ id, component }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
-
+const Draggable = ({ id, component, name }) => {
+  const [isHovering, setIsHovering] = useState(null);
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  console.log(isHovering);
+  console.log(name);
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
@@ -15,19 +18,22 @@ const Draggable = ({ id, component }) => {
   return (
     <div className="draggable-container"
       ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
+        style={style}
+        {...attributes}
+        {...listeners}
     >
-      <div className="slick-col">
-        <img className="dot-icon" src={ThreeDots}/>
+      <div
+        className="draggable-title"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        >
+        <img className={`six-dots ${isHovering ? 'visible' : ''}`} src={sixDots} alt="" />
+        {name}
       </div>
       <div className="draggable">
         {component}
       </div>
-
     </div>
-
   );
 };
 

@@ -18,7 +18,6 @@ const SeatCard = ({ shift }) => {
     const [isHovering, setIsHovering] = useState(null);
     const seat = useSelector(state => state.seat);
     const dispatch = useDispatch();
-    console.log(shift);
     useEffect(() => {
         if (!seat || !shift) return;
         shift.desks.forEach(desk => {
@@ -102,7 +101,7 @@ const SeatCard = ({ shift }) => {
                             index < shift.capacity && (
                                 <div className={`seat-info ${isHovering === index ? "visible" : ""}`}>
                                     {(!desk.is_active || desk.is_vacant) && (
-                                        <img className={`seat-img ${isHovering === index?'upward':'downward'}`} src={ArrowDownWard} onClick={() => handleDropDown(index)} alt="" />
+                                        <img className={`seat-img ${isHovering === index ? 'upward' : 'downward'}`} src={ArrowDownWard} onClick={() => handleDropDown(index)} alt="" />
                                     )}
                                     <div className='seat-number'>{index + 1}</div>
                                     {isHovering === index && (

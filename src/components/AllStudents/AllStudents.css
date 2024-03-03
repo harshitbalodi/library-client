@@ -3,16 +3,13 @@
     overflow-y: auto;
     overflow-x: auto;
 }
-.students-title{
-    font: bold;
-    font-size: x-large;
-}
 
 .all-students{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .student{
     display: flex;
     flex-direction: row;
@@ -24,6 +21,7 @@
     align-items: center;
     cursor: pointer;
 }
+
 .student:hover{
     transform: scale(1.02);
 }

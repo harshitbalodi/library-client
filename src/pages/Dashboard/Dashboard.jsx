@@ -21,11 +21,11 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Dashboard = () => {
   const [components, setComponents] = useState([
-    { id: 1, component: <ShiftTimer /> },
-    { id: 2, component: <ShiftCapacity /> },
-    { id: 3, component: <ExpiringSoon /> },
-    { id: 4, component: <NotRenewed /> },
-    { id: 5, component: <AllStudents /> }
+    { id: 1, name:"Shift Timer", component: <ShiftTimer/> },
+    { id: 2, name:"Shift Capacity", component: <ShiftCapacity/> },
+    { id: 3, name:"Expiring Soon",  component: <ExpiringSoon/> },
+    { id: 4, name:"Not Renewed",  component: <NotRenewed/> },
+    { id: 5, name:"All Students",  component: <AllStudents/> }
   ]);
   const [isLock, setIsLock] = useState(true);
   console.log(isLock);

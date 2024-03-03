@@ -1,47 +1,51 @@
 .draggable-container{
   display: flex;
   align-items: center;
+  flex-direction: column;
+  box-shadow: #00000029 0px 1px 4px;
+  width: 450px;
+}
+
+.draggable-title{
+  width: 100%;
+  background-color: #fff;
+  font-size: large;
+  padding: 5px;
+  border-bottom:.5px solid rgb(226, 226, 226);
+  display: flex;
+  align-items: center;
+}
+
+.six-dots{
+  width:25px;
+  opacity: 0;
+}
+.six-dots.visible{
+  opacity: 1;
 }
 
 .draggable {
     background-color: white;
     border-radius:0 5px 5px 0;
-    box-shadow: #00000029 0px 1px 4px;
-    width: 450px; 
+    width: 100%; 
     overflow-y: auto; 
     height: 300px; 
-    padding: 5px;
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
+    /* display: flex; */
+    /* justify-content: flex start; */
+    /* gap: 20px; */
     touch-action: none;
 }
 
-.slick-col{
-  width: 3px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  background-color:#dad7d7;
-  border-radius: 5px 0  0 5px ;
-  cursor: grab;
-}
 
-.dot-icon{
-  max-width: max-content;
-}
 
 @media screen  and (max-width:750px){
-  .draggable{
+  .draggable-container{
     width: 350px;
   }
 
 }
 @media screen  and (max-width:500px){
-  .draggable{
+  .draggable-container{
     width: 277px;
   }
 

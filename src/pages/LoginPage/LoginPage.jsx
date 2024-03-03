@@ -4,6 +4,7 @@ import './LoginPage.css';
 import { setToken } from '../../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import token from '../../services/token';
 
 const LoginPage = () => {
   const auth = useSelector(state => state.auth);
@@ -26,6 +27,7 @@ const LoginPage = () => {
       const response = await TokenService.loginUser({username, password});
       console.log(response);
       dispatch(setToken(response.data));
+      token.setToken(response.data.access);
       e.target.username.value = '';
       e.target.password.value = '';
     }catch(error){
