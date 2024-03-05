@@ -8,8 +8,7 @@ import { useState } from "react";
 const Draggable = ({ id, component, name }) => {
   const [isHovering, setIsHovering] = useState(null);
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
-  console.log(isHovering);
-  console.log(name);
+
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),

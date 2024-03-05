@@ -16,7 +16,6 @@ const Header = () => {
     const location = useLocation();
     const isActive = location.pathname === "/login";
     const [isOpen, setIsOpen] = useState(false);
-    console.log(isActive);
 
     useEffect(() => {
         const handleResize = () => {

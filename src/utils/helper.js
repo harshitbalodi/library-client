@@ -1,6 +1,5 @@
 export const desksToHalls = (desks) => {
   const hallsMap = {};
-  console.log("inside utils", desks);
   desks.forEach((desk) => {
     const { shift } = desk;
     const { hall } = shift;
@@ -134,7 +133,7 @@ export const  getRemainingShiftTime=(shift)=>{
   }
 }
 
-const formatTimeDifference=(differenceInMs)=> {
+export const formatTimeDifference=(differenceInMs)=> {
   const hours = Math.floor(differenceInMs / (1000 * 60 * 60));
   const minutes = Math.floor((differenceInMs % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((differenceInMs % (1000 * 60)) / 1000);

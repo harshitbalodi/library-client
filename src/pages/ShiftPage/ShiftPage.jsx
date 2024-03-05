@@ -18,7 +18,6 @@ const ShiftPage = () => {
   const [endTime, setEndTime] = useState('');
   const navigate = useNavigate();
 
-  console.log("seat", seat);
   useEffect(() => {
     if (shifts) {
       setFilteredShifts(shifts);
@@ -62,10 +61,14 @@ const ShiftPage = () => {
 
           <form className="time-filter-form" onSubmit={handleSearch}>
             <div className="time-filter-inputs">
-              <label htmlFor="start-time"> From </label>
-              <input type="time" id="start-time" value={startTime} onChange={(e) => setStartTime(e.target.value)} required />
-              <label htmlFor="end-time">To </label>
-              <input type="time" id="end-time" value={endTime} onChange={(e) => setEndTime(e.target.value)} required />
+              <div>
+                <label htmlFor="start-time">From</label>
+                <input type="time" id="start-time" value={startTime} onChange={(e) => setStartTime(e.target.value)} required />
+              </div>
+              <div>
+                <label htmlFor="end-time">To</label>
+                <input type="time" id="end-time" value={endTime} onChange={(e) => setEndTime(e.target.value)} required />
+              </div>
             </div>
             <div className="time-filter-buttons">
               <button type="submit" className="red-button">Find Timeslot</button>
@@ -93,7 +96,7 @@ const ShiftPage = () => {
           <div className='seat vacant'></div>
           vacant
         </div>
-        <div className='seat-detail'> 
+        <div className='seat-detail'>
           <div className='seat occupied'></div>
           Occupied
         </div>

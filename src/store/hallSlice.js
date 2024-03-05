@@ -19,7 +19,6 @@ export const { setHalls } = hallSlice.actions;
 export const setHallsThunk=()=>{
     return async (dispatch, getState) =>{
       const {data} = await deskService.getall();
-        console.log("inside setHallthunk",data);
         const newHallData = desksToHalls(data.data);
         dispatch(setHalls(newHallData));
         const halls = getState().halls;

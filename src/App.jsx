@@ -30,7 +30,6 @@ function App() {
     }
     const isUserLoggedIn = async () => {
       const refreshToken = localStorage.getItem('refreshToken');
-      console.log(refreshToken);
       if (refreshToken) {
         try {
           const {data} = await TokenService.authenticateUser(refreshToken);

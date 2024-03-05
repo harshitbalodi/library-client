@@ -19,11 +19,8 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
     const dispatch = useDispatch();
 
     let hallId = hall?.id;
-    console.log("hallId", hallId);
     const handleCreateShift = async (event) => {
         event.preventDefault();
-        console.log('create hall clicked');
-        console.log(hallName, capacity, startAt, endAt);
         const shiftObj={
             name:shiftName,
             capacity,

@@ -1,86 +1,136 @@
-.search-container{
-    position: relative;
-    margin: 10px auto;
+.search-container {
+  position: relative;
+  margin: 10px auto;
 }
+
 .search-bar {
-    width: 50%;
-    display: flex;
-    margin: 5px;
-    background-color: #f5f5f6;
-    position: relative;
-  }
-  .search-input {
-    flex: 1;
-    background: #fff;
-    padding: 8px 10px 10px;
-    border: 2px solid #f5f5f6;
-    border-radius: 4px 0 0 4px;
-    font-size: 14px;
-    height: 20px;
-    border-right: 0;
+  width: 50%;
+  display: flex;
+  margin: 5px;
+  background-color: #f5f5f6;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  background: #fff;
+  padding: 8px 10px 10px;
+  border: 2px solid #f5f5f6;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  height: 20px;
+  border-right: 0;
+  width: 80%;
+}
+.search-btn {
+  height: 40px;
+  width: 40px;
+  padding: 8px 0 2px;
+  background-color: #f5f5f6;
+  border-radius: 0 4px 4px 0;
+  padding: 8px 0 2px;
+  border-left: 0;
+  border: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 1px 1px gainsboro;
+}
+
+.suggestions-wrapper {
+  position: absolute;
+  display: flex;
+  top: 100%;
+  direction: row;
+  flex-wrap: wrap;
+  left: 0;
+  width: 50%;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  /* transition: all 0.6s ease; */
+}
+
+.suggestion {
+  padding: 10px;
+  border-bottom: 0.5px solid #ddd;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+#suggestion:hover {
+  background-color: #eee;
+}
+
+.student-dp {
+  width: 50px;
+}
+
+.paid {
+  color: green;
+  font-style: italic;
+}
+
+.not-paid {
+  color: red;
+}
+
+.shift-desk {
+  margin-left: 10px;
+}
+
+
+
+.student-description{
+  position: relative;
+  border: 0.5px solid #ddd;
+  padding :5px;
+  flex: 1;
+}
+
+.cross-icon{
+  /* padding-right: 10px; */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgb(0,0,0,0);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}
+.cross-icon:hover{
+  background-color: rgb(0,0,0,0);
+  transform: scale(1);
+}
+
+.cross-icon img{
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+
+
+@media screen and (max-width: 900px) {
+  .search-bar {
     width: 80%;
   }
-  .suggestions-wrapper{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 50%;
-    max-height: 400px;
-    overflow-y: auto;
-    background-color: #fff;
-    border:1px solid #ccc;
-    border-radius: 4px;
-    margin: 0;
-    padding: 0;
-    /* display: none; */
+  .suggestions-wrapper {
+    width: 80%;
   }
-  .suggestion{
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    }
-    #suggestion:hover {
-        background-color: #eee;
-    }
-    .student-dp{
-        width: 50px;
-    }
-    .paid{
-        color: green;
-        font-style: italic;
-    }    
-    .not-paid{
-        color: red;
-    }
-    .shift-desk{
-        margin-left: 10px;
-    }
-  .search-btn {
-    height: 40px;
-    width: 40px;
-    padding: 8px 0 2px;
-    background-color: #f5f5f6;
-    border-radius: 0 4px 4px 0;
-    padding: 8px 0 2px;
-    border-left: 0;
-    border: transparent;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .search-btn:hover { 
-    transform: scale(1.03);
-    box-shadow: 0 0 1px 1px gainsboro;
-  }
-  
-  @media screen and (max-width:650px) {
-      .search-bar{
-          width: 80%;
-      }
-      .suggestions-wrapper{
-        width: 80%;
-      }
-  }
+}

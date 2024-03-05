@@ -62,13 +62,13 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
-    transition: 0.3s scale ease;
+    transition: 0.3s scale ease; 
+    font-size: medium;
   }
  .red-button:hover{
-    transform: scale(1.03);
     background-color: red;
     color:white;
-    font-size: medium;
+   
   }
 
 .shift-container{

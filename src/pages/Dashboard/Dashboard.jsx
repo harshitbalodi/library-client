@@ -18,17 +18,18 @@ import LockIcon from '../../assets/lock.svg';
 import UnLockIcon from '../../assets/unlock.svg';
 import ShiftTimer from "../../components/ShiftTimer/ShiftTimer";
 import SearchBar from "../../components/SearchBar/SearchBar";
-
+import NewBookings from "../../components/NewBookings/NewBookings";
 const Dashboard = () => {
   const [components, setComponents] = useState([
-    { id: 1, name:"Shift Timer", component: <ShiftTimer/> },
-    { id: 2, name:"Shift Capacity", component: <ShiftCapacity/> },
-    { id: 3, name:"Expiring Soon",  component: <ExpiringSoon/> },
-    { id: 4, name:"Not Renewed",  component: <NotRenewed/> },
-    { id: 5, name:"All Students",  component: <AllStudents/> }
+    { id: 143, name: "Shift Timer", component: <ShiftTimer /> },
+    { id: 243, name: "New Bookings", component: <NewBookings /> },
+    { id: 654, name: "Shift Capacity", component: <ShiftCapacity /> },
+    { id: 765, name: "Expiring Soon", component: <ExpiringSoon /> },
+    { id: 987, name: "Not Renewed", component: <NotRenewed /> },
+    { id: 456, name: "All Students", component: <AllStudents /> }
   ]);
   const [isLock, setIsLock] = useState(true);
-  console.log(isLock);
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
