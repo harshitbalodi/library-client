@@ -6,18 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setStudents } from '../../store/studentsSlice';
 import NoProfilePicture from '../../assets/no-dp.jpg'
 import MobileIcon from '../../assets/mobile-icon.svg';
-import { formatTime } from '../../utils/helper';
 
 const AllStudents = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const students = useSelector(state => state.students);
 
+    console.log(students);
     useEffect(() => {
         const getStudents = async () => {
             try {
                 const { data } = await studentService.getall();
-                dispatch(setStudents(data));
+                console.log("inside all students",data.data);
+                dispatch(setStudents(data.data));
             } catch (error) {
                 console.log("error in student component",error);
             }
@@ -35,10 +36,10 @@ const AllStudents = () => {
                             <div className='student-details'>
                                  <div className='name'> 
                                  {student.name} 
-                                    <span className={`${student.paid?'paid':"not_paid"}`}> {student.paid?<>Paid</>:<>Not paid</>}</span>
+                                    {/* <span className={`${student.paid?'paid':"not_paid"}`}> {student.paid?<>Paid</>:<>Not paid</>}</span> */}
                                  </div>
                                 <div className='joining'>{student.joining_date}</div>
-                                <div className='timing'>{formatTime(student.shift.start_time)} to {formatTime(student.shift.end_time)} </div>
+                                {/* <div className='timing'>{formatTime(student.hall.shift.start_time)} to {formatTime(student.shift.end_time)} </div> */}
                                 <div className='phone-number'> <img src={MobileIcon} alt="" />+91-9999999999</div>
                             </div>
                            

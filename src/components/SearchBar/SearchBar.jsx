@@ -3,19 +3,22 @@ import searchIcon from '../../assets/search-icon.svg';
 import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
 import { useNavigate } from "react-router-dom";
-import { formatTime } from "../../utils/helper";
 import NoDp from '../../assets/no-dp.jpg';
 import CrossIcon from '../../assets/cross-icon.svg';
 
 
 const SearchBar = () => {
+    const students = useSelector(state => state.students);
+    
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [choosenStudent, setChoosenStudent] = useState(null);
     const inputRef = useRef(null);
-    const students = useSelector(state => state.students);
+    const suggestionRef = useRef(null);
+    
     const navigate = useNavigate();
 
+    console.log(students);
     useEffect(() => {
         filterStudents();
     }, [searchQuery])
@@ -48,8 +51,8 @@ const SearchBar = () => {
         setFilteredStudents(() => students.filter(student => student.name.trim().toLowerCase().includes(searchQuery.toLowerCase().trim())));
     };
 
-    const handleBlur = () => {
-        if (!inputRef.current.contains(document.activeElement)) {
+    const handleBlur = (event) => {
+        if (!inputRef.current.contains(event.target) &&  !suggestionRef.current.contains(event.target)) {
             setFilteredStudents([]);
         }
     };
@@ -67,7 +70,7 @@ const SearchBar = () => {
                 <button className='search-btn' onClick={handleSearch}><img width={14.7} src={searchIcon} alt="" /></button>
             </div>
             {filteredStudents.length > 0 && (
-                <div className="suggestions-wrapper" >
+                <div className="suggestions-wrapper" ref={suggestionRef}>
                     {/* onClick={() => navigate('/student/' + student.id)} */}
                     {filteredStudents.map(student => (
                         <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
@@ -76,21 +79,19 @@ const SearchBar = () => {
                             </div>
                             <div className="name-status">
                                 <div className="name">{student.name}</div>
-                                {student.paid ? (
+                                {/* {student.paid ? (
                                     <div className="paid">Paid</div>
                                 )
                                     :
                                     (
                                         <div className="not-paid">Not Paid</div>
-                                    )}
+                                    )} */}
                             </div>
                             <div className="shift-desk">
-                                <div>shift {student.shift.name}</div>
-                                <div>timing:{formatTime(student.shift.start_time)} to {formatTime(student.shift.end_time)}</div>
-                                <div>seat no {student.desk.seat_no}</div>
+                                <div>shift {student.hall.shift.name}</div>
+                                {/* <div>timing:{formatTime(student.shift.start_time)} to {formatTime(student.shift.end_time)}</div> */}
+                                <div>seat no {student.hall.shift.desk}</div>
                             </div>
-
-
                         </div>
                     ))}
                     {choosenStudent && <div className="student-description">
@@ -102,18 +103,18 @@ const SearchBar = () => {
                         </div>
                         <div >
                             <div >{choosenStudent.name}</div>
-                            {choosenStudent.paid ? (
+                            {/* {choosenStudent.paid ? (
                                 <div className="paid">Paid</div>
                             )
                                 :
                                 (
                                     <div className="not-paid">Not Paid</div>
-                                )}
+                                )} */}
                         </div>
                         <div >
-                            <div>shift {choosenStudent.shift.name}</div>
-                            <div>timing:{formatTime(choosenStudent.shift.start_time)} to {formatTime(choosenStudent.shift.end_time)}</div>
-                            <div>seat no {choosenStudent.desk.seat_no}</div>
+                            <div>shift {choosenStudent.hall.shift.name}</div>
+                            {/* <div>timing:{formatTime(choosenStudent.shift.start_time)} to {formatTime(choosenStudent.shift.end_time)}</div> */}
+                            <div>seat no {choosenStudent.hall.shift.desk}</div>
                         </div>
                     </div>}
                 </div>

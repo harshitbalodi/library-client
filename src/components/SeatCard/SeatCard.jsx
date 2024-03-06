@@ -26,7 +26,7 @@ const SeatCard = ({ shift }) => {
             }
         })
     }, [shift, seat])
-
+    console.log(shift);
     const BookSeat = (desk) => {
         console.log("desk id is clicked", desk);
         if (!desk.is_vacant || !desk.is_active) {
@@ -86,7 +86,7 @@ const SeatCard = ({ shift }) => {
         <div className='seatcard-container'>
             <div className="seatcard-seats">
                 {shift.desks.map((desk, index) => (
-                    <div
+                <div
                         key={desk.id}
                         className={`seat ${seat && seat.id === desk.id
                             ? "selected" : !desk.is_active
@@ -98,12 +98,16 @@ const SeatCard = ({ shift }) => {
                         onMouseLeave={() => setIsHovering(null)}
                     >
                         {
-                            index < shift.capacity && (
+                             (  
+                            <div>
+                                <div className='seat-number'>{desk.seat_no}</div>
                                 <div className={`seat-info ${isHovering === index ? "visible" : ""}`}>
-                                    {(!desk.is_active || desk.is_vacant) && (
+                                    {
+                                    (!desk.is_active || desk.is_vacant) && (
                                         <img className={`seat-img ${isHovering === index ? 'upward' : 'downward'}`} src={ArrowDownWard} onClick={() => handleDropDown(index)} alt="" />
-                                    )}
-                                    <div className='seat-number'>{index + 1}</div>
+                                    )
+                                    }
+                                   
                                     {isHovering === index && (
                                         <div className="dropdown-content">
                                             {!desk.is_active && (
@@ -115,10 +119,14 @@ const SeatCard = ({ shift }) => {
                                         </div>
                                     )}
                                 </div>
+                               
+
+                                </div>
                             )
                         }
                     </div>
-                ))}
+                ))
+                }
             </div>
             <div className='seatcard-details'>
                 <div className='hall-name'>{shift.name}</div>

@@ -58,6 +58,7 @@ export const formatNumber = (num) => {
 };
 
 export const extractShifts =(halls)=>{
+  console.log(halls);
   let allShifts=[]
     halls.map(hall=>{
       allShifts =[...allShifts, ...hall.shifts];

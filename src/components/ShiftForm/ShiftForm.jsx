@@ -2,7 +2,7 @@
 import Button from '../Button/Button';
 import './ShiftForm.css';
 import CrossIcon from '../../assets/cross-icon.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 import shiftServices from '../../services/shiftServices';
@@ -10,58 +10,53 @@ import { setHallsThunk } from '../../store/hallSlice';
 
 const ShiftForm = ({ isOpen, onClose, hall }) => {
     const halls = useSelector(state => state.halls);
-    const [hallName, setHallName] = useState(hall?.name || '');
+    const dispatch = useDispatch();
+    console.log(halls);
+    const [hallOptions, setHallOptions] = useState([]);
+    const [selectedHallId, setSelectedHallId] = useState(hall?.id || '');
     const [shiftName, setShiftName] = useState('');
     const [capacity, setCapacity] = useState(0);
     const [fee, setFee] = useState(0);
     const [startAt, setStartAt] = useState('');
     const [endAt, setEndAt] = useState('');
-    const dispatch = useDispatch();
 
-    let hallId = hall?.id;
+    useEffect(() => {
+        setHallOptions(halls.map(hall => ({ value: hall.id, label: hall.name })));
+    }, [halls, hall]);
+
     const handleCreateShift = async (event) => {
         event.preventDefault();
-        const shiftObj={
-            name:shiftName,
-            capacity,
-            start_time:startAt,
-            end_time: endAt,
-            fee   
+
+        if (!selectedHallId) {
+            toast.error('Please select a Hall');
+            return;
         }
-        if(!hallId){
-            const filteredHalls = halls.filter( hall=> hall.name === hallName);
-            if(filteredHalls.length > 1){
-                toast.error('more than 1 Hall with same name');
-                console.log('more than 1 Hall with same name');
-                return;
-            }
-            else if(filteredHalls.length === 0){
-                toast.error('no Hall with such name,check all hall names');
-                console
-                return;
-            }
-            shiftObj.hall = filteredHalls[0].id;
-        }else{
-            shiftObj.hall = hall.id;
+        const shiftObj = {
+            name: shiftName,
+            capacity,
+            start_time: startAt,
+            end_time: endAt,
+            fee,
+            hall: selectedHallId
         }
 
-        if(shiftObj.hall){
-            try{
-                const response = await shiftServices.addShift(shiftObj);
-                if(response){ 
-                    dispatch(setHallsThunk());
-                    toast.success("new shift is created");
-                }
-            }catch(error){
-                console.log(error);
+        try {
+            const response = await shiftServices.addShift(shiftObj);
+            if (response) {
+                dispatch(setHallsThunk());
+                toast.success("new shift is created");
+                setHallOptions([]);
+                setSelectedHallId('');
+                setCapacity(0);
+                setFee(0);
+                setStartAt('');
+                setEndAt('');
+                setShiftName('');
+                onClose();
             }
+        } catch (error) {
+            console.log(error);
         }
-        setCapacity(0);
-        setFee(0);
-        setStartAt('');
-        setEndAt('');
-        setShiftName('');
-        onClose();
     };
 
     return (
@@ -70,18 +65,27 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
                 <div className='cross-icon-container'>
                     <img title='close' src={CrossIcon} onClick={onClose} />
                 </div>
-                
+
                 <h2>Add new Shift</h2>
                 <form className="form" onSubmit={handleCreateShift}>
                     <div>
                         <label htmlFor="hall">Hall name</label>
-                        <input
-                            type="text"
+                        <select
                             id="hall"
-                            value={hallName}
-                            onChange={(e) => setHallName(e.target.value)}
+                            value={selectedHallId}
+                            onChange={(e) => setSelectedHallId(e.target.value)}
                             required
-                        />
+                        >
+                            {hallOptions.length > 0 ? (
+                                hallOptions.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))
+                            ) : (
+                                <option value="">No halls available</option>
+                            )}
+                        </select>
                     </div>
                     <div>
                         <label htmlFor="shift">Shift name</label>

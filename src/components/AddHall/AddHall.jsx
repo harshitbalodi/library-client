@@ -4,9 +4,12 @@ import { toast } from 'react-toastify';
 import CrossIcon from '../../assets/cross-icon.svg';
 import PlusIcon from '../../assets/plus-icon.svg';
 import './AddHall.css';
+import { useDispatch } from 'react-redux';
+import { setHallsThunk } from '../../store/hallSlice';
 
 const AddHall = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -27,6 +30,7 @@ const AddHall = () => {
       if (response.data.data.status === 'ok') {
         toast.success(`${hallName} is added successfully!`);
       }
+      dispatch(setHallsThunk());
     } catch (error) {
       console.log(error);
     }
