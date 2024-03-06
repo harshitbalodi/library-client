@@ -66,7 +66,7 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
                     <img title='close' src={CrossIcon} onClick={onClose} />
                 </div>
 
-                <h2>Add new Shift</h2>
+                <h2 className='Form-heading'>Add new Shift</h2>
                 <form className="form" onSubmit={handleCreateShift}>
                     <div>
                         <label htmlFor="hall">Hall name</label>

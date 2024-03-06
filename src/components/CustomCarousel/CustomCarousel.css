@@ -3,6 +3,10 @@
     width: 100%;
     overflow: hidden;
   }
+  .hall-heading{
+    display: flex;
+    align-items: center;
+  }
   
   .slides-container {
     display: flex;

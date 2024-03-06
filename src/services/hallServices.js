@@ -9,5 +9,8 @@ const Addhall = async(hallName)=>{
     const response = await axios.post(baseUrl, {name:hallName});
     return response;
 }
-
-export default {getall, Addhall};
+const deleteHall = async (id)=>{
+    const response = await axios.delete(baseUrl+`/${id}`);
+    return response;
+}
+export default {getall, Addhall, deleteHall};

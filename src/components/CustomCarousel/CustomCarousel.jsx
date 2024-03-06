@@ -1,14 +1,21 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import './CustomCarousel.css';
 import SeatCard from '../SeatCard/SeatCard';
 import RightArrow from '../../assets/arrow-circle-right.svg'
 import LeftArrow from '../../assets/arrow-circle-left.svg'
 import AddShift from '../AddShift/AddShift';
+import DeleteIcon from '../../assets/delete-icon.svg';
+import hallServices from '../../services/hallServices';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { setHallsThunk } from '../../store/hallSlice';
 
 const CustomCarousel = ({  hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [numberOfCarouselSlide, setNumberOfCarousel] = useState(null);
-
+  const [isHovering, setIsHovering] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     const handleResize = () => {
       const windowSize = window.innerWidth;
@@ -39,10 +46,27 @@ const CustomCarousel = ({  hall }) => {
     const maxSlideIndex = Math.max(0, hall.shifts.length - numberOfCarouselSlide +1);
     setCurrentSlide(Math.min(nextSlide, maxSlideIndex));
   };
+
+  const handleDelete = async() =>{
+    console.log("hall delete clicked...")
+    try{
+      const response = await hallServices.deleteHall(hall.id);
+      toast.success(response.data.message);
+      dispatch(setHallsThunk());
+      console.log(response);
+    }catch(error){
+      toast.error(error.response.data.message);
+    }
+  }
  
   return (
-    <div>
-      <h1 >{hall.name}</h1>
+    <div onMouseEnter={()=>setIsHovering(true)} onMouseLeave={()=>setIsHovering(false)}>
+      <h1 className='hall-heading'>
+        {hall.name}
+        {
+          isHovering &&  <img title='Delete Hall' onClick={handleDelete} src={DeleteIcon} alt="" />
+        }
+      </h1>
       <div className="custom-carousel">
         <div className="carousel-button prev" onClick={goToPrevSlide}>
           <img src={LeftArrow} alt='&lt;' />
