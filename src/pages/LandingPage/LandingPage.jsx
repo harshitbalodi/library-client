@@ -27,9 +27,9 @@ const LandingPage = () => {
         <div className='first-typed-text'>
           <p >Don`t have a place to study.</p>
         </div>
-        <div  className={callforaction ? "second-typed-text" : "suspense"}>
+        <div className={callforaction ? "second-typed-text" : "suspense"}>
           <p>We have your back</p>
-        </div> 
+        </div>
         <div className='nav-btn'>
           {IsbuttonVisible && <Button onClick={handleClick}>Book a seat</Button>}
         </div>

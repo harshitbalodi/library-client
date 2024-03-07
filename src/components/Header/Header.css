@@ -42,7 +42,7 @@
   color: inherit;
 }
 
-.login-btn{
+.login-btn {
   border: none;
   font-size: large;
   color: rgb(255, 255, 255);
@@ -53,8 +53,8 @@
 }
 
 .dropdown-container {
-  position: relative; 
-  display: inline-block; 
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-button {
@@ -64,9 +64,9 @@
   color: rgb(255, 255, 255);
   background-color: #fff;
   border-radius: 10px;
-  cursor: pointer; 
-  display: flex; 
-   align-items: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .dropdown-button .dropdown-img {
   width: 20px;
@@ -75,7 +75,7 @@
   margin-left: 14px;
 }
 
-.dp-img{
+.dp-img {
   width: 30px;
   border-radius: 50%;
 }

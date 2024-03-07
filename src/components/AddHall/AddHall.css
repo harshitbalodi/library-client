@@ -1,114 +1,114 @@
 /* AddHall.css */
 
 .add-hall-container {
-    display: flex;
-    align-items: center;
-    margin-bottom:20px;
-    padding: 20px;
-    display:flex;
-    justify-content: center;
-  }
-  .add-hall-container button{
-    border: none;
-  }
-  
-  .add-button {
-    background-color: #bfc6bf; 
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    font-size: x-large;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .add-button:hover {
-    transform:scale(1.03) ;
-    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.1);
-  }
-  
-  .plus-icon {
-    width: 25px;
-    margin-left: 5px;
-  }
-  
-  .addhall-form {
-    position: relative;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    max-width: 300px; 
-    margin-left: 10px; 
-    transition: all 0.2s ease-in-out;
-    font-size: large;
-  }
-  .addhall-form:hover {
-    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.1);
-  } 
-  
-  .addhall-form.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .cross-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 25px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .cross-icon:hover {
-    transform: scale(1.1);
-    background-color: #bfc6bf;
-    border-radius: 5px;
-  }
-  
-  .addhall-form h3 {
-    margin-bottom: 15px;
-  }
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.add-hall-container button {
+  border: none;
+}
 
-  .close-btn{
-    background:none;
-  }
-  
-  .addhall-form  form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  .addhall-form label {
-    margin-bottom: 5px;
-  }
-  
-  .addhall-form input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: large; 
-  }
-  
-  .addhall-form button[type="submit"]{
-    padding: 5px;   
-    background-color: #ccc; 
-    font-size: large; 
-    border-radius: 7px;
-    cursor: pointer;
-  }
+.add-button {
+  background-color: #bfc6bf;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: x-large;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
 
-  .addhall-form button[type="submit"]:hover{
-    /* background-color: #C34949;  */
-    /* font-size: large;  */
-    /* transform: scale(1.03); */
-    color:white;
-  }
+.add-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 4px rgb(0, 0, 0, 0.1);
+}
+
+.plus-icon {
+  width: 25px;
+  margin-left: 5px;
+}
+
+.addhall-form {
+  position: relative;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 300px;
+  margin-left: 10px;
+  transition: all 0.2s ease-in-out;
+  font-size: large;
+}
+.addhall-form:hover {
+  box-shadow: 0 4px 4px rgb(0, 0, 0, 0.1);
+}
+
+.addhall-form.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cross-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cross-icon:hover {
+  transform: scale(1.1);
+  background-color: #bfc6bf;
+  border-radius: 5px;
+}
+
+.addhall-form h3 {
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  background: none;
+}
+
+.addhall-form form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.addhall-form label {
+  margin-bottom: 5px;
+}
+
+.addhall-form input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.addhall-form button[type="submit"] {
+  padding: 5px;
+  background-color: #ccc;
+  font-size: large;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.addhall-form button[type="submit"]:hover {
+  /* background-color: #C34949;  */
+  /* font-size: large;  */
+  /* transform: scale(1.03); */
+  color: white;
+}

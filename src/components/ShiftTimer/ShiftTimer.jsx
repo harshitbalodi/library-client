@@ -10,7 +10,7 @@ const ShiftTimer = () => {
   const [shiftsWithSameTimings, setShiftsWithSameTimings] = useState(null);
   const [shiftsTimer, setShiftsTimer] = useState(null);
   useEffect(() => {
-    if(!shifts) return;
+    if (!shifts) return;
     const clubShifts = clubShiftsByTime(shifts);
     setShiftsWithSameTimings(clubShifts);
   }, [shifts])
@@ -38,11 +38,11 @@ const ShiftTimer = () => {
   return (
     <div>
       <div className='timer-container'>
-      {
-        shiftsTimer && shiftsTimer.map(shifts=>{
-          return <DisplayTime key={uuidv4()} shifts={shifts}/>
-        })
-      }
+        {
+          shiftsTimer && shiftsTimer.map(shifts => {
+            return <DisplayTime key={uuidv4()} shifts={shifts} />
+          })
+        }
       </div>
 
     </div>

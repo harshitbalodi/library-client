@@ -19,10 +19,9 @@
   pointer-events: auto;
 }
 
-
 .modal-content {
-  background-color: #F7F7F7;
-  width: 50%; 
+  background-color: #f7f7f7;
+  width: 50%;
   min-width: max-content;
   max-height: 80%;
   overflow-y: auto;
@@ -33,7 +32,7 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
   margin-top: 80px;
 }
 
@@ -41,7 +40,7 @@
   opacity: 1;
   transform: translateY(0);
 }
-.Form-heading{
+.Form-heading {
   text-align: center;
 }
 .modal-content form {
@@ -55,8 +54,8 @@
   margin-bottom: 20px;
 }
 
-.modal-content label{
-  margin-right:10px ;
+.modal-content label {
+  margin-right: 10px;
 }
 
 .modal-content form select,
@@ -64,10 +63,10 @@
 .modal-content form div input[type="number"],
 .modal-content form div input[type="time"] {
   margin: 7px;
-  border-radius: 10px; 
+  border-radius: 10px;
   padding: 10px;
   width: 90%;
-  font-size: inherit; 
+  font-size: inherit;
 }
 
 .modal-content form button {
@@ -75,7 +74,7 @@
 }
 
 .modal-content form h2 {
-  text-align: center; 
+  text-align: center;
 }
 
 .modal-content form button.close-btn {
@@ -88,15 +87,15 @@
   font-size: 1.5rem;
 }
 
-.cross-icon-container{
-  position:absolute;
+.cross-icon-container {
+  position: absolute;
   top: 20px;
-  right:20px;
+  right: 20px;
   cursor: pointer;
 }
 
-.cross-icon-container:hover{
-  transform:scale(1.05);
+.cross-icon-container:hover {
+  transform: scale(1.05);
   background-color: #eee;
   border-radius: 5px;
 }
@@ -106,4 +105,4 @@
     width: 90%;
     height: 80%;
   }
-} 
+}

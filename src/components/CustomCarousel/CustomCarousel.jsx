@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setHallsThunk } from '../../store/hallSlice';
 
-const CustomCarousel = ({  hall }) => {
+const CustomCarousel = ({ hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [numberOfCarouselSlide, setNumberOfCarousel] = useState(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -43,43 +43,47 @@ const CustomCarousel = ({  hall }) => {
 
   const goToNextSlide = () => {
     const nextSlide = currentSlide + 1;
-    const maxSlideIndex = Math.max(0, hall.shifts.length - numberOfCarouselSlide +1);
+    const maxSlideIndex = Math.max(0, hall.shifts.length - numberOfCarouselSlide + 1);
     setCurrentSlide(Math.min(nextSlide, maxSlideIndex));
   };
 
-  const handleDelete = async() =>{
+  const handleDelete = async () => {
     console.log("hall delete clicked...")
-    try{
+    try {
       const response = await hallServices.deleteHall(hall.id);
       toast.success(response.data.message);
       dispatch(setHallsThunk());
       console.log(response);
-    }catch(error){
+    } catch (error) {
       toast.error(error.response.data.message);
     }
   }
- 
+
   return (
-    <div onMouseEnter={()=>setIsHovering(true)} onMouseLeave={()=>setIsHovering(false)}>
+    <div onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <h1 className='hall-heading'>
         {hall.name}
         {
-          isHovering &&  <img title='Delete Hall' onClick={handleDelete} src={DeleteIcon} alt="" />
+          isHovering && <img title='Delete Hall' onClick={handleDelete} src={DeleteIcon} alt="" />
         }
       </h1>
       <div className="custom-carousel">
-        <div className="carousel-button prev" onClick={goToPrevSlide}>
-          <img src={LeftArrow} alt='&lt;' />
-        </div>
+        {
+          currentSlide !== 0 && <div className="carousel-button prev" onClick={goToPrevSlide}>
+            <img src={LeftArrow} alt='&lt;' />
+          </div>
+        }
         <div className="slides-container">
           {hall.shifts.slice(currentSlide, currentSlide + numberOfCarouselSlide).map((shift) => (
             <SeatCard key={shift.id} shift={shift} />
           ))}
-          {currentSlide + numberOfCarouselSlide > hall.shifts.length && <AddShift hall={hall}/>}
+          {currentSlide + numberOfCarouselSlide > hall.shifts.length && <AddShift hall={hall} />}
         </div>
-        <div className="carousel-button next" onClick={goToNextSlide}>
-          <img src={RightArrow} alt="&gt;" />
-        </div>
+        {(currentSlide + numberOfCarouselSlide < hall.shifts.length + 1) &&
+          <div className="carousel-button next" onClick={goToNextSlide}>
+            <img src={RightArrow} alt="&gt;" />
+          </div>
+        }
       </div>
     </div>
   );

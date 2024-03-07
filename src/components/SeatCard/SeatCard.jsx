@@ -12,11 +12,12 @@ import { setHallsThunk } from '../../store/hallSlice';
 import { setSeat } from '../../store/seatSlice';
 import ArrowDownWard from '../../assets/arrow-circle-right.svg';
 import deskService from '../../services/deskService';
+import { disableDropdown, enableDropdown } from '../../store/editDropdownSlice';
 
 const SeatCard = ({ shift }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovering, setIsHovering] = useState(null);
-    const seat = useSelector(state => state.seat);
+    const [seat, isEditDropdownOpen] = useSelector(state => [state.seat, state.editDropdown.isEnabled]);
     const dispatch = useDispatch();
     useEffect(() => {
         if (!seat || !shift) return;
@@ -26,7 +27,6 @@ const SeatCard = ({ shift }) => {
             }
         })
     }, [shift, seat])
-    console.log(shift);
     const BookSeat = (desk) => {
         console.log("desk id is clicked", desk);
         if (!desk.is_vacant || !desk.is_active) {
@@ -76,17 +76,17 @@ const SeatCard = ({ shift }) => {
 
     }
 
-    const handleDropDown = (index) => {
-        isHovering === index ?
-            setIsHovering(null) :
-            setIsHovering(index);
+    const handleDropDown = () => {
+        console.log("clicked...")
+        if (isEditDropdownOpen) dispatch(disableDropdown());
+        else dispatch(enableDropdown());
     }
 
     return (
         <div className='seatcard-container'>
             <div className="seatcard-seats">
                 {shift.desks.map((desk, index) => (
-                <div
+                    <div
                         key={desk.id}
                         className={`seat ${seat && seat.id === desk.id
                             ? "selected" : !desk.is_active
@@ -98,28 +98,28 @@ const SeatCard = ({ shift }) => {
                         onMouseLeave={() => setIsHovering(null)}
                     >
                         {
-                             (  
-                            <div>
-                                <div className='seat-number'>{desk.seat_no}</div>
-                                <div className={`seat-info ${isHovering === index ? "visible" : ""}`}>
-                                    {
-                                    (!desk.is_active || desk.is_vacant) && (
-                                        <img className={`seat-img ${isHovering === index ? 'upward' : 'downward'}`} src={ArrowDownWard} onClick={() => handleDropDown(index)} alt="" />
-                                    )
-                                    }
-                                   
-                                    {isHovering === index && (
-                                        <div className="dropdown-content">
-                                            {!desk.is_active && (
-                                                <button onClick={(e) => ChangeAvailablity(e, desk)}>Activate Seat</button>
-                                            )}
-                                            {desk.is_vacant && desk.is_active && (
-                                                <button onClick={(e) => ChangeAvailablity(e, desk)}>Deactivate Seat</button>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-                               
+                            (
+                                <div>
+                                    <div className='seat-number'>{desk.seat_no}</div>
+                                    <div className={`seat-info ${isHovering === index ? "visible" : ""}`}>
+                                        {
+                                            (!desk.is_active || desk.is_vacant) && (
+                                                <img className={`seat-img ${isEditDropdownOpen ? 'upward' : 'downward'}`} src={ArrowDownWard} onClick={handleDropDown} alt="" />
+                                            )
+                                        }
+
+                                        {isHovering === index && isEditDropdownOpen && (
+                                            <div className="dropdown-content">
+                                                {!desk.is_active && (
+                                                    <button onClick={(e) => ChangeAvailablity(e, desk)}>Activate Seat</button>
+                                                )}
+                                                {desk.is_vacant && desk.is_active && (
+                                                    <button onClick={(e) => ChangeAvailablity(e, desk)}>Deactivate Seat</button>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+
 
                                 </div>
                             )

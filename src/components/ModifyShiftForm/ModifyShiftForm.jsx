@@ -7,30 +7,30 @@ import { setHallsThunk } from '../../store/hallSlice';
 import { useState } from 'react';
 
 const ModifyShiftForm = ({ shift, setIsOpen }) => {
-  const [shiftName, setShiftName] = useState(shift.name); 
+  const [shiftName, setShiftName] = useState(shift.name);
   const [capacity, setCapacity] = useState(shift.capacity);
   const [endTime, setEndTime] = useState(shift.end_time);
   const [startTime, setStartTime] = useState(shift.start_time);
-  
+
 
   const dispatch = useDispatch();
   console.log(shift);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(capacity,shiftName , startTime, endTime);
+    console.log(capacity, shiftName, startTime, endTime);
     const shiftObj = {
-      name:shiftName,
-      capacity:Number(capacity),
-      start_time:startTime,
-      end_time:endTime
+      name: shiftName,
+      capacity: Number(capacity),
+      start_time: startTime,
+      end_time: endTime
     }
-    try{
-       const response = await shiftServices.updateShift(shift.id,shiftObj);
-       console.log(response);
-       toast.success(response.data.data.message);
-       dispatch(setHallsThunk());
-    }catch(error){
+    try {
+      const response = await shiftServices.updateShift(shift.id, shiftObj);
+      console.log(response);
+      toast.success(response.data.data.message);
+      dispatch(setHallsThunk());
+    } catch (error) {
       console.log(error);
       toast.error(error.message);
     }
@@ -44,20 +44,20 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
       <form className="updation-Form" onSubmit={(e) => handleSubmit(e)}>
         <div>
           <div>
-          <label htmlFor="name"> Shift name</label>
-          <input type="text" id='name' value={shiftName} onChange={(e)=>setShiftName(e.target.value)} required />
+            <label htmlFor="name"> Shift name</label>
+            <input type="text" id='name' value={shiftName} onChange={(e) => setShiftName(e.target.value)} required />
           </div>
           <div>
-          <label htmlFor="start-time"> start Time</label>
-          <input type="time" id='start-time' value={startTime} onChange={(e)=>setStartTime(e.target.value)} required />
+            <label htmlFor="start-time"> start Time</label>
+            <input type="time" id='start-time' value={startTime} onChange={(e) => setStartTime(e.target.value)} required />
           </div>
           <div>
-          <label htmlFor="end-time"> End Time</label>
-          <input type="time" id='end-time' value={endTime} onChange={(e)=>setEndTime(e.target.value)} required />
+            <label htmlFor="end-time"> End Time</label>
+            <input type="time" id='end-time' value={endTime} onChange={(e) => setEndTime(e.target.value)} required />
           </div>
           <div>
-          <label htmlFor="capacity"> Capacity</label>
-          <input type="number" id='capacity' value={capacity} onChange={(e)=>setCapacity(e.target.value)} required />
+            <label htmlFor="capacity"> Capacity</label>
+            <input type="number" id='capacity' value={capacity} onChange={(e) => setCapacity(e.target.value)} required />
           </div>
           <button className='submit-btn'>Update</button>
         </div>

@@ -57,14 +57,14 @@ export const formatNumber = (num) => {
   );
 };
 
-export const extractShifts =(halls)=>{
+export const extractShifts = (halls) => {
   console.log(halls);
-  let allShifts=[]
-    halls.map(hall=>{
-      allShifts =[...allShifts, ...hall.shifts];
-    })
+  let allShifts = [];
+  halls.map((hall) => {
+    allShifts = [...allShifts, ...hall.shifts];
+  });
   return allShifts;
-}
+};
 
 export const sortShiftsByFee = (shifts, order) => {
   return shifts
@@ -73,10 +73,12 @@ export const sortShiftsByFee = (shifts, order) => {
 };
 
 export const filterShiftsByTime = (shifts, startTime, endTime) => {
-  startTime = startTime+':00';
-  endTime = endTime+':00';
-  console.log(startTime,endTime);
-  return shifts.filter(shift =>  shift.start_time >= startTime && shift.end_time <= endTime);
+  startTime = startTime + ":00";
+  endTime = endTime + ":00";
+  console.log(startTime, endTime);
+  return shifts.filter(
+    (shift) => shift.start_time >= startTime && shift.end_time <= endTime
+  );
 };
 
 export const formatTime = (time) => {
@@ -89,15 +91,17 @@ export const formatTime = (time) => {
     return "12:00 AM";
   }
 
-  const [hours, minutes] = newTime.split(':').map(Number);
+  const [hours, minutes] = newTime.split(":").map(Number);
   const timeHour = hours < 12 ? hours : hours - 12;
-  return `${timeHour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${hours < 12 ? 'AM' : 'PM'}`;
+  return `${timeHour.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")} ${hours < 12 ? "AM" : "PM"}`;
 };
 
-export const clubShiftsByTime=(shifts)=> {
+export const clubShiftsByTime = (shifts) => {
   const groupedShifts = {};
 
-  shifts.forEach(shift => {
+  shifts.forEach((shift) => {
     const key = `${shift.start_time}-${shift.end_time}`;
 
     if (!groupedShifts[key]) {
@@ -114,30 +118,66 @@ export const clubShiftsByTime=(shifts)=> {
     });
   });
   return Object.values(groupedShifts);
-} 
+};
 
-export const  getRemainingShiftTime=(shift)=>{
+export const getRemainingShiftTime = (shift) => {
   const now = new Date();
   const start = new Date();
-  start.setHours(...shift.start_time.split(':'));
+  start.setHours(...shift.start_time.split(":"));
   const end = new Date();
-  end.setHours(...shift.end_time.split(':'));
+  end.setHours(...shift.end_time.split(":"));
 
   if (now < start) {
     const timeDifference = start - now;
-    return {...shift,status:"time_remaining",value:0,time:formatTimeDifference(timeDifference),shifts:shift.shifts,timeDifference}; 
+    return {
+      ...shift,
+      status: "time_remaining",
+      value: 0,
+      time: formatTimeDifference(timeDifference),
+      shifts: shift.shifts,
+      timeDifference,
+    };
   } else if (now > end) {
-    return {...shift,status:"ended",value:-1,shifts:shift.shifts};
+    return { ...shift, status: "ended", value: -1, shifts: shift.shifts };
   } else {
     const timeDifference = end - now;
-    return {...shift,status:"running",value:1,time:formatTimeDifference(timeDifference),timeDifference}; 
+    return {
+      ...shift,
+      status: "running",
+      value: 1,
+      time: formatTimeDifference(timeDifference),
+      timeDifference,
+    };
   }
-}
+};
 
-export const formatTimeDifference=(differenceInMs)=> {
+export const formatTimeDifference = (differenceInMs) => {
   const hours = Math.floor(differenceInMs / (1000 * 60 * 60));
   const minutes = Math.floor((differenceInMs % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((differenceInMs % (1000 * 60)) / 1000);
 
-  return ` ${hours<10?"0"+hours:hours}:${minutes<10?"0"+minutes:minutes}:${seconds<10?"0"+seconds:seconds}`;
+  return ` ${hours < 10 ? "0" + hours : hours}:${
+    minutes < 10 ? "0" + minutes : minutes
+  }:${seconds < 10 ? "0" + seconds : seconds}`;
+};
+
+export function setCookie(cName, cValue, expDays) {
+  let date = new Date();
+  date.setTime(date.getTime() + expDays * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + date.toUTCString();
+  const str = cName + "=" + cValue + "; " + expires + "; path=/; Secure";
+  console.log(str);
+  document.cookie = str;
+}
+
+export function getCookie(cName) {
+  const name = cName + "=";
+  const cDecoded = decodeURIComponent(document.cookie); //to be careful
+  const cArr = cDecoded.split("; ");
+  let res;
+  cArr.forEach((val) => {
+    console.log(val);
+    if (val.indexOf(name) === 0) res = val.substring(name.length);
+  });
+  return res;
 }

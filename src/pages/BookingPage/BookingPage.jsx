@@ -4,7 +4,7 @@ import './BookingPage.css';
 import { useState } from 'react';
 const BookingPage = () => {
   const seat = useSelector(state => state.seat);
-//   const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -25,7 +25,7 @@ const BookingPage = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       // Dispatch action to update booking details with name and phone number
-    //   dispatch(updateBookingDetails({ name, phoneNumber, seatId: seat.id }));
+      //   dispatch(updateBookingDetails({ name, phoneNumber, seatId: seat.id }));
       // Handle successful submission (e.g., redirect to confirmation page)
       console.log("send user detail to server");
     }

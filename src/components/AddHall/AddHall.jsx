@@ -51,7 +51,7 @@ const AddHall = () => {
           <h3>Add Hall</h3>
           <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="hallName">Hall name</label>
-            <input  className="name-input" type="text" name="hallName" id="hallName" placeholder="Type hall name" required />
+            <input className="name-input" type="text" name="hallName" id="hallName" placeholder="Type hall name" required />
             <button className='submit-btn' type="submit">Add</button>
           </form>
         </div>

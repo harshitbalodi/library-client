@@ -17,15 +17,15 @@ const Draggable = ({ id, component, name }) => {
   return (
     <div className="draggable-container"
       ref={setNodeRef}
-        style={style}
-        {...attributes}
-        {...listeners}
+      style={style}
+      {...attributes}
+      {...listeners}
     >
       <div
         className="draggable-title"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        >
+      >
         <img className={`six-dots ${isHovering ? 'visible' : ''}`} src={sixDots} alt="" />
         {name}
       </div>

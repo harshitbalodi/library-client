@@ -7,6 +7,7 @@ import { setSidebarInvisible, setSidebarVisible } from '../../store/SidebarSlice
 import ArrowDown from '../../assets/arrow-down-black.svg';
 import { logOut } from '../../store/authSlice';
 import NoDp from '../../assets/no-dp.jpg';
+import { setCookie } from '../../utils/helper';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -45,13 +46,13 @@ const Header = () => {
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
-    
-      const handleLogout = () => {
+
+    const handleLogout = () => {
         console.log('Logout clicked');
         dispatch(logOut());
-        localStorage.removeItem('refreshToken');
-      };
-    
+        setCookie("refresh", "null", 0);
+    };
+
 
     return (
         <nav className="header">
@@ -62,14 +63,14 @@ const Header = () => {
                 </div>
             </div>
             <div className="right-section">
-                {!auth.refreshToken ? (!isActive && <Link to='/login' className="admin-login">
+                {!auth.adminLoggedIn ? (!isActive && <Link to='/login' className="admin-login">
                     <button className='login-btn'>Admin Login</button>
                 </Link>) :
                     <div className="dropdown-container">
                         <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
                         {isOpen && (
                             <ul className="dropdown-menu">
-                                <li onClick={()=>navigate('/change-password')}>Change password</li>
+                                <li onClick={() => navigate('/change-password')}>Change password</li>
                                 <li onClick={handleLogout}>Logout</li>
                             </ul>
                         )}

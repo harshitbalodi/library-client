@@ -14,9 +14,10 @@ import { setHallsThunk } from './store/hallSlice';
 import BookingPage from "./pages/BookingPage/BookingPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import TokenService from "./services/TokenService";
-import { setToken } from "./store/authSlice";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import token from "./services/token";
+import { getCookie } from "./utils/helper";
+import { logIn } from "./store/authSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,17 +30,17 @@ function App() {
       }
     }
     const isUserLoggedIn = async () => {
-      const refreshToken = localStorage.getItem('refreshToken');
-      if (refreshToken) {
+      const refresh = getCookie("refresh");
+      console.log("refresh from cookies", refresh);
+      if (refresh) {
         try {
-          const {data} = await TokenService.authenticateUser(refreshToken);
-          dispatch(setToken({refresh:refreshToken, access: data.access}));
+          const { data } = await TokenService.authenticateUser(refresh);
+          dispatch(logIn());
           token.setToken(data.access);
         } catch (error) {
           console.log(error);
         }
       }
-
     }
 
     isUserLoggedIn();
@@ -65,7 +66,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="/student/:id" element={<StudentPage />} />
               <Route path="/booking" element={<BookingPage />} />
-              <Route path="/change-password" element={<ChangePassword/>}/>
+              <Route path="/change-password" element={<ChangePassword />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>

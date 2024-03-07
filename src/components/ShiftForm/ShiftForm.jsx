@@ -11,7 +11,6 @@ import { setHallsThunk } from '../../store/hallSlice';
 const ShiftForm = ({ isOpen, onClose, hall }) => {
     const halls = useSelector(state => state.halls);
     const dispatch = useDispatch();
-    console.log(halls);
     const [hallOptions, setHallOptions] = useState([]);
     const [selectedHallId, setSelectedHallId] = useState(hall?.id || '');
     const [shiftName, setShiftName] = useState('');

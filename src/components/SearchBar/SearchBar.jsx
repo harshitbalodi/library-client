@@ -9,13 +9,11 @@ import CrossIcon from '../../assets/cross-icon.svg';
 
 const SearchBar = () => {
     const students = useSelector(state => state.students);
-    
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [choosenStudent, setChoosenStudent] = useState(null);
     const inputRef = useRef(null);
     const suggestionRef = useRef(null);
-    
     const navigate = useNavigate();
 
     console.log(students);
@@ -52,7 +50,7 @@ const SearchBar = () => {
     };
 
     const handleBlur = (event) => {
-        if (!inputRef.current.contains(event.target) &&  !suggestionRef.current.contains(event.target)) {
+        if (!inputRef.current.contains(event.target) && !suggestionRef.current.contains(event.target)) {
             setFilteredStudents([]);
         }
     };
@@ -71,7 +69,6 @@ const SearchBar = () => {
             </div>
             {filteredStudents.length > 0 && (
                 <div className="suggestions-wrapper" ref={suggestionRef}>
-                    {/* onClick={() => navigate('/student/' + student.id)} */}
                     {filteredStudents.map(student => (
                         <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
                             <div>

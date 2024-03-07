@@ -29,14 +29,14 @@ const DisplayTime = ({ shifts }) => {
         {shifts.status === "running" && (
           <div>
             <div>will end in</div>
-            <TimeCounter timeString={shifts.time}/>
+            <TimeCounter timeString={shifts.time} />
             <ProgressBar startTime={shifts.start_time} endTime={shifts.end_time} />
           </div>
         )}
         {shifts.status === "time_remaining" && (
           <div>
             <div> will start in </div>
-            <TimeCounter timeString={shifts.time}/>
+            <TimeCounter timeString={shifts.time} />
           </div>
         )}
         {shifts.status === "ended" && (

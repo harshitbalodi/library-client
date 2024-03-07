@@ -1,4 +1,4 @@
-.draggable-container{
+.draggable-container {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,50 +6,43 @@
   width: 450px;
 }
 
-.draggable-title{
+.draggable-title {
   width: 100%;
   background-color: #fff;
   font-size: large;
   padding: 5px;
-  border-bottom:.5px solid rgb(226, 226, 226);
+  border-bottom: 0.5px solid rgb(226, 226, 226);
   display: flex;
   align-items: center;
 }
 
-.six-dots{
-  width:25px;
+.six-dots {
+  width: 25px;
   opacity: 0;
 }
-.six-dots.visible{
+.six-dots.visible {
   opacity: 1;
 }
 
 .draggable {
-    background-color: white;
-    border-radius:0 5px 5px 0;
-    width: 100%; 
-    overflow-y: auto; 
-    height: 300px; 
-    /* display: flex; */
-    /* justify-content: flex start; */
-    /* gap: 20px; */
-    touch-action: none;
+  background-color: white;
+  border-radius: 0 5px 5px 0;
+  width: 100%;
+  overflow-y: auto;
+  height: 300px;
+  /* display: flex; */
+  /* justify-content: flex start; */
+  /* gap: 20px; */
+  touch-action: none;
 }
 
-
-
-@media screen  and (max-width:750px){
-  .draggable-container{
+@media screen and (max-width: 750px) {
+  .draggable-container {
     width: 350px;
   }
-
 }
-@media screen  and (max-width:500px){
-  .draggable-container{
+@media screen and (max-width: 500px) {
+  .draggable-container {
     width: 277px;
   }
-
 }
-   
-
- 

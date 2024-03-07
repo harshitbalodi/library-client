@@ -1,7 +1,6 @@
- .shift-container {
+.shift-container {
   max-width: 100%;
   height: 100%;
-  /* position: relative; */
 }
 
 .filter-container {
@@ -10,10 +9,10 @@
   flex-wrap: wrap;
   padding: 1rem;
   border-radius: 5px;
-  gap:10px;
+  gap: 10px;
 }
 
-.time-filter{
+.time-filter {
   display: inline-block;
   padding: 1rem;
   border: 2px solid #ddd;
@@ -23,7 +22,7 @@
   font-weight: bold;
   margin-bottom: 1rem;
 }
-.sorting-options{
+.sorting-options {
   display: inline-block;
   width: fit-content;
   height: fit-content;
@@ -43,50 +42,48 @@
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.08);
 }
 
-.seat-instructions{
+.seat-instructions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
   margin: 12px;
 }
-.seat-detail{
+.seat-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.red-button{
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px;
-    transition: 0.3s scale ease; 
-    font-size: medium;
-  }
- .red-button:hover{
-    background-color: red;
-    color:white;
-   
-  }
+.red-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s scale ease;
+  font-size: medium;
+}
+.red-button:hover {
+  background-color: red;
+  color: white;
+}
 
-.shift-container{
+.shift-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.booking-btn{
+.booking-btn {
   position: fixed;
   bottom: 30px;
   right: 30px;
   z-index: 3;
 }
 
-@media screen and (max-widh:500px){
-  .time-filter{
+@media screen and (max-widh: 500px) {
+  .time-filter {
     width: 100%;
   }
 }
- 

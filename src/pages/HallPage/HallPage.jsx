@@ -14,9 +14,9 @@ const HallPage = () => {
 
   return !halls ? <Shimmer /> : (
     <div >
-      <ToastContainer/>
+      <ToastContainer />
       <div className='booking-btn'>
-       { seat &&<Button onClick={()=>navigate('/booking')} >Proceed</Button>}
+        {seat && <Button onClick={() => navigate('/booking')} >Proceed</Button>}
       </div>
       {
         halls.map(hall => {
@@ -26,7 +26,7 @@ const HallPage = () => {
           </div>)
         })
       }
-      <AddHall/>
+      <AddHall />
     </div>
   )
 }
