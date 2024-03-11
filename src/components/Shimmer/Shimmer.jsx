@@ -4,7 +4,7 @@ import './Shimmer.css';
 const ShimmerCard = () => {
   return (<div className="shimmerCard">
     <div className="shimmerSeats">
-      {Array(6).fill().map((_, index) => (
+      {Array(10).fill().map((_, index) => (
         <div key={index} className="shimmerSeat" />
       ))}
     </div>
@@ -22,7 +22,7 @@ const Shimmer = () => {
   return (
     <div className='shimmer-container'>
       {
-        Array(8).fill().map(() => {
+        Array(6).fill().map(() => {
           return <ShimmerCard key={uuidv4()} />
         })
       }

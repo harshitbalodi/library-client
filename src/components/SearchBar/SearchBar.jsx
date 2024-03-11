@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import searchIcon from '../../assets/search-icon.svg';
 import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
-import { useNavigate } from "react-router-dom";
 import NoDp from '../../assets/no-dp.jpg';
 import CrossIcon from '../../assets/cross-icon.svg';
 
@@ -14,7 +13,7 @@ const SearchBar = () => {
     const [choosenStudent, setChoosenStudent] = useState(null);
     const inputRef = useRef(null);
     const suggestionRef = useRef(null);
-    const navigate = useNavigate();
+    const detailRef = useRef(null);
 
     console.log(students);
     useEffect(() => {
@@ -36,7 +35,7 @@ const SearchBar = () => {
 
         if (filteredStudents.length === 1) {
             console.log("wgy id hssbh");
-            navigate('/student/' + filteredStudents[0].id);
+            // navigate('/student/' + filteredStudents[0].id);
         }
     }
 
@@ -91,27 +90,19 @@ const SearchBar = () => {
                             </div>
                         </div>
                     ))}
-                    {choosenStudent && <div className="student-description">
+                    {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e)=>e.stopPropagation()}>
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
                         </button>
-                        <div>
+                        <div className="profile-picture">
                             <img width={40} src={NoDp} alt="student profile picture" />
                         </div>
                         <div >
                             <div >{choosenStudent.name}</div>
-                            {/* {choosenStudent.paid ? (
-                                <div className="paid">Paid</div>
-                            )
-                                :
-                                (
-                                    <div className="not-paid">Not Paid</div>
-                                )} */}
-                        </div>
-                        <div >
+                            <div>Joining date:{choosenStudent.joining_date}</div>
+                            <div>Hall {choosenStudent.hall.name}</div>
                             <div>shift {choosenStudent.hall.shift.name}</div>
-                            {/* <div>timing:{formatTime(choosenStudent.shift.start_time)} to {formatTime(choosenStudent.shift.end_time)}</div> */}
-                            <div>seat no {choosenStudent.hall.shift.desk}</div>
+                            <div>desk no: {choosenStudent.hall.shift.desk}</div>
                         </div>
                     </div>}
                 </div>

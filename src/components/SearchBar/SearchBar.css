@@ -44,9 +44,9 @@
 
 .suggestions-wrapper {
   position: absolute;
-  display: flex;
   top: 100%;
-  direction: row;
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   left: 0;
   width: 50%;
@@ -58,24 +58,38 @@
   margin: 0;
   padding: 0;
   z-index: 1;
-  /* transition: all 0.6s ease; */
 }
 
 .suggestion {
-  width: 100%;
   padding: 10px;
+  flex: 1;
   border-bottom: 0.5px solid #ddd;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
 }
-
 #suggestion:hover {
   background-color: #eee;
 }
 
+.student-description {
+  min-width: 35%;
+  position: relative;
+  border: 0.5px solid #ddd;
+  padding: 5px;
+  flex: 1;
+}
+
+.profile-picture{
+  display: flex;
+  justify-content: center;
+}
+
+.profile-picture img{
+  width: 60px;
+}
 .student-dp {
-  width: 50px;
+  width: 43px;
 }
 
 .paid {
@@ -89,14 +103,6 @@
 
 .shift-desk {
   margin-left: 10px;
-}
-
-.student-description {
-  position: relative;
-  border: 0.5px solid #ddd;
-  height: 100%;
-  padding: 5px;
-  flex: 1;
 }
 
 .cross-icon {
@@ -129,6 +135,11 @@
     width: 80%;
   }
   .suggestions-wrapper {
-    width: 80%;
+    width: 80%;  
+    flex-direction: row;
+    height: 500px;
+  }
+  .suggestion{
+    width: 100%;
   }
 }
