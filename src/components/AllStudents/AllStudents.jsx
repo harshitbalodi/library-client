@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import './AllStudents.css';
 import studentService from '../../services/studentService';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStudents } from '../../store/studentsSlice';
 import NoProfilePicture from '../../assets/no-dp.jpg'
 import MobileIcon from '../../assets/mobile-icon.svg';
 
 const AllStudents = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const dispatch = useDispatch();
     const students = useSelector(state => state.students);
 
@@ -29,7 +28,8 @@ const AllStudents = () => {
         <div className='all-students-container'>
             {students &&
                 students.map(student => {
-                    return <div key={student.id} className='student' onClick={() => navigate(`/student/${student.id}`)}>
+                    // onClick={() => navigate(`/student/${student.id}`)}
+                    return <div key={student.id} className='student' >
                         <div className='student-img'>
                             <img src={NoProfilePicture} alt="student dp" />
                         </div>

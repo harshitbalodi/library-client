@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
 import NoDp from '../../assets/no-dp.jpg';
 import CrossIcon from '../../assets/cross-icon.svg';
-
+import MobileIcon from '../../assets/mobile-icon.svg'
 
 const SearchBar = () => {
     const students = useSelector(state => state.students);
@@ -12,7 +12,6 @@ const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [choosenStudent, setChoosenStudent] = useState(null);
     const inputRef = useRef(null);
-    const suggestionRef = useRef(null);
     const detailRef = useRef(null);
 
     console.log(students);
@@ -35,7 +34,6 @@ const SearchBar = () => {
 
         if (filteredStudents.length === 1) {
             console.log("wgy id hssbh");
-            // navigate('/student/' + filteredStudents[0].id);
         }
     }
 
@@ -49,7 +47,7 @@ const SearchBar = () => {
     };
 
     const handleBlur = (event) => {
-        if (!inputRef.current.contains(event.target) && !suggestionRef.current.contains(event.target)) {
+        if (!inputRef.current.contains(event.target)) {
             setFilteredStudents([]);
         }
     };
@@ -67,14 +65,19 @@ const SearchBar = () => {
                 <button className='search-btn' onClick={handleSearch}><img width={14.7} src={searchIcon} alt="" /></button>
             </div>
             {filteredStudents.length > 0 && (
-                <div className="suggestions-wrapper" ref={suggestionRef}>
-                    {filteredStudents.map(student => (
+                <div className="suggestions-wrapper" onClick={e=> e.stopPropagation()}>
+                    <div className="suggestions">
+                        {filteredStudents.map(student => (
                         <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
                             <div>
                                 <img className="student-dp" src={NoDp} alt="student profile picture" />
                             </div>
                             <div className="name-status">
                                 <div className="name">{student.name}</div>
+                                <div className="mobile-number">
+                                    <img src={MobileIcon} className="" width={30} alt="mobile icon" />
+                                    +91-9399245654
+                                </div>
                                 {/* {student.paid ? (
                                     <div className="paid">Paid</div>
                                 )
@@ -83,13 +86,10 @@ const SearchBar = () => {
                                         <div className="not-paid">Not Paid</div>
                                     )} */}
                             </div>
-                            <div className="shift-desk">
-                                <div>shift {student.hall.shift.name}</div>
-                                {/* <div>timing:{formatTime(student.shift.start_time)} to {formatTime(student.shift.end_time)}</div> */}
-                                <div>seat no {student.hall.shift.desk}</div>
-                            </div>
                         </div>
                     ))}
+                    </div>
+                    
                     {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e)=>e.stopPropagation()}>
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
