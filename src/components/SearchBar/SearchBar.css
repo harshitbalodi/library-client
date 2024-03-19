@@ -43,6 +43,15 @@
   box-shadow: 0 0 1px 1px gainsboro;
 }
 
+.no-search-result{
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/no-dp.jpg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .suggestions-wrapper {
   position: absolute;
   top: 100%;
@@ -100,11 +109,20 @@
 }
 
 .profile-picture img {
-  width: 60px;
+  width: 80px;
+  height: 80px;
 }
 .student-dp {
-  width: 43px;
+  width: 50px;
+  width: 50px;
 }
+
+.profile-picture img,.student-dp{
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.2);
+}
+
 
 .paid {
   color: green;

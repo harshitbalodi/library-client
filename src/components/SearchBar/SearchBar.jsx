@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import searchIcon from '../../assets/search-icon.svg';
 import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
-import NoDp from '../../assets/no-dp.jpg';
 import CrossIcon from '../../assets/cross-icon.svg';
 import MobileIcon from '../../assets/mobile-icon.svg'
+import { setImageUrl } from "../../utils/helper";
 
 const SearchBar = () => {
     const students = useSelector(state => state.students);
@@ -70,7 +70,7 @@ const SearchBar = () => {
                         {filteredStudents.map(student => (
                         <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
                             <div>
-                                <img className="student-dp" src={NoDp} alt="student profile picture" />
+                                <img className="student-dp" src={setImageUrl(student.image)} alt="student dp" />
                             </div>
                             <div className="name-status">
                                 <div className="name">{student.name}</div>
@@ -95,7 +95,7 @@ const SearchBar = () => {
                             <img src={CrossIcon} alt="" />
                         </button>
                         <div className="profile-picture">
-                            <img width={40} src={NoDp} alt="student profile picture" />
+                            <img width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                         </div>
                         <div >
                             <div >{choosenStudent.name}</div>
