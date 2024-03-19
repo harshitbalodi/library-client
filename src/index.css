@@ -41,6 +41,9 @@ div {
 
 @media screen and (max-width: 480px) {
   .routes-container{
-    width: 90%;
+    width: 100%;
+  }
+  .routes-container.sidebar-active{
+    width: 88%;
   }
 }

@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import HallPage from "./pages/HallPage/HallPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import StudentPage from "./pages/StudentPage/StudentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ShiftPage from "./pages/ShiftPage/ShiftPage";
@@ -21,6 +21,7 @@ import { logIn } from "./store/authSlice";
 
 function App() {
   const dispatch = useDispatch();
+  const sidebar = useSelector(state => state.sidebar);
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -57,7 +58,7 @@ function App() {
           <div>
             <Sidebar />
           </div>
-          <div className="routes-container">
+          <div className={`routes-container ${sidebar && "sidebar-active"}`}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/shift" element={<ShiftPage />} />
