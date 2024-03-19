@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setStudents } from '../../store/studentsSlice';
 import NoProfilePicture from '../../assets/no-dp.jpg'
 import MobileIcon from '../../assets/mobile-icon.svg';
+import { setImageUrl } from '../../utils/helper';
 
 const AllStudents = () => {
+    console.log(import.meta.env.VITE_BACKEND_API_URL);
     // const navigate = useNavigate();
     const dispatch = useDispatch();
     const students = useSelector(state => state.students);
@@ -31,7 +33,9 @@ const AllStudents = () => {
                     // onClick={() => navigate(`/student/${student.id}`)}
                     return <div key={student.id} className='student' >
                         <div className='student-img'>
-                            <img src={NoProfilePicture} alt="student dp" />
+                        { student.image ? <img src={ setImageUrl(student.image)} alt="student dp" />
+                        :<img src={NoProfilePicture} alt="no dp"></img>
+                        }
                         </div>
                         <div className='student-details'>
                             <div className='name'>

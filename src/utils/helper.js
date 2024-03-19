@@ -181,3 +181,20 @@ export function getCookie(cName) {
   });
   return res;
 }
+
+export function setImageUrl(imageUrl) {
+  // const imageToken = image.split('8000');
+  // const newImageURL =import.meta.env.VITE_BACKEND_API_URL + imageToken[1];
+  // console.log(newImageURL);
+  // return newImageURL;
+
+  const mediaIndex = imageUrl.indexOf('/media');
+  if (mediaIndex !== -1) {
+    const newImageUrl = import.meta.env.VITE_BACKEND_API_URL + imageUrl.substring(mediaIndex);
+    console.log(newImageUrl);
+    return newImageUrl;
+  } else {
+    console.warn('Image URL does not contain "/media":', imageUrl);
+    return imageUrl; 
+  }
+}
