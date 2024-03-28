@@ -1,0 +1,9 @@
+.empty-notrenewed {
+    width: 100%;
+    height: 50vh;
+    background-image: url('../../assets/feels-empty.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: contain;
+    overflow: hidden;
+  }

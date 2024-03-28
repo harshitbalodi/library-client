@@ -19,8 +19,6 @@ export const { setHalls } = hallSlice.actions;
 export const setHallsThunk = () => {
   return async (dispatch, getState) => {
     const { data } = await hallServices.getall();
-    console.log(data);
-    console.log("inside hall thunk", data);
     dispatch(setHalls(data.data));
     const halls = getState().halls;
     dispatch(setShifts(extractShifts(halls)));

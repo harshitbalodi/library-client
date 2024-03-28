@@ -1,4 +1,4 @@
-import Footer from "./components/Footer"
+import Footer from "./components/Footer/Footer"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { useEffect } from "react";
