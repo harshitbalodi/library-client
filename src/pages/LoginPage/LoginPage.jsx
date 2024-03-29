@@ -27,7 +27,6 @@ const LoginPage = () => {
     try {
       const response = await TokenService.loginUser({ username, password });
       console.log(response);
-      localStorage.setItem('refreshToken', response.data.refresh);
       setCookie("refresh", response.data.refresh, 7);
       dispatch(logIn());
       token.setToken(response.data.access);
