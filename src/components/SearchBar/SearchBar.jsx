@@ -14,7 +14,6 @@ const SearchBar = () => {
     const inputRef = useRef(null);
     const detailRef = useRef(null);
 
-    console.log(students);
     useEffect(() => {
         filterStudents();
     }, [searchQuery])
@@ -29,8 +28,6 @@ const SearchBar = () => {
     };
 
     const handleSearch = () => {
-        console.log(filteredStudents);
-        console.log(filteredStudents[0]?.id);
 
         if (filteredStudents.length === 1) {
             console.log("wgy id hssbh");
@@ -55,7 +52,6 @@ const SearchBar = () => {
     const handleStudent = (e, student) => {
         if (!student) setChoosenStudent(null);
         setChoosenStudent(student);
-        console.log(student);
     }
 
     return (

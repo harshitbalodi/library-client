@@ -4,7 +4,7 @@ import MobileIcon from '../../assets/mobile-icon.svg';
 import { setImageUrl } from '../../utils/helper';
 import './Student.css'
 
-const Student = ({student}) => {
+const Student = ({student, children}) => {
   return (
     <div  className='student' >
                         <div className='student-img'>
@@ -21,7 +21,9 @@ const Student = ({student}) => {
                             {/* <div className='timing'>{formatTime(student.hall.shift.start_time)} to {formatTime(student.shift.end_time)} </div> */}
                             <div className='phone-number'> <img src={MobileIcon} alt="" />+91-9999999999</div>
                         </div>
-
+                        <div>
+                          {children}
+                        </div>
                     </div>
   )
 }

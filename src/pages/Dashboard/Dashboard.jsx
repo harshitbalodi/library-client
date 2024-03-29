@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DndContext,
   KeyboardSensor,
@@ -19,16 +19,42 @@ import UnLockIcon from '../../assets/unlock.svg';
 import ShiftTimer from "../../components/ShiftTimer/ShiftTimer";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NewBookings from "../../components/NewBookings/NewBookings";
+import { useDispatch, useSelector } from "react-redux";
+import { setLock } from "../../store/lockSlice";
+
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const lock = useSelector(state => state.lock);
   const [components, setComponents] = useState([
-    { id: 143, name: "Shift Timer", component: <ShiftTimer /> },
-    { id: 243, name: "New Bookings", component: <NewBookings /> },
-    { id: 654, name: "Shift Capacity", component: <ShiftCapacity /> },
-    { id: 765, name: "Expiring Soon", component: <ExpiringSoon /> },
-    { id: 987, name: "Not Renewed", component: <NotRenewed /> },
-    { id: 456, name: "All Students", component: <AllStudents /> }
+    { id: 143, position: 1, name: "Shift Timer", component: <ShiftTimer /> },
+    { id: 243, position: 2, name: "New Bookings", component: <NewBookings /> },
+    { id: 654, position: 3, name: "Shift Capacity", component: <ShiftCapacity /> },
+    { id: 765, position: 4, name: "Expiring Soon", component: <ExpiringSoon /> },
+    { id: 987, position: 5, name: "Not Renewed", component: <NotRenewed /> },
+    { id: 456, position: 6, name: "All Students", component: <AllStudents /> }
   ]);
-  const [isLock, setIsLock] = useState(true);
+  const [position, setPosition] = useState(() => {
+    const storedPosition = localStorage.getItem('DashboardPosition');
+    return storedPosition ? JSON.parse(storedPosition) : [1, 2, 3, 4, 5, 6];
+  }
+  );
+
+  useEffect(() => {
+    if (position != [1, 2, 3, 4, 5, 6]) {
+      const posSiz = position.length;
+      var newComponents = [];
+      for (var i = 0; i < posSiz; i++) {
+        var pos = position[i];
+        for (var j = 0; j < posSiz; j++) {
+          if (pos == components[j].position) {
+            newComponents.push(components[j]);
+            break;
+          }
+        }
+      }
+      setComponents(newComponents);
+    }
+  }, [])
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -39,26 +65,26 @@ const Dashboard = () => {
 
   const getComponentsPos = (id) => components.findIndex((task) => task.id === id);
 
-
   const handleDragEnd = (event) => {
     const { active, over } = event;
-
     if (!active || !over || active.id === over.id) return;
 
     setComponents((components) => {
       const originalPos = getComponentsPos(active.id);
       const newPos = getComponentsPos(over.id);
-
+      const newPosition = arrayMove(position, originalPos, newPos);
+      setPosition(newPosition);
+      localStorage.setItem('DashboardPosition', JSON.stringify(newPosition));
       return arrayMove(components, originalPos, newPos);
     });
   };
+  const toggleLock = () => dispatch(setLock(!lock));
 
-  const toggleLock = () => setIsLock((prevIsLock) => !prevIsLock);
   return (
     <div className="Dashboard">
       <h1>Admin Dashboard</h1>
       <div className="lock-unlock">
-        {!isLock ? (<div onClick={toggleLock} title="lock Dashboard" >
+        {!lock ? (<div onClick={toggleLock} title="lock Dashboard" >
           <img src={LockIcon} alt="lock" />
         </div>) :
           (<div onClick={toggleLock} title="unlock Dashboard">
@@ -68,7 +94,7 @@ const Dashboard = () => {
       </div>
       <SearchBar />
 
-      {!isLock ? <DndContext
+      {!lock ? <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
         onDragEnd={handleDragEnd}

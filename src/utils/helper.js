@@ -58,7 +58,6 @@ export const formatNumber = (num) => {
 };
 
 export const extractShifts = (halls) => {
-  console.log(halls);
   let allShifts = [];
   halls.map((hall) => {
     allShifts = [...allShifts, ...hall.shifts];
@@ -75,7 +74,6 @@ export const sortShiftsByFee = (shifts, order) => {
 export const filterShiftsByTime = (shifts, startTime, endTime) => {
   startTime = startTime + ":00";
   endTime = endTime + ":00";
-  console.log(startTime, endTime);
   return shifts.filter(
     (shift) => shift.start_time >= startTime && shift.end_time <= endTime
   );
@@ -166,7 +164,6 @@ export function setCookie(cName, cValue, expDays) {
   date.setTime(date.getTime() + expDays * 24 * 60 * 60 * 1000);
   const expires = "expires=" + date.toUTCString();
   const str = cName + "=" + cValue + "; " + expires + "; path=/; Secure";
-  console.log(str);
   document.cookie = str;
 }
 
@@ -176,7 +173,6 @@ export function getCookie(cName) {
   const cArr = cDecoded.split("; ");
   let res;
   cArr.forEach((val) => {
-    console.log(val);
     if (val.indexOf(name) === 0) res = val.substring(name.length);
   });
   return res;
@@ -191,4 +187,18 @@ export function setImageUrl(imageUrl) {
     console.warn('Image URL does not contain "/media":', imageUrl);
     return imageUrl; 
   }
+}
+
+export function extractExiringSoon(students){
+  const today = new Date();
+   const expiringSoon = []
+ students.forEach(student => {
+    if(student.is_expired) return;
+    const validUptoDate = new Date(student.valid_upto);
+    const daysLeft = Math.floor(
+      (validUptoDate.getTime()- today.getTime())/(1000*60*60*24)
+    )
+    if(daysLeft >=0 && daysLeft <= 9)  expiringSoon.push({...student, daysLeft});
+  });
+  return expiringSoon;
 }
