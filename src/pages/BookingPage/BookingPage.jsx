@@ -1,39 +1,61 @@
-import { useSelector } from 'react-redux';
-// import { updateBookingDetails } from './bookingSlice'; 
+import { useDispatch, useSelector } from 'react-redux';
 import './BookingPage.css';
 import { useState, useRef } from 'react';
 import ImagesIcon from '../../assets/images-icon.svg';
 import Button from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom';
+import studentService from '../../services/studentService';
+import { toast } from 'react-toastify';
+import { setSeat } from '../../store/seatSlice';
+import { studentThunk } from '../../store/studentsSlice';
 
 const BookingPage = () => {
   const seat = useSelector(state => state.seat);
-  //   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [errors, setErrors] = useState({});
+  const [gender, setGender] = useState('');
   const [previewImage, setPreviewImage] = useState(null);
+  const [address, setAddress] = useState('');
+  const [months, setMonths] = useState(1);
+  const [error, setErrors] = useState('');
   const imageInputRef = useRef(null);
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  
+  console.log(seat);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const validationErrors = {};
-    if (!name) {
-      validationErrors.name = 'Name is required';
-    }
-    if (!phoneNumber) {
-      validationErrors.phoneNumber = 'Phone number is required';
+    if(!seat){
+      return;
     }
 
-    setErrors(validationErrors);
+    if (months <= 0) {
+      setErrors('Please enter a valid number of months');
+      setTimeout(()=>setErrors(''), 3000);
+      return;
+    }
 
-    if (Object.keys(validationErrors).length === 0) {
-      // Dispatch action to update booking details with name and phone number
-      //   dispatch(updateBookingDetails({ name, phoneNumber, seatId: seat.id }));
-      // Handle successful submission (e.g., redirect to confirmation page)
-      console.log("send user detail to server");
+    const studentObj = {
+      name,
+      mobile_no:phoneNumber,
+      gender:gender === 'male',
+      address,
+      image:previewImage,
+      desk: seat.id,
+      shift: seat.shift.id,
+      paid_for_month:months,
+      joining_date: new Date().toISOString().split('T')[0]
+    }
+    console.log(studentObj);
+    try{
+      const response = await studentService.createStudent(studentObj);
+      console.log(response);
+      toast.success("student created Succesfully");
+      dispatch(setSeat(null));
+      dispatch(studentThunk());
+      navigate('/hall');
+    }catch(error){
+      console.log(error);
     }
   };
 
@@ -44,7 +66,8 @@ const BookingPage = () => {
       reader.onload = (e) => setPreviewImage(e.target.result);
       reader.readAsDataURL(file);
     } else {
-      setPreviewImage(null); // Clear preview if invalid file
+      // Clear preview if invalid file
+      setPreviewImage(null); 
     }
   };
 
@@ -60,12 +83,6 @@ const BookingPage = () => {
       handleImageChange({ target: { files: [file] } }); // Simulate image change event
     }
   };
-
-  // const handleCopy = () => {
-  //   // Implement logic to handle image copy from clipboard and set previewImage
-  //   // You can explore libraries like clipboard.js for copy-paste functionality
-  //   console.warn('Copy-paste functionality not yet implemented');
-  // };
 
   return (
     <div >
@@ -87,10 +104,9 @@ const BookingPage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your full name"
-                // className={errors.name ? 'error' : ''} // Add an error class for invalid input
                 className='name-input'
+                required
               />
-              {errors.name && <span className="error-message">{errors.name}</span>}
             </div>
             <div className="form-group">
               <label htmlFor="phone-number">Phone Number</label>
@@ -100,11 +116,46 @@ const BookingPage = () => {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="Enter phone number"
-                // className={errors.phoneNumber ? 'error' : ''} // Add an error class for invalid input
                 className='phone-number-input'
+                required
               />
-              {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
             </div>
+            <div className='form-group'>
+              <label htmlFor="gender">Gender</label>
+              <select 
+              id="gender"
+              value = {gender}
+              onChange={(e) => setGender(e.target.value)}
+              required
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div className='form-group'>
+              <label htmlFor="address">Address</label>
+              <input
+                type="text"
+                id="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Enter your address"
+                className='address-input'
+                required
+              />
+            </div>
+            <div className='form-group'>
+              <label htmlFor="months">Months</label>
+              <input
+              type='number'
+              id='months'
+              value={months}
+              onChange={(e) => setMonths(Math.round(e.target.value))}
+              className='months-input'
+              required
+              />
+            </div>
+            {/* Image picker */}
             <div className="image-picker">
               <label htmlFor="image-input">Profile Picture (Optional)</label>
               <input
@@ -120,7 +171,6 @@ const BookingPage = () => {
                 onClick={() => imageInputRef.current.click()} // Open file browser on click
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
-              // style={{border:"1px solid black"}}
               >
                 {previewImage ? (
                   <img
@@ -136,11 +186,12 @@ const BookingPage = () => {
                 )}
                 Drag & Drop or <span style={{ color: 'blue' }}>Browse</span>
               </div>
-              {/* <button type="button" onClick={handleCopy}>
-              Copy Image
-            </button> */}
             </div>
-            <button type="submit" disabled={Object.keys(errors).length > 0}>
+            {/* image picker  end here*/}
+            <div style={{ color: 'red' }}>
+              {error}
+            </div>
+            <button type="submit">
               Confirm Booking
             </button>
             <div className="seat-details">
@@ -152,7 +203,6 @@ const BookingPage = () => {
             </div>
           </form>
         </div>
-
       )}
     </div>
   );

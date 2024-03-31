@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import '../../index.css';
-import CustomCarousel from "../../components/CustomCarousel/CustomCarousel";
+import CardCarousel from "../../components/CardCarousel/CardCarousel";
 import Shimmer from "../../components/Shimmer/Shimmer";
 import { ToastContainer } from "react-toastify";
 import AddHall from "../../components/AddHall/AddHall";
@@ -20,7 +20,7 @@ const HallPage = () => {
       {
         halls.map(hall => {
           return (<div key={hall.id} >
-            <CustomCarousel hall={hall} />
+            <CardCarousel hall={hall} />
             <hr />
           </div>)
         })

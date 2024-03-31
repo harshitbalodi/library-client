@@ -5,4 +5,8 @@ const getall = async () => {
   return response;
 };
 
-export default { getall };
+const createStudent = async (studentObj) => {
+    const response = await axios.post(baseUrl, studentObj);
+    return response;
+}
+export default { getall, createStudent };

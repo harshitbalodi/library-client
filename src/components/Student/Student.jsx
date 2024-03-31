@@ -76,7 +76,7 @@ const Student = ({ student, children }) => {
           <div className='joining'>{student.joining_date}</div>
           <div className='phone-number'> <img src={MobileIcon} alt="" />+91-9999999999</div>
         </div>
-        <div>
+        <div className='right-block'>
           <button className='pay-fee-btn' onClick={() => setFormOpen(true)}>Pay Fee</button>
           {children}
         </div>

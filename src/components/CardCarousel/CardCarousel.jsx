@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import './CustomCarousel.css';
+import './CardCarousel.css';
 import SeatCard from '../SeatCard/SeatCard';
 import RightArrow from '../../assets/arrow-circle-right.svg'
 import LeftArrow from '../../assets/arrow-circle-left.svg'
@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 
 
-const CustomCarousel = ({ hall }) => {
+const CardCarousel = ({ hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [numberOfCarouselSlide, setNumberOfCarousel] = useState(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -55,6 +55,8 @@ const CustomCarousel = ({ hall }) => {
 
   const handleDelete = async () => {
     console.log("hall delete clicked...")
+    const approve = window.confirm(`You want to delete ${hall.name}?`)
+    if(!approve) return;
     try {
       const response = await hallServices.deleteHall(hall.id);
       toast.success(response.data.message);
@@ -125,4 +127,4 @@ const CustomCarousel = ({ hall }) => {
   );
 };
 
-export default CustomCarousel;
+export default CardCarousel;

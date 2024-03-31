@@ -19,6 +19,7 @@ const SeatCard = ({ shift }) => {
     const [isHovering, setIsHovering] = useState(null);
     const [seat, isEditDropdownOpen, students] = useSelector(state => [state.seat, state.editDropdown.isEnabled, state.students]);
     const dispatch = useDispatch();
+    
     useEffect(() => {
         if (!seat || !shift) return;
         shift.desks.forEach(desk => {
