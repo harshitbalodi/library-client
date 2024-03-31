@@ -7,8 +7,8 @@ const ErrorPage = () => {
   return (
     <div className="error-container">
       <h2>path does not found</h2>
-      <Button onclick={()=>navigate('/shift')}>
-         Book a seat  
+      <Button onclick={()=>navigate('/')}>
+         Go to Home  
       </Button>  
     </div>
   )

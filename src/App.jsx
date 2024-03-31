@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StudentPage from "./pages/StudentPage/StudentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ShiftPage from "./pages/ShiftPage/ShiftPage";
-import { setHallsThunk } from './store/hallSlice';
+import { hallsThunk } from './store/hallSlice';
 import BookingPage from "./pages/BookingPage/BookingPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import TokenService from "./services/TokenService";
@@ -18,6 +18,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import token from "./services/token";
 import { getCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
+import { studentThunk } from "./store/studentsSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +26,8 @@ function App() {
   useEffect(() => {
     const getdata = async () => {
       try {
-        dispatch(setHallsThunk());
+        dispatch(hallsThunk());
+        dispatch(studentThunk());
       } catch (error) {
         console.log(error);
       }
@@ -46,7 +48,7 @@ function App() {
 
     isUserLoggedIn();
     getdata();
-    const clearId = setInterval(getdata, 45000)
+    const clearId = setInterval(getdata, 300000)
     return () => clearInterval(clearId);
   }, [])
   return (

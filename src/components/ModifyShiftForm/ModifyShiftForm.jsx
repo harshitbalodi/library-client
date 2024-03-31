@@ -3,15 +3,15 @@ import CrossIcon from '../../assets/cross-icon.svg';
 import shiftServices from '../../services/shiftServices';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { setHallsThunk } from '../../store/hallSlice';
+import { hallsThunk } from '../../store/hallSlice';
 import { useState } from 'react';
 
 const ModifyShiftForm = ({ shift, setIsOpen }) => {
-  const [shiftName, setShiftName] = useState(shift.name);
-  const [capacity, setCapacity] = useState(shift.capacity);
-  const [endTime, setEndTime] = useState(shift.end_time);
-  const [startTime, setStartTime] = useState(shift.start_time);
-
+  const [shiftName, setShiftName] = useState(shift.name || '');
+  const [capacity, setCapacity] = useState(shift.capacity || 0);
+  const [shiftfee, setShiftfee] = useState(shift.fee || 0);
+  const [endTime, setEndTime] = useState(shift.end_time || "00:00:00");
+  const [startTime, setStartTime] = useState(shift.start_time || "00:00:00");
 
   const dispatch = useDispatch();
   console.log(shift);
@@ -23,13 +23,14 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
       name: shiftName,
       capacity: Number(capacity),
       start_time: startTime,
-      end_time: endTime
+      end_time: endTime,
+      fee: Number(shiftfee),
     }
     try {
       const response = await shiftServices.updateShift(shift.id, shiftObj);
       console.log(response);
       toast.success(response.data.data.message);
-      dispatch(setHallsThunk());
+      dispatch(hallsThunk());
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -58,6 +59,10 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
           <div>
             <label htmlFor="capacity"> Capacity</label>
             <input type="number" id='capacity' value={capacity} onChange={(e) => setCapacity(e.target.value)} required />
+          </div>
+          <div>
+            <label htmlFor="fee"> Fee</label>
+            <input type="number" id='fee' value={shiftfee} onChange={(e) => setShiftfee(e.target.value)} required />
           </div>
           <button className='submit-btn'>Update</button>
         </div>

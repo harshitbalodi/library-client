@@ -1,3 +1,118 @@
+.form-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.form-overlay.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.form-content{
+  background-color: #f7f7f7;
+  width: 50%;
+  min-width: max-content;
+  max-height: 80%;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem;
+  margin-top: 80px;
+}
+
+.form-overlay.active .form-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cross-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.cross-icon:hover {
+  transform: scale(1.05);
+  background-color: #eee;
+}
+.pay-fee-btn{
+  color: skyblue;
+  background: none;
+  border: none;
+  font-size: medium;
+  font-weight: bold;
+  border:2px solid skyblue;
+  border-radius: 5px;
+}
+
+.pay-fee-btn:hover{
+  background-color: skyblue;
+  color: white;
+}
+
+#months{
+  display: block;
+  margin: 7px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  font-size: inherit;
+}
+
+.seat-details {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.seat-details h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.seat-details p {
+  margin-bottom: 5px;
+}
+
+.pay-btn {
+  background-color: #4caf50;
+  width: 100%;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.pay-btn:hover {
+  opacity: 1;
+}
+
 .student {
   display: flex;
   flex-direction: row;
@@ -42,4 +157,12 @@
 }
 .phone-number img {
   width: 20px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .form-content {
+    width: 90%;
+    height: 80%;
+  }
 }

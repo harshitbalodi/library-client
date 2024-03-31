@@ -31,6 +31,29 @@
   right: 10px;
   z-index: 1;
 }
-div h1 {
+
+
+.hall-heading{
   color: #3e4152;
+  font-size: xx-large;
+  font-weight: bold;
+}
+.hall-heading input[type="text"]{
+  outline: none;
+  /* background-color: transparent; */
+  color: #3e4152;
+  font-size: xx-large;
+  font-weight: bold;
+  width: 150px;
+}
+
+.hall-heading img:hover{
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+.done-btn{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

@@ -202,3 +202,11 @@ export function extractExiringSoon(students){
   });
   return expiringSoon;
 }
+
+export function formatDate(dateString) {
+  const date = new Date(dateString);
+   const options = { month: 'long', year: 'numeric' };
+  const formattedMonth = new Intl.DateTimeFormat('en-US', options).format(date).toLowerCase();
+  const day = date.getDate();
+  return `${day} ${formattedMonth}`;
+}

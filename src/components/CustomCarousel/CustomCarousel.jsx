@@ -6,15 +6,21 @@ import RightArrow from '../../assets/arrow-circle-right.svg'
 import LeftArrow from '../../assets/arrow-circle-left.svg'
 import AddShift from '../AddShift/AddShift';
 import DeleteIcon from '../../assets/delete-icon.svg';
+import EditIcon from '../../assets/edit-icon.svg';
+import CancelIcon from '../../assets/cancel-icon.svg';
+import DoneIcon from '../../assets/done-icon.svg';
 import hallServices from '../../services/hallServices';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { setHallsThunk } from '../../store/hallSlice';
+import { hallsThunk } from '../../store/hallSlice';
+
 
 const CustomCarousel = ({ hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [numberOfCarouselSlide, setNumberOfCarousel] = useState(null);
   const [isHovering, setIsHovering] = useState(false);
+  const [hallName, setHallName] = useState(hall.name || '');
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     const handleResize = () => {
@@ -52,21 +58,51 @@ const CustomCarousel = ({ hall }) => {
     try {
       const response = await hallServices.deleteHall(hall.id);
       toast.success(response.data.message);
-      dispatch(setHallsThunk());
+      dispatch(hallsThunk());
       console.log(response);
     } catch (error) {
       toast.error(error.response.data.message);
     }
   }
 
+  const handleEdit = async(e) => {
+    e.preventDefault();
+    console.log("hall edit clicked");
+    try {
+      const response = await hallServices.editHall(hall.id, { name: hallName });
+      setEdit(false);
+      dispatch(hallsThunk());
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  }
+
   return (
     <div onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <h1 className='hall-heading'>
-        {hall.name}
+      <div className='hall-heading'>
+        {edit ? <form className='hall-heading' onSubmit={handleEdit}>
+          <input type="text" value={hallName} onChange={(e) => setHallName(e.target.value)} required />
+          <button className='done-btn'>
+            <img src={DoneIcon} alt="done edit" title='done edit' />
+          </button>
+        </form> :
+          hall.name}
         {
-          isHovering && <img title='Delete Hall' onClick={handleDelete} src={DeleteIcon} alt="" />
+          isHovering && <div>
+            {
+              !edit ? <div>
+                <img title="Edit Hall Name" onClick={() => setEdit(true)} src={EditIcon} alt="edit hall name" />
+                <img title='Delete Hall' onClick={handleDelete} src={DeleteIcon} alt="delete hall" />
+              </div> :
+                <div>
+                  <img title='cancel edit' onClick={() => setEdit(false)} src={CancelIcon} alt="cancel edit" />
+                </div>
+            }
+          </div>
         }
-      </h1>
+      </div>
       <div className="custom-carousel">
         {
           currentSlide !== 0 && <div className="carousel-button prev" onClick={goToPrevSlide}>

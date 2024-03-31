@@ -12,17 +12,18 @@ const ExpiringSoon = () => {
     if (students) setExpiringSoon(() => extractExiringSoon(students));
   }, [students]);
 
-  return (
-    <div className="expiring-soon">
-      {
-        expiringSoon.map(student => {
+  return (expiringSoon.length === 0?<div className='empty-expiring-soon'>
+        <h2 style={{margin:'5%',color:'#3e4152'}}>No students expiring soon</h2>
+      </div>:
+    <div>
+       { expiringSoon.map(student => {
           return <Student key={student.id} student={student}>
             <div className='red-text'>
               will expire in {student.daysLeft} days
             </div>
           </Student>
         })
-      }
+        }
     </div>
   )
 }

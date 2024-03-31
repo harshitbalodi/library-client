@@ -1,8 +1,7 @@
- .search-container {
+.search-container {
   position: relative;
   margin: 10px auto;
 }
-
 
 .search-bar {
   width: 50%;
@@ -43,10 +42,10 @@
   box-shadow: 0 0 1px 1px gainsboro;
 }
 
-.no-search-result{
+.no-search-result {
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/no-dp.jpg');
+  background-image: url("../../assets/no-dp.jpg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -79,7 +78,7 @@
   flex: 1;
 }
 
-.suggestion{
+.suggestion {
   /* width: 100%; */
   padding: 10px;
   border-bottom: 0.5px solid #ddd;
@@ -87,13 +86,17 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  /* justify-content: space-between; */
 }
-.mobile-number{
+.student-suggestion-details{
+  margin-top: 5px;
+  padding: 7px;
+  background-color: #f5f5f5;
+}
+
+.mobile-number {
   display: flex;
   align-items: center;
 }
-
 
 .student-description {
   width: 100%;
@@ -105,7 +108,11 @@
 
 .profile-picture {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  font-size: medium;
+  font-weight: 700;
 }
 
 .profile-picture img {
@@ -114,23 +121,18 @@
 }
 .student-dp {
   width: 50px;
-  width: 50px;
+  height: 50px;
 }
 
-.profile-picture img,.student-dp{
+.profile-picture img,
+.student-dp {
   padding: 4px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.2);
 }
 
-
-.paid {
-  color: green;
-  font-style: italic;
-}
-
-.not-paid {
-  color: red;
+.student-data {
+  font-weight: 700;
 }
 
 .shift-desk {
@@ -172,4 +174,4 @@
     width: 80%;
     flex-direction: row;
   }
-} 
+}

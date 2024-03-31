@@ -16,7 +16,7 @@ const hallSlice = createSlice({
 
 export const { setHalls } = hallSlice.actions;
 
-export const setHallsThunk = () => {
+export const hallsThunk = () => {
   return async (dispatch, getState) => {
     const { data } = await hallServices.getall();
     dispatch(setHalls(data.data));
@@ -24,4 +24,5 @@ export const setHallsThunk = () => {
     dispatch(setShifts(extractShifts(halls)));
   };
 };
+
 export default hallSlice.reducer;

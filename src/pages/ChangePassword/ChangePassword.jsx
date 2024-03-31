@@ -11,11 +11,25 @@ const ChangePassword = () => {
   const auth = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  
+  console.log(auth);
+
+  const username = localStorage.getItem('username');
+  const handleLogout = ()=>{
+        dispatch(logOut());
+        token.logout();
+        setCookie("refresh", "null", 0);
+        localStorage.removeItem('username');
+  }
+
+  if(!username){
+    handleLogout();
+  }
 
   useEffect(() => {
     if (!auth.adminLoggedIn) navigate('/shift');
@@ -43,9 +57,7 @@ const ChangePassword = () => {
     try {
       const response = await PasswordService.changePassword(userObj);
       console.log(response);
-      dispatch(logOut());
-      token.logout();
-      setCookie("refresh", "null", 0);
+      handleLogout();
     } catch (error) {
       console.error(error);
       if (error?.response?.data?.detail) {
@@ -56,12 +68,12 @@ const ChangePassword = () => {
   return (
     <div className='login-wrapper'>
       <div className="login-container">
-        <h1>Login</h1>
+        <h1>Update Password</h1>
         <form onSubmit={handleChangePassword}>
-          <div>
+          {/* <div>
             <label htmlFor="username">Username</label>
             <input type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} id="username" required />
-          </div>
+          </div> */}
           <div>
             <label htmlFor="old-password">Current password</label>
             <input type="password" placeholder="Enter password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} id="old-password" required />

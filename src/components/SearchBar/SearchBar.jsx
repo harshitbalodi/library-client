@@ -4,15 +4,17 @@ import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import MobileIcon from '../../assets/mobile-icon.svg'
-import { setImageUrl } from "../../utils/helper";
+import { formatDate, setImageUrl } from "../../utils/helper";
 
 const SearchBar = () => {
-    const students = useSelector(state => state.students);
+    const [students, shifts] = useSelector(state => [state.students, state.shifts]);
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [choosenStudent, setChoosenStudent] = useState(null);
     const inputRef = useRef(null);
     const detailRef = useRef(null);
+    console.log(choosenStudent);
+
 
     useEffect(() => {
         filterStudents();
@@ -54,6 +56,13 @@ const SearchBar = () => {
         setChoosenStudent(student);
     }
 
+    const findShiftName = (shiftId) => {
+        if (shifts) {
+            const shift = shifts.find(shift => shift.id === shiftId);
+            return shift ? shift.name : 'N/A';
+        }
+    }
+
     return (
         <div className="search-container">
             <div className="search-bar" ref={inputRef}>
@@ -61,44 +70,53 @@ const SearchBar = () => {
                 <button className='search-btn' onClick={handleSearch}><img width={14.7} src={searchIcon} alt="" /></button>
             </div>
             {filteredStudents.length > 0 && (
-                <div className="suggestions-wrapper" onClick={e=> e.stopPropagation()}>
+                <div className="suggestions-wrapper" onClick={e => e.stopPropagation()}>
                     <div className="suggestions">
                         {filteredStudents.map(student => (
-                        <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
-                            <div>
-                                <img className="student-dp" src={setImageUrl(student.image)} alt="student dp" />
-                            </div>
-                            <div className="name-status">
-                                <div className="name">{student.name}</div>
-                                <div className="mobile-number">
-                                    <img src={MobileIcon} className="" width={30} alt="mobile icon" />
-                                    +91-9399245654
+                            <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
+                                <div>
+                                    <img className="student-dp" src={setImageUrl(student.image)} alt="student dp" />
                                 </div>
-                                {/* {student.paid ? (
-                                    <div className="paid">Paid</div>
-                                )
-                                    :
-                                    (
-                                        <div className="not-paid">Not Paid</div>
-                                    )} */}
+                                <div className="name-status">
+                                    <div className="name">{student.name}</div>
+                                    <div className="mobile-number">
+                                        <img src={MobileIcon} className="" width={30} alt="mobile icon" />
+                                        +91-9399245654
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
-                    
-                    {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e)=>e.stopPropagation()}>
+
+                    {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e) => e.stopPropagation()}>
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
                         </button>
                         <div className="profile-picture">
                             <img width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
-                        </div>
-                        <div >
                             <div >{choosenStudent.name}</div>
-                            <div>Joining date:{choosenStudent.joining_date}</div>
-                            <div>Hall {choosenStudent.hall.name}</div>
-                            <div>shift {choosenStudent.hall.shift.name}</div>
-                            <div>desk no: {choosenStudent.hall.shift.desk}</div>
+                        </div>
+                        <div className="student-suggestion-details">
+                            <div>
+                                Joining date -
+                               <span className="student-data"> {formatDate(choosenStudent.joining_date)}</span>
+                            </div>
+                            <div>
+                                Hall -
+                                <span className="student-data"> {choosenStudent.hall.name}</span>
+                            </div>
+                            <div>
+                                shift -
+                                <span className="student-data"> {findShiftName(choosenStudent.hall.shift.name)}</span> 
+                            </div>
+                            <div>
+                                valid upto -
+                                <span className="student-data"> {formatDate(choosenStudent.valid_upto)}</span>
+                            </div>
+                            <div>
+                                desk no -
+                                <span className="student-data"> {choosenStudent.hall.shift.desk}</span>
+                            </div>
                         </div>
                     </div>}
                 </div>

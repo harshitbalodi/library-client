@@ -13,4 +13,10 @@ const deleteHall = async (id) => {
   const response = await axios.delete(baseUrl + `/${id}`);
   return response;
 };
-export default { getall, Addhall, deleteHall };
+
+const editHall = async (id, hallObj) => {
+  const response = await axios.patch(baseUrl + `/${id}`, hallObj);
+  return response;
+};
+
+export default { getall, Addhall, deleteHall, editHall};

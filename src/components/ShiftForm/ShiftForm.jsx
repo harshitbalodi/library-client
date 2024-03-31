@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 import shiftServices from '../../services/shiftServices';
-import { setHallsThunk } from '../../store/hallSlice';
+import { hallsThunk } from '../../store/hallSlice';
 
 const ShiftForm = ({ isOpen, onClose, hall }) => {
     const halls = useSelector(state => state.halls);
@@ -25,7 +25,6 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
 
     const handleCreateShift = async (event) => {
         event.preventDefault();
-
         if (!selectedHallId) {
             toast.error('Please select a Hall');
             return;
@@ -42,7 +41,7 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
         try {
             const response = await shiftServices.addShift(shiftObj);
             if (response) {
-                dispatch(setHallsThunk());
+                dispatch(hallsThunk());
                 toast.success("new shift is created");
                 setHallOptions([]);
                 setSelectedHallId('');

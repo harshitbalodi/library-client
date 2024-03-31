@@ -46,8 +46,6 @@
 .modal-content form {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* align-items: center; */
 }
 
 .modal-content form div {
@@ -58,10 +56,13 @@
   margin-right: 10px;
 }
 
-.modal-content form select,
-.modal-content form div input[type="text"],
-.modal-content form div input[type="number"],
-.modal-content form div input[type="time"] {
+#hall,
+#shift,
+#capacity,
+#fee,
+#start-time,
+#end-time {
+  display: block;
   margin: 7px;
   border-radius: 10px;
   padding: 10px;
@@ -89,8 +90,8 @@
 
 .cross-icon-container {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
 }
 

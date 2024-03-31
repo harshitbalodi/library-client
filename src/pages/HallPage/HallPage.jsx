@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 const HallPage = () => {
   const [halls, seat] = useSelector(state => [state.halls, state.seat]);
   const navigate = useNavigate();
-
   return !halls ? <Shimmer /> : (
     <div >
       <ToastContainer />

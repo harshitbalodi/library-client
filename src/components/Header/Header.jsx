@@ -8,6 +8,7 @@ import ArrowDown from '../../assets/arrow-down-black.svg';
 import { logOut } from '../../store/authSlice';
 import NoDp from '../../assets/no-dp.jpg';
 import { setCookie } from '../../utils/helper';
+import token from '../../services/token';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -51,6 +52,8 @@ const Header = () => {
         console.log('Logout clicked');
         dispatch(logOut());
         setCookie("refresh", "null", 0);
+        localStorage.removeItem('username');
+        token.logout();
     };
 
 
@@ -65,7 +68,8 @@ const Header = () => {
             <div className="right-section">
                 {!auth.adminLoggedIn ? (!isActive && <Link to='/login' className="admin-login">
                     <button className='login-btn'>Admin Login</button>
-                </Link>) :
+                </Link>)
+                    :
                     <div className="dropdown-container">
                         <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
                         {isOpen && (

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import studentService from "../services/studentService";
 
 const initialState = null;
 const studentsSlice = createSlice({
@@ -15,4 +16,18 @@ const studentsSlice = createSlice({
 });
 
 export const { getStudents, setStudents } = studentsSlice.actions;
+
+export const studentThunk = () => {
+  return async (dispatch) => {
+    try{
+      const { data } = await studentService.getall();
+    dispatch(setStudents(data.data));
+    }catch(error){
+      console.log("error in studentThunk", error);
+      throw error;
+    }
+    
+  };
+}
+
 export default studentsSlice.reducer;

@@ -10,8 +10,8 @@ const NotRenewed = () => {
     if (students) setNotRenewedStudents(() => students.filter(student => student.is_expired === true));
   }, [students]);
 
-  return notRenewedStudents.length === 0 ? <div className="empty-notrenewed">
-    <p>No students for renewal</p>
+  return notRenewedStudents.length === 0 ? <div className="empty-renewed">
+    <h2 style={{margin:'5%',color:'#3e4152'}}>All students are renewed</h2>
   </div> : (
     <div>
       {

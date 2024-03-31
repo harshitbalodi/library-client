@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import ModifyShiftForm from '../ModifyShiftForm/ModifyShiftForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { setHallsThunk } from '../../store/hallSlice';
+import { hallsThunk } from '../../store/hallSlice';
 import { setSeat } from '../../store/seatSlice';
 import ArrowDownWard from '../../assets/arrow-circle-right.svg';
 import deskService from '../../services/deskService';
@@ -17,7 +17,7 @@ import { disableDropdown, enableDropdown } from '../../store/editDropdownSlice';
 const SeatCard = ({ shift }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovering, setIsHovering] = useState(null);
-    const [seat, isEditDropdownOpen] = useSelector(state => [state.seat, state.editDropdown.isEnabled]);
+    const [seat, isEditDropdownOpen, students] = useSelector(state => [state.seat, state.editDropdown.isEnabled, state.students]);
     const dispatch = useDispatch();
     useEffect(() => {
         if (!seat || !shift) return;
@@ -27,6 +27,14 @@ const SeatCard = ({ shift }) => {
             }
         })
     }, [shift, seat])
+
+    const findName=(deskNo)=>{
+        if(!students){
+            return 'seat Taken';
+        }
+        const student = students.find(student => student.hall.shift.id === shift.id && student.hall.shift.desk === deskNo);
+        return student ? `${student.name}` : 'seat Taken';
+    }
     const BookSeat = (desk) => {
         console.log("desk id is clicked", desk);
         if (!desk.is_vacant || !desk.is_active) {
@@ -54,7 +62,7 @@ const SeatCard = ({ shift }) => {
                     toast.error(response.data.message);
                 } else {
                     toast.success(response.data.message);
-                    dispatch(setHallsThunk());
+                    dispatch(hallsThunk());
                 }
             } catch (error) {
                 console.log(error);
@@ -69,7 +77,7 @@ const SeatCard = ({ shift }) => {
         try {
             const response = await deskService.updateDesk(desk.id, { is_active: !desk.is_active });
             console.log(response);
-            dispatch(setHallsThunk());
+            dispatch(hallsThunk());
         } catch (error) {
             console.log(error);
         }
@@ -93,6 +101,7 @@ const SeatCard = ({ shift }) => {
                                 ? "inactive"
                                 :
                                 (desk.is_vacant ? 'vacant' : 'occupied')}`}
+                        title={`${!desk.is_vacant && desk.is_active ? findName(desk.seat_no):'' }`}
                         onClick={() => BookSeat(desk, shift.name)}
                         onMouseEnter={() => setIsHovering(index)}
                         onMouseLeave={() => setIsHovering(null)}
@@ -134,8 +143,12 @@ const SeatCard = ({ shift }) => {
                 <div className='fee'>Fee: Rs {formatNumber(shift.fee)}</div>
             </div>
             <div className='action-buttons'>
-                <div className='edit-img' title='edit card' onClick={handleEdit}><img src={EditIcon} alt="edit" /></div>
-                <div className='del-img' title='delete card' onClick={handleDelete}><img src={DeleteIcon} alt="del" /></div>
+                <div className='edit-img' title='edit card' onClick={handleEdit}>
+                    <img src={EditIcon} alt="edit" />
+                </div>
+                <div className='del-img' title='delete card' onClick={handleDelete}>
+                    <img src={DeleteIcon} alt="del" />
+                </div>
             </div>
             {isOpen && (<ModifyShiftForm
                 shift={shift}
