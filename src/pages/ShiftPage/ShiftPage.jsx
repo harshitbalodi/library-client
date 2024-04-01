@@ -5,7 +5,7 @@ import Shimmer from '../../components/Shimmer/Shimmer';
 import './ShiftPage.css';
 import { useEffect, useState } from 'react';
 import { filterShiftsByTime, sortShiftsByFee } from '../../utils/helper';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,6 @@ const ShiftPage = () => {
   }
   return !shifts ? <Shimmer /> : (
     <div >
-      <ToastContainer />
       <div className='filter-container'>
         <div className='time-filter'>
           <div className='time-filter-heading'>Choose your preferable time window</div>

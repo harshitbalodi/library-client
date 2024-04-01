@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import './NotRenewed.css';
+import '../index.css';
 import Student from "../Student/Student";
 const NotRenewed = () => {
   const students = useSelector(state => state.students);
@@ -10,7 +10,7 @@ const NotRenewed = () => {
     if (students) setNotRenewedStudents(() => students.filter(student => student.is_expired === true));
   }, [students]);
 
-  return notRenewedStudents.length === 0 ? <div className="empty-renewed">
+  return notRenewedStudents.length === 0 ? <div className="feels-empty">
     <h2 style={{margin:'5%',color:'#3e4152'}}>All students are renewed</h2>
   </div> : (
     <div>

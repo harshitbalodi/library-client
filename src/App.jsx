@@ -19,7 +19,7 @@ import token from "./services/token";
 import { getCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
 import { studentThunk } from "./store/studentsSlice";
-
+import { ToastContainer } from "react-toastify";
 function App() {
   const dispatch = useDispatch();
   const sidebar = useSelector(state => state.sidebar);
@@ -54,8 +54,8 @@ function App() {
   return (
     <Router>
       <div className="body-container">
+        <ToastContainer />
         <Header />
-
         <div className="middle-container">
           <div>
             <Sidebar />

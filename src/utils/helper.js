@@ -203,6 +203,18 @@ export function extractExiringSoon(students){
   return expiringSoon;
 }
 
+export const extractNewBooking = (students)=>{
+  const today = new Date();
+  const newBookings = []
+  students.forEach((student)=>{
+    if(student.is_expired) return;
+    const joinedDate = new Date(student.joining_date);
+    const daysPast = Math.floor((today.getTime() - joinedDate.getTime()) / (1000 * 60 * 60 * 24));
+    if(daysPast >= 0 && daysPast <= 9) newBookings.push({...student, joined_days_past: daysPast});
+  })
+  return newBookings
+}
+
 export function formatDate(dateString) {
   const date = new Date(dateString);
    const options = { month: 'long', year: 'numeric' };

@@ -3,4 +3,25 @@
     background-color: #f7f7f7;
     padding: 15px;
     color: #443d3d;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
+
+.social-links{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.social-links a {
+    margin-right: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+    filter: brightness(120%);
+}
+

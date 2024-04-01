@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import './ExpiringSoon.css';
+import '../index.css';
 import { useEffect, useState } from 'react';
 import Student from '../Student/Student';
 import { extractExiringSoon } from '../../utils/helper';
@@ -12,13 +12,13 @@ const ExpiringSoon = () => {
     if (students) setExpiringSoon(() => extractExiringSoon(students));
   }, [students]);
 
-  return (expiringSoon.length === 0?<div className='empty-expiring-soon'>
+  return (expiringSoon.length === 0?<div className='feels-empty'>
         <h2 style={{margin:'5%',color:'#3e4152'}}>No students expiring soon</h2>
       </div>:
     <div>
        { expiringSoon.map(student => {
           return <Student key={student.id} student={student}>
-            <div className='red-text'>
+            <div style={{color:'red'}}>
               will expire in {student.daysLeft} days
             </div>
           </Student>

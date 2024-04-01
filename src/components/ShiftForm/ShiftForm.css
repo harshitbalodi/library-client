@@ -20,7 +20,8 @@
 }
 
 .modal-content {
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
+  background-color: #fff;
   width: 50%;
   min-width: max-content;
   max-height: 80%;
@@ -61,13 +62,22 @@
 #capacity,
 #fee,
 #start-time,
-#end-time {
+#end-time{
+  /* display: block;
+  margin: 7px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  font-size: inherit; */
   display: block;
   margin: 7px;
   border-radius: 10px;
   padding: 10px;
   width: 90%;
-  font-size: inherit;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
 }
 
 .modal-content form button {

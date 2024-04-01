@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 import '../../index.css';
 import CardCarousel from "../../components/CardCarousel/CardCarousel";
 import Shimmer from "../../components/Shimmer/Shimmer";
-import { ToastContainer } from "react-toastify";
 import AddHall from "../../components/AddHall/AddHall";
 import Button from "../../components/Button/Button";
 import './HallPage.css';
@@ -13,7 +12,6 @@ const HallPage = () => {
   const navigate = useNavigate();
   return !halls ? <Shimmer /> : (
     <div >
-      <ToastContainer />
       <div className='booking-btn'>
         {seat && <Button onClick={() => navigate('/booking')} >Proceed</Button>}
       </div>

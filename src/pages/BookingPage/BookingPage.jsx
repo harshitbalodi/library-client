@@ -14,15 +14,18 @@ const BookingPage = () => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
+  const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const [address, setAddress] = useState('');
   const [months, setMonths] = useState(1);
+  const [joiningDate, setJoiningDate] = useState(new Date().toISOString().split('T')[0]);
   const [error, setErrors] = useState('');
   const imageInputRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  console.log(seat);
+  console.log(joiningDate);
+  console.log(image);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!seat){
@@ -34,22 +37,39 @@ const BookingPage = () => {
       setTimeout(()=>setErrors(''), 3000);
       return;
     }
-
+    if(image === null){
+      setErrors('Please upload an image');
+      setTimeout(()=>setErrors(''), 3000);
+      return;
+    }
+    
+    const formData = new FormData();
+    // formData.append('name', name);
+    // formData.append('mobile_no', phoneNumber);
+    // formData.append('gender', gender === 'male');
+    // formData.append('address', address);
+    formData.append('image', image);
+    // formData.append('desk', seat.id);
+    // formData.append('shift', seat.shift.id);
+    // formData.append('paid_for_month', Number(months));
+    // formData.append('joining_date', joiningDate);
+    // formData.append('joining_date', Number(new Date().toISOString().split('T')[0]));
     const studentObj = {
       name,
-      mobile_no:phoneNumber,
-      gender:gender === 'male',
+      mobile_no: phoneNumber,
+      gender: gender === 'male',
       address,
-      image:previewImage,
       desk: seat.id,
       shift: seat.shift.id,
-      paid_for_month:months,
-      joining_date: new Date().toISOString().split('T')[0]
+      paid_for_month: months,
+      joining_date: joiningDate,
+      // image: encodeURIComponent(URL.createObjectURL(image))
     }
     console.log(studentObj);
+
     try{
       const response = await studentService.createStudent(studentObj);
-      console.log(response);
+      console.log("student created",response);
       toast.success("student created Succesfully");
       dispatch(setSeat(null));
       dispatch(studentThunk());
@@ -62,12 +82,14 @@ const BookingPage = () => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type.startsWith('image/')) {
+      setImage(file);
       const reader = new FileReader();
       reader.onload = (e) => setPreviewImage(e.target.result);
       reader.readAsDataURL(file);
     } else {
       // Clear preview if invalid file
-      setPreviewImage(null); 
+      // setPreviewImage(null); 
+      // setImage(null);
     }
   };
 
@@ -89,7 +111,7 @@ const BookingPage = () => {
       {
         !seat && <div className='not-selected'>
           <h2>You have not selected any seat</h2>
-          <Button onClick={() => navigate('/shift')}>Book seat</Button>
+          <Button onClick={() => navigate('/')}>Home</Button>
         </div>
       }
       {seat && (
@@ -109,10 +131,10 @@ const BookingPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone-number">Phone Number</label>
+              <label htmlFor="mobile-no">Phone Number</label>
               <input
                 type="tel"
-                id="phone-number"
+                id="mobile-no"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="Enter phone number"
@@ -128,8 +150,8 @@ const BookingPage = () => {
               onChange={(e) => setGender(e.target.value)}
               required
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option id='opt1' value="male">Male</option>
+                <option  id='opt2' value="female">Female</option>
               </select>
             </div>
             <div className='form-group'>
@@ -152,6 +174,17 @@ const BookingPage = () => {
               value={months}
               onChange={(e) => setMonths(Math.round(e.target.value))}
               className='months-input'
+              required
+              />
+            </div>
+            <div className='form-group'>
+              <label htmlFor="joining-date">Joining date</label>
+              <input
+              type='date'
+              id='joining-date'
+              value={joiningDate}
+              onChange={(e) => setJoiningDate(e.target.value)}
+              className='joining-input'
               required
               />
             </div>

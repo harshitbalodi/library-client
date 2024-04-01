@@ -43,8 +43,16 @@
   margin-bottom: 5px;
 }
 
-.name-input,
-.phone-number-input {
+#address,
+#name,
+#phone,
+#desk,
+#mobile-no,
+#gender,
+#joining-date
+#months,
+#opt1,
+#opt2{
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;

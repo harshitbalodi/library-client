@@ -2,19 +2,21 @@ import { useSelector } from "react-redux";
 import searchIcon from '../../assets/search-icon.svg';
 import { useState, useRef, useEffect } from "react";
 import './SearchBar.css';
+import '../index.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import MobileIcon from '../../assets/mobile-icon.svg'
 import { formatDate, setImageUrl } from "../../utils/helper";
+import StudentUpdate from "../StudentUpdate/StudentUpdate";
 
 const SearchBar = () => {
     const [students, shifts] = useSelector(state => [state.students, state.shifts]);
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [choosenStudent, setChoosenStudent] = useState(null);
+    const [formOpen, setFormOpen] = useState(false);
     const inputRef = useRef(null);
     const detailRef = useRef(null);
     console.log(choosenStudent);
-
 
     useEffect(() => {
         filterStudents();
@@ -89,17 +91,19 @@ const SearchBar = () => {
                     </div>
 
                     {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e) => e.stopPropagation()}>
+                        <StudentUpdate student={choosenStudent} formOpen={formOpen} setFormOpen={setFormOpen}/>
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
                         </button>
                         <div className="profile-picture">
                             <img width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                             <div >{choosenStudent.name}</div>
+                            <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Pay/Edit</button>
                         </div>
                         <div className="student-suggestion-details">
                             <div>
                                 Joining date -
-                               <span className="student-data"> {formatDate(choosenStudent.joining_date)}</span>
+                                <span className="student-data"> {formatDate(choosenStudent.joining_date)}</span>
                             </div>
                             <div>
                                 Hall -
@@ -107,7 +111,7 @@ const SearchBar = () => {
                             </div>
                             <div>
                                 shift -
-                                <span className="student-data"> {findShiftName(choosenStudent.hall.shift.name)}</span> 
+                                <span className="student-data"> {findShiftName(choosenStudent.hall.shift.name)}</span>
                             </div>
                             <div>
                                 valid upto -
