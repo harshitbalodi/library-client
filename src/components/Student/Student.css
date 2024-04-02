@@ -2,7 +2,7 @@
 .student {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 100%;
   padding: 5px;
   margin-top: 7px;
   align-items: center;

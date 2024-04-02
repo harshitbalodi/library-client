@@ -186,7 +186,8 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id='name'
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            required />
+                                            required 
+                                            />
                                     </div>
                                     <div>
                                         <label htmlFor="gender">Gender</label>
@@ -194,7 +195,6 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id="gender"
                                             value={gender}
                                             onChange={(e) => setGender(e.target.value)}
-                                            required
                                         >
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -207,7 +207,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id='address'
                                             value={address}
                                             onChange={(e) => setAddress(e.target.value)}
-                                            required />
+                                             />
                                     </div>
                                     <div>
                                         <label htmlFor="mobile-no">Mobile Number</label>
@@ -216,7 +216,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id='mobile-no'
                                             value={mobileNo}
                                             onChange={(e) => setMobileNumber(e.target.value)}
-                                            required />
+                                             />
                                     </div>
                                     <div>
                                         <label htmlFor="shift">Shift</label>
@@ -224,7 +224,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id="shift"
                                             value={selectedShiftId}
                                             onChange={(e) => setSelectedShiftId(e.target.value)}
-                                            required
+                                            
                                         >
                                             {shifts.length > 0 ? (
                                                 shifts.map((option) => (
@@ -244,7 +244,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                                 id="desk"
                                                 value={selectedDeskId}
                                                 onChange={(e) => setSelectedDeskId(e.target.value)}
-                                                required
+                                                
                                             >
                                                 {selectedShift && selectedShift.desks?.length > 0 ? (
                                                     selectedShift.desks.map((desk) => (
