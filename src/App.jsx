@@ -22,7 +22,7 @@ import { studentThunk } from "./store/studentsSlice";
 import { ToastContainer } from "react-toastify";
 function App() {
   const dispatch = useDispatch();
-  const sidebar = useSelector(state => state.sidebar);
+  const [sidebar, adminLoggedIn] = useSelector(state => [state.sidebar, state.auth.adminLoggedIn]);
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -32,6 +32,12 @@ function App() {
         console.log(error);
       }
     }
+   
+    if(adminLoggedIn) getdata();
+    const clearId = setInterval(getdata, 300000)
+    return () => clearInterval(clearId);
+  }, [adminLoggedIn]);
+  useEffect(() => {
     const isUserLoggedIn = async () => {
       const refresh = getCookie("refresh");
       console.log("refresh from cookies", refresh);
@@ -47,10 +53,7 @@ function App() {
     }
 
     isUserLoggedIn();
-    getdata();
-    const clearId = setInterval(getdata, 300000)
-    return () => clearInterval(clearId);
-  }, [])
+  },[]);
   return (
     <Router>
       <div className="body-container">

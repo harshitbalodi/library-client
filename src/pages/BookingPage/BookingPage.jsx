@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './BookingPage.css';
-import { useState, useRef } from 'react';
-import ImagesIcon from '../../assets/images-icon.svg';
+import { useState } from 'react';
 import Button from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom';
 import studentService from '../../services/studentService';
 import { toast } from 'react-toastify';
 import { setSeat } from '../../store/seatSlice';
 import { studentThunk } from '../../store/studentsSlice';
+import ImagePicker from '../../components/ImagePicker/ImagePicker';
 
 const BookingPage = () => {
   const seat = useSelector(state => state.seat);
@@ -15,58 +15,35 @@ const BookingPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
   const [image, setImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
   const [address, setAddress] = useState('');
   const [months, setMonths] = useState(1);
   const [joiningDate, setJoiningDate] = useState(new Date().toISOString().split('T')[0]);
   const [error, setErrors] = useState('');
-  const imageInputRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  console.log(joiningDate);
-  console.log(image);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!seat){
       return;
     }
-
     if (months <= 0) {
       setErrors('Please enter a valid number of months');
       setTimeout(()=>setErrors(''), 3000);
       return;
     }
-    if(image === null){
-      setErrors('Please upload an image');
-      setTimeout(()=>setErrors(''), 3000);
-      return;
-    }
-    
     const formData = new FormData();
     formData.append('name', name);
     formData.append('mobile_no', phoneNumber);
     formData.append('gender', gender === 'male');
     formData.append('address', address);
-    formData.append('image', image);
+    if(image){
+      formData.append('image', image);
+    }
     formData.append('desk', seat.id);
     formData.append('shift', seat.shift.id);
     formData.append('paid_for_month', Number(months));
     formData.append('joining_date', joiningDate);
-    // formData.append('joining_date', Number(new Date().toISOString().split('T')[0]));
-    // const studentObj = {
-    //   name,
-    //   mobile_no: phoneNumber,
-    //   gender: gender === 'male',
-    //   address,
-    //   desk: seat.id,
-    //   shift: seat.shift.id,
-    //   paid_for_month: months,
-    //   joining_date: joiningDate,
-    //   // image: encodeURIComponent(URL.createObjectURL(image))
-    // }
-    // console.log(studentObj);
-
     try{
       const response = await studentService.createStudent(formData);
       console.log("student created",response);
@@ -76,33 +53,6 @@ const BookingPage = () => {
       navigate('/hall');
     }catch(error){
       console.log(error);
-    }
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-      setImage(file);
-      const reader = new FileReader();
-      reader.onload = (e) => setPreviewImage(e.target.result);
-      reader.readAsDataURL(file);
-    } else {
-      // Clear preview if invalid file
-      // setPreviewImage(null); 
-      // setImage(null);
-    }
-  };
-
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
-
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-
-    if (file && file.type.startsWith('image/')) {
-      handleImageChange({ target: { files: [file] } }); // Simulate image change event
     }
   };
 
@@ -188,39 +138,9 @@ const BookingPage = () => {
               required
               />
             </div>
-            {/* Image picker */}
-            <div className="image-picker">
-              <label htmlFor="image-input">Profile Picture (Optional)</label>
-              <input
-                type="file"
-                id="image-input"
-                ref={imageInputRef}
-                onChange={handleImageChange}
-                accept="image/*"
-                style={{ display: 'none', border: "1px solid black" }}
-              />
-              <div
-                className="image-preview"
-                onClick={() => imageInputRef.current.click()} // Open file browser on click
-                onDragOver={handleDragOver}
-                onDrop={handleDrop}
-              >
-                {previewImage ? (
-                  <img
-                    src={previewImage}
-                    width={100}
-                    alt="Profile preview"
-                    style={{ borderRadius: '50%' }}
-                  /> // Circle preview
-                ) : (
-                  <div>
-                    <img src={ImagesIcon} alt="" />
-                  </div>
-                )}
-                Drag & Drop or <span style={{ color: 'blue' }}>Browse</span>
-              </div>
-            </div>
-            {/* image picker  end here*/}
+         
+            <ImagePicker setImage={setImage}/>
+
             <div style={{ color: 'red' }}>
               {error}
             </div>

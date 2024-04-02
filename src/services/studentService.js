@@ -62,18 +62,18 @@ const updateStudent = async (id, formData) => {
   }
 };
 
-const updateStudentImage = async (id, formData) => {
-  try {
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    };
-    const response = await axios.patch(baseUrl + "/" + id, formData, config);
-    return response;
-  } catch (error) {
-    console.log("error updating student image", error);
-    throw error;
-  }
-}
-export default { getall, createStudent, updateStudent, updateStudentImage };
+// const updateStudentImage = async (id, formData) => {
+//   try {
+//     const config = {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//       },
+//     };
+//     const response = await axios.patch(baseUrl + "/" + id, formData, config);
+//     return response;
+//   } catch (error) {
+//     console.log("error updating student image", error);
+//     throw error;
+//   }
+// }
+export default { getall, createStudent, updateStudent };

@@ -1,0 +1,8 @@
+.image-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed blue;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+  }

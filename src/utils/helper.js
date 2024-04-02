@@ -179,6 +179,7 @@ export function getCookie(cName) {
 }
 
 export function setImageUrl(imageUrl) {
+  if(!imageUrl) return null;
   const mediaIndex = imageUrl.indexOf('/media');
   if (mediaIndex !== -1) {
     const newImageUrl = import.meta.env.VITE_BACKEND_API_URL + imageUrl.substring(mediaIndex);
