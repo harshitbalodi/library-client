@@ -17,6 +17,7 @@ import { getCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
 import { setStudents, studentThunk } from "./store/studentsSlice";
 import { setShifts } from "./store/shiftSlice";
+
 function App() {
   const dispatch = useDispatch();
   const [sidebar, adminLoggedIn] = useSelector(state => [state.sidebar, state.auth.adminLoggedIn]);
@@ -69,7 +70,10 @@ function App() {
             <Routes>
               {
                 !adminLoggedIn ? (
+                  <>
                   <Route path="/" element={<LoginPage />} />
+                  </>
+                  
                 )
                   : (
                     <>

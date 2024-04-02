@@ -2,7 +2,6 @@
 import './ModifyShiftform.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import shiftServices from '../../services/shiftServices';
-// import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 import { useState } from 'react';
@@ -13,7 +12,6 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
   const [shiftfee, setShiftfee] = useState(shift.fee || 0);
   const [endTime, setEndTime] = useState(shift.end_time || "00:00:00");
   const [startTime, setStartTime] = useState(shift.start_time || "00:00:00");
-
   const dispatch = useDispatch();
   console.log(shift);
 

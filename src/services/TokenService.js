@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "https://lms-umd5.onrender.com/v1/api/token";
+const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/token";
 
 const loginUser = async (userObj) => {
   console.log(userObj);

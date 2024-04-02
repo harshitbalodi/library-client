@@ -1,6 +1,6 @@
 import axios from "axios";
 import token from "./token";
-const baseUrl = "https://lms-umd5.onrender.com/v1/api/change_password";
+const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/change_password";
 
 const changePassword = async (userObj) => {
   try {

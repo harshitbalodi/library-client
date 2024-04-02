@@ -9,6 +9,20 @@
     align-items: center;
   }
 
+.footer-block-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+}
+.footer-block{
+    max-width: 450px;
+    margin: 10px;
+    height: 200px;
+    padding:5px;
+}
+
 .social-links{
     display: flex;
     justify-content: flex-start;

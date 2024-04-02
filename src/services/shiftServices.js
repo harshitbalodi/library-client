@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "https://lms-umd5.onrender.com/v1/api/shift";
+const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/shift";
 import token from "./token";
 
 const getall = async () => {

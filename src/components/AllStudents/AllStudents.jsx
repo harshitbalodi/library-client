@@ -19,4 +19,4 @@ const AllStudents = () => {
     )
 }
 
-export default AllStudents
+export default AllStudents;

@@ -7,6 +7,16 @@ div {
   font-family: Arial, sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(223, 217, 217);
+  /* border: 0.2px solid rgb(111, 109, 109); */
+  border-radius: 2px;
+}
+
 .body-container {
   display: flex;
   flex-direction: column;
