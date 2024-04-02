@@ -110,14 +110,7 @@
   opacity: 1;
 }
 
-/* .btn-indicator {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 0.2rem;
-    background-color: #4caf50;
-    transition: transform 0.3s ease-in-out;
-} */
+
 
 .btn-wrapper {
   display: flex;
@@ -172,4 +165,11 @@
 }
 label{
     margin: 7px;
+}
+
+@media screen and (max-width: 600px) {
+  .form-content {
+    width: 90%;
+    height: 80%;
+  }
 }

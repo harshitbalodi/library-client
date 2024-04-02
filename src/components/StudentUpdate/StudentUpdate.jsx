@@ -144,14 +144,6 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                     onClick={() => setActiveForm('editStudent')}>
                                     Edit student
                                 </button>
-                                <div
-                                    className='btn-indicator'
-                                    style={{
-                                        transform: `translateX(${activeForm === 'payfee' ? '0%' : '100%'})`, // Move indicator based on active component
-                                        width: `calc(50%)`
-                                    }}
-                                >
-                                </div>
                             </div>
                         </div>
                         {/* Pay fee Form */}
