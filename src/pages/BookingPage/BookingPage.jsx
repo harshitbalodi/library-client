@@ -21,15 +21,15 @@ const BookingPage = () => {
   const [error, setErrors] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+  console.log(seat);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!seat){
+    if (!seat) {
       return;
     }
     if (months <= 0) {
       setErrors('Please enter a valid number of months');
-      setTimeout(()=>setErrors(''), 3000);
+      setTimeout(() => setErrors(''), 3000);
       return;
     }
     const formData = new FormData();
@@ -37,24 +37,28 @@ const BookingPage = () => {
     formData.append('mobile_no', phoneNumber);
     formData.append('gender', gender === 'male');
     formData.append('address', address);
-    if(image){
+    if (image) {
       formData.append('image', image);
     }
     formData.append('desk', seat.id);
     formData.append('shift', seat.shift.id);
     formData.append('paid_for_month', Number(months));
     formData.append('joining_date', joiningDate);
-    try{
+    try {
       const response = await studentService.createStudent(formData);
-      console.log("student created",response);
+      console.log("student created", response);
       toast.success("student created Succesfully");
       dispatch(setSeat(null));
       dispatch(studentThunk());
       navigate('/hall');
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
   };
+  const CalculateFee = () => {
+    if (months <= 0 || !seat) return 0;
+    return Math.round(months) * seat.shift.fee;
+  }
 
   return (
     <div >
@@ -94,14 +98,14 @@ const BookingPage = () => {
             </div>
             <div className='form-group'>
               <label htmlFor="gender">Gender</label>
-              <select 
-              id="gender"
-              value = {gender}
-              onChange={(e) => setGender(e.target.value)}
-              required
+              <select
+                id="gender"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                required
               >
                 <option id='opt1' value="male">Male</option>
-                <option  id='opt2' value="female">Female</option>
+                <option id='opt2' value="female">Female</option>
               </select>
             </div>
             <div className='form-group'>
@@ -119,27 +123,27 @@ const BookingPage = () => {
             <div className='form-group'>
               <label htmlFor="months">Months</label>
               <input
-              type='number'
-              id='months'
-              value={months}
-              onChange={(e) => setMonths(Math.round(e.target.value))}
-              className='months-input'
-              required
+                type='number'
+                id='months'
+                value={months}
+                onChange={(e) => setMonths(Math.round(e.target.value))}
+                className='months-input'
+                required
               />
             </div>
             <div className='form-group'>
               <label htmlFor="joining-date">Joining date</label>
               <input
-              type='date'
-              id='joining-date'
-              value={joiningDate}
-              onChange={(e) => setJoiningDate(e.target.value)}
-              className='joining-input'
-              required
+                type='date'
+                id='joining-date'
+                value={joiningDate}
+                onChange={(e) => setJoiningDate(e.target.value)}
+                className='joining-input'
+                required
               />
             </div>
-         
-            <ImagePicker setImage={setImage}/>
+
+            <ImagePicker setImage={setImage} />
 
             <div style={{ color: 'red' }}>
               {error}
@@ -149,6 +153,7 @@ const BookingPage = () => {
             </button>
             <div className="seat-details">
               <h2>Selected Seat Details</h2>
+              <p>Total Amount: {CalculateFee()}</p>
               <p>Seat Number: {seat.seat_no}</p>
               <p>Shift: {seat.shift.name}</p>
               <p>Start Time: {seat.shift.start_time}</p>
