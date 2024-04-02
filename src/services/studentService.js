@@ -5,7 +5,7 @@ import token from "./token";
 const getall = async () => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
     };
     const response = await axios.get(baseUrl, config);
     return response;
@@ -18,7 +18,7 @@ const getall = async () => {
 const createStudent = async (studentObj) => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
       "Content-Type": "multipart/form-data"
     };
     const response = await axios.post(baseUrl, studentObj, config);
@@ -32,7 +32,7 @@ const createStudent = async (studentObj) => {
 const updateStudent = async (id, formData) => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
       "Content-Type": "multipart/form-data"
     };
     const response = await axios.patch(baseUrl + "/" + id, formData, config);
@@ -43,4 +43,18 @@ const updateStudent = async (id, formData) => {
   }
 };
 
-export default { getall, createStudent, updateStudent };
+const deleteStudent = async(id)=>{
+  try{
+    const config = {
+      headers: token.getToken(),
+      "Content-Type": "multipart/form-data"
+    };
+    const response = await axios.delete(baseUrl + "/" + id, config);
+    return response;
+  }catch(error){
+    console.log("error deleting student", error);
+    throw error;
+  }
+}
+
+export default { getall, createStudent, updateStudent, deleteStudent};

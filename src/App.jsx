@@ -17,6 +17,7 @@ import { getCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
 import { setStudents, studentThunk } from "./store/studentsSlice";
 import { setShifts } from "./store/shiftSlice";
+import Notification from "./components/Notification/Notification";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
     <Router>
       <div className="body-container">
         <Header />
+        <Notification/>
         <div className="middle-container">
           {adminLoggedIn &&<div>
             <Sidebar />

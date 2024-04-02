@@ -5,7 +5,7 @@ import token from "./token";
 const updatePayment = async (studentId, month) => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
     };
     const response = await axios.post(
       baseUrl,

@@ -13,7 +13,7 @@ const ExpiringSoon = () => {
   }, [students]);
 
   return (expiringSoon.length === 0?<div className='feels-empty'>
-        <h2 style={{margin:'5%',color:'#3e4152'}}>No students expiring soon</h2>
+        <h2 style={{margin:'5%',color:'#3e4152'}}>No students expiring in next 4 days</h2>
       </div>:
     <div>
        { expiringSoon.map(student => {

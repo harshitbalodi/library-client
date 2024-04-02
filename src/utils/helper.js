@@ -179,47 +179,54 @@ export function getCookie(cName) {
 }
 
 export function setImageUrl(imageUrl) {
-  if(!imageUrl) return null;
-  const mediaIndex = imageUrl.indexOf('/media');
+  if (!imageUrl) return null;
+  const mediaIndex = imageUrl.indexOf("/media");
   if (mediaIndex !== -1) {
-    const newImageUrl = import.meta.env.VITE_BACKEND_API_URL + imageUrl.substring(mediaIndex);
+    const newImageUrl =
+      import.meta.env.VITE_BACKEND_API_URL + imageUrl.substring(mediaIndex);
     return newImageUrl;
   } else {
     console.warn('Image URL does not contain "/media":', imageUrl);
-    return imageUrl; 
+    return imageUrl;
   }
 }
 
-export function extractExiringSoon(students){
+export function extractExiringSoon(students) {
   const today = new Date();
-   const expiringSoon = []
- students.forEach(student => {
-    if(student.is_expired) return;
+  const expiringSoon = [];
+  students.forEach((student) => {
+    if (student.is_expired) return;
     const validUptoDate = new Date(student.valid_upto);
     const daysLeft = Math.floor(
-      (validUptoDate.getTime()- today.getTime())/(1000*60*60*24)
-    )
-    if(daysLeft >=0 && daysLeft <= 9)  expiringSoon.push({...student, daysLeft});
+      (validUptoDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    if (daysLeft >= 0 && daysLeft <= 4)
+      expiringSoon.push({ ...student, daysLeft });
   });
   return expiringSoon;
 }
 
-export const extractNewBooking = (students)=>{
+export const extractNewBooking = (students) => {
   const today = new Date();
-  const newBookings = []
-  students.forEach((student)=>{
-    if(student.is_expired) return;
+  const newBookings = [];
+  students.forEach((student) => {
+    if (student.is_expired) return;
     const joinedDate = new Date(student.joining_date);
-    const daysPast = Math.floor((today.getTime() - joinedDate.getTime()) / (1000 * 60 * 60 * 24));
-    if(daysPast >= 0 && daysPast <= 9) newBookings.push({...student, joined_days_past: daysPast});
-  })
-  return newBookings
-}
+    const daysPast = Math.floor(
+      (today.getTime() - joinedDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    if (daysPast >= 0 && daysPast <= 6)
+      newBookings.push({ ...student, joined_days_past: daysPast });
+  });
+  return newBookings;
+};
 
 export function formatDate(dateString) {
   const date = new Date(dateString);
-   const options = { month: 'long', year: 'numeric' };
-  const formattedMonth = new Intl.DateTimeFormat('en-US', options).format(date).toLowerCase();
+  const options = { month: "long", year: "numeric" };
+  const formattedMonth = new Intl.DateTimeFormat("en-US", options)
+    .format(date)
+    .toLowerCase();
   const day = date.getDate();
   return `${day} ${formattedMonth}`;
 }

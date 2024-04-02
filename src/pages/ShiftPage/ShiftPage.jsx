@@ -5,8 +5,6 @@ import Shimmer from '../../components/Shimmer/Shimmer';
 import './ShiftPage.css';
 import { useEffect, useState } from 'react';
 import { filterShiftsByTime, sortShiftsByFee } from '../../utils/helper';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import '../../components/SeatCard/SeatCard.css';
@@ -40,7 +38,6 @@ const ShiftPage = () => {
     console.log('Start Time:', startTime);
     console.log('End Time:', endTime + ":00");
     if (endTime < startTime) {
-      toast.error('start time should be smaller than the end time');
       return;
     }
     console.log(startTime.toString() < "05:10:00")

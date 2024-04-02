@@ -7,13 +7,13 @@ import '../index.css';
 import { useState } from 'react';
 import StudentUpdate from '../StudentUpdate/StudentUpdate';
 
-const Student = ({ student, children }) => {
+const Student = ({ student, children, ...props }) => {
   const [formOpen, setFormOpen] = useState(false);
  
   return (
     <div>
       <StudentUpdate student={student} formOpen={formOpen} setFormOpen={setFormOpen} />
-      <div className='student' >
+      <div className='student' {...props} >
         <div className='student-img'>
           {student.image ? <img src={setImageUrl(student.image)} alt="student dp" />
             : <img src={NoProfilePicture} alt="no dp"></img>

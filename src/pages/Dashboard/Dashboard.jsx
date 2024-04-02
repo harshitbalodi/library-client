@@ -10,7 +10,6 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import "./Dashboard.css";
 import DroppableArea from "../../components/DragAndDrop/DroppableArea/DroppableArea";
-import ShiftCapacity from "../../components/ShiftCapacity/ShiftCapacity";
 import NotRenewed from "../../components/NotRenewed/NotRenewed";
 import ExpiringSoon from "../../components/ExpiringSoon/ExpiringSoon";
 import AllStudents from "../../components/AllStudents/AllStudents";
@@ -28,19 +27,18 @@ const Dashboard = () => {
   const [components, setComponents] = useState([
     { id: 143, position: 1, name: "Shift Timer", component: <ShiftTimer /> },
     { id: 243, position: 2, name: "New Bookings", component: <NewBookings /> },
-    { id: 654, position: 3, name: "Shift Capacity", component: <ShiftCapacity /> },
-    { id: 765, position: 4, name: "Expiring Soon", component: <ExpiringSoon /> },
-    { id: 987, position: 5, name: "Not Renewed", component: <NotRenewed /> },
-    { id: 456, position: 6, name: "All Students", component: <AllStudents /> }
+    { id: 765, position: 3, name: "Expiring Soon", component: <ExpiringSoon /> },
+    { id: 987, position: 4, name: "Not Renewed", component: <NotRenewed /> },
+    { id: 456, position: 5, name: "All Students", component: <AllStudents /> }
   ]);
   const [position, setPosition] = useState(() => {
     const storedPosition = localStorage.getItem('DashboardPosition');
-    return storedPosition ? JSON.parse(storedPosition) : [1, 2, 3, 4, 5, 6];
+    return storedPosition ? JSON.parse(storedPosition) : [1, 2, 3, 4, 5];
   }
   );
 
   useEffect(() => {
-    if (position != [1, 2, 3, 4, 5, 6]) {
+    if (position != [1, 2, 3, 4, 5]) {
       const posSiz = position.length;
       var newComponents = [];
       for (var i = 0; i < posSiz; i++) {
@@ -50,6 +48,7 @@ const Dashboard = () => {
             newComponents.push(components[j]);
             break;
           }
+          
         }
       }
       setComponents(newComponents);

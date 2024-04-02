@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { formatDate } from '../../utils/helper';
 import CrossIcon from '../../assets/cross-icon.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import paymentService from '../../services/paymentService';
 import { useEffect, useState } from 'react';
 import './StudentUpdate.css';
-// import { toast } from 'react-toastify';
 import studentService from '../../services/studentService';
 import ImagePicker from '../ImagePicker/ImagePicker';
+import { setSuccessMessage } from '../../store/notificationSlice';
 
 const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -22,6 +22,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
     const [selectedShift, setSelectedShift] = useState(null);
     const [image, setImage] = useState(null);
     const shifts = useSelector((state) => state.shifts);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchSelectedShift = async () => {
@@ -80,7 +81,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         }
         const formData = new FormData();
         if (gender && gender != student.gender) {
-            formData.append('gender', gender ==='male');
+            formData.append('gender', gender === 'male');
         }
         if (address && address != student.address) {
             formData.append('address', address);
@@ -92,8 +93,8 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         if (name && name != student.name) {
             formData.append('name', name);
         }
-        if(image){
-            formData.append('image', image);   
+        if (image) {
+            formData.append('image', image);
         }
 
         const selectedDesk = selectedShift.desks.find(desk => desk.id == selectedDeskId);
@@ -102,23 +103,23 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
             setTimeout(() => setErrorMessage(''), 3000);
             return;
         }
-        
-        if (student.hall.shift.id != selectedShiftId && student.hall.shift.desk != selectedDesk.seat_no) {
-            formData.append('hall',{
+
+        if (student.hall.shift.desk != selectedDesk.seat_no) {
+            formData.append('hall', JSON.stringify({
                 shift: {
                     id: Number(selectedShiftId),
                     desk: Number(selectedDesk.seat_no)
                 }
-            })
+            }))
         }
         try {
             const response = await studentService.updateStudent(student.id, formData);
             console.log(response);
-            // toast.success('student updated successfully');
+            dispatch(setSuccessMessage('student updated successfully'))
             setFormOpen(false);
         } catch (error) {
             console.log(error);
-            // toast.error(error.message);
+            dispatch(setErrorMessage(error.message));
         }
     }
     return (
@@ -178,8 +179,8 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id='name'
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            required 
-                                            />
+                                            required
+                                        />
                                     </div>
                                     <div>
                                         <label htmlFor="gender">Gender</label>
@@ -199,7 +200,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id='address'
                                             value={address}
                                             onChange={(e) => setAddress(e.target.value)}
-                                             />
+                                        />
                                     </div>
                                     <div>
                                         <label htmlFor="mobile-no">Mobile Number</label>
@@ -208,7 +209,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id='mobile-no'
                                             value={mobileNo}
                                             onChange={(e) => setMobileNumber(e.target.value)}
-                                             />
+                                        />
                                     </div>
                                     <div>
                                         <label htmlFor="shift">Shift</label>
@@ -216,7 +217,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             id="shift"
                                             value={selectedShiftId}
                                             onChange={(e) => setSelectedShiftId(e.target.value)}
-                                            
+
                                         >
                                             {shifts.length > 0 ? (
                                                 shifts.map((option) => (
@@ -236,7 +237,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                                 id="desk"
                                                 value={selectedDeskId}
                                                 onChange={(e) => setSelectedDeskId(e.target.value)}
-                                                
+
                                             >
                                                 {selectedShift && selectedShift.desks?.length > 0 ? (
                                                     selectedShift.desks.map((desk) => (
@@ -252,7 +253,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             </select>
                                         }
                                     </div>
-                                    <ImagePicker setImage={setImage}/>
+                                    <ImagePicker setImage={setImage} />
                                     <p style={{ color: 'red' }}>{errorMessage}</p>
                                     <button className='pay-btn'>Update Student</button>
                                 </form>

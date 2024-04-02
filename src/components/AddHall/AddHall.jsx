@@ -4,7 +4,8 @@ import CrossIcon from '../../assets/cross-icon.svg';
 import PlusIcon from '../../assets/plus-icon.svg';
 import './AddHall.css';
 import { useDispatch } from 'react-redux';
-import { setHalls } from '../../store/hallSlice';
+import { hallsThunk } from '../../store/hallSlice';
+import { setSuccessMessage } from '../../store/notificationSlice';
 
 const AddHall = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,9 +28,9 @@ const AddHall = () => {
     try {
       const response = await hallServices.Addhall(hallName);
       if (response.data.data.status === 'ok') {
-        // toast.success(`${hallName} is added successfully!`);
+        dispatch(setSuccessMessage(`${hallName} is added successfully!`))
       }
-      dispatch(setHalls());
+      dispatch(hallsThunk());
     } catch (error) {
       console.log(error);
     }

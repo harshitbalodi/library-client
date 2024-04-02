@@ -12,7 +12,7 @@ import DoneIcon from '../../assets/done-icon.svg';
 import hallServices from '../../services/hallServices';
 import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
-
+import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
 
 const CardCarousel = ({ hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -58,11 +58,11 @@ const CardCarousel = ({ hall }) => {
     if(!approve) return;
     try {
       const response = await hallServices.deleteHall(hall.id);
-      // toast.success(response.data.message);
+      dispatch(setSuccessMessage(`${hall.name} is deleted successfully!`))
       dispatch(hallsThunk());
       console.log(response);
     } catch (error) {
-      // toast.error(error.response.data.message);
+      dispatch(setErrorMessage(error.response.data.message));
     }
   }
 
@@ -72,11 +72,12 @@ const CardCarousel = ({ hall }) => {
     try {
       const response = await hallServices.editHall(hall.id, { name: hallName });
       setEdit(false);
+      dispatch(setSuccessMessage(`${hall.name} is edited successfully!`))
       dispatch(hallsThunk());
       console.log(response);
     } catch (error) {
       console.log(error);
-      // toast.error(error.response.data.message);
+      dispatch(setErrorMessage(error.response.data.message));
     }
   }
 

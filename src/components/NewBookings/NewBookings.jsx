@@ -12,7 +12,7 @@ const NewBookings = () => {
   },[students]);
   
   return NewBookings.length === 0 ?( <div className='feels-empty'>
-        <h2 style={{margin:'5%',color:'#3e4152'}}>No new Booking in past 10 days</h2>
+        <h2 style={{margin:'5%',color:'#3e4152'}}>No new Booking in past 7 days</h2>
     </div>
   ):(
     <div>

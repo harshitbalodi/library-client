@@ -7,6 +7,7 @@ import seatSlice from "./seatSlice";
 import authSlice from "./authSlice";
 import editDropdownSlice from "./editDropdownSlice";
 import lockSlice from "./lockSlice";
+import notificationSlice from "./notificationSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     seat: seatSlice,
     auth: authSlice,
     editDropdown: editDropdownSlice,
-    lock:lockSlice
+    lock:lockSlice,
+    notification:notificationSlice
   },
 });
 

@@ -4,7 +4,6 @@ import { formatNumber, formatTime } from '../../utils/helper';
 import DeleteIcon from '../../assets/delete-icon.svg';
 import EditIcon from '../../assets/edit-icon.svg'
 import shiftServices from '../../services/shiftServices';
-// import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import ModifyShiftForm from '../ModifyShiftForm/ModifyShiftForm';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +12,7 @@ import { setSeat } from '../../store/seatSlice';
 import ArrowDownWard from '../../assets/arrow-circle-right.svg';
 import deskService from '../../services/deskService';
 import { disableDropdown, enableDropdown } from '../../store/editDropdownSlice';
+import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
 
 const SeatCard = ({ shift }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -60,14 +60,14 @@ const SeatCard = ({ shift }) => {
                 const response = await shiftServices.deleteShift(shift.id);
                 console.log(response);
                 if (response.data.status === "error") {
-                    // toast.error(response.data.message);
+                    dispatch(setErrorMessage(response.data.message));
                 } else {
-                    // toast.success(response.data.message);
+                    dispatch(setSuccessMessage(response.data.message));
                     dispatch(hallsThunk());
                 }
             } catch (error) {
                 console.log(error);
-                // toast.error(error.message);
+                dispatch(setErrorMessage(error.message));
             }
         }
     }

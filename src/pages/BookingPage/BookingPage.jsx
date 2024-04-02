@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Button from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom';
 import studentService from '../../services/studentService';
-// import { toast } from 'react-toastify';
 import { setSeat } from '../../store/seatSlice';
 import { studentThunk } from '../../store/studentsSlice';
 import ImagePicker from '../../components/ImagePicker/ImagePicker';
+import { setSuccessMessage } from '../../store/notificationSlice';
 
 const BookingPage = () => {
   const seat = useSelector(state => state.seat);
@@ -47,11 +47,12 @@ const BookingPage = () => {
     try {
       const response = await studentService.createStudent(formData);
       console.log("student created", response);
-      // toast.success("student created Succesfully");
+      dispatch(setSuccessMessage("student created Sussesfully"))
       dispatch(setSeat(null));
       dispatch(studentThunk());
       navigate('/hall');
     } catch (error) {
+      dispatch("error in creating student");
       console.log(error);
     }
   };

@@ -5,6 +5,7 @@ import shiftServices from '../../services/shiftServices';
 import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 import { useState } from 'react';
+import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
 
 const ModifyShiftForm = ({ shift, setIsOpen }) => {
   const [shiftName, setShiftName] = useState(shift.name || '');
@@ -28,11 +29,11 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
     try {
       const response = await shiftServices.updateShift(shift.id, shiftObj);
       console.log(response);
-      // toast.success(response.data.data.message);
+      dispatch(setSuccessMessage("response.data.data.message"))
       dispatch(hallsThunk());
     } catch (error) {
       console.log(error);
-      // toast.error(error.message);
+      dispatch(setErrorMessage(error.message));
     }
     setIsOpen(false);
   };

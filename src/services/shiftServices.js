@@ -18,7 +18,7 @@ const getall = async () => {
 const addShift = async (ShiftObj) => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
     };
     const response = await axios.post(baseUrl, ShiftObj, config);
     return response;
@@ -31,7 +31,7 @@ const addShift = async (ShiftObj) => {
 export const deleteShift = async (id) => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
     };
     const response = await axios.delete(baseUrl + `/${id}`, config);
     return response;
@@ -43,7 +43,7 @@ export const deleteShift = async (id) => {
 export const updateShift = async (id, shiftObj) => {
   try {
     const config = {
-      header: token.getToken(),
+      headers: token.getToken(),
     };
     const response = await axios.patch(baseUrl + `/${id}`, shiftObj, config);
     return response;

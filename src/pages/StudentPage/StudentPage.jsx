@@ -13,9 +13,7 @@ const StudentPage = () => {
   if (!student) {
     return <div>No such student exists.</div>;
   }
-
-  const { name, joining_date, paid, shift, shift: { name: shiftName, start_time, end_time, fee, hall: { name: hallName } } } = student;
-
+  const { name, joining_date, paid, shift: { name: shiftName, start_time, end_time, fee, hall: { name: hallName } } } = student;
   return (
     <div className="student-container">
       <div className="student-detail">
