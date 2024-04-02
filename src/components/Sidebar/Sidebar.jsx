@@ -1,8 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-import HomeLogo from '../../assets/home-icon.svg';
 import DashboardLogo from '../../assets/dashboard-icon.svg';
-import ShiftLogo from '../../assets/shift-icon.svg'
 import HallLogo from '../../assets/hall-icon.svg'
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
