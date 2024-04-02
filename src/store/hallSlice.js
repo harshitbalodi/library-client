@@ -18,6 +18,10 @@ export const { setHalls } = hallSlice.actions;
 
 export const hallsThunk = () => {
   return async (dispatch, getState) => {
+    const isAdminLoggedIn = getState().auth.adminLoggedIn;
+    if(!isAdminLoggedIn){
+      return;
+    }
     const { data } = await hallServices.getall();
     dispatch(setHalls(data.data));
     const halls = getState().halls;

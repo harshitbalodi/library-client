@@ -18,10 +18,14 @@ const studentsSlice = createSlice({
 export const { getStudents, setStudents } = studentsSlice.actions;
 
 export const studentThunk = () => {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
+    const isAdminLoggedIn = getState().auth.adminLoggedIn;
+    if(!isAdminLoggedIn){
+      return;
+    }
     try{
       const { data } = await studentService.getall();
-    dispatch(setStudents(data.data));
+      dispatch(setStudents(data.data));
     }catch(error){
       console.log("error in studentThunk", error);
       throw error;

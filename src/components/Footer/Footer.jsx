@@ -20,7 +20,7 @@ const Footer = () => (
         <span> call on +91-9258736537</span>
       </div>
     </div>
-    <caption>@All right reserved 2024</caption>
+    <div>@All right reserved 2024</div>
   </div>
 );
 

@@ -1,5 +1,5 @@
 import './Header.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import HamburgerMenuIcon from '../../assets/hamburger-menu.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -15,8 +15,6 @@ const Header = () => {
     const [sidebar, auth] = useSelector(state => [state.sidebar, state.auth]);
     const [isMenuLogo, setIsMenuLogo] = useState(false);
     const dispatch = useDispatch();
-    const location = useLocation();
-    const isActive = location.pathname === "/login";
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -61,16 +59,12 @@ const Header = () => {
         <nav className="header">
             <div className="left-section">
                 <div className="menu-logo">
-                    {!isMenuLogo && <img src={HamburgerMenuIcon} alt="" onClick={handleClick} className='menu-icon' />}
+                    {!isMenuLogo && auth.adminLoggedIn && <img src={HamburgerMenuIcon} alt="" onClick={handleClick} className='menu-icon' />}
                     <div className="logo" onClick={() => navigate('/')}>Logo</div>
                 </div>
             </div>
             <div className="right-section">
-                {!auth.adminLoggedIn ? (!isActive && <Link to='/login' className="admin-login">
-                    <button className='login-btn'>Admin Login</button>
-                </Link>)
-                    :
-                    <div className="dropdown-container">
+                {auth.adminLoggedIn && <div className="dropdown-container">
                         <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
                         {isOpen && (
                             <ul className="dropdown-menu">
