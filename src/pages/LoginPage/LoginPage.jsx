@@ -74,26 +74,21 @@
 
 // export default LoginPage;
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import TokenService from '../../services/TokenService';
 import './LoginPage.css';
 import { logIn } from '../../store/authSlice';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import token from '../../services/token';
 import { setCookie } from '../../utils/helper';
 
 const LoginPage = () => {
-  const auth = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    if (auth.adminLoggedIn) navigate('/dashboard');
-  }, [auth]);
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();

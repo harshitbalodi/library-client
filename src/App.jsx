@@ -75,9 +75,8 @@ function App() {
                 )
                   : (
                     <>
-                      <Route path="/" element={<LoginPage />} />
-                      <Route path="/hall" element={<HallPage />} />
-                      <Route path="/" element={<Dashboard />} />
+                    <Route path="/" element={<Dashboard />} />
+                      <Route path="/hall" element={<HallPage />} />  
                       <Route path="/booking" element={<BookingPage />} />
                       <Route path="/change-password" element={<ChangePassword />} />
                     </>

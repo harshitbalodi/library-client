@@ -24,9 +24,9 @@ const Sidebar = () => {
     console.log(sidebar);
     return sidebar && (
       <div className="sidebar">
-        <SidebarLink to="/" icon={HomeLogo} label="Home" />
-        <SidebarLink to="/dashboard" icon={DashboardLogo} label="Dashboard" />
-        <SidebarLink to="/shift" icon={ShiftLogo} label="Shifts" />
+        {/* <SidebarLink to="/" icon={HomeLogo} label="Home" /> */}
+        <SidebarLink to="/" icon={DashboardLogo} label="Dashboard" />
+        {/* <SidebarLink to="/shift" icon={ShiftLogo} label="Shifts" /> */}
         <SidebarLink to="/hall" icon={HallLogo} label="Halls" />
       </div>
     );
