@@ -48,16 +48,32 @@ const createStudent = async (studentObj) => {
   }
 };
 
-const updateStudent = async (id, studentObj) => {
+const updateStudent = async (id, formData) => {
   try {
     const config = {
       header: token.getToken(),
+      "Content-Type": "multipart/form-data"
     };
-    const response = await axios.patch(baseUrl + "/" + id, studentObj, config);
+    const response = await axios.patch(baseUrl + "/" + id, formData, config);
     return response;
   } catch (error) {
     console.log("error updating student", error);
     throw error;
   }
 };
-export default { getall, createStudent, updateStudent };
+
+const updateStudentImage = async (id, formData) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    const response = await axios.patch(baseUrl + "/" + id, formData, config);
+    return response;
+  } catch (error) {
+    console.log("error updating student image", error);
+    throw error;
+  }
+}
+export default { getall, createStudent, updateStudent, updateStudentImage };

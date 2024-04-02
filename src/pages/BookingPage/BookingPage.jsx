@@ -44,31 +44,31 @@ const BookingPage = () => {
     }
     
     const formData = new FormData();
-    // formData.append('name', name);
-    // formData.append('mobile_no', phoneNumber);
-    // formData.append('gender', gender === 'male');
-    // formData.append('address', address);
+    formData.append('name', name);
+    formData.append('mobile_no', phoneNumber);
+    formData.append('gender', gender === 'male');
+    formData.append('address', address);
     formData.append('image', image);
-    // formData.append('desk', seat.id);
-    // formData.append('shift', seat.shift.id);
-    // formData.append('paid_for_month', Number(months));
-    // formData.append('joining_date', joiningDate);
+    formData.append('desk', seat.id);
+    formData.append('shift', seat.shift.id);
+    formData.append('paid_for_month', Number(months));
+    formData.append('joining_date', joiningDate);
     // formData.append('joining_date', Number(new Date().toISOString().split('T')[0]));
-    const studentObj = {
-      name,
-      mobile_no: phoneNumber,
-      gender: gender === 'male',
-      address,
-      desk: seat.id,
-      shift: seat.shift.id,
-      paid_for_month: months,
-      joining_date: joiningDate,
-      // image: encodeURIComponent(URL.createObjectURL(image))
-    }
-    console.log(studentObj);
+    // const studentObj = {
+    //   name,
+    //   mobile_no: phoneNumber,
+    //   gender: gender === 'male',
+    //   address,
+    //   desk: seat.id,
+    //   shift: seat.shift.id,
+    //   paid_for_month: months,
+    //   joining_date: joiningDate,
+    //   // image: encodeURIComponent(URL.createObjectURL(image))
+    // }
+    // console.log(studentObj);
 
     try{
-      const response = await studentService.createStudent(studentObj);
+      const response = await studentService.createStudent(formData);
       console.log("student created",response);
       toast.success("student created Succesfully");
       dispatch(setSeat(null));

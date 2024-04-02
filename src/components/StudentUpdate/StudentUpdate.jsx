@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react';
 import './StudentUpdate.css';
 import { toast } from 'react-toastify';
 import studentService from '../../services/studentService';
+import { useRef } from 'react';
+import ImagesIcon from '../../assets/images-icon.svg';
+
 
 const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -19,8 +22,12 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
     const [selectedShiftId, setSelectedShiftId] = useState(student.hall.shift.id);
     const [selectedDeskId, setSelectedDeskId] = useState('');
     const [selectedShift, setSelectedShift] = useState(null);
+    const [image, setImage] = useState(null);
+    const [previewImage, setPreviewImage] = useState(null);
+    const imageInputRef = useRef(null);
+
     const shifts = useSelector((state) => state.shifts);
-    
+
     useEffect(() => {
         const fetchSelectedShift = async () => {
             if (shifts && selectedShiftId) {
@@ -44,6 +51,32 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         fetchSelectedDesk();
     }, [selectedShiftId, selectedDeskId, selectedShift]);
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+          setImage(file);
+          const reader = new FileReader();
+          reader.onload = (e) => setPreviewImage(e.target.result);
+          reader.readAsDataURL(file);
+        } else {
+          // Clear preview if invalid file
+          // setPreviewImage(null); 
+          // setImage(null);
+        }
+      };
+    
+      const handleDragOver = (event) => {
+        event.preventDefault();
+      };
+    
+      const handleDrop = (event) => {
+        event.preventDefault();
+        const file = event.dataTransfer.files[0];
+    
+        if (file && file.type.startsWith('image/')) {
+          handleImageChange({ target: { files: [file] } }); // Simulate image change event
+        }
+      };
     const handlePayment = async (e) => {
         e.preventDefault();
         if (months <= 0) {
@@ -67,44 +100,57 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         const studentShift = shifts.find(shift => shift.id === student.hall.shift.id);
         return Math.round(months) * studentShift.fee;
     }
-    
-    const handleUpdate =async (e) => {
+
+    const handleUpdate = async (e) => {
         e.preventDefault();
         if (!selectedShiftId || !selectedDeskId) {
             setErrorMessage('Please select a shift and desk');
             setTimeout(() => setErrorMessage(''), 3000);
             return;
         }
-        if (!name || !gender || !address || !mobileNo) {
-            setErrorMessage('Please fill all the fields');
-            setTimeout(() => setErrorMessage(''), 3000);
-            return;
+        const StudentObj = {}
+        if (gender && gender != student.gender) {
+            StudentObj['gender'] = gender === 'male';
+        }
+        if (address && address != student.address) {
+            StudentObj['address'] = address;
+        }
+        if (mobileNo && mobileNo != student.mobile_no) {
+            StudentObj['mobile_no'] = mobileNo;
         }
         const selectedDesk = selectedShift.desks.find(desk => desk.id == selectedDeskId);
-        
-        if(!selectedDesk){
+
+        if (!selectedDesk) {
             setErrorMessage('Please select a valid desk');
             setTimeout(() => setErrorMessage(''), 3000);
             return;
         }
-        const StudentObj = {
-            mobile_no: mobileNo,
-            gender: gender === 'male',
-            address
-        }
-        
-        if(name != student.name){
+
+        if (name && name != student.name) {
             StudentObj['name'] = name;
-        } 
-        if(student.hall.shift.id != selectedShiftId && student.hall.shift.desk != selectedDesk.seat_no){
-            StudentObj['hall'] ={
-                    shift: {
-                        id: Number(selectedShiftId),
-                        desk: Number(selectedDesk.seat_no)
-                    }
-                }
         }
-        
+        if (student.hall.shift.id != selectedShiftId && student.hall.shift.desk != selectedDesk.seat_no) {
+            StudentObj['hall'] = {
+                shift: {
+                    id: Number(selectedShiftId),
+                    desk: Number(selectedDesk.seat_no)
+                }
+            }
+        }
+
+        if(image){
+            try {
+                const formData = new FormData();
+                formData.append('image', image);
+                const response = await studentService.updateStudentImage(student.id, formData);
+                toast.success("image updated successfully");
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+                toast.error("error in updating image");
+            }
+        }
+
         try {
             const response = await studentService.updateStudent(student.id, StudentObj);
             console.log(response);
@@ -114,7 +160,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
             console.log(error);
             toast.error(error.message);
         }
-        
+
     }
     return (
         <div>
@@ -243,7 +289,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             >
                                                 {selectedShift && selectedShift.desks?.length > 0 ? (
                                                     selectedShift.desks.map((desk) => (
-                                                        (desk.is_active && desk.is_vacant ||student.hall.shift.desk === desk.seat_no) ? (
+                                                        (desk.is_active && desk.is_vacant || student.hall.shift.desk === desk.seat_no) ? (
                                                             <option key={desk.id} value={desk.id}>
                                                                 Seat no {desk.seat_no}
                                                             </option>
@@ -254,6 +300,37 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                                 )}
                                             </select>
                                         }
+                                    </div>
+                                    <div className="image-picker">
+                                        <label htmlFor="image-input">Profile Picture (Optional)</label>
+                                        <input
+                                            type="file"
+                                            id="image-input"
+                                            ref={imageInputRef}
+                                            onChange={handleImageChange}
+                                            accept="image/*"
+                                            style={{ display: 'none', border: "1px solid black" }}
+                                        />
+                                        <div
+                                            className="image-preview"
+                                            onClick={() => imageInputRef.current.click()} // Open file browser on click
+                                            onDragOver={handleDragOver}
+                                            onDrop={handleDrop}
+                                        >
+                                            {previewImage ? (
+                                                <img
+                                                    src={previewImage}
+                                                    width={100}
+                                                    alt="Profile preview"
+                                                    style={{ borderRadius: '50%' }}
+                                                /> // Circle preview
+                                            ) : (
+                                                <div>
+                                                    <img src={ImagesIcon} alt="" />
+                                                </div>
+                                            )}
+                                            Drag & Drop or <span style={{ color: 'blue' }}>Browse</span>
+                                        </div>
                                     </div>
                                     <p style={{ color: 'red' }}>{errorMessage}</p>
                                     <button className='pay-btn'>Update Student</button>
