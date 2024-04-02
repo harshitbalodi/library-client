@@ -32,7 +32,7 @@ const Dashboard = () => {
     { id: 456, position: 5, name: "All Students", component: <AllStudents /> }
   ]);
   const [position, setPosition] = useState(() => {
-    const storedPosition = localStorage.getItem('DashboardPosition');
+    const storedPosition = localStorage.getItem('DashboardPositions');
     return storedPosition ? JSON.parse(storedPosition) : [1, 2, 3, 4, 5];
   }
   );
@@ -73,7 +73,7 @@ const Dashboard = () => {
       const newPos = getComponentsPos(over.id);
       const newPosition = arrayMove(position, originalPos, newPos);
       setPosition(newPosition);
-      localStorage.setItem('DashboardPosition', JSON.stringify(newPosition));
+      localStorage.setItem('DashboardPositions', JSON.stringify(newPosition));
       return arrayMove(components, originalPos, newPos);
     });
   };
