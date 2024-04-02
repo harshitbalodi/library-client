@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import hallServices from '../../services/hallServices';
-import { toast } from 'react-toastify';
 import CrossIcon from '../../assets/cross-icon.svg';
 import PlusIcon from '../../assets/plus-icon.svg';
 import './AddHall.css';
@@ -28,7 +27,7 @@ const AddHall = () => {
     try {
       const response = await hallServices.Addhall(hallName);
       if (response.data.data.status === 'ok') {
-        toast.success(`${hallName} is added successfully!`);
+        // toast.success(`${hallName} is added successfully!`);
       }
       dispatch(setHalls());
     } catch (error) {

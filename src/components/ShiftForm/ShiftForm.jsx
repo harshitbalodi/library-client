@@ -4,7 +4,7 @@ import './ShiftForm.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import shiftServices from '../../services/shiftServices';
 import { hallsThunk } from '../../store/hallSlice';
 
@@ -26,7 +26,7 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
     const handleCreateShift = async (event) => {
         event.preventDefault();
         if (!selectedHallId) {
-            toast.error('Please select a Hall');
+            // toast.error('Please select a Hall');
             return;
         }
         const shiftObj = {
@@ -42,7 +42,7 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
             const response = await shiftServices.addShift(shiftObj);
             if (response) {
                 dispatch(hallsThunk());
-                toast.success("new shift is created");
+                // toast.success("new shift is created");
                 setHallOptions([]);
                 setSelectedHallId('');
                 setCapacity(0);

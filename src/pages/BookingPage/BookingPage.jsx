@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Button from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom';
 import studentService from '../../services/studentService';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { setSeat } from '../../store/seatSlice';
 import { studentThunk } from '../../store/studentsSlice';
 import ImagePicker from '../../components/ImagePicker/ImagePicker';
@@ -47,7 +47,7 @@ const BookingPage = () => {
     try {
       const response = await studentService.createStudent(formData);
       console.log("student created", response);
-      toast.success("student created Succesfully");
+      // toast.success("student created Succesfully");
       dispatch(setSeat(null));
       dispatch(studentThunk());
       navigate('/hall');

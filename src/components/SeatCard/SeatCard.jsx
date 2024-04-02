@@ -4,7 +4,7 @@ import { formatNumber, formatTime } from '../../utils/helper';
 import DeleteIcon from '../../assets/delete-icon.svg';
 import EditIcon from '../../assets/edit-icon.svg'
 import shiftServices from '../../services/shiftServices';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import ModifyShiftForm from '../ModifyShiftForm/ModifyShiftForm';
 import { useDispatch, useSelector } from 'react-redux';
@@ -60,14 +60,14 @@ const SeatCard = ({ shift }) => {
                 const response = await shiftServices.deleteShift(shift.id);
                 console.log(response);
                 if (response.data.status === "error") {
-                    toast.error(response.data.message);
+                    // toast.error(response.data.message);
                 } else {
-                    toast.success(response.data.message);
+                    // toast.success(response.data.message);
                     dispatch(hallsThunk());
                 }
             } catch (error) {
                 console.log(error);
-                toast.error(error.message);
+                // toast.error(error.message);
             }
         }
     }

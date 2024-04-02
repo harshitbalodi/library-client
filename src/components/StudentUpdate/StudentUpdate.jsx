@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import paymentService from '../../services/paymentService';
 import { useEffect, useState } from 'react';
 import './StudentUpdate.css';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import studentService from '../../services/studentService';
 import ImagePicker from '../ImagePicker/ImagePicker';
 
@@ -114,11 +114,11 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         try {
             const response = await studentService.updateStudent(student.id, formData);
             console.log(response);
-            toast.success('student updated successfully');
+            // toast.success('student updated successfully');
             setFormOpen(false);
         } catch (error) {
             console.log(error);
-            toast.error(error.message);
+            // toast.error(error.message);
         }
     }
     return (

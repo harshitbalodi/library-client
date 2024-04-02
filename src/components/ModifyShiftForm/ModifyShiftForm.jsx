@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import './ModifyShiftform.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import shiftServices from '../../services/shiftServices';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 import { useState } from 'react';
@@ -29,11 +30,11 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
     try {
       const response = await shiftServices.updateShift(shift.id, shiftObj);
       console.log(response);
-      toast.success(response.data.data.message);
+      // toast.success(response.data.data.message);
       dispatch(hallsThunk());
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      // toast.error(error.message);
     }
     setIsOpen(false);
   };

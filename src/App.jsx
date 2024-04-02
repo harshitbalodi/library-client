@@ -16,7 +16,6 @@ import token from "./services/token";
 import { getCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
 import { setStudents, studentThunk } from "./store/studentsSlice";
-import { ToastContainer } from "react-toastify";
 import { setShifts } from "./store/shiftSlice";
 function App() {
   const dispatch = useDispatch();
@@ -61,7 +60,6 @@ function App() {
   return (
     <Router>
       <div className="body-container">
-        <ToastContainer />
         <Header />
         <div className="middle-container">
           {adminLoggedIn &&<div>

@@ -10,7 +10,6 @@ import EditIcon from '../../assets/edit-icon.svg';
 import CancelIcon from '../../assets/cancel-icon.svg';
 import DoneIcon from '../../assets/done-icon.svg';
 import hallServices from '../../services/hallServices';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 
@@ -59,11 +58,11 @@ const CardCarousel = ({ hall }) => {
     if(!approve) return;
     try {
       const response = await hallServices.deleteHall(hall.id);
-      toast.success(response.data.message);
+      // toast.success(response.data.message);
       dispatch(hallsThunk());
       console.log(response);
     } catch (error) {
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
     }
   }
 
@@ -77,7 +76,7 @@ const CardCarousel = ({ hall }) => {
       console.log(response);
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
     }
   }
 
