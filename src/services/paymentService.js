@@ -19,4 +19,17 @@ const updatePayment = async (studentId, month) => {
   }
 };
 
-export default { updatePayment };
+const getAllPayments = async () =>{
+  try {
+    const config = {
+      headers: token.getToken(),
+    };
+    const response = await axios.get(baseUrl, config);
+    return response;
+  } catch (error) {
+    console.log("error in fetching payments", error);
+    throw error;
+  }
+}
+
+export default { updatePayment, getAllPayments };

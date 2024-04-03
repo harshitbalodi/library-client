@@ -31,7 +31,7 @@ const ImagePicker = ({setImage}) => {
   return (
     <div>
         <div className="image-picker">
-              <label htmlFor="image-input">Profile Picture (Optional)</label>
+              <label htmlFor="image-input">Profile Picture</label>
               <input
                 type="file"
                 id="image-input"

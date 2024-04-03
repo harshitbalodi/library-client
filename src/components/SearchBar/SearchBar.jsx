@@ -7,6 +7,7 @@ import CrossIcon from '../../assets/cross-icon.svg';
 import MobileIcon from '../../assets/mobile-icon.svg'
 import { formatDate, setImageUrl } from "../../utils/helper";
 import StudentUpdate from "../StudentUpdate/StudentUpdate";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
     const [students, shifts] = useSelector(state => [state.students, state.shifts]);
@@ -16,6 +17,7 @@ const SearchBar = () => {
     const [formOpen, setFormOpen] = useState(false);
     const inputRef = useRef(null);
     const detailRef = useRef(null);
+    const navigate = useNavigate();
     console.log(choosenStudent);
 
     useEffect(() => {
@@ -99,6 +101,7 @@ const SearchBar = () => {
                             <img width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                             <div >{choosenStudent.name}</div>
                             <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Pay/Edit</button>
+                            <button className="pay-edit-btn" onClick={() => navigate(`/transactions?student=${choosenStudent.id}`)}>Transactions</button>
                         </div>
                         <div className="student-suggestion-details">
                             <div>

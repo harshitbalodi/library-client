@@ -6,6 +6,7 @@ import DeleteIcon from '../../assets/delete-icon.svg';
 import './NotRenewed.css';
 import studentService from "../../services/studentService";
 import { studentThunk } from "../../store/studentsSlice";
+import { setSuccessMessage } from "../../store/notificationSlice";
 
 
 const NotRenewed = () => {
@@ -16,13 +17,14 @@ const NotRenewed = () => {
     if (students) setNotRenewedStudents(() => students.filter(student => student.is_expired === true));
   }, [students]);
 
-  const handleDelete= async(id)=>{
+  const handleDelete= async(student)=>{
     const confirmation = window.confirm('Are you sure you want to delete this student? Student will be deleted parmanently');
     if(!confirmation) return;
     try{
-      const response =await studentService.deleteStudent(id);
+      const response =await studentService.deleteStudent(student.id);
       if(response){
         dispatch(studentThunk());
+        dispatch(setSuccessMessage(`${student.name} is deleted successfully!`));
       }
     }catch(error){
       console.log(error);
@@ -36,7 +38,7 @@ const NotRenewed = () => {
       {
         notRenewedStudents.map(student =>
           <Student key={student.id} student={student} >
-            <button className="delete-btn" onClick={() => handleDelete(student.id)}>
+            <button className="delete-btn" onClick={() => handleDelete(student)}>
                 <img  width={25} src={DeleteIcon} alt="" />
             </button>
           </Student>

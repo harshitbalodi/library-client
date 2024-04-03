@@ -89,8 +89,8 @@
 }
 
 .pay-btn {
-  /* background-color: #4caf50; */
-  background-color: skyblue;
+  /* background-color: skyblue; */
+  background-color: #335ddc;
   width: 100%;
   border: none;
   color: white;
@@ -120,8 +120,8 @@
 .btn-container {
   display: inline-block;
   justify-content: center;
-  border: 0.1rem solid skyblue;
-  /* border: 0.1rem solid #4caf50; */
+  /* border: 0.1rem solid skyblue; */
+  border: 0.1rem solid #335ddc;
   margin-bottom: 0.6rem;
   border-radius: 0.35rem;
 }
@@ -138,8 +138,8 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .btn-container button.activebtn {
-  /* background-color: #4caf50; */
-  background-color: skyblue;
+  /* background-color: skyblue; */
+  background-color: #335ddc;
   color: rgb(255, 255, 255);
   transition: transform 0.3s ease-in-out;
 }

@@ -10,10 +10,11 @@ import { useNavigate } from "react-router-dom";
 const HallPage = () => {
   const [halls, seat] = useSelector(state => [state.halls, state.seat]);
   const navigate = useNavigate();
+  console.log(seat);
   return !halls ? <Shimmer /> : (
     <div >
       <div className='booking-btn'>
-        {seat && <Button onClick={() => navigate('/booking')} >Proceed</Button>}
+        {seat && <Button onClick={() => navigate(`/booking?desk=${seat.id}&shift=${seat.shift.id}`)} >Proceed</Button>}
       </div>
       {
         halls.map(hall => {

@@ -12,17 +12,19 @@
 }
 
 .pay-edit-btn{
-    color: skyblue;
+    /* color: skyblue; */
+    color: #335ddc;
     width: max-content;
     background: none;
     border: none;
     font-size: medium;
     font-weight: bold;
-    border:2px solid skyblue;
+    border:2px solid #335ddc;
+    /* border:2px solid skyblue; */
     border-radius: 5px;
   }
   
   .pay-edit-btn:hover{
-    background-color: skyblue;
+    background-color: #335ddc;
     color: white;
   }
