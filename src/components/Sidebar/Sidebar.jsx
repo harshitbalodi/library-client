@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-import DashboardLogo from '../../assets/dashboard-icon.svg';
-import HallLogo from '../../assets/hall-icon.svg'
+import DashboardIcon from '../../assets/dashboard-icon.svg';
+import HallIcon from '../../assets/hall-icon.svg'
+import Rupeeicon from '../../assets/rupee-icon.svg';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -23,10 +24,9 @@ const Sidebar = () => {
     console.log(sidebar);
     return sidebar && (
       <div className="sidebar">
-        {/* <SidebarLink to="/" icon={HomeLogo} label="Home" /> */}
-        <SidebarLink to="/" icon={DashboardLogo} label="Dashboard" />
-        {/* <SidebarLink to="/shift" icon={ShiftLogo} label="Shifts" /> */}
-        <SidebarLink to="/hall" icon={HallLogo} label="Halls" />
+        <SidebarLink to="/" icon={DashboardIcon} label="Dashboard" />
+        <SidebarLink to="/hall" icon={HallIcon} label="Halls" />
+        <SidebarLink to="/payments" icon={Rupeeicon} label="Payments"/>
       </div>
     );
   };

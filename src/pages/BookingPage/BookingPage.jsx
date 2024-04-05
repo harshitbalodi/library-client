@@ -72,7 +72,6 @@ const BookingPage = () => {
       dispatch(setSeat(null));
       dispatch(studentThunk());
       dispatch(hallsThunk());
-      // navigate('/hall');
     } catch (error) {
       dispatch(setErrorMessage("Error in creating student"));
       console.log(error);

@@ -28,7 +28,6 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         const fetchSelectedShift = async () => {
             if (shifts && selectedShiftId) {
                 const shift = await shifts.find((shift) => shift.id == selectedShiftId);
-                console.log("inside useState", shift);
                 if (shift) setSelectedShift(shift);
             }
         };

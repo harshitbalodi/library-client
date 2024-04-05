@@ -18,7 +18,7 @@ import { logIn } from "./store/authSlice";
 import { setStudents, studentThunk } from "./store/studentsSlice";
 import { setShifts } from "./store/shiftSlice";
 import Notification from "./components/Notification/Notification";
-import Transaction from "./pages/Transaction/Transaction";
+import Payments from "./pages/Payment/Payments";
 
 function App() {
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ function App() {
                       <Route path="/hall" element={<HallPage />} />  
                       <Route path="/booking" element={<BookingPage />} />
                       <Route path="/change-password" element={<ChangePassword />} />
-                      <Route path="/transactions" element={<Transaction/>} />
+                      <Route path="/payments" element={<Payments/>} />
                     </>
                   )
               }

@@ -101,7 +101,7 @@ const SearchBar = () => {
                             <img width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                             <div >{choosenStudent.name}</div>
                             <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Pay/Edit</button>
-                            <button className="pay-edit-btn" onClick={() => navigate(`/transactions?student=${choosenStudent.id}`)}>Transactions</button>
+                            <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions</button>
                         </div>
                         <div className="student-suggestion-details">
                             <div>

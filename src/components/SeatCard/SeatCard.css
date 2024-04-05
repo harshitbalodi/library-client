@@ -88,15 +88,12 @@
   transform: rotate(-90deg);
 }
 
-/* Style for seat information element */
 .seat-info {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Hide the info initially */
-  /* opacity: 0; */
   transition: opacity 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -104,10 +101,9 @@
   align-items: center;
 }
 
-/* Style for dropdown content (optional) */
 .dropdown-content {
   position: absolute;
-  top: 100%; /* Position below the seat info */
+  top: 100%; 
   left: 0;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -124,13 +120,10 @@
   background-color: inherit;
 }
 
-/* Styles on hover */
 .seat:hover .seat-img {
-  opacity: 1; /* Show arrow and info on hover */
+  opacity: 1; 
 }
 
-
-/* old css before dropdown  */
 .inactive{
   border:5px solid #eee;
   color: #eee;

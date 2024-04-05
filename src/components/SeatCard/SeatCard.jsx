@@ -19,7 +19,7 @@ const SeatCard = ({ shift }) => {
     const [isHovering, setIsHovering] = useState(null);
     const [seat, isEditDropdownOpen, students] = useSelector(state => [state.seat, state.editDropdown.isEnabled, state.students]);
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
         if (!seat || !shift) return;
         shift.desks.forEach(desk => {
@@ -29,8 +29,8 @@ const SeatCard = ({ shift }) => {
         })
     }, [shift, seat])
 
-    const findName=(deskNo)=>{
-        if(!students){
+    const findName = (deskNo) => {
+        if (!students) {
             return 'seat Taken';
         }
         const student = students.find(student => student.hall.shift.id === shift.id && student.hall.shift.desk === deskNo);
@@ -102,7 +102,7 @@ const SeatCard = ({ shift }) => {
                                 ? "inactive"
                                 :
                                 (desk.is_vacant ? 'vacant' : 'occupied')}`}
-                        title={`${!desk.is_vacant && desk.is_active ? findName(desk.seat_no):'' }`}
+                        title={`${!desk.is_vacant && desk.is_active ? findName(desk.seat_no) : ''}`}
                         onClick={() => BookSeat(desk, shift.name)}
                         onMouseEnter={() => setIsHovering(index)}
                         onMouseLeave={() => setIsHovering(null)}
@@ -128,9 +128,15 @@ const SeatCard = ({ shift }) => {
                                                 )}
                                             </div>
                                         )}
+                                        {
+                                            isHovering === index && !desk.is_vacant && !desk.is_active &&(
+                                                <div className='dropdown-content'>
+                                                    student name
+                                                    student photo
+                                                </div>
+                                            )
+                                        }
                                     </div>
-
-
                                 </div>
                             )
                         }

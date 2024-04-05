@@ -7,7 +7,6 @@ import { clearNotification } from "../../store/notificationSlice";
 
 const Notification = () => {
     const notification = useSelector(state => state.notification);
-    console.log(notification);
     const dispatch = useDispatch();
     const closeNotification = () => {
         dispatch(clearNotification());

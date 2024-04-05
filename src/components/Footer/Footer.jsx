@@ -34,7 +34,7 @@ const Footer = () => (
     </div>
 
 
-    <div>@All right reserved 2024</div>
+    <div>©️ All right reserved 2024</div>
   </div>
 );
 
