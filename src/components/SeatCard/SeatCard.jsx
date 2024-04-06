@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './SeatCard.css';
-import { formatNumber, formatTime } from '../../utils/helper';
+import { formatNumber, formatTime, setImageUrl } from '../../utils/helper';
 import DeleteIcon from '../../assets/delete-icon.svg';
 import EditIcon from '../../assets/edit-icon.svg'
 import shiftServices from '../../services/shiftServices';
@@ -13,11 +13,42 @@ import ArrowDownWard from '../../assets/arrow-circle-right.svg';
 import deskService from '../../services/deskService';
 import { disableDropdown, enableDropdown } from '../../store/editDropdownSlice';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
+import DefaultMaleImage from '../../assets/no-dp.jpg';
+
+
+const StudentDropDown = ({ deskNo, shiftId }) => {
+    const [student, setStudent] = useState(null);
+    // const shift = useSelector(state => state.shift);
+    const students = useSelector(state => state.students);
+    console.log(student);
+    console.log("students", students);
+    console.log("shiftId", shiftId);
+    console.log("deskNo", deskNo);
+    console.log("student.id", shiftId, "student.hall.shift.desk", deskNo);
+    useEffect(() => {
+        const findStudent = () => {
+            if (!students) {
+                return 'seat Taken';
+            }
+            const foundStudent = students.find(student => {
+                return student.hall.shift.id == shiftId && student.hall.shift.desk == deskNo
+            });
+            console.log("foundStudent", foundStudent);
+            if (foundStudent) setStudent(foundStudent);
+        }
+        findStudent();
+    }, [students, deskNo, shiftId])
+
+    return student ? <div className='dropdown-content'>
+        <img width={30} src={student.image ? setImageUrl(student.image) : DefaultMaleImage}></img>
+        <p>{student.name}</p>
+    </div> : <div className='dropdown-content'> <button>unable to find student</button> </div>
+}
 
 const SeatCard = ({ shift }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovering, setIsHovering] = useState(null);
-    const [seat, isEditDropdownOpen, students] = useSelector(state => [state.seat, state.editDropdown.isEnabled, state.students]);
+    const [seat, isEditDropdownOpen] = useSelector(state => [state.seat, state.editDropdown.isEnabled, state.students]);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,13 +60,6 @@ const SeatCard = ({ shift }) => {
         })
     }, [shift, seat])
 
-    const findName = (deskNo) => {
-        if (!students) {
-            return 'seat Taken';
-        }
-        const student = students.find(student => student.hall.shift.id === shift.id && student.hall.shift.desk === deskNo);
-        return student ? `${student.name}` : 'seat Taken';
-    }
     const BookSeat = (desk) => {
         console.log("desk id is clicked", desk);
         if (!desk.is_vacant || !desk.is_active) {
@@ -102,7 +126,6 @@ const SeatCard = ({ shift }) => {
                                 ? "inactive"
                                 :
                                 (desk.is_vacant ? 'vacant' : 'occupied')}`}
-                        title={`${!desk.is_vacant && desk.is_active ? findName(desk.seat_no) : ''}`}
                         onClick={() => BookSeat(desk, shift.name)}
                         onMouseEnter={() => setIsHovering(index)}
                         onMouseLeave={() => setIsHovering(null)}
@@ -113,7 +136,7 @@ const SeatCard = ({ shift }) => {
                                     <div className='seat-number'>{desk.seat_no}</div>
                                     <div className={`seat-info ${isHovering === index ? "visible" : ""}`}>
                                         {
-                                            (!desk.is_active || desk.is_vacant) && (
+                                            (
                                                 <img className={`seat-img ${isEditDropdownOpen ? 'upward' : 'downward'}`} src={ArrowDownWard} onClick={handleDropDown} alt="" />
                                             )
                                         }
@@ -129,12 +152,8 @@ const SeatCard = ({ shift }) => {
                                             </div>
                                         )}
                                         {
-                                            isHovering === index && !desk.is_vacant && !desk.is_active &&(
-                                                <div className='dropdown-content'>
-                                                    student name
-                                                    student photo
-                                                </div>
-                                            )
+                                            isHovering === index && isEditDropdownOpen && !desk.is_vacant
+                                            && <StudentDropDown deskNo={desk.seat_no} shiftId={shift.id} />
                                         }
                                     </div>
                                 </div>

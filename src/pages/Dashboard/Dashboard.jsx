@@ -6,6 +6,7 @@ import {
   useSensor,
   useSensors,
   closestCorners,
+  TouchSensor,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import "./Dashboard.css";
@@ -59,7 +60,8 @@ const Dashboard = () => {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
+    useSensor(TouchSensor)
   );
 
   const getComponentsPos = (id) => components.findIndex((task) => task.id === id);

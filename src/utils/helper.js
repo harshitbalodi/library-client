@@ -1,3 +1,5 @@
+import dafaultMaleImage from '../assets/no-dp.jpg';
+
 export const desksToHalls = (desks) => {
   const hallsMap = {};
   desks.forEach((desk) => {
@@ -187,7 +189,7 @@ export function setImageUrl(imageUrl) {
     return newImageUrl;
   } else {
     console.warn('Image URL does not contain "/media":', imageUrl);
-    return imageUrl;
+    return dafaultMaleImage;
   }
 }
 
