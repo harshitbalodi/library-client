@@ -13,7 +13,7 @@ const NotRenewed = () => {
   const dispatch = useDispatch();
   const students = useSelector(state => state.students);
   const [notRenewedStudents, setNotRenewedStudents] = useState([]);
-  const [isHovering, setIsHovering] = useState(false);
+  const [hoverStates, setHoverStates] = useState({});
   useEffect(() => {
     if (students) setNotRenewedStudents(() => students.filter(student => student.is_expired === true));
   }, [students]);
@@ -32,6 +32,18 @@ const NotRenewed = () => {
     }
   }
 
+  const handleMouseEnter = (id) =>{
+    setHoverStates(prevState=>{
+      return {...prevState, [id]: true}
+    })
+  }
+
+  const handleMouseLeave =(id) =>{
+    setHoverStates(prevState=>{
+      return {...prevState, [id]: false}
+    })
+  }
+
   return notRenewedStudents.length === 0 ? <div className="feels-empty">
     <h2 style={{ margin: '5%', color: '#3e4152' }}>All students are renewed</h2>
   </div> : (
@@ -41,10 +53,10 @@ const NotRenewed = () => {
           <Student key={student.id} student={student} >
             <button 
             className="delete-btn" 
-            onMouseEnter={()=>setIsHovering(true)} 
-            onMouseLeave={() => setIsHovering(false)}
+            onMouseEnter={()=> handleMouseEnter(student.id)} 
+            onMouseLeave={() => handleMouseLeave(student.id)}
             onClick={() => handleDelete(student)}>
-              <DeleteIcon isHovering={isHovering}/>
+              <DeleteIcon isHovering={hoverStates[student.id] || false}/>
             </button>
           </Student>
         )
