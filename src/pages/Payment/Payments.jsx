@@ -19,7 +19,9 @@ const Payments = () => {
     const [studentId] = useState(() => searchParams.get('student'));
     const [dateSort, setDateSort] = useState(false);
     const [amountSort, setAmountSort] = useState(false);
+    const [studentSort, setStudentSort] = useState(false);
     const [feeSort, setFeeSort] = useState(false);
+    const [shiftSort, setShiftSort] = useState(false);
 
     useEffect(() => {
         try {
@@ -49,6 +51,22 @@ const Payments = () => {
         }
     }, [studentId, payments]);
 
+    useEffect(()=>{
+        if(!filteredPayments) return;
+        const sortedPayments = [...filteredPayments];
+        if(studentSort) sortedPayments.sort((a, b) => a.student.name.localeCompare(b.student.name));
+        else sortedPayments.sort((a, b) => b.student.name.localeCompare(a.student.name));
+        setFilteredPayments(sortedPayments);
+    },[studentSort]);
+    
+    useEffect(() => {
+        if (!filteredPayments) return;
+        const sortedPayments = [...filteredPayments];
+        if (dateSort) sortedPayments.sort((a, b) => new Date(a.payment_date) - new Date(b.payment_date));
+        else sortedPayments.sort((a, b) => new Date(b.payment_date) - new Date(a.payment_date));
+        setFilteredPayments(sortedPayments);
+    }, [dateSort]);
+    
     useEffect(() => {
         if (!filteredPayments) return;
         const sortedPayments = [...filteredPayments];
@@ -56,6 +74,15 @@ const Payments = () => {
         else sortedPayments.sort((a, b) => b.shift.fee - a.shift.fee);
         setFilteredPayments(sortedPayments);
     }, [feeSort]);
+    
+    useEffect(() => {
+        if(!filteredPayments) return;
+        const sortedPayments = [...filteredPayments];
+        if (shiftSort) sortedPayments.sort((a, b) => a.shift.id - b.shift.id);
+        else sortedPayments.sort((a, b) => b.shift.id - a.shift.id);
+        setFilteredPayments(sortedPayments);
+    }, [shiftSort]);
+
 
     useEffect(() => {
         if (!filteredPayments) return;
@@ -64,14 +91,6 @@ const Payments = () => {
         else sortedPayments.sort((a, b) => b.fee - a.fee);
         setFilteredPayments(sortedPayments);
     }, [amountSort]);
-
-    useEffect(() => {
-        if (!filteredPayments) return;
-        const sortedPayments = [...filteredPayments];
-        if (dateSort) sortedPayments.sort((a, b) => new Date(a.payment_date) - new Date(b.payment_date));
-        else sortedPayments.sort((a, b) => new Date(b.payment_date) - new Date(a.payment_date));
-        setFilteredPayments(sortedPayments);
-    }, [dateSort]);
 
     useEffect(()=>{
         if(!payments) return;
@@ -96,7 +115,8 @@ const Payments = () => {
     },[payments,shift])
 
 
-    return (<div>
+    return (
+    <div className='payments'>
         FILTER:{
             student ?
                 <div className='selection-btn'>
@@ -125,14 +145,14 @@ const Payments = () => {
                 </div>
                 : <div className='selection-btn'>All Shifts</div>
         }
-        <table>
+        <table className='payment-table'>
             {filteredPayments && <tbody>
                 <tr>
-                    <td>student </td>
-                    <td>Date of Transaction <img onClick={() => setDateSort(!dateSort)} src={UpDownIcon} alt="" /></td>
-                    <td>Amount Payed<img onClick={() => setAmountSort(!amountSort)} src={UpDownIcon} alt="" /></td>
-                    <td>Shift</td>
-                    <td>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></td>
+                    <th>student <img onClick={() => setStudentSort(!studentSort)} src={UpDownIcon} alt="" /></th>
+                    <th>Date of Transaction <img onClick={() => setDateSort(!dateSort)} src={UpDownIcon} alt="" /></th>
+                    <th>Amount Payed<img onClick={() => setAmountSort(!amountSort)} src={UpDownIcon} alt="" /></th>
+                    <th>Shift Name<img onClick={() => setShiftSort(!shiftSort)} src={UpDownIcon} alt="" /></th>
+                    <th>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></th>
                 </tr>
                 {
                     filteredPayments.map(payment => <tr key={payment.id}>

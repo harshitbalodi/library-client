@@ -23,7 +23,6 @@ import Payments from "./pages/Payment/Payments";
 function App() {
   const dispatch = useDispatch();
   const [sidebar, adminLoggedIn] = useSelector(state => [state.sidebar, state.auth.adminLoggedIn]);
-  console.log(adminLoggedIn)
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -46,7 +45,6 @@ function App() {
   useEffect(() => {
     const isUserLoggedIn = async () => {
       const refresh = getCookie("refresh");
-      console.log("refresh from cookies", refresh);
       if (refresh) {
         try {
           const { data } = await TokenService.authenticateUser(refresh);

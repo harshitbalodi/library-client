@@ -52,7 +52,7 @@ const NotRenewed = () => {
         notRenewedStudents.map(student =>
           <Student key={student.id} student={student} >
             <button 
-            className="delete-btn" 
+            id="delete-btn" 
             onMouseEnter={()=> handleMouseEnter(student.id)} 
             onMouseLeave={() => handleMouseLeave(student.id)}
             onClick={() => handleDelete(student)}>

@@ -83,7 +83,7 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
-      <h1>Admin Dashboard</h1>
+      {/* <h1>Admin Dashboard</h1> */}
       <div className="lock-unlock">
         {!lock ? (<div onClick={toggleLock} title="lock Dashboard" >
           <img src={LockIcon} alt="lock" />

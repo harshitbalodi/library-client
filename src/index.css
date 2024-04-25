@@ -13,7 +13,6 @@ div {
 
 ::-webkit-scrollbar-thumb {
   background-color: rgb(223, 217, 217);
-  /* border: 0.2px solid rgb(111, 109, 109); */
   border-radius: 2px;
 }
 
@@ -27,15 +26,16 @@ div {
   display: flex;
   flex: 1;
 }
+
 .routes-container {
   margin-top: 80px;
   min-height: 50vh;
+  max-height: 100vh;
+  overflow-y: scroll;
   width: 100%;
   padding: 10px;
   position: relative;
 }
-
-
 
 .hall-page {
   max-width: 100%;

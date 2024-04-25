@@ -1,9 +1,6 @@
-.delete-btn{
-    background-color: #f6f6f6;
+#delete-btn{
+    background-color: #fff;
     border:none;
     border-radius: 10%;
     margin:3px
-}
-.delete-btn:hover{
-    /* background-color: rgb(229, 129, 129); */
 }

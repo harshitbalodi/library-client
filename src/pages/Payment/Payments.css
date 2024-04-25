@@ -4,15 +4,29 @@ table {
   width: 100%;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
+th{
+  font-weight: bold;
   text-align: left;
-  padding: 8px;
+  border-bottom:3px solid #335ddc;
+  padding: 8px
+}
+
+td {
+  border: 1px solid #dddddd;
+  padding: 10px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #fafafa;
+}
+
+.payment{
+  padding: 5px;
+}
+
+.payment-table{
+  margin: 7px;
+  background-color: white;
 }
 
 .selection-btn {
@@ -41,3 +55,5 @@ tr:nth-child(even) {
   border-radius: 50%;
   display: inline-block;
 }
+
+
