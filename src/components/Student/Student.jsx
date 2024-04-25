@@ -6,6 +6,7 @@ import './Student.css';
 import '../index.css';
 import { useState } from 'react';
 import StudentUpdate from '../StudentUpdate/StudentUpdate';
+import PenEditIcon from '../../assets/pen-edit-icon.svg';
 
 const Student = ({ student, children, ...props }) => {
   const [formOpen, setFormOpen] = useState(false);
@@ -25,7 +26,7 @@ const Student = ({ student, children, ...props }) => {
           <div className='phone-number'> <img src={MobileIcon} alt="" />+91-9999999999</div>
         </div>
         <div className='right-block'>
-          <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Pay/Edit</button>
+          <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
           {children}
         </div>
       </div>

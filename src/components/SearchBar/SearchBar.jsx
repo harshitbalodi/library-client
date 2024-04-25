@@ -8,6 +8,8 @@ import MobileIcon from '../../assets/mobile-icon.svg'
 import { formatDate, setImageUrl } from "../../utils/helper";
 import StudentUpdate from "../StudentUpdate/StudentUpdate";
 import { useNavigate } from "react-router-dom";
+import PenEditIcon from '../../assets/pen-edit-icon.svg';
+import TrabsactionIcon from '../../assets/transaction-icon.svg';
 
 const SearchBar = () => {
     const [students, shifts] = useSelector(state => [state.students, state.shifts]);
@@ -97,11 +99,11 @@ const SearchBar = () => {
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
                         </button>
-                        <div className="profile-picture">
-                            <img width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
+                        <div className="profile-picture-block">
+                            <img className="profile-picture" width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                             <div >{choosenStudent.name}</div>
-                            <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Pay/Edit</button>
-                            <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions</button>
+                            <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
+                            <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions <img width={14} src={TrabsactionIcon} alt="" /></button>
                         </div>
                         <div className="student-suggestion-details">
                             <div>
