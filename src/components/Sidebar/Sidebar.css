@@ -1,27 +1,33 @@
 .sidebar {
-    margin-top: 80px;
-    width: 45px;
+    width: 160px;
     height: 100%;
     overflow-y: auto;
-    background-color: #333;
+    background-color: var(--primary-background-color);
     transition: width 0.3s;
     padding-top: 10px;
     left: 0;
     top: 0;
   }
   
-  .sidebar:hover {
-    width: 90px;
+  .application-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    color: #47338a;
+    font-size: larger;
   }
-  
   .sidebar-link {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    gap: 6px;
     text-decoration: none;
-    color: white;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    color: #0a0f45;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px 0 0 25px;
   }
   
   .sidebar:hover .sidebar-link {
@@ -32,16 +38,16 @@
     margin-bottom: 5px;
   }
   
-  .sidebar-link div {
-    opacity: 0; 
+  .sidebar-label{
+    display: inline-block;
     transition: opacity 0.3s;
+
+  }
+  .sidebar-link.active{
+    background-color: var(--secondary-background-color);
   }
   
-  .sidebar:hover .sidebar-link div {
-    opacity: 1; /* Show labels when sidebar is hovered */
-  }
-  
-  .sidebar-link.active {
-    background-color: #555; 
+  .sidebar-link.active .sidebar-label{
+    color: #FF8C00;
   }
   

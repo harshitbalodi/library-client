@@ -1,23 +1,45 @@
-table {
+.payments{
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(23, 23, 244, 0.2);
+}
+.payment-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 95%;
+  margin: .8rem;
 }
 
-th{
+.payment-table th{
   font-weight: bold;
   text-align: left;
   border-bottom:3px solid #335ddc;
-  padding: 8px
+  padding: 8px;
+  font-size: small;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
-td {
+.payment-table td {
   border: 1px solid #dddddd;
   padding: 10px;
+  font-size: small;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
-tr:nth-child(even) {
+.payment-table tr:nth-child(even) {
   background-color: #fafafa;
+}
+
+.inspiring-loader{
+  height: 100vh;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
 }
 
 .payment{

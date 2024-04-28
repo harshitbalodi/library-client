@@ -8,6 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 import { formatDate } from '../../utils/helper';
 import CrossIcon from '../../assets/cross-icon.svg';
 import UpDownIcon from '../../assets/up-down-icon.svg';
+import { Flex, Spin } from 'antd';
 
 const Payments = () => {
     const dispatch = useDispatch();
@@ -51,14 +52,14 @@ const Payments = () => {
         }
     }, [studentId, payments]);
 
-    useEffect(()=>{
-        if(!filteredPayments) return;
+    useEffect(() => {
+        if (!filteredPayments) return;
         const sortedPayments = [...filteredPayments];
-        if(studentSort) sortedPayments.sort((a, b) => a.student.name.localeCompare(b.student.name));
+        if (studentSort) sortedPayments.sort((a, b) => a.student.name.localeCompare(b.student.name));
         else sortedPayments.sort((a, b) => b.student.name.localeCompare(a.student.name));
         setFilteredPayments(sortedPayments);
-    },[studentSort]);
-    
+    }, [studentSort]);
+
     useEffect(() => {
         if (!filteredPayments) return;
         const sortedPayments = [...filteredPayments];
@@ -66,7 +67,7 @@ const Payments = () => {
         else sortedPayments.sort((a, b) => new Date(b.payment_date) - new Date(a.payment_date));
         setFilteredPayments(sortedPayments);
     }, [dateSort]);
-    
+
     useEffect(() => {
         if (!filteredPayments) return;
         const sortedPayments = [...filteredPayments];
@@ -74,9 +75,9 @@ const Payments = () => {
         else sortedPayments.sort((a, b) => b.shift.fee - a.shift.fee);
         setFilteredPayments(sortedPayments);
     }, [feeSort]);
-    
+
     useEffect(() => {
-        if(!filteredPayments) return;
+        if (!filteredPayments) return;
         const sortedPayments = [...filteredPayments];
         if (shiftSort) sortedPayments.sort((a, b) => a.shift.id - b.shift.id);
         else sortedPayments.sort((a, b) => b.shift.id - a.shift.id);
@@ -92,82 +93,94 @@ const Payments = () => {
         setFilteredPayments(sortedPayments);
     }, [amountSort]);
 
-    useEffect(()=>{
-        if(!payments) return;
-        if(student){
+    useEffect(() => {
+        if (!payments) return;
+        if (student) {
             console.log("student", student);
             // const newFilteredPayments = newFilteredPayments;
             // console.log(newFilteredPayments);
-            setFilteredPayments(()=>filteredPayments.filter((payment)=> payment.student.id == student.id))
-        }else{
+            setFilteredPayments(() => filteredPayments.filter((payment) => payment.student.id == student.id))
+        } else {
             setFilteredPayments(payments);
         }
-    },[payments, student]);
+    }, [payments, student]);
 
-    useEffect(()=>{
-        if(!payments)return;
-        if(shift){
-            const newFilteredPayments = filteredPayments.filter((payment)=> payment.shift.id == shift.id);
+    useEffect(() => {
+        if (!payments) return;
+        if (shift) {
+            const newFilteredPayments = filteredPayments.filter((payment) => payment.shift.id == shift.id);
             setFilteredPayments(newFilteredPayments);
-        }else{
+        } else {
             setFilteredPayments(payments);
         }
-    },[payments,shift])
+    }, [payments, shift])
 
 
     return (
-    <div className='payments'>
-        FILTER:{
-            student ?
-                <div className='selection-btn'>
-                    {student.name}
-                    <div
-                        className='cross-filter'
-                        onClick={() => setStudent(null)}>
-                        <img
-                            width={25}
-                            src={CrossIcon}
-                            alt="❌"
-                        />
-                    </div>
+        <div className='payments'>
+            {
+                !filteredPayments && <div className='inspiring-loader'>
+                    <Flex gap="small">
+                        <Spin tip="Loading..." size='large'>
+                            <div className="content" />
+                        </Spin>
+                    </Flex>
                 </div>
-                : <div className='selection-btn'>All Students</div>
-        }
-        {
-            shift ?
-                <div
-                    className='selection-btn'>
-                    {shift.name}
-                    <div className='cross-filter'
-                        onClick={()=>setShift(null)}>
-                        <img width={25} src={CrossIcon} alt="❌" />
-                    </div>
-                </div>
-                : <div className='selection-btn'>All Shifts</div>
-        }
-        <table className='payment-table'>
-            {filteredPayments && <tbody>
-                <tr>
-                    <th>student <img onClick={() => setStudentSort(!studentSort)} src={UpDownIcon} alt="" /></th>
-                    <th>Date of Transaction <img onClick={() => setDateSort(!dateSort)} src={UpDownIcon} alt="" /></th>
-                    <th>Amount Payed<img onClick={() => setAmountSort(!amountSort)} src={UpDownIcon} alt="" /></th>
-                    <th>Shift Name<img onClick={() => setShiftSort(!shiftSort)} src={UpDownIcon} alt="" /></th>
-                    <th>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></th>
-                </tr>
-                {
-                    filteredPayments.map(payment => <tr key={payment.id}>
-                        <td onClick={() => setStudent(payment.student)}>{payment.student.name}</td>
-                        <td>{formatDate(payment.payment_date)}</td>
-                        <td>{payment.fee}</td>
-                        <td onClick={() => setShift(payment.shift)}>{payment.shift.name}</td>
-                        <td>{payment.shift.fee}</td>
-                    </tr>
-                    )
+            }
+            {filteredPayments && <div>
+                FILTER:{
+                    student ?
+                        <div className='selection-btn'>
+                            {student.name}
+                            <div
+                                className='cross-filter'
+                                onClick={() => setStudent(null)}>
+                                <img
+                                    width={25}
+                                    src={CrossIcon}
+                                    alt="❌"
+                                />
+                            </div>
+                        </div>
+                        : <div className='selection-btn'>All Students</div>
                 }
-            </tbody>}
-        </table>
+                {
+                    shift ?
+                        <div
+                            className='selection-btn'>
+                            {shift.name}
+                            <div className='cross-filter'
+                                onClick={() => setShift(null)}>
+                                <img width={25} src={CrossIcon} alt="❌" />
+                            </div>
+                        </div>
+                        : <div className='selection-btn'>All Shifts</div>
+                }
+            </div>
+            }
+            <table className='payment-table'>
+                {filteredPayments && <tbody>
+                    <tr>
+                        <th>student <img onClick={() => setStudentSort(!studentSort)} src={UpDownIcon} alt="" /></th>
+                        <th>Date of Transaction <img onClick={() => setDateSort(!dateSort)} src={UpDownIcon} alt="" /></th>
+                        <th>Amount Payed<img onClick={() => setAmountSort(!amountSort)} src={UpDownIcon} alt="" /></th>
+                        <th>Shift Name<img onClick={() => setShiftSort(!shiftSort)} src={UpDownIcon} alt="" /></th>
+                        <th>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></th>
+                    </tr>
+                    {
+                        filteredPayments.map(payment => <tr key={payment.id}>
+                            <td onClick={() => setStudent(payment.student)}>{payment.student.name}</td>
+                            <td>{formatDate(payment.payment_date)}</td>
+                            <td>{payment.fee}</td>
+                            <td onClick={() => setShift(payment.shift)}>{payment.shift.name}</td>
+                            <td>{payment.shift.fee}</td>
+                        </tr>
+                        )
+                    }
+                </tbody>}
+            </table>
 
-    </div>)
+        </div>)
 }
 
 export default Payments

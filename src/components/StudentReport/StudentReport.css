@@ -1,0 +1,80 @@
+.student-report {
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(23, 23, 244, 0.2);
+}
+.student-report-btn {
+  border: none;
+  background-color: transparent;
+  margin: 0.3rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  font-size: small;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--primary-text-color);
+}
+.student-report-btn.active {
+  background-color: var(--secondary-background-color);
+}
+
+.report-table {
+  width: 100%;
+  padding: 1rem;
+}
+
+.report-table-headers {
+  background-color: var(--secondary-background-color);
+}
+
+.student-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.student-img img {
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.report-table th,
+.report-table td {
+  padding: 0.4rem;
+  font-size: small;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--primary-text-color);
+  text-align: center;
+}
+
+.student-status{
+    /* display: flex; */
+    /* justify-content: center; */
+    width: 110px;
+}
+.student-status .active {
+  color: green;
+  background-color: rgb(0, 128, 0, 0.2);
+  padding: 0.3rem;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  text-align: center;
+  width: 100px;
+}
+
+.student-status .expired{
+  color: red;
+  background-color: rgb(255, 0, 0, 0.2);
+  padding: 0.3rem;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  width: 100px;
+  text-align: center;
+}

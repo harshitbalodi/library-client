@@ -1,12 +1,9 @@
-body,
-p,
-div {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+:root{
+  --primary-color: #FF8C00;  
+  --primary-background-color: linear-gradient(to left top, #ff8c00, #fc7e30, #ffffff);
+  --secondary-background-color: #fbfbfb;
+  --primary-text-color: #1c268b;
 }
-
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -15,6 +12,22 @@ div {
   background-color: rgb(223, 217, 217);
   border-radius: 2px;
 }
+
+body,
+p,
+div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+body{
+  background-image: var(--primary-background-color);
+}
+
 
 .body-container {
   display: flex;
@@ -25,16 +38,18 @@ div {
 .middle-container {
   display: flex;
   flex: 1;
+  padding: 20px;
 }
 
 .routes-container {
-  margin-top: 80px;
   min-height: 50vh;
-  max-height: 100vh;
   overflow-y: scroll;
   width: 100%;
-  padding: 10px;
+  padding: 24px;
   position: relative;
+  background-color: var(--secondary-background-color);
+  border-radius: 35px;
+  
 }
 
 .hall-page {

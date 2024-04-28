@@ -2,7 +2,7 @@ import Footer from "./components/Footer/Footer"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Header from "./components/Header/Header";
+// import Header from "./components/Header/Header";
 import HallPage from "./pages/HallPage/HallPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,7 +61,7 @@ function App() {
   return (
     <Router>
       <div className="body-container">
-        <Header />
+        {/* <Header /> */}
         <Notification/>
         <div className="middle-container">
           {adminLoggedIn &&<div>
