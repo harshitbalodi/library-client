@@ -40,7 +40,8 @@ const StudentReport = () => {
   }
   return (
     <div className='student-report'>
-      StudentReport
+      <div>StudentReport</div> 
+      <input type="text" />
       <button className={`student-report-btn ${currentButton=== 'all'?'active':''}`} onClick={() => setCurrentButton('all')}>All</button>
       <button className={`student-report-btn ${currentButton=== 'new'?'active':''}`} onClick={() => setCurrentButton('new')}>New</button>
       <button className={`student-report-btn ${currentButton=== 'expired'?'active':''}`} onClick={() => setCurrentButton('expired')}>Expired</button>

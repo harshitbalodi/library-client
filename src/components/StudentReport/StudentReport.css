@@ -1,8 +1,11 @@
 .student-report {
+  padding: .7rem;
   width: 100%;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 1rem;
   box-shadow: 0px 5px 10px rgba(23, 23, 244, 0.2);
+  overflow-x: auto;
+
 }
 .student-report-btn {
   border: none;
