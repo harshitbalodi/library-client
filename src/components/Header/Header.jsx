@@ -55,7 +55,6 @@ const Header = () => {
         navigate('/');
     };
 
-
     return (
         <nav className="header">
             <div className="left-section">

@@ -10,22 +10,21 @@ const StudentReport = () => {
   const students = useSelector(state => state.students);
   const [currentButton, setCurrentButton] = useState('all');
   const [filteredStudents, setFilteredStudents] = useState(null);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const studentsPerPage = 6;
 
   useEffect(() => {
     if (!students) return;
     if (currentButton === 'all') {
       setFilteredStudents(students);
-    }
-    if (currentButton === 'new') {
+    } else if (currentButton === 'new') {
       setFilteredStudents(() => extractNewBooking(students));
-    }
-    if (currentButton === 'expired') {
+    } else if (currentButton === 'expired') {
       setFilteredStudents(() => students.filter(student => student.is_expired === true))
-    }
-    if (currentButton === 'renewal') {
+    } else if (currentButton === 'renewal') {
       setFilteredStudents(() => extractExiringSoon(students));
     }
+    setCurrentPage(1);
   }, [currentButton, students]);
 
   const findMemberStatus = (joiningDate) => {
@@ -38,15 +37,22 @@ const StudentReport = () => {
     const daysSinceJoining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     return daysSinceJoining >= 30 ? 'Old Member' : 'New Member';
   }
+
+  const indexOfLastStudent = currentPage * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents = filteredStudents?.slice(indexOfFirstStudent, indexOfLastStudent);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div className='student-report'>
-      <div>StudentReport</div> 
+      <div>StudentReport</div>
       <input type="text" />
-      <button className={`student-report-btn ${currentButton=== 'all'?'active':''}`} onClick={() => setCurrentButton('all')}>All</button>
-      <button className={`student-report-btn ${currentButton=== 'new'?'active':''}`} onClick={() => setCurrentButton('new')}>New</button>
-      <button className={`student-report-btn ${currentButton=== 'expired'?'active':''}`} onClick={() => setCurrentButton('expired')}>Expired</button>
-      <button className={`student-report-btn ${currentButton=== 'renewal'?'active':''}`} onClick={() => setCurrentButton('renewal')}>Renewal</button>
-      {filteredStudents && <table className='report-table'>
+      <button className={`student-report-btn ${currentButton === 'all' ? 'active' : ''}`} onClick={() => setCurrentButton('all')}>All</button>
+      <button className={`student-report-btn ${currentButton === 'new' ? 'active' : ''}`} onClick={() => setCurrentButton('new')}>New</button>
+      <button className={`student-report-btn ${currentButton === 'expired' ? 'active' : ''}`} onClick={() => setCurrentButton('expired')}>Expired</button>
+      <button className={`student-report-btn ${currentButton === 'renewal' ? 'active' : ''}`} onClick={() => setCurrentButton('renewal')}>Renewal</button>
+      {currentStudents && <table className='report-table'>
         <tbody>
           <tr className='report-table-headers'>
             <th>Student ID</th>
@@ -56,7 +62,7 @@ const StudentReport = () => {
             <th>member status</th>
           </tr>
 
-          {filteredStudents.map(student => {
+          {currentStudents.map(student => {
             return <tr key={student.id}>
               <td className='student-id-member'>{student?.stu_id}</td>
               <td>{student.name}</td>
@@ -84,6 +90,18 @@ const StudentReport = () => {
         </tbody>
       </table>
       }
+      {/* Pagination */}
+      {filteredStudents && (
+        <ul className="pagination">
+          {Array.from({ length: Math.ceil(filteredStudents.length / studentsPerPage) }).map((_, index) => (
+            <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+              <button onClick={() => paginate(index + 1)} className={`page-link ${index+1 === currentPage ? 'active' : ''}`}>
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

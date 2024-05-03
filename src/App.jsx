@@ -1,8 +1,7 @@
 import Footer from "./components/Footer/Footer"
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from "react";
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
-// import Header from "./components/Header/Header";
 import HallPage from "./pages/HallPage/HallPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,16 +12,24 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import TokenService from "./services/TokenService";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import token from "./services/token";
-import { getCookie } from "./utils/helper";
+import { getCookie, setCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
 import { setStudents, studentThunk } from "./store/studentsSlice";
 import { setShifts } from "./store/shiftSlice";
 import Notification from "./components/Notification/Notification";
 import Payments from "./pages/Payment/Payments";
+import { setErrorMessage } from "./store/notificationSlice";
+import { logOut } from "./store/authSlice";
+import NoDp from './assets/no-dp.jpg';
+import ArrowDown from './assets/arrow-down-black.svg';
+
 
 function App() {
   const dispatch = useDispatch();
   const [sidebar, adminLoggedIn] = useSelector(state => [state.sidebar, state.auth.adminLoggedIn]);
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -30,10 +37,11 @@ function App() {
         dispatch(studentThunk());
       } catch (error) {
         console.log(error);
+        dispatch(setErrorMessage(error.message));
       }
     }
     if (adminLoggedIn) getdata();
-    if(!adminLoggedIn){
+    if (!adminLoggedIn) {
       dispatch(setHalls(null));
       dispatch(setStudents(null));
       dispatch(setShifts(null));
@@ -58,31 +66,55 @@ function App() {
 
     isUserLoggedIn();
   }, []);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    console.log('Logout clicked');
+    dispatch(logOut());
+    setCookie("refresh", "null", 0);
+    localStorage.removeItem('username');
+    token.logout();
+    navigate('/');
+  };
+
   return (
-    <Router>
+    <div>
       <div className="body-container">
         {/* <Header /> */}
-        <Notification/>
+        <Notification />
         <div className="middle-container">
-          {adminLoggedIn &&<div>
+          {adminLoggedIn && <div>
             <Sidebar />
           </div>}
+          {adminLoggedIn && <div className="dropdown-container">
+            <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
+            {isOpen && (
+              <ul className="dropdown-menu">
+                <li onClick={() => navigate('/change-password')}>Change password</li>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            )}
+          </div>
+          }
           <div className={`routes-container ${sidebar && "sidebar-active"}`}>
             <Routes>
               {
                 !adminLoggedIn ? (
                   <>
-                  <Route path="/" element={<LoginPage />} />
+                    <Route path="/" element={<LoginPage />} />
                   </>
-                  
+
                 )
                   : (
                     <>
-                    <Route path="/" element={<Dashboard />} />
-                      <Route path="/hall" element={<HallPage />} />  
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="/hall" element={<HallPage />} />
                       <Route path="/booking" element={<BookingPage />} />
                       <Route path="/change-password" element={<ChangePassword />} />
-                      <Route path="/payments" element={<Payments/>} />
+                      <Route path="/payments" element={<Payments />} />
                     </>
                   )
               }
@@ -90,10 +122,9 @@ function App() {
             </Routes>
           </div>
         </div>
-
         <Footer />
       </div>
-    </Router>
+    </div>
   )
 }
 

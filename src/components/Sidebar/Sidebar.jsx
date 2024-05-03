@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-// import DashboardIcon from '../../assets/dashboard-icon.svg';
-// import HallIcon from '../../assets/hall-icon.svg'
-// import Rupeeicon from '../../assets/rupee-icon.svg';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import HallIcon from '../../assets/SvgComponents/HallIcon';

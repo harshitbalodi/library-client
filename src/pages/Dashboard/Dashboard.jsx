@@ -9,19 +9,19 @@ const Dashboard = () => {
       <SearchBar />
       <div className="member-block-container">
         <div className="member-block total">
-          <h4>Total Member</h4>
-          <h1>71</h1>
-          <h5>People</h5>
+          <p>Total Member</p>
+          <h2>71</h2>
+          <p>People</p>
         </div>
         <div className="member-block new">
-          <h4>New Member</h4>
-          <h1>4</h1>
-          <h5>People</h5>
+          <p>New Member</p>
+          <h2>4</h2>
+          <p>People</p>
         </div>
         <div className="member-block expired">
-          <h4>Expired Member</h4>
-          <h1>2</h1>
-          <h5>People</h5>
+          <p>Expired Member</p>
+          <h2>2</h2>
+          <p>People</p>
         </div>
       </div>
       <StudentReport />
