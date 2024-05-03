@@ -49,10 +49,10 @@ const Header = () => {
     const handleLogout = () => {
         console.log('Logout clicked');
         dispatch(logOut());
-        navigate('/');
         setCookie("refresh", "null", 0);
         localStorage.removeItem('username');
         token.logout();
+        navigate('/');
     };
 
 

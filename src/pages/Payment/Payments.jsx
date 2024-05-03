@@ -23,6 +23,7 @@ const Payments = () => {
     const [studentSort, setStudentSort] = useState(false);
     const [feeSort, setFeeSort] = useState(false);
     const [shiftSort, setShiftSort] = useState(false);
+    const [userSearchInput, setUserSearchInput] = useState("");
 
     useEffect(() => {
         try {
@@ -97,8 +98,6 @@ const Payments = () => {
         if (!payments) return;
         if (student) {
             console.log("student", student);
-            // const newFilteredPayments = newFilteredPayments;
-            // console.log(newFilteredPayments);
             setFilteredPayments(() => filteredPayments.filter((payment) => payment.student.id == student.id))
         } else {
             setFilteredPayments(payments);
@@ -113,7 +112,22 @@ const Payments = () => {
         } else {
             setFilteredPayments(payments);
         }
-    }, [payments, shift])
+    }, [payments, shift]);
+
+    useEffect(()=>{
+        if(!payments) return;
+        console.log("entered usestate");
+        if(userSearchInput){
+            const newFilteredPayments = filteredPayments.filter((payment) => {
+                var existStudentID = false;
+                if(payment.student.stu_id) existStudentID = payment?.student?.stu_id.toLowerCase().includes(userSearchInput.toLowerCase())
+               return payment.student.name.toLowerCase().includes(userSearchInput.toLowerCase()) || existStudentID; 
+            });
+            setFilteredPayments(newFilteredPayments);
+        }else{
+            setFilteredPayments(payments);
+        }
+    },[userSearchInput,payments])
 
 
     return (
@@ -158,6 +172,21 @@ const Payments = () => {
                 }
             </div>
             }
+
+            {
+                filteredPayments && filteredPayments.length == 0 && <div className='no-data'>No Data Found</div>
+            }
+
+            {
+                filteredPayments && 
+                <input 
+                type="text" 
+                className='search-input'
+                placeholder="Search using student name or student ID" 
+                onChange={(e)=>{setUserSearchInput(e.target.value)}}
+                />
+            }
+
             <table className='payment-table'>
                 {filteredPayments && <tbody>
                     <tr>

@@ -1,6 +1,7 @@
 import axios from "axios";
 const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/hall";
 import token from "./token";
+import axiosInstance from "./axios";
 
 const getall = async () => {
   try {
@@ -19,7 +20,8 @@ const Addhall = async (hallName) => {
     const config = {
       headers: token.getToken(),
     };
-    const response = await axios.post(baseUrl, { name: hallName }, config);
+    const response = await axiosInstance.post(baseUrl,{ name: hallName }, config);
+    console.log(response);
     return response;
   } catch (error) {
     console.log("error in adding hall", error);
