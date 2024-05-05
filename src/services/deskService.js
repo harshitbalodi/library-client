@@ -1,21 +1,12 @@
-import axios from "axios";
-import token from "./token";
-const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/desk";
+import axiosInstance from "./axios";
 
 const getall = async () => {
-  const config = {
-    headers: token.getToken()
-  }
-  const response = await axios.get(baseUrl, config);
+  const response = await axiosInstance.get("/desk");
   return response;
 };
 
 const updateDesk = async (id, deskObj) => {
-  const config = {
-    headers: token.getToken()
-  }
-
-  const response = await axios.patch(baseUrl + `/${id}`, deskObj,config);
+  const response = await axiosInstance.patch(`/desk/${id}`, deskObj);
   return response;
 };
 export default { getall, updateDesk };

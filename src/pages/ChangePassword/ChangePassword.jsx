@@ -1,38 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { logOut } from "../../store/authSlice";
 import './ChangePassword.css';
 import PasswordService from "../../services/PasswordService";
-import token from "../../services/token";
-import { setCookie } from "../../utils/helper";
+import useLogoutUser from "../../hooks/useLogoutUser";
+import { setSuccessMessage, setErrorMessage as setErrorMessageThunk } from "../../store/notificationSlice";
 
 const ChangePassword = () => {
   const auth = useSelector(state => state.auth);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [username, setUsername] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
+  const logoutUser = useLogoutUser();
+  const dispatch = useDispatch();
+
   console.log(auth);
 
   const username = localStorage.getItem('username');
-  const handleLogout = ()=>{
-        dispatch(logOut());
-        token.logout();
-        setCookie("refresh", "null", 0);
-        localStorage.removeItem('username');
-  }
-
+ 
   if(!username){
-    handleLogout();
+    logoutUser();
   }
 
   useEffect(() => {
-    if (!auth.adminLoggedIn) navigate('/shift');
+    if (!auth.adminLoggedIn) navigate('/');
   }, [auth]);
 
   useEffect(() => {
@@ -57,11 +50,15 @@ const ChangePassword = () => {
     try {
       const response = await PasswordService.changePassword(userObj);
       console.log(response);
-      handleLogout();
+      dispatch(setSuccessMessage("Password changed successfully"));
+      logoutUser();
     } catch (error) {
       console.error(error);
-      if (error?.response?.data?.detail) {
-        setErrorMessage(error?.response?.data?.detail);
+      if(error?.response?.status === 401){
+        logoutUser();
+        dispatch(setErrorMessageThunk("Your session has expired. Please login again."));
+      }else if(error?.response?.data?.detail){
+        setErrorMessage("Error: " + error?.response?.data?.detail)
       }
     }
   }

@@ -2,7 +2,8 @@ import axios from "axios";
 import TokenService from "./TokenService";
 const BASE_URL = import.meta.env.VITE_BACKEND_API_URL + "/v1/api";
 import token from "./token";
-import { getCookie, setCookie } from "../utils/helper";
+import { getCookie } from "../utils/helper";
+
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -35,9 +36,6 @@ axiosInstance.interceptors.response.use(
       ] = `Bearer ${newAccessToken.data.access}`;
       return axiosInstance(prevRequest);
     }
-    setCookie("refresh", "null", 0);
-    localStorage.removeItem("username");
-    token.logout();
     return Promise.reject(error);
   }
 );

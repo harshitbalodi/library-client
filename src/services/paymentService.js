@@ -1,17 +1,8 @@
-const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/payment";
-import axios from "axios";
-import token from "./token";
-
+import axiosInstance from "./axios";
 const updatePayment = async (studentId, month) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.post(
-      baseUrl,
-      { student: studentId, paid_for_month: month },
-      config
-    );
+    const payload = { student: studentId, paid_for_month: month };
+    const response = await axiosInstance.post("/payment", payload);
     return response;
   } catch (error) {
     console.log("error in updating payment", error);
@@ -21,10 +12,7 @@ const updatePayment = async (studentId, month) => {
 
 const getAllPayments = async () =>{
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.get(baseUrl, config);
+    const response = await axiosInstance.get("/payment");
     return response;
   } catch (error) {
     console.log("error in fetching payments", error);

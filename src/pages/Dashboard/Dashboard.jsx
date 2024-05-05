@@ -2,24 +2,29 @@ import "./Dashboard.css";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import StudentReport from "../../components/StudentReport/StudentReport";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { extractNewBooking } from "../../utils/helper";
 
 const Dashboard = () => {
   const students = useSelector(state => state.students);
   const [filteredStudents, setFilteredStudents] = useState(null);
-  const lengths = {
-    all: students?.length,
-    new: extractNewBooking(students)?.length,
-    expired: students?.filter(student => student.is_expired === true)?.length,
-  }
+  const [lengths, setLengths] = useState({
+    all:0,
+    new:0,
+    expired:0
+  }) 
 
-  // setFilteredStudents(() => students.filter(student => student.is_expired === true))
-
-
-  // useEffect(() => {
-
-  // }, [students]);
+  useEffect(() => {
+    if(students){
+      setLengths(()=>{
+        return {
+          all: students.length,
+          new: extractNewBooking(students)?.length,
+          expired: students.filter(student => student.is_expired).length,
+        }
+      })
+    }
+  }, [students]);
 
   return (
     <div className="Dashboard">
@@ -37,7 +42,7 @@ const Dashboard = () => {
         </div>
         <div className="member-block expired">
           <p>Expired Member</p>
-          <h2>2</h2>
+          <h2>{lengths?.expired}</h2>
           <p>People</p>
         </div>
       </div>

@@ -1,13 +1,8 @@
-import axios from "axios";
-const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/student";
-import token from "./token";
+import axiosInstance from "./axios";
 
 const getall = async () => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.get(baseUrl, config);
+    const response = await axiosInstance.get("/student");
     return response;
   } catch (error) {
     console.log("error fetching students");
@@ -18,10 +13,9 @@ const getall = async () => {
 const createStudent = async (studentObj) => {
   try {
     const config = {
-      headers: token.getToken(),
       "Content-Type": "multipart/form-data"
     };
-    const response = await axios.post(baseUrl, studentObj, config);
+    const response = await axiosInstance.post("/student", studentObj, config);
     return response;
   } catch (error) {
     console.error("Error creating student:", error);
@@ -32,10 +26,9 @@ const createStudent = async (studentObj) => {
 const updateStudent = async (id, formData) => {
   try {
     const config = {
-      headers: token.getToken(),
       "Content-Type": "multipart/form-data"
     };
-    const response = await axios.patch(baseUrl + "/" + id, formData, config);
+    const response = await axiosInstance.patch(`/student/${id}`, formData, config);
     return response;
   } catch (error) {
     console.log("error updating student", error);
@@ -45,11 +38,7 @@ const updateStudent = async (id, formData) => {
 
 const deleteStudent = async(id)=>{
   try{
-    const config = {
-      headers: token.getToken(),
-      "Content-Type": "multipart/form-data"
-    };
-    const response = await axios.delete(baseUrl + "/" + id, config);
+    const response = await axiosInstance.delete(`/student/${id}`);
     return response;
   }catch(error){
     console.log("error deleting student", error);

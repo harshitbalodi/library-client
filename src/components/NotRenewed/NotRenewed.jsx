@@ -5,8 +5,9 @@ import Student from "../Student/Student";
 import './NotRenewed.css';
 import studentService from "../../services/studentService";
 import { studentThunk } from "../../store/studentsSlice";
-import { setSuccessMessage } from "../../store/notificationSlice";
+import { setSuccessMessage, setErrorMessage } from "../../store/notificationSlice";
 import DeleteIcon from "../../assets/SvgComponents/DeleteIcon";
+import useLogoutUser from "../../hooks/useLogoutUser";
 
 
 const NotRenewed = () => {
@@ -14,6 +15,8 @@ const NotRenewed = () => {
   const students = useSelector(state => state.students);
   const [notRenewedStudents, setNotRenewedStudents] = useState([]);
   const [hoverStates, setHoverStates] = useState({});
+  const logoutUser = useLogoutUser
+  
   useEffect(() => {
     if (students) setNotRenewedStudents(() => students.filter(student => student.is_expired === true));
   }, [students]);
@@ -29,6 +32,12 @@ const NotRenewed = () => {
       }
     } catch (error) {
       console.log(error);
+      if(error?.response?.status === 401){
+        logoutUser();
+        dispatch(setErrorMessage("Your session has expired. Please login again."));
+      }else{
+        dispatch(setErrorMessage(error.response.data.message));
+      }
     }
   }
 

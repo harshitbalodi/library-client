@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,9 +23,11 @@
   position: relative;
   /* background-color: #f7f7f7; */
   background-color: #fff;
-  width: 50%;
-  min-width: max-content;
-  max-height: 80%;
+  /* margin: 20px 50px 100px 20px; */
+  height: 84vh;
+  /* min-width: max-content; */
+  /* height: 100%; */
+  width: 100%;
   overflow-y: auto;
   overflow-x: auto;
   border-radius: 20px;

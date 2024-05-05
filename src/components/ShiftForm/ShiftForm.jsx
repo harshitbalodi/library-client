@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import shiftServices from '../../services/shiftServices';
 import { hallsThunk } from '../../store/hallSlice';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
+import useLogoutUser from '../../hooks/useLogoutUser';
 
 const ShiftForm = ({ isOpen, onClose, hall }) => {
     const halls = useSelector(state => state.halls);
@@ -18,6 +19,7 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
     const [fee, setFee] = useState(0);
     const [startAt, setStartAt] = useState('');
     const [endAt, setEndAt] = useState('');
+    const logoutUser = useLogoutUser();
 
     useEffect(() => {
         setHallOptions(halls.map(hall => ({ value: hall.id, label: hall.name })));
@@ -54,6 +56,12 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
             }
         } catch (error) {
             console.log(error);
+            if(error?.response?.status === 401){
+                logoutUser();
+                dispatch(setErrorMessage("Your session has expired. Please login again."));
+              }else{
+                dispatch(setErrorMessage(error.response.data.message));
+              }
         }
     };
 

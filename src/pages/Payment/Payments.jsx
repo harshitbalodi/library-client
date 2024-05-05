@@ -114,20 +114,20 @@ const Payments = () => {
         }
     }, [payments, shift]);
 
-    useEffect(()=>{
-        if(!payments) return;
+    useEffect(() => {
+        if (!payments) return;
         console.log("entered usestate");
-        if(userSearchInput){
+        if (userSearchInput) {
             const newFilteredPayments = filteredPayments.filter((payment) => {
                 var existStudentID = false;
-                if(payment.student.stu_id) existStudentID = payment?.student?.stu_id.toLowerCase().includes(userSearchInput.toLowerCase())
-               return payment.student.name.toLowerCase().includes(userSearchInput.toLowerCase()) || existStudentID; 
+                if (payment.student.stu_id) existStudentID = payment?.student?.stu_id.toLowerCase().includes(userSearchInput.toLowerCase())
+                return payment.student.name.toLowerCase().includes(userSearchInput.toLowerCase()) || existStudentID;
             });
             setFilteredPayments(newFilteredPayments);
-        }else{
+        } else {
             setFilteredPayments(payments);
         }
-    },[userSearchInput,payments])
+    }, [userSearchInput, payments])
 
 
     return (
@@ -178,12 +178,12 @@ const Payments = () => {
             }
 
             {
-                filteredPayments && 
-                <input 
-                type="text" 
-                className='search-input'
-                placeholder="Search using student name or student ID" 
-                onChange={(e)=>{setUserSearchInput(e.target.value)}}
+                filteredPayments &&
+                <input
+                    type="text"
+                    className='search-input'
+                    placeholder="Search using student name or student ID"
+                    onChange={(e) => { setUserSearchInput(e.target.value) }}
                 />
             }
 

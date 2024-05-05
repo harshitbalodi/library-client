@@ -14,17 +14,13 @@ import deskService from '../../services/deskService';
 import { disableDropdown, enableDropdown } from '../../store/editDropdownSlice';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
 import DefaultMaleImage from '../../assets/no-dp.jpg';
-
+import useLogoutUser from '../../hooks/useLogoutUser';
 
 const StudentDropDown = ({ deskNo, shiftId }) => {
     const [student, setStudent] = useState(null);
     // const shift = useSelector(state => state.shift);
     const students = useSelector(state => state.students);
-    console.log(student);
-    console.log("students", students);
-    console.log("shiftId", shiftId);
-    console.log("deskNo", deskNo);
-    console.log("student.id", shiftId, "student.hall.shift.desk", deskNo);
+
     useEffect(() => {
         const findStudent = () => {
             if (!students) {
@@ -50,7 +46,7 @@ const SeatCard = ({ shift }) => {
     const [isHovering, setIsHovering] = useState(null);
     const [seat, isEditDropdownOpen] = useSelector(state => [state.seat, state.editDropdown.isEnabled, state.students]);
     const dispatch = useDispatch();
-
+    const logoutUser = useLogoutUser();
     useEffect(() => {
         if (!seat || !shift) return;
         shift.desks.forEach(desk => {
@@ -91,7 +87,13 @@ const SeatCard = ({ shift }) => {
                 }
             } catch (error) {
                 console.log(error);
-                dispatch(setErrorMessage(error.message));
+                // dispatch(setErrorMessage(error.message));
+                if (error?.response?.status === 401) {
+                    logoutUser();
+                    dispatch(setErrorMessage("Your session has expired. Please login again."));
+                } else {
+                    dispatch(setErrorMessage(error.response.data.message));
+                }
             }
         }
     }
@@ -105,6 +107,12 @@ const SeatCard = ({ shift }) => {
             dispatch(hallsThunk());
         } catch (error) {
             console.log(error);
+            if (error?.response?.status === 401) {
+                logoutUser();
+                dispatch(setErrorMessage("Your session has expired. Please login again."));
+            } else {
+                dispatch(setErrorMessage(error.response.data.message));
+            }
         }
 
     }

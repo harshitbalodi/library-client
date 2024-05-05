@@ -35,7 +35,6 @@ body{
 }
 
 .middle-container {
-  /* position: relative; */
   display: flex;
   flex: 1;
   padding: 20px;
@@ -44,7 +43,6 @@ body{
 }
 
 .routes-container {
-  /* min-height: 50vh; */
   max-height: 95vh;
   overflow-y: scroll;
   width: 100%;
@@ -72,10 +70,7 @@ body{
 }
 
 .dropdown-button {
-  
-  /* border: none; */
   border: 1px solid black;
-  /* border-bottom: 1px solid black; */
   font-size: large;
   padding: 5px 10px;
   color: rgb(255, 255, 255);

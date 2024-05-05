@@ -13,6 +13,7 @@ import hallServices from '../../services/hallServices';
 import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
+import useLogoutUser from '../../hooks/useLogoutUser';
 
 const CardCarousel = ({ hall }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -21,6 +22,8 @@ const CardCarousel = ({ hall }) => {
   const [hallName, setHallName] = useState(hall.name || '');
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
+  const logoutUser = useLogoutUser();
+
   useEffect(() => {
     const handleResize = () => {
       const windowSize = window.innerWidth;
@@ -62,7 +65,12 @@ const CardCarousel = ({ hall }) => {
       dispatch(hallsThunk());
       console.log(response);
     } catch (error) {
-      dispatch(setErrorMessage(error.response.data.message));
+      if(error?.response?.status === 401){
+        logoutUser();
+        dispatch(setErrorMessage("Your session has expired. Please login again."));
+      }else{
+        dispatch(setErrorMessage(error.response.data.message));
+      }
     }
   }
 
@@ -77,7 +85,12 @@ const CardCarousel = ({ hall }) => {
       console.log(response);
     } catch (error) {
       console.log(error);
-      dispatch(setErrorMessage(error.response.data.message));
+      if(error?.response?.status === 401){
+        logoutUser();
+        dispatch(setErrorMessage("Your session has expired. Please login again."));
+      }else{
+        dispatch(setErrorMessage(error.response.data.message));
+      }
     }
   }
 

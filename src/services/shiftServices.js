@@ -1,13 +1,8 @@
-import axios from "axios";
-const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/shift";
-import token from "./token";
+import axiosInstance from "./axios";
 
 const getall = async () => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.get(baseUrl, config);
+    const response = await axiosInstance.get("/shift");
     return response;
   } catch (error) {
     console.log("error in fetching shifts", error);
@@ -17,10 +12,7 @@ const getall = async () => {
 
 const addShift = async (ShiftObj) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.post(baseUrl, ShiftObj, config);
+    const response = await axiosInstance.post("/shift", ShiftObj);
     return response;
   } catch (error) {
     console.log("error in adding shift", error);
@@ -30,10 +22,7 @@ const addShift = async (ShiftObj) => {
 
 export const deleteShift = async (id) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.delete(baseUrl + `/${id}`, config);
+    const response = axiosInstance.delete(`/shift/${id}`);
     return response;
   } catch (error) {
     console.log("error in deleting shift", error);
@@ -42,10 +31,7 @@ export const deleteShift = async (id) => {
 };
 export const updateShift = async (id, shiftObj) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.patch(baseUrl + `/${id}`, shiftObj, config);
+    const response = await axiosInstance.patch(`/shift/${id}`, shiftObj);
     return response;
   } catch (error) {
     console.log("error in editing shift", error);

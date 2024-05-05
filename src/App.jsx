@@ -12,23 +12,23 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import TokenService from "./services/TokenService";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import token from "./services/token";
-import { getCookie, setCookie } from "./utils/helper";
+import { getCookie } from "./utils/helper";
 import { logIn } from "./store/authSlice";
 import { setStudents, studentThunk } from "./store/studentsSlice";
 import { setShifts } from "./store/shiftSlice";
 import Notification from "./components/Notification/Notification";
 import Payments from "./pages/Payment/Payments";
 import { setErrorMessage } from "./store/notificationSlice";
-import { logOut } from "./store/authSlice";
 import NoDp from './assets/no-dp.jpg';
 import ArrowDown from './assets/arrow-down-black.svg';
-
+import useLogoutUser from "./hooks/useLogoutUser";
 
 function App() {
   const dispatch = useDispatch();
   const [sidebar, adminLoggedIn] = useSelector(state => [state.sidebar, state.auth.adminLoggedIn]);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const logoutUser = useLogoutUser();
 
   useEffect(() => {
     const getdata = async () => {
@@ -60,6 +60,12 @@ function App() {
           token.setToken(data.access);
         } catch (error) {
           console.log(error);
+          if (error?.response?.status === 401) {
+            logoutUser();
+            dispatch(setErrorMessage("Your session has expired. Please login again."));
+          } else {
+            dispatch(setErrorMessage(error?.response?.data?.message));
+          }
         }
       }
     }
@@ -73,11 +79,7 @@ function App() {
 
   const handleLogout = () => {
     console.log('Logout clicked');
-    dispatch(logOut());
-    setCookie("refresh", "null", 0);
-    localStorage.removeItem('username');
-    token.logout();
-    navigate('/');
+    logoutUser();
   };
 
   return (
@@ -101,7 +103,7 @@ function App() {
               )}
             </div>
             }
-            
+
             <Routes>
               {
                 !adminLoggedIn ? (

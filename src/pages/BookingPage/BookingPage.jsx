@@ -9,6 +9,7 @@ import { studentThunk } from '../../store/studentsSlice';
 import ImagePicker from '../../components/ImagePicker/ImagePicker';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
 import { hallsThunk } from '../../store/hallSlice';
+import useLogoutUser from '../../hooks/useLogoutUser';
 
 const BookingPage = () => {
   const [seat, shifts] = useSelector(state => [state.seat, state.shifts]);
@@ -26,6 +27,7 @@ const BookingPage = () => {
   const [deskId] = useState(() => searchParams.get("desk"));
   const [shiftId] = useState(() => searchParams.get("shift"));
   const [bookedSuccessfully, setBookedSuccessfully] = useState(false);
+  const logoutUser = useLogoutUser();
 
   console.log("deskId", deskId, shiftId);
   console.log("seat", seat);
@@ -42,16 +44,16 @@ const BookingPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (months <= 0){
+    if (months <= 0) {
       console.log("months should be greater than 0");
       setErrors('Please enter a valid number of months');
       setTimeout(() => setErrors(''), 3000);
       return;
     }
-    if(!image){
+    if (!image) {
       console.log("image not selected");
       setErrors('Please select an image');
-      setTimeout(()=> setErrors(''), 3000);
+      setTimeout(() => setErrors(''), 3000);
       return;
     }
     const formData = new FormData();
@@ -73,7 +75,12 @@ const BookingPage = () => {
       dispatch(studentThunk());
       dispatch(hallsThunk());
     } catch (error) {
-      dispatch(setErrorMessage("Error in creating student"));
+      if (error?.response?.status === 401) {
+        logoutUser();
+        dispatch(setErrorMessage("Your session has expired. Please login again."));
+      } else {
+        dispatch(setErrorMessage(error.response.data.message));
+      }
       console.log(error);
     }
   };
@@ -85,7 +92,7 @@ const BookingPage = () => {
   return (
     <div>
       {
-        !seat && <div  className='not-selected'>
+        !seat && <div className='not-selected'>
           <h3>You have not selected any seat</h3>
           <p>Go back to Dashboard</p>
           <button className='home-button' onClick={() => navigate('/')}>Dashboard</button>
@@ -107,10 +114,10 @@ const BookingPage = () => {
                   <circle
                     fill="none"
                     stroke="#68E534"
-                    strokeWidth="10" 
-                    cx="100" 
+                    strokeWidth="10"
+                    cx="100"
                     cy="100"
-                    r="85" 
+                    r="85"
                     strokeLinecap="round"
                     transform="rotate(-90 100 100)"
                     className="circle"
@@ -118,8 +125,8 @@ const BookingPage = () => {
                   <polyline
                     fill="none"
                     stroke="#68E534"
-                    points="44,107 86.5,142 152,69" 
-                    strokeWidth="12" 
+                    points="44,107 86.5,142 152,69"
+                    strokeWidth="12"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className="tick"
@@ -206,7 +213,7 @@ const BookingPage = () => {
                     />
                   </div>
 
-                  <ImagePicker setImage={setImage}/>
+                  <ImagePicker setImage={setImage} />
 
                   <div style={{ color: 'red' }}>
                     {error}

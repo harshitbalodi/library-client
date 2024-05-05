@@ -1,14 +1,7 @@
-import axios from "axios";
-const baseUrl = import.meta.env.VITE_BACKEND_API_URL+"/v1/api/hall";
-import token from "./token";
 import axiosInstance from "./axios";
 
 const getall = async () => {
   try {
-    // const config = {
-    //   headers: token.getToken(),
-    // };
-    // const response = await axios.get(baseUrl, config);
     const response = await axiosInstance.get('/hall');
     return response;
   } catch (error) {
@@ -18,9 +11,6 @@ const getall = async () => {
 };
 const Addhall = async (hallName) => {
   try {
-    // const config = {
-    //   headers: token.getToken(),
-    // };
     const response = await axiosInstance.post('/hall',{ name: hallName });
     console.log(response);
     return response;
@@ -29,12 +19,10 @@ const Addhall = async (hallName) => {
     throw error;
   }
 };
+
 const deleteHall = async (id) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.delete(baseUrl + `/${id}`, config);
+    const response = await axiosInstance.delete(`/hall/${id}`);
     return response;
   } catch (error) {
     console.log("error in deleting hall", error);
@@ -44,10 +32,7 @@ const deleteHall = async (id) => {
 
 const editHall = async (id, hallObj) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.patch(baseUrl + `/${id}`, hallObj, config);
+    const response = await axiosInstance.patch(`/hall/${id}`, hallObj); 
     return response;
   } catch (error) {
     console.log("error in editing hall", error);

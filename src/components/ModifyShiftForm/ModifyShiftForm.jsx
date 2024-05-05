@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { hallsThunk } from '../../store/hallSlice';
 import { useState } from 'react';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
+import useLogoutUser from '../../hooks/useLogoutUser';
 
 const ModifyShiftForm = ({ shift, setIsOpen }) => {
   const [shiftName, setShiftName] = useState(shift.name || '');
@@ -14,7 +15,7 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
   const [endTime, setEndTime] = useState(shift.end_time || "00:00:00");
   const [startTime, setStartTime] = useState(shift.start_time || "00:00:00");
   const dispatch = useDispatch();
-  console.log(shift);
+  const logoutUser = useLogoutUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +34,13 @@ const ModifyShiftForm = ({ shift, setIsOpen }) => {
       dispatch(hallsThunk());
     } catch (error) {
       console.log(error);
-      dispatch(setErrorMessage(error.message));
+      // dispatch(setErrorMessage(error.message));
+      if(error?.response?.status === 401){
+        logoutUser();
+        dispatch(setErrorMessage("Your session has expired. Please login again."));
+      }else{
+        dispatch(setErrorMessage(error.response.data.message));
+      }
     }
     setIsOpen(false);
   };
