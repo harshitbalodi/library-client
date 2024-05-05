@@ -34,15 +34,16 @@
 
 
 .hall-heading{
+  margin-left: 1rem;
   color: #3e4152;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bold;
 }
+
 .hall-heading input[type="text"]{
   outline: none;
-  /* background-color: transparent; */
   color: #3e4152;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bold;
   width: 150px;
 }

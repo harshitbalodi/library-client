@@ -5,10 +5,11 @@ import axiosInstance from "./axios";
 
 const getall = async () => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axios.get(baseUrl, config);
+    // const config = {
+    //   headers: token.getToken(),
+    // };
+    // const response = await axios.get(baseUrl, config);
+    const response = await axiosInstance.get('/hall');
     return response;
   } catch (error) {
     console.log("error in fetching halls", error);
@@ -17,10 +18,10 @@ const getall = async () => {
 };
 const Addhall = async (hallName) => {
   try {
-    const config = {
-      headers: token.getToken(),
-    };
-    const response = await axiosInstance.post(baseUrl,{ name: hallName }, config);
+    // const config = {
+    //   headers: token.getToken(),
+    // };
+    const response = await axiosInstance.post('/hall',{ name: hallName });
     console.log(response);
     return response;
   } catch (error) {

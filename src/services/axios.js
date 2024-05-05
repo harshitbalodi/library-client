@@ -1,10 +1,8 @@
 import axios from "axios";
 import TokenService from "./TokenService";
-import { logOut } from "../store/authSlice";
-const BASE_URL = import.meta.env.VITE_BACKEND_API_URL + "/v1/api/desk";
+const BASE_URL = import.meta.env.VITE_BACKEND_API_URL + "/v1/api";
 import token from "./token";
 import { getCookie, setCookie } from "../utils/helper";
-import { useDispatch } from "react-redux";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -37,8 +35,6 @@ axiosInstance.interceptors.response.use(
       ] = `Bearer ${newAccessToken.data.access}`;
       return axiosInstance(prevRequest);
     }
-    const dispatch = useDispatch();
-    dispatch(logOut());
     setCookie("refresh", "null", 0);
     localStorage.removeItem("username");
     token.logout();
@@ -47,4 +43,3 @@ axiosInstance.interceptors.response.use(
 );
 
 export default axiosInstance;
-

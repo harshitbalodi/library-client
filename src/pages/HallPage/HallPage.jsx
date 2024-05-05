@@ -12,7 +12,7 @@ const HallPage = () => {
   const navigate = useNavigate();
   console.log(seat);
   return !halls ? <Shimmer /> : (
-    <div >
+    <div  className="hall-page">
       <div className='booking-btn'>
         {seat && <Button onClick={() => navigate(`/booking?desk=${seat.id}&shift=${seat.shift.id}`)} >Proceed</Button>}
       </div>

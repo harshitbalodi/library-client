@@ -89,24 +89,25 @@ function App() {
           {adminLoggedIn && <div>
             <Sidebar />
           </div>}
-          {adminLoggedIn && <div className="dropdown-container">
-            <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
-            {isOpen && (
-              <ul className="dropdown-menu">
-                <li onClick={() => navigate('/change-password')}>Change password</li>
-                <li onClick={handleLogout}>Logout</li>
-              </ul>
-            )}
-          </div>
-          }
+
           <div className={`routes-container ${sidebar && "sidebar-active"}`}>
+            {adminLoggedIn && <div className="dropdown-container">
+              <button className='dropdown-button' onClick={toggleDropdown}><img className='dp-img' src={NoDp} alt="" /> <img src={ArrowDown} className='dropdown-img' alt="" /></button>
+              {isOpen && (
+                <ul className="dropdown-menu">
+                  <li onClick={() => navigate('/change-password')}>Change password</li>
+                  <li onClick={handleLogout}>Logout</li>
+                </ul>
+              )}
+            </div>
+            }
+            
             <Routes>
               {
                 !adminLoggedIn ? (
                   <>
                     <Route path="/" element={<LoginPage />} />
                   </>
-
                 )
                   : (
                     <>

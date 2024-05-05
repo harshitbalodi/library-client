@@ -1,17 +1,16 @@
+/* eslint-disable react/prop-types */
 import './StudentReport.css';
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { extractExiringSoon, extractNewBooking } from "../../utils/helper";
 import { setImageUrl } from '../../utils/helper';
 import NoProfilePicture from '../../assets/no-dp.jpg'
 
 
-const StudentReport = () => {
-  const students = useSelector(state => state.students);
+const StudentReport = ({students, filteredStudents, setFilteredStudents}) => {
   const [currentButton, setCurrentButton] = useState('all');
-  const [filteredStudents, setFilteredStudents] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const studentsPerPage = 6;
+ 
 
   useEffect(() => {
     if (!students) return;
@@ -46,12 +45,37 @@ const StudentReport = () => {
 
   return (
     <div className='student-report'>
-      <div>StudentReport</div>
-      <input type="text" />
-      <button className={`student-report-btn ${currentButton === 'all' ? 'active' : ''}`} onClick={() => setCurrentButton('all')}>All</button>
-      <button className={`student-report-btn ${currentButton === 'new' ? 'active' : ''}`} onClick={() => setCurrentButton('new')}>New</button>
-      <button className={`student-report-btn ${currentButton === 'expired' ? 'active' : ''}`} onClick={() => setCurrentButton('expired')}>Expired</button>
-      <button className={`student-report-btn ${currentButton === 'renewal' ? 'active' : ''}`} onClick={() => setCurrentButton('renewal')}>Renewal</button>
+      <div className='student-report-search-btns'>
+        <input
+          type="text"
+          placeholder="enter student name or  ID"
+          className="student-report-search-input"
+          onChange={(e) => setFilteredStudents(filteredStudents.filter(student => student.name.toLowerCase().includes(e.target.value.toLowerCase())))}
+        />
+        <div className='student-report-btn-container'>
+          <button
+            className={`student-report-btn ${currentButton === 'all' ? 'active' : ''}`}
+            onClick={() => setCurrentButton('all')}>
+            All
+          </button>
+          <button
+            className={`student-report-btn ${currentButton === 'new' ? 'active' : ''}`}
+            onClick={() => setCurrentButton('new')}>
+            New
+          </button>
+          <button
+            className={`student-report-btn ${currentButton === 'expired' ? 'active' : ''}`}
+            onClick={() => setCurrentButton('expired')}>
+            Expired
+          </button>
+          <button
+            className={`student-report-btn ${currentButton === 'renewal' ? 'active' : ''}`}
+            onClick={() => setCurrentButton('renewal')}>
+            Renewal
+          </button>
+        </div>
+      </div>
+
       {currentStudents && <table className='report-table'>
         <tbody>
           <tr className='report-table-headers'>
@@ -95,7 +119,7 @@ const StudentReport = () => {
         <ul className="pagination">
           {Array.from({ length: Math.ceil(filteredStudents.length / studentsPerPage) }).map((_, index) => (
             <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-              <button onClick={() => paginate(index + 1)} className={`page-link ${index+1 === currentPage ? 'active' : ''}`}>
+              <button onClick={() => paginate(index + 1)} className={`page-link ${index + 1 === currentPage ? 'active' : ''}`}>
                 {index + 1}
               </button>
             </li>

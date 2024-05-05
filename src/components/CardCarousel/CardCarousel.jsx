@@ -55,7 +55,7 @@ const CardCarousel = ({ hall }) => {
   const handleDelete = async () => {
     console.log("hall delete clicked...")
     const approve = window.confirm(`You want to delete ${hall.name}?`)
-    if(!approve) return;
+    if (!approve) return;
     try {
       const response = await hallServices.deleteHall(hall.id);
       dispatch(setSuccessMessage(`${hall.name} is deleted successfully!`))
@@ -66,7 +66,7 @@ const CardCarousel = ({ hall }) => {
     }
   }
 
-  const handleEdit = async(e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     console.log("hall edit clicked");
     try {
@@ -90,7 +90,8 @@ const CardCarousel = ({ hall }) => {
             <img src={DoneIcon} alt="done edit" title='done edit' />
           </button>
         </form> :
-          hall.name}
+         hall.name
+        }
         {
           isHovering && <div>
             {
