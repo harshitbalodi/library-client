@@ -85,7 +85,6 @@ function App() {
   return (
     <div>
       <div className="body-container">
-        {/* <Header /> */}
         <Notification />
         <div className="middle-container">
           {adminLoggedIn && <div>

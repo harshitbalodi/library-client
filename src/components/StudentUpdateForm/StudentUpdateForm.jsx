@@ -4,12 +4,13 @@ import CrossIcon from '../../assets/cross-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import paymentService from '../../services/paymentService';
 import { useEffect, useState } from 'react';
-import './StudentUpdate.css';
+import './StudentUpdateForm.css';
 import studentService from '../../services/studentService';
 import ImagePicker from '../ImagePicker/ImagePicker';
-import { setSuccessMessage } from '../../store/notificationSlice';
+import { setSuccessMessage, setErrorMessage as setErrorMessageThunk } from '../../store/notificationSlice';
+import useLogoutUser from '../../hooks/useLogoutUser';
 
-const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
+const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [activeForm, setActiveForm] = useState('payfee');
     const [months, setMonths] = useState(1);
@@ -21,8 +22,10 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
     const [selectedDeskId, setSelectedDeskId] = useState('');
     const [selectedShift, setSelectedShift] = useState(null);
     const [image, setImage] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState('CASH');
     const shifts = useSelector((state) => state.shifts);
     const dispatch = useDispatch();
+    const logoutUser = useLogoutUser();
 
     useEffect(() => {
         const fetchSelectedShift = async () => {
@@ -56,12 +59,20 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
         try {
             const response = await paymentService.updatePayment(
                 student.id,
-                Math.round(months)
+                Math.round(months),
+                paymentMethod
             );
             setFormOpen(false);
             console.log(response);
+            dispatch(setSuccessMessage('Payment updated successfully'));
         } catch (error) {
             console.log(error);
+            if (error.status === 401) {
+                dispatch(setSuccessMessage('Your session has expired. Please login again.'));
+                logoutUser();
+            } else {
+                dispatch(setErrorMessageThunk(error.response.data.message));
+            }
         }
     };
 
@@ -118,7 +129,12 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
             setFormOpen(false);
         } catch (error) {
             console.log(error);
-            dispatch(setErrorMessage(error.message));
+            if (error.status === 401) {
+                dispatch(setSuccessMessage('Your session has expired. Please login again.'));
+                logoutUser();
+            } else {
+                dispatch(setErrorMessageThunk(error.response.data.message));
+            }
         }
     }
     return (
@@ -148,14 +164,23 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                         </div>
                         {/* Pay fee Form */}
                         {activeForm === 'payfee' && <div className='Pay-fee-form'>
-                            <h2>Payment</h2>
-
                             <form onSubmit={handlePayment}>
                                 <label htmlFor="months">Months</label>
                                 <input type="number" id='months' value={months} onChange={(e) => setMonths(e.target.value)} />
+                                <label htmlFor="payment-method">Payment method</label>
+                                <select
+                                    id="payment-method"
+                                    value={paymentMethod}
+                                    onChange={(e) => setPaymentMethod(e.target.value)}>
+                                    <option value="CASH">CASH</option>
+                                    <option value="NEFT">NEFT</option>
+                                    <option value="UPI">UPI</option>
+                                    <option value="OTHER">OTHER</option>
+                                </select>
                                 <p style={{ color: 'red' }}>{errorMessage}</p>
                                 <button className='pay-btn'>Pay</button>
                             </form>
+
                             <div className="seat-details">
                                 <h2>Selected Student Details</h2>
                                 <p>Total Amount: {CalculateFee()}</p>
@@ -169,7 +194,6 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
 
                         {
                             activeForm === 'editStudent' && <div className='edit-student-form'>
-                                <h2>Edit Student</h2>
                                 <form onSubmit={handleUpdate}>
                                     <div>
                                         <label htmlFor="name">Name</label>
@@ -181,17 +205,7 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                             required
                                         />
                                     </div>
-                                    <div>
-                                        <label htmlFor="gender">Gender</label>
-                                        <select
-                                            id="gender"
-                                            value={gender}
-                                            onChange={(e) => setGender(e.target.value)}
-                                        >
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
-                                    </div>
+
                                     <div>
                                         <label htmlFor="address">Addess</label>
                                         <input
@@ -211,12 +225,22 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
                                         />
                                     </div>
                                     <div>
+                                        <div>
+                                            <label htmlFor="gender">Gender</label>
+                                            <select
+                                                id="gender"
+                                                value={gender}
+                                                onChange={(e) => setGender(e.target.value)}
+                                            >
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
                                         <label htmlFor="shift">Shift</label>
                                         <select
                                             id="shift"
                                             value={selectedShiftId}
                                             onChange={(e) => setSelectedShiftId(e.target.value)}
-
                                         >
                                             {shifts.length > 0 ? (
                                                 shifts.map((option) => (
@@ -267,4 +291,4 @@ const StudentUpdate = ({ student, formOpen, setFormOpen }) => {
     )
 }
 
-export default StudentUpdate
+export default StudentUpdateForm

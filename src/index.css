@@ -1,7 +1,7 @@
 :root{
   --primary-color: #FF8C00;  
   --primary-background-color: linear-gradient(to left top, #ff8c00, #fc7e30, #ffffff);
-  --secondary-background-color: #fbfbfb;
+  --secondary-background-color: #fafafa;
   --primary-text-color: #1c268b;
 }
 ::-webkit-scrollbar {

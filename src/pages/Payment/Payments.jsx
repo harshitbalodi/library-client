@@ -9,6 +9,9 @@ import { formatDate } from '../../utils/helper';
 import CrossIcon from '../../assets/cross-icon.svg';
 import UpDownIcon from '../../assets/up-down-icon.svg';
 import { Flex, Spin } from 'antd';
+import PlusIcon from '../../assets/plus-icon-circle.svg';
+import useLogoutUser from '../../hooks/useLogoutUser';
+import { Pagination, ConfigProvider } from 'antd';
 
 const Payments = () => {
     const dispatch = useDispatch();
@@ -23,8 +26,13 @@ const Payments = () => {
     const [studentSort, setStudentSort] = useState(false);
     const [feeSort, setFeeSort] = useState(false);
     const [shiftSort, setShiftSort] = useState(false);
-    const [userSearchInput, setUserSearchInput] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [hoverStates, setHoverStates] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
+    const logoutUser = useLogoutUser();
+    const paymentsPerPage = 15;
 
+    console.log(payments);
     useEffect(() => {
         try {
             const getdata = async () => {
@@ -33,10 +41,19 @@ const Payments = () => {
             }
             getdata();
         } catch (error) {
+            if (error?.response?.status === 401) {
+                logoutUser();
+                dispatch(setErrorMessage("Your session has expired. Please login again."));
+            } else {
+                dispatch(setErrorMessage(error.response.data.message));
+            }
             console.log(error);
-            dispatch(setErrorMessage(error.message));
         }
     }, [])
+
+    const indexOfLastPayment = currentPage * paymentsPerPage;
+  const indexOfFirstStudent = indexOfLastPayment - paymentsPerPage;
+  const currentPayments = filteredPayments?.slice(indexOfFirstStudent, indexOfLastPayment);
 
     useEffect(() => {
         if (studentId && payments) {
@@ -45,13 +62,12 @@ const Payments = () => {
             setStudent(filteredPayments[0].student);
             const sortedPayments = filteredPayments.sort((a, b) => new Date(a.payment_date) - new Date(b.payment_date));
             setFilteredPayments(sortedPayments);
-        }
-        if (!studentId && payments) {
+        } else if (!studentId && payments) {
             const sortedPayments = payments.sort((a, b) => new Date(a.payment_date) - new Date(b.payment_date));
             setFilteredPayments(sortedPayments);
             setStudent(null);
         }
-    }, [studentId, payments]);
+    }, [studentId, payments, searchQuery]);
 
     useEffect(() => {
         if (!filteredPayments) return;
@@ -96,38 +112,33 @@ const Payments = () => {
 
     useEffect(() => {
         if (!payments) return;
+        let filteredPayments = payments;
         if (student) {
-            console.log("student", student);
-            setFilteredPayments(() => filteredPayments.filter((payment) => payment.student.id == student.id))
-        } else {
-            setFilteredPayments(payments);
+            filteredPayments = filteredPayments.filter((payment) => payment.student.id === student.id);
         }
-    }, [payments, student]);
-
-    useEffect(() => {
-        if (!payments) return;
         if (shift) {
-            const newFilteredPayments = filteredPayments.filter((payment) => payment.shift.id == shift.id);
-            setFilteredPayments(newFilteredPayments);
-        } else {
-            setFilteredPayments(payments);
+            filteredPayments = filteredPayments.filter((payment) => payment.shift.id === shift.id);
         }
-    }, [payments, shift]);
-
-    useEffect(() => {
-        if (!payments) return;
-        console.log("entered usestate");
-        if (userSearchInput) {
-            const newFilteredPayments = filteredPayments.filter((payment) => {
-                var existStudentID = false;
-                if (payment.student.stu_id) existStudentID = payment?.student?.stu_id.toLowerCase().includes(userSearchInput.toLowerCase())
-                return payment.student.name.toLowerCase().includes(userSearchInput.toLowerCase()) || existStudentID;
+        if (searchQuery) {
+            filteredPayments = filteredPayments.filter((payment) => {
+                const existStudentID = payment.student.stu_id ? payment.student.stu_id.toLowerCase().includes(searchQuery.toLowerCase()) : false;
+                return payment.student.name.toLowerCase().includes(searchQuery.toLowerCase()) || existStudentID;
             });
-            setFilteredPayments(newFilteredPayments);
-        } else {
-            setFilteredPayments(payments);
         }
-    }, [userSearchInput, payments])
+        setFilteredPayments(filteredPayments);
+    }, [payments, student, shift, searchQuery]);
+
+    const handleMouseEnter = (id) => {
+        setHoverStates(prevState => {
+            return { ...prevState, [id]: true }
+        })
+    }
+
+    const handleMouseLeave = (id) => {
+        setHoverStates(prevState => {
+            return { ...prevState, [id]: false }
+        })
+    }
 
 
     return (
@@ -150,7 +161,7 @@ const Payments = () => {
                                 className='cross-filter'
                                 onClick={() => setStudent(null)}>
                                 <img
-                                    width={25}
+                                    width={20}
                                     src={CrossIcon}
                                     alt="❌"
                                 />
@@ -165,7 +176,7 @@ const Payments = () => {
                             {shift.name}
                             <div className='cross-filter'
                                 onClick={() => setShift(null)}>
-                                <img width={25} src={CrossIcon} alt="❌" />
+                                <img width={20} src={CrossIcon} alt="❌" />
                             </div>
                         </div>
                         : <div className='selection-btn'>All Shifts</div>
@@ -181,14 +192,14 @@ const Payments = () => {
                 filteredPayments &&
                 <input
                     type="text"
-                    className='search-input'
-                    placeholder="Search using student name or student ID"
-                    onChange={(e) => { setUserSearchInput(e.target.value) }}
+                    className='student-search-input'
+                    placeholder="Search using student name"
+                    onChange={(e) => { setSearchQuery(e.target.value) }}
                 />
             }
 
             <table className='payment-table'>
-                {filteredPayments && <tbody>
+                {currentPayments && <tbody>
                     <tr>
                         <th>student <img onClick={() => setStudentSort(!studentSort)} src={UpDownIcon} alt="" /></th>
                         <th>Date of Transaction <img onClick={() => setDateSort(!dateSort)} src={UpDownIcon} alt="" /></th>
@@ -197,17 +208,55 @@ const Payments = () => {
                         <th>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></th>
                     </tr>
                     {
-                        filteredPayments.map(payment => <tr key={payment.id}>
-                            <td onClick={() => setStudent(payment.student)}>{payment.student.name}</td>
+                        currentPayments.map(payment => <tr
+                            key={payment.id}
+                            onMouseEnter={() => handleMouseEnter(payment.id)}
+                            onMouseLeave={() => handleMouseLeave(payment.id)}
+                        >
+                            <td
+                                onClick={() => setStudent(payment.student)}
+                            >
+                                <div className='student-name'>
+                                    {payment.student.name}
+                                    {hoverStates[payment.id] && <img width={15} src={PlusIcon} />}
+                                </div>
+
+                            </td>
                             <td>{formatDate(payment.payment_date)}</td>
                             <td>{payment.fee}</td>
-                            <td onClick={() => setShift(payment.shift)}>{payment.shift.name}</td>
+                            <td
+                                onClick={() => setShift(payment.shift)}
+                            >
+                                <div className='shift-name'>
+                                    {payment.shift.name}
+                                    {hoverStates[payment.id] && <img width={15} src={PlusIcon} />}
+                                </div>
+                            </td>
                             <td>{payment.shift.fee}</td>
                         </tr>
                         )
                     }
                 </tbody>}
             </table>
+
+            {
+                filteredPayments && <ConfigProvider
+                    theme={{
+                        token: {
+                            colorBgTextActive: '#fff',
+                            colorText: '#1c268b',
+                        }
+                    }}
+                >
+                    <Pagination
+                        className="pagination"
+                        defaultCurrent={1}
+                        total={filteredPayments.length}
+                        pageSize={paymentsPerPage}
+                        onChange={(page) => setCurrentPage(page)}
+                    />
+                </ConfigProvider>
+            }
 
         </div>)
 }

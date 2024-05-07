@@ -27,7 +27,7 @@ const Dashboard = () => {
   }, [students]);
 
   return (
-    <div className="Dashboard">
+    <div className="dashboard-container">
       <SearchBar />
       <div className="member-block-container">
         <div className="member-block total">

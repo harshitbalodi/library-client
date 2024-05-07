@@ -8,7 +8,8 @@
 
 }
 
-.student-report-search-btns{
+.student-report-search-btns-container{
+  margin: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,25 +117,3 @@
   justify-content: center;
   gap: 0.5rem;
 }
-.pagination li{
-  display: inline-block;
-}
-
-.pagination li button{
-  border: none;
-  background-color: transparent;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
-  font-size: small;
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  color: var(--primary-text-color);
-}
-
-.pagination li button.active{
-  background-color: rgb(0, 141, 218);
-  box-shadow: 0 5px 10px rgb(0, 141, 218, 0.2);
-  color: white;
-}
-

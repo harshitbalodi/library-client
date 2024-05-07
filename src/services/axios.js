@@ -7,6 +7,7 @@ import { getCookie } from "../utils/helper";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
+  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
@@ -31,6 +32,8 @@ axiosInstance.interceptors.response.use(
       const refreshtoken = getCookie("refresh");
       if (!refreshtoken) return Promise.reject(error);
       const newAccessToken = await TokenService.authenticateUser(refreshtoken);
+      console.log(newAccessToken.data.access);
+      token.setToken(newAccessToken.data.access);
       prevRequest.headers[
         "Authorization"
       ] = `Bearer ${newAccessToken.data.access}`;

@@ -27,16 +27,15 @@
   background-image: linear-gradient(to right, #ffa02b, #feb14a, #fec167, #fed084, #ffdea1);
 }
 
-/* @media screen and (min-width:901px) {
-  .member-block{
-    width: 30%;
-  }
-} */
-
-
 @media screen and (max-width: 900px){
   .member-block{
     width: 45%;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .dashboard-container{
+    margin-top: 65px;
   }
 }
 

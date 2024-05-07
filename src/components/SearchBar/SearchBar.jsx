@@ -6,7 +6,7 @@ import '../index.css';
 import CrossIcon from '../../assets/cross-icon.svg';
 import MobileIcon from '../../assets/mobile-icon.svg'
 import { formatDate, setImageUrl } from "../../utils/helper";
-import StudentUpdate from "../StudentUpdate/StudentUpdate";
+import StudentUpdateForm from "../StudentUpdateForm/StudentUpdateForm";
 import { useNavigate } from "react-router-dom";
 import PenEditIcon from '../../assets/pen-edit-icon.svg';
 import TrabsactionIcon from '../../assets/transaction-icon.svg';
@@ -95,7 +95,7 @@ const SearchBar = () => {
                     </div>
 
                     {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e) => e.stopPropagation()}>
-                        <StudentUpdate student={choosenStudent} formOpen={formOpen} setFormOpen={setFormOpen}/>
+                        <StudentUpdateForm student={choosenStudent} formOpen={formOpen} setFormOpen={setFormOpen}/>
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
                         </button>
