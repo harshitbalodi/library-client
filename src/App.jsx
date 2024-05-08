@@ -22,6 +22,8 @@ import { setErrorMessage } from "./store/notificationSlice";
 import NoDp from './assets/no-dp.jpg';
 import ArrowDown from './assets/arrow-down-black.svg';
 import useLogoutUser from "./hooks/useLogoutUser";
+import HamburgerIcon from './assets/hamburger-menu.svg';
+import { toggleSidebar } from "./store/SidebarSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +31,9 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const logoutUser = useLogoutUser();
+
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [hamburgerVisible, setHamburgerVisible] = useState(true);
 
   useEffect(() => {
     const getdata = async () => {
@@ -70,9 +75,24 @@ function App() {
       }
     }
 
+    window.addEventListener('scroll', handleScroll);
+
     isUserLoggedIn();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const scrollDirection = currentScrollPos > prevScrollPos ? 'down' : 'up';
+
+    const buffer = 40;
+    const shouldBeVisible = scrollDirection === "up" || (currentScrollPos-prevScrollPos) < buffer;
+    setHamburgerVisible(shouldBeVisible);
+    setPrevScrollPos(currentScrollPos);
+  }
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -85,6 +105,14 @@ function App() {
   return (
     <div>
       <div className="body-container">
+        {hamburgerVisible && <div
+          className="hamburger-menu"
+          onClick={() => dispatch(toggleSidebar())}
+        >
+          <img width={30} src={HamburgerIcon} alt="" />
+        </div>
+        }
+
         <Notification />
         <div className="middle-container">
           {adminLoggedIn && <div>

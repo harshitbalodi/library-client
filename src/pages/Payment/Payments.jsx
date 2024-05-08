@@ -32,11 +32,12 @@ const Payments = () => {
     const logoutUser = useLogoutUser();
     const paymentsPerPage = 15;
 
-    console.log(payments);
     useEffect(() => {
+        const controller = new AbortController();
         try {
             const getdata = async () => {
-                const response = await paymentService.getAllPayments();
+                
+                const response = await paymentService.getAllPayments(controller);
                 setPayments(response.data.data);
             }
             getdata();
@@ -48,6 +49,9 @@ const Payments = () => {
                 dispatch(setErrorMessage(error.response.data.message));
             }
             console.log(error);
+        }
+        return ()=>{
+            controller.abort();
         }
     }, [])
 

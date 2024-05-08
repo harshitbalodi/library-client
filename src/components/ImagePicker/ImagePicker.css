@@ -2,7 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px dashed blue;
+    border: 2px dashed rgb(0, 141, 218);
     border-radius: 0.5rem;
     margin: 0.5rem 0;
-  }
+}
+
+.browse {
+    color: rgb(0, 141, 218);
+    cursor: pointer;
+    font-weight: bold;
+}

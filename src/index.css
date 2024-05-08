@@ -60,6 +60,24 @@ body{
   flex-direction: column;
 }
 
+.hamburger-menu{
+  visibility: hidden;
+}
+@media screen and (max-width:600px) {
+  .hamburger-menu{
+    visibility: visible;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    display: inline-block;
+    border: 3px solid rgb(204, 204, 204);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    /* padding: 5px; */
+    background-color: rgb(0, 0, 0, 0);
+    z-index: 10;
+  }
+}
 
 .dropdown-container {
   position: absolute;

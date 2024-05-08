@@ -163,19 +163,19 @@
   cursor: not-allowed;
 }
 
-.seat-details {
+.booking-form .seat-details {
   margin-top: 20px;
   padding: 15px;
   border-radius: 5px;
   background-color: #f0f0f0;
 }
 
-.seat-details h2 {
+.booking-form .seat-details h2 {
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-.seat-details p {
+.booking-form .seat-details p {
   margin-bottom: 5px;
 }
 

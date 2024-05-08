@@ -58,7 +58,7 @@ const ImagePicker = ({setImage}) => {
                     <img src={ImagesIcon} alt="" />
                   </div>
                 )}
-                Drag & Drop or <span style={{ color: 'blue' }}>Browse</span>
+                Drag & Drop or <span className='browse'>Browse</span>
               </div>
             </div>
     </div>

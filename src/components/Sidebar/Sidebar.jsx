@@ -8,7 +8,6 @@ import DashboardIcon from '../../assets/SvgComponents/DashboardIcon';
 import RupeeIcon from '../../assets/SvgComponents/RupeeIcon'
 
 const SidebarLink = ({ to, Icon, label }) => {
-
     const location = useLocation();
     const isActive = location.pathname === to;
     return (
@@ -21,7 +20,7 @@ const SidebarLink = ({ to, Icon, label }) => {
 
 const Sidebar = () => {
     const sidebar = useSelector(state => state.sidebar);
-    console.log(sidebar);
+    console.log("sidebar",sidebar);
     return sidebar && (
       <div className="sidebar">
         <div className='application-icon'>

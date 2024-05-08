@@ -15,28 +15,36 @@ const SearchBar = () => {
     const [students, shifts] = useSelector(state => [state.students, state.shifts]);
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [choosenStudentId, setChoosenStudentId] = useState(null);
     const [choosenStudent, setChoosenStudent] = useState(null);
     const [formOpen, setFormOpen] = useState(false);
     const inputRef = useRef(null);
     const detailRef = useRef(null);
     const navigate = useNavigate();
-    console.log(choosenStudent);
+    console.log(choosenStudentId);
 
     useEffect(() => {
         filterStudents();
-    }, [searchQuery])
+    }, [searchQuery, students])
 
     useEffect(() => {
         document.addEventListener('click', handleBlur);
         return () => document.removeEventListener('click', handleBlur);
     }, []);
 
+    useEffect(() => {
+        if (choosenStudentId) {
+            setChoosenStudent(students.find(student => student.id === choosenStudentId));
+        }else{
+            setChoosenStudent(null);
+        }
+    }, [choosenStudentId, students])
+
     const handleChange = (e) => {
         setSearchQuery(e.target.value);
     };
 
     const handleSearch = () => {
-
         if (filteredStudents.length === 1) {
             console.log("wgy id hssbh");
         }
@@ -57,9 +65,10 @@ const SearchBar = () => {
         }
     };
 
-    const handleStudent = (e, student) => {
-        if (!student) setChoosenStudent(null);
-        setChoosenStudent(student);
+    const handleStudent = (student) => {
+        console.log("handle student", student);
+        if (!student) setChoosenStudentId(null);
+        else setChoosenStudentId(student.id);
     }
 
     const findShiftName = (shiftId) => {
@@ -79,8 +88,8 @@ const SearchBar = () => {
                 <div className="suggestions-wrapper" onClick={e => e.stopPropagation()}>
                     <div className="suggestions">
                         {filteredStudents.map(student => (
-                            <div key={student.id} className="suggestion" onClick={(e) => handleStudent(e, student)}>
-                                <div>
+                            <div key={student.id} className="suggestion" onClick={() => handleStudent( student)}>
+                                <div className="student-dp-container">
                                     <img className="student-dp" src={setImageUrl(student.image)} alt="student dp" />
                                 </div>
                                 <div className="name-status">

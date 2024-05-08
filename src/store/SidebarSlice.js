@@ -5,15 +5,12 @@ const SidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
-    setSidebarVisible() {
-      return true;
-    },
-    setSidebarInvisible() {
-      return false;
-    },
+    toggleSidebar(state) {
+      return !state;
+    }
   },
 });
 
-export const { setSidebarVisible, setSidebarInvisible } = SidebarSlice.actions;
+export const { toggleSidebar } = SidebarSlice.actions;
 
 export default SidebarSlice.reducer;

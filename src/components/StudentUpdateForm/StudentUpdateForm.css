@@ -71,27 +71,27 @@
 
 .seat-details {
   margin-top: 20px;
-  padding: 15px;
+  padding: 8px;
   border-radius: 5px;
   background-color: #f0f0f0;
 }
 
 .seat-details h2 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-size: large;
 }
 
 .seat-details p {
   margin-bottom: 5px;
+  font-size: large;
 }
 
 .pay-btn {
-  /* background-color: skyblue; */
-  background-color: #335ddc;
+  /* background-color: #335ddc; */
+  background-color: rgb(0, 141, 218);
   width: 100%;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 8px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -107,8 +107,6 @@
   opacity: 1;
 }
 
-
-
 .btn-wrapper {
   display: flex;
   justify-content: center;
@@ -117,28 +115,34 @@
 .btn-container {
   display: inline-block;
   justify-content: center;
-  /* border: 0.1rem solid skyblue; */
-  border: 0.1rem solid #335ddc;
+  /* border: 0.1rem solid #335ddc; */
   margin-bottom: 0.6rem;
-  border-radius: 0.35rem;
+  border-radius: 50px;
+  /* background-color: #335ddc; */
+  background-color: rgb(0, 141, 218);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: .2rem;
 }
 
 .btn-container button {
-  background-color: rgb(0, 0, 0, 0);
+  background-color: transparent; /* Transparent background for buttons */
   border: none;
-  color: rgb(66, 64, 64);
-  padding: 0.6rem 1.2rem;
-  font-size: large;
-  border-radius: 0.2rem;
+  color: #ffffff;
+  padding: 0.5rem 1rem; /* Adjust padding for button content */
   cursor: pointer;
+  font-size: medium;
   font-weight: 500;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  transition: transform 0.3s ease-in-out;
 }
 .btn-container button.activebtn {
-  /* background-color: skyblue; */
-  background-color: #335ddc;
-  color: rgb(255, 255, 255);
-  transition: transform 0.3s ease-in-out;
+  background-color: white;
+  /* color: #335ddc;  */
+  color: rgb(0, 141, 218); 
+  border-radius: 50px;
+  box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
 }
 
 #payment-method,
@@ -159,10 +163,13 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: medium;
 }
-label{
+
+.form-content label{
     margin: 7px;
+    font-size: medium;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 600px) {

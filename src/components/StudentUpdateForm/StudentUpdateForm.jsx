@@ -9,6 +9,8 @@ import studentService from '../../services/studentService';
 import ImagePicker from '../ImagePicker/ImagePicker';
 import { setSuccessMessage, setErrorMessage as setErrorMessageThunk } from '../../store/notificationSlice';
 import useLogoutUser from '../../hooks/useLogoutUser';
+import { studentThunk } from '../../store/studentsSlice';
+import { hallsThunk } from '../../store/hallSlice';
 
 const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -76,19 +78,22 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
         }
     };
 
+    console.log('selected desk id', selectedDeskId);
+    console.log('selected shift id', selectedShiftId);
     const CalculateFee = () => {
         if (months <= 0) return 0;
         const studentShift = shifts.find(shift => shift.id === student.hall.shift.id);
         return Math.round(months) * studentShift.fee;
     }
 
+    console.log(selectedShift);
     const handleUpdate = async (e) => {
         e.preventDefault();
-        if (!selectedShiftId || !selectedDeskId) {
-            setErrorMessage('Please select a shift and desk');
-            setTimeout(() => setErrorMessage(''), 3000);
-            return;
-        }
+        // if (!selectedShiftId || !selectedDeskId) {
+        //     setErrorMessage('Please select a shift and desk');
+        //     setTimeout(() => setErrorMessage(''), 3000);
+        //     return;
+        // }
         const formData = new FormData();
         if (gender && gender != student.gender) {
             formData.append('gender', gender === 'male');
@@ -108,25 +113,19 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
         }
 
         const selectedDesk = selectedShift.desks.find(desk => desk.id == selectedDeskId);
-        if (!selectedDesk) {
-            setErrorMessage('Please select a valid desk');
-            setTimeout(() => setErrorMessage(''), 3000);
-            return;
-        }
 
-        if (student.hall.shift.desk != selectedDesk.seat_no) {
-            formData.append('hall', JSON.stringify({
-                shift: {
-                    id: Number(selectedShiftId),
-                    desk: Number(selectedDesk.seat_no)
-                }
-            }))
+        if (selectedDesk && student.hall.shift.desk != selectedDesk.seat_no) {
+            formData.append('shift',Number(selectedShiftId));
+            formData.append('desk',Number(selectedDeskId));
         }
         try {
             const response = await studentService.updateStudent(student.id, formData);
             console.log(response);
+            dispatch(studentThunk());
+            dispatch(hallsThunk());
             dispatch(setSuccessMessage('student updated successfully'))
             setFormOpen(false);
+
         } catch (error) {
             console.log(error);
             if (error.status === 401) {
@@ -145,7 +144,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                     onClick={() => setFormOpen(false)}
                 >
                     <div className={`form-content ${formOpen ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
-                        <div className='cross-icon' onClick={() => setFormOpen(close)}>
+                        <div className='cross-icon' onClick={() => setFormOpen(false)}>
                             <img title='close' src={CrossIcon} />
                         </div>
                         <div className='btn-wrapper'>
@@ -203,6 +202,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             required
+                                            placeholder='Enter your name'
                                         />
                                     </div>
 
@@ -213,6 +213,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                                             id='address'
                                             value={address}
                                             onChange={(e) => setAddress(e.target.value)}
+                                            placeholder='Enter your address'
                                         />
                                     </div>
                                     <div>
@@ -222,6 +223,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                                             id='mobile-no'
                                             value={mobileNo}
                                             onChange={(e) => setMobileNumber(e.target.value)}
+                                            placeholder='Enter your mobile number'
                                         />
                                     </div>
                                     <div>

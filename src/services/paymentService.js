@@ -10,9 +10,9 @@ const updatePayment = async (studentId, month, paymentMethod) => {
   }
 };
 
-const getAllPayments = async () =>{
+const getAllPayments = async (controller) =>{
   try {
-    const response = await axiosInstance.get("/payment");
+    const response = await axiosInstance.get("/payment", { signal: controller?.signal });
     return response;
   } catch (error) {
     console.log("error in fetching payments", error);
