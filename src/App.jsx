@@ -34,7 +34,6 @@ function App() {
 
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [hamburgerVisible, setHamburgerVisible] = useState(true);
-
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -89,7 +88,7 @@ function App() {
     const scrollDirection = currentScrollPos > prevScrollPos ? 'down' : 'up';
 
     const buffer = 40;
-    const shouldBeVisible = scrollDirection === "up" || (currentScrollPos-prevScrollPos) < buffer;
+    const shouldBeVisible = scrollDirection === "up" || (currentScrollPos - prevScrollPos) < buffer;
     setHamburgerVisible(shouldBeVisible);
     setPrevScrollPos(currentScrollPos);
   }
@@ -105,13 +104,6 @@ function App() {
   return (
     <div>
       <div className="body-container">
-        {hamburgerVisible && <div
-          className="hamburger-menu"
-          onClick={() => dispatch(toggleSidebar())}
-        >
-          <img width={30} src={HamburgerIcon} alt="" />
-        </div>
-        }
 
         <Notification />
         <div className="middle-container">
@@ -130,6 +122,14 @@ function App() {
               )}
             </div>
             }
+            {hamburgerVisible && !sidebar && <div
+              className="hamburger-menu"
+              onClick={() => dispatch(toggleSidebar())}
+            >
+              <img width={30} src={HamburgerIcon} alt="" />
+            </div>
+            }
+
 
             <Routes>
               {

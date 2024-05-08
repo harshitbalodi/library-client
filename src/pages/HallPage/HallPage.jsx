@@ -18,7 +18,7 @@ const HallPage = () => {
       </div>
       {
         halls.map(hall => {
-          return (<div key={hall.id} >
+          return (<div key={hall.id} className="hall-carousel-container" >
             <CardCarousel hall={hall} />
             <hr />
           </div>)

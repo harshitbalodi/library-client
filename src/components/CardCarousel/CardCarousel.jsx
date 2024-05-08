@@ -97,7 +97,7 @@ const CardCarousel = ({ hall }) => {
   return (
     <div onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <div className='hall-heading'>
-        {edit ? <form className='hall-heading' onSubmit={handleEdit}>
+        {edit ? <form onSubmit={handleEdit}>
           <input type="text" value={hallName} onChange={(e) => setHallName(e.target.value)} required />
           <button className='done-btn'>
             <img src={DoneIcon} alt="done edit" title='done edit' />

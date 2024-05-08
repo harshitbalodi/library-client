@@ -63,21 +63,7 @@ body{
 .hamburger-menu{
   visibility: hidden;
 }
-@media screen and (max-width:600px) {
-  .hamburger-menu{
-    visibility: visible;
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
-    display: inline-block;
-    border: 3px solid rgb(204, 204, 204);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    /* padding: 5px; */
-    background-color: rgb(0, 0, 0, 0);
-    z-index: 10;
-  }
-}
+
 
 .dropdown-container {
   position: absolute;
@@ -138,11 +124,25 @@ body{
 }
 
 
-@media screen and (max-width: 480px) {
-  .routes-container{
-    width: 100%;
+@media screen and (max-width:600px) {
+  .hamburger-menu{
+    visibility: visible;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: inline-block;
+    border: 3px solid rgb(204, 204, 204);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    /* padding: 5px; */
+    background-color: rgb(0, 0, 0, 0);
+    z-index: 10;
   }
-  .routes-container.sidebar-active{
-    width: 88%;
+  .middle-container{
+    padding: 10px;
+  }
+  .dropdown-container{
+    top:1rem;
+    right: 1rem;
   }
 }
