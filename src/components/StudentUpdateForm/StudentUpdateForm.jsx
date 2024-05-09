@@ -20,7 +20,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
     const [gender, setGender] = useState(student.gender || '');
     const [address, setAddress] = useState(student.address || '');
     const [mobileNo, setMobileNumber] = useState(student.mobile_no || '');
-    const [selectedShiftId, setSelectedShiftId] = useState(student.hall.shift.id);
+    const [selectedShiftId, setSelectedShiftId] = useState(student.hall.shift.id || '');
     const [selectedHallId, setSelectedHallId] = useState(student.hall.id);
     const [selectedDeskId, setSelectedDeskId] = useState('');
     const [selectedShift, setSelectedShift] = useState(null);
@@ -32,12 +32,25 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
     const logoutUser = useLogoutUser();
 
     console.log("student", student);
-    console.log("halls", halls);
-    console.log("selectedShift", selectedShift);
-    console.log("selectedShiftId", selectedShiftId);
-    console.log("selectedDeskId", selectedDeskId);
-    console.log("selectedHallId", selectedHallId);  
-    console.log("shifts", shifts)
+    // console.log("halls", halls);
+    // console.log("selectedShift", selectedShift);
+    // console.log("selectedShiftId", selectedShiftId);
+    // console.log("selectedDeskId", selectedDeskId);
+    // console.log("selectedHallId", selectedHallId);
+    // console.log("shifts", shifts)
+
+
+    useEffect(()=>{
+        console.log("change in student", student);
+        if (student) {
+            setName(student.name);
+            setGender(student.gender);
+            setAddress(student.address);
+            setMobileNumber(student.mobile_no);
+            setSelectedShiftId(student.hall.shift.id);
+            setSelectedHallId(student.hall.id);
+        }
+    },[student]);
 
     useEffect(() => {
         const fetchSelectedHall = async () => {
@@ -45,12 +58,18 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                 const hall = await halls.find((hall) => hall.id == selectedHallId);
                 if (hall) {
                     setShifts(hall.shifts);
-                    const found = selectedShiftId? hall.shifts.find((shift) => shift.id == selectedShiftId): false;
-                    if (!found) {
-                        setSelectedShiftId('');
+                    // const found =hall.shifts.find((shift) => shift.id == selectedShiftId);
+                    // console.log("entered if statement ",found);
+                    // if (!found) {
+                    //     setSelectedShiftId('');
+                    //     setSelectedDeskId('');
+                    //     setSelectedShift([]);
+                    // }else{
+                        // console.log("found",found);
+                        setSelectedShiftId(hall?.shifts[0]?.id || '');
                         setSelectedDeskId('');
-                        setSelectedShift([]);
-                    }
+                        setSelectedShift(hall.shifts[0] || '');
+                    // }
                 }
             }
         };
@@ -63,7 +82,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
             if (shifts && selectedShiftId) {
                 console.log("entered feteched selected shift 2")
                 const shift = await shifts.find((shift) => shift.id == selectedShiftId);
-                if (shift){ 
+                if (shift) {
                     setSelectedShift(shift);
                     console.log("entered feteched selected shift 3");
                 }
@@ -138,7 +157,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
             formData.append('mobile_no', mobileNo);
         }
 
-        if (name && name != student.name) {
+        if (name && name?.trim() != student?.name?.trim()) {
             formData.append('name', name);
         }
         if (image) {
@@ -285,23 +304,47 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                                             halls.map((hall) => (<option key={hall.id} value={hall.id}>{hall.name}</option>)))
                                             : <option value=""></option>}
                                     </select>
+                                    <div>
+                                        <label htmlFor="shift">Shift</label>
+                                        <select
+                                            id="shift"
+                                            value={selectedShiftId} // Ensure value matches state
+                                            onChange={(e) => {
+                                                console.log("clicked");
+                                                setSelectedShiftId(e.target.value);
+                                            }}
+                                        >
+                                            {shifts.length > 0 ? (
+                                                shifts.map((shift) => (
+                                                    <option key={shift.id} value={shift.id}>
+                                                        {shift.name}
+                                                    </option>
+                                                ))
+                                            ) : (
+                                                <option value="">No shifts available</option>
+                                            )}
+                                        </select>
 
-                                    <label htmlFor="shift">Shift</label>
+                                    </div>
+                                    {/* <label htmlFor="shift">Shift</label>
                                     <select
                                         id="shift"
                                         value={selectedShiftId}
-                                        onChange={(e) =>{console.log("clicked"); setSelectedShiftId(e.target.value)}}
+                                        onChange={(e) => {
+                                            console.log("clicked");
+                                            setSelectedShiftId(e.target.value)
+                                        }}
                                     >
                                         {shifts.length > 0 ? (
-                                            shifts.map((option) => (
-                                                <option key={option.id} value={option.id}>
-                                                    {option.name}
+                                            shifts.map((shift) => (
+                                                <option key={uuidv4()} value={shift.id}>
+                                                    {shift.name}
                                                 </option>
                                             ))
                                         ) : (
                                             <option value="">No shifts available</option>
                                         )}
-                                    </select>
+                                    </select> */}
                                     <div>
                                         <label htmlFor="desk">Desk</label>
                                         {
