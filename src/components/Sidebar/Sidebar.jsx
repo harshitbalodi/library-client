@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux';
 import HallIcon from '../../assets/SvgComponents/HallIcon';
 import DashboardIcon from '../../assets/SvgComponents/DashboardIcon';
 import RupeeIcon from '../../assets/SvgComponents/RupeeIcon'
-// import CloseIcon from '../../assets/cross-icon.svg';
+import CloseIcon from '../../assets/cross-icon.svg';
 import { useDispatch } from 'react-redux';
 import { setSidebarInvisible, setSidebarVisible, toggleSidebar } from '../../store/SidebarSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const SidebarLink = ({ to, Icon, label }) => {
   const location = useLocation();
@@ -23,32 +23,23 @@ const SidebarLink = ({ to, Icon, label }) => {
 };
 
 const Sidebar = () => {
-  //     const sidebar = useSelector(state => state.sidebar);
-
-  //     return sidebar && (
-  //       <div className="sidebar">
-  //         <div className='application-icon'>
-  //           <h3>LibraryApp</h3>
-  //         </div>
-  //         <SidebarLink to="/" Icon={DashboardIcon} label="Dashboard" />
-  //         <SidebarLink to="/hall" Icon={HallIcon} label="Halls" />
-  //         <SidebarLink to="/payments" Icon={RupeeIcon} label="Payments"/>
-  //       </div>
-  //     );
-
   const navigate = useNavigate();
+  const [isCloseIconVisible, setIsCloseIconVisible ] = useState(false);
+
   useEffect(()=>{
-   const handleInnerWidth = () =>{
+   const handleResize = () =>{
       const width = window.innerWidth;
       if(width > 600){
         dispatch(setSidebarVisible());
+        setIsCloseIconVisible(false);
       }else{
         dispatch(setSidebarInvisible());
+        setIsCloseIconVisible(true);
       }
    }
-   window.addEventListener('resize',handleInnerWidth)
+   window.addEventListener('resize',handleResize)
    return ()=>{
-    window.removeEventListener('resize',handleInnerWidth);
+    window.removeEventListener('resize',handleResize);
    }
   })
 
@@ -66,20 +57,21 @@ const Sidebar = () => {
         className={`sidebar ${sidebar ? 'active' : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
+        {isCloseIconVisible && <div className='close-icon'>
+          <img
+            src={CloseIcon}
+            alt='close-icon'
+            
+            onClick={() => dispatch(toggleSidebar())}
+          />
+        </div>}
         <div className='sidebar-header' onClick={()=>navigate('/')}>
           <h3 className='application-icon'>LibraryApp</h3>
         </div>
-        {/* <button 
-          className="toggle-button" 
-          onClick={() => dispatch(toggleSidebar())}
-          >
-            {sidebar && <img width={24} src={CloseIcon} alt="" />}
-          </button> */}
-        {/* <div className='sidebar-content'> */}
+       
         <SidebarLink to="/" Icon={DashboardIcon} label="Dashboard" />
         <SidebarLink to="/hall" Icon={HallIcon} label="Halls" />
         <SidebarLink to="/payments" Icon={RupeeIcon} label="Payments" />
-        {/* </div> */}
       </div>
     </div>
   );

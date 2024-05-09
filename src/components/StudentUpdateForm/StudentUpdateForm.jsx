@@ -21,19 +21,52 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
     const [address, setAddress] = useState(student.address || '');
     const [mobileNo, setMobileNumber] = useState(student.mobile_no || '');
     const [selectedShiftId, setSelectedShiftId] = useState(student.hall.shift.id);
+    const [selectedHallId, setSelectedHallId] = useState(student.hall.id);
     const [selectedDeskId, setSelectedDeskId] = useState('');
     const [selectedShift, setSelectedShift] = useState(null);
     const [image, setImage] = useState(null);
     const [paymentMethod, setPaymentMethod] = useState('CASH');
-    const shifts = useSelector((state) => state.shifts);
+    const [halls] = useSelector((state) => [state.halls]);
+    const [shifts, setShifts] = useState(null);
     const dispatch = useDispatch();
     const logoutUser = useLogoutUser();
 
+    console.log("student", student);
+    console.log("halls", halls);
+    console.log("selectedShift", selectedShift);
+    console.log("selectedShiftId", selectedShiftId);
+    console.log("selectedDeskId", selectedDeskId);
+    console.log("selectedHallId", selectedHallId);  
+    console.log("shifts", shifts)
+
+    useEffect(() => {
+        const fetchSelectedHall = async () => {
+            if (halls && selectedHallId) {
+                const hall = await halls.find((hall) => hall.id == selectedHallId);
+                if (hall) {
+                    setShifts(hall.shifts);
+                    const found = selectedShiftId? hall.shifts.find((shift) => shift.id == selectedShiftId): false;
+                    if (!found) {
+                        setSelectedShiftId('');
+                        setSelectedDeskId('');
+                        setSelectedShift([]);
+                    }
+                }
+            }
+        };
+        fetchSelectedHall();
+    }, [selectedHallId, halls]);
+
     useEffect(() => {
         const fetchSelectedShift = async () => {
+            console.log("entered feteched selected shift")
             if (shifts && selectedShiftId) {
+                console.log("entered feteched selected shift 2")
                 const shift = await shifts.find((shift) => shift.id == selectedShiftId);
-                if (shift) setSelectedShift(shift);
+                if (shift){ 
+                    setSelectedShift(shift);
+                    console.log("entered feteched selected shift 3");
+                }
             }
         };
         fetchSelectedShift();
@@ -41,7 +74,7 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
 
     useEffect(() => {
         const fetchSelectedDesk = async () => {
-            if (selectedShift) {
+            if (selectedShift.length > 0) {
                 const selectedDesk = selectedShift.desks.find(
                     (desk) => desk.id === selectedDeskId
                 );
@@ -83,10 +116,10 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
     const CalculateFee = () => {
         if (months <= 0) return 0;
         const studentShift = shifts.find(shift => shift.id === student.hall.shift.id);
-        return Math.round(months) * studentShift.fee;
+        return Math.round(months) * studentShift?.fee;
     }
 
-    console.log(selectedShift);
+    // console.log(selectedShift);
     const handleUpdate = async (e) => {
         e.preventDefault();
         // if (!selectedShiftId || !selectedDeskId) {
@@ -111,12 +144,17 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
         if (image) {
             formData.append('image', image);
         }
-
         const selectedDesk = selectedShift.desks.find(desk => desk.id == selectedDeskId);
-
         if (selectedDesk && student.hall.shift.desk != selectedDesk.seat_no) {
-            formData.append('shift',Number(selectedShiftId));
-            formData.append('desk',Number(selectedDeskId));
+            if (!selectedHallId || !selectedShiftId) {
+                setErrorMessage('Please select a shift and desk');
+                setTimeout(() => setErrorMessage(''), 3000);
+                return;
+            }
+
+            formData.append('shift', Number(selectedShiftId));
+            formData.append('desk', Number(selectedDeskId));
+            formData.append('hall', Number(selectedHallId));
         }
         try {
             const response = await studentService.updateStudent(student.id, formData);
@@ -227,38 +265,47 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                                         />
                                     </div>
                                     <div>
-                                        <div>
-                                            <label htmlFor="gender">Gender</label>
-                                            <select
-                                                id="gender"
-                                                value={gender}
-                                                onChange={(e) => setGender(e.target.value)}
-                                            >
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </div>
-                                        <label htmlFor="shift">Shift</label>
+                                        <label htmlFor="gender">Gender</label>
                                         <select
-                                            id="shift"
-                                            value={selectedShiftId}
-                                            onChange={(e) => setSelectedShiftId(e.target.value)}
+                                            id="gender"
+                                            value={gender}
+                                            onChange={(e) => setGender(e.target.value)}
                                         >
-                                            {shifts.length > 0 ? (
-                                                shifts.map((option) => (
-                                                    <option key={option.id} value={option.id}>
-                                                        {option.name}
-                                                    </option>
-                                                ))
-                                            ) : (
-                                                <option value="">No shifts available</option>
-                                            )}
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
                                         </select>
                                     </div>
+
+                                    <label htmlFor="hall">Hall</label>
+                                    <select
+                                        id="hall"
+                                        value={selectedHallId}
+                                        onChange={(e) => setSelectedHallId(e.target.value)}>
+                                        {halls.length > 0 ? (
+                                            halls.map((hall) => (<option key={hall.id} value={hall.id}>{hall.name}</option>)))
+                                            : <option value=""></option>}
+                                    </select>
+
+                                    <label htmlFor="shift">Shift</label>
+                                    <select
+                                        id="shift"
+                                        value={selectedShiftId}
+                                        onChange={(e) =>{console.log("clicked"); setSelectedShiftId(e.target.value)}}
+                                    >
+                                        {shifts.length > 0 ? (
+                                            shifts.map((option) => (
+                                                <option key={option.id} value={option.id}>
+                                                    {option.name}
+                                                </option>
+                                            ))
+                                        ) : (
+                                            <option value="">No shifts available</option>
+                                        )}
+                                    </select>
                                     <div>
                                         <label htmlFor="desk">Desk</label>
                                         {
-                                            selectedShiftId && <select
+                                            selectedShiftId ? <select
                                                 id="desk"
                                                 value={selectedDeskId}
                                                 onChange={(e) => setSelectedDeskId(e.target.value)}
@@ -275,7 +322,10 @@ const StudentUpdateForm = ({ student, formOpen, setFormOpen }) => {
                                                 ) : (
                                                     <option value="">No desks available</option>
                                                 )}
-                                            </select>
+                                            </select> :
+                                                <div className='error-message'>
+                                                    Select a shift before selecting desk
+                                                </div>
                                         }
                                     </div>
                                     <ImagePicker setImage={setImage} />

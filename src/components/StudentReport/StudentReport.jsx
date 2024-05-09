@@ -98,8 +98,7 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
             <th>Student ID</th>
             <th>Student Name</th>
             <th>Student Image</th>
-            <th>Shift</th>
-            <th>seat No</th>
+            <th>Shift | seat No</th>
             <th>Subscription status</th>
           </tr>
 
@@ -115,10 +114,7 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
                 }
               </td>
               <td>
-                {student.hall.shift.name}
-              </td>
-              <td>
-                {student.hall.shift.desk}
+                {student.hall.shift.name} | {student.hall.shift.desk}
               </td>
               <td className='student-status'>
                 {
