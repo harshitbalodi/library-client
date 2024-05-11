@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './SeatCard.css';
-import { formatNumber, formatTime, setImageUrl } from '../../utils/helper';
+import { formatDate, formatNumber, formatTime, setImageUrl } from '../../utils/helper';
 import DeleteIcon from '../../assets/delete-icon.svg';
 import EditIcon from '../../assets/edit-icon.svg'
 import shiftServices from '../../services/shiftServices';
@@ -21,6 +21,7 @@ const StudentDropDown = ({ deskNo, shiftId }) => {
     // const shift = useSelector(state => state.shift);
     const students = useSelector(state => state.students);
 
+    console.log("student", student);
     useEffect(() => {
         const findStudent = () => {
             if (!students) {
@@ -35,9 +36,15 @@ const StudentDropDown = ({ deskNo, shiftId }) => {
         findStudent();
     }, [students, deskNo, shiftId])
 
-    return student ? <div className='dropdown-content'>
-        <img width={30} src={student.image ? setImageUrl(student.image) : DefaultMaleImage}></img>
-        <p>{student.name}</p>
+    return student ? <div className='dropdown-content student-dropdown'>
+        <img 
+        width={30} 
+        src={student.image ? 
+        setImageUrl(student.image) : 
+        DefaultMaleImage}/>
+        <p>{student.name} {student.stu_id && <>- {student.stu_id}</>}</p>
+        <p>{student?.mobile_no && <>Mobile - {student?.mobile_no}</>}</p>
+        <p>valid Upto - {formatDate(student?.valid_upto)}</p>
     </div> : <div className='dropdown-content'> <button>unable to find student</button> </div>
 }
 

@@ -12,7 +12,7 @@ import PenEditIcon from '../../assets/pen-edit-icon.svg';
 import TrabsactionIcon from '../../assets/transaction-icon.svg';
 
 const SearchBar = () => {
-    const [students, shifts] = useSelector(state => [state.students, state.shifts]);
+    const students = useSelector(state => state.students);
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [choosenStudentId, setChoosenStudentId] = useState(null);
@@ -71,13 +71,6 @@ const SearchBar = () => {
         else setChoosenStudentId(student.id);
     }
 
-    const findShiftName = (shiftId) => {
-        if (shifts) {
-            const shift = shifts.find(shift => shift.id === shiftId);
-            return shift ? shift.name : 'N/A';
-        }
-    }
-
     return (
         <div className="search-container">
             <div className="search-bar" ref={inputRef}>
@@ -125,7 +118,7 @@ const SearchBar = () => {
                             </div>
                             <div>
                                 shift -
-                                <span className="student-data"> {findShiftName(choosenStudent.hall.shift.name)}</span>
+                                <span className="student-data"> {choosenStudent?.hall?.shift?.name}</span>
                             </div>
                             <div>
                                 valid upto -
