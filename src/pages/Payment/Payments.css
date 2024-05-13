@@ -16,6 +16,13 @@
   
 }
 
+.selection-btn-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .student-search-input{
   border: 1px solid black;
   outline: none;

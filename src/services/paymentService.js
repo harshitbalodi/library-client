@@ -1,7 +1,7 @@
 import axiosInstance from "./axios";
 const updatePayment = async (studentId, month, paymentMethod) => {
   try {
-    const payload = { student: studentId, paid_for_month: month, payment_method: paymentMethod };
+    const payload = { student: Number(studentId), paid_for_month: month, payment_method: paymentMethod };
     const response = await axiosInstance.post("/payment", payload);
     return response;
   } catch (error) {

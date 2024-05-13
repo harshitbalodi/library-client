@@ -12,6 +12,8 @@ import { Flex, Spin } from 'antd';
 import PlusIcon from '../../assets/plus-icon-circle.svg';
 import useLogoutUser from '../../hooks/useLogoutUser';
 import { Pagination, ConfigProvider } from 'antd';
+import AddPayment from '../../components/AddPayment/AddPayment';
+import addIcon from '../../assets/plus-icon.svg';
 
 const Payments = () => {
     const dispatch = useDispatch();
@@ -29,6 +31,7 @@ const Payments = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [hoverStates, setHoverStates] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
     const logoutUser = useLogoutUser();
     const paymentsPerPage = 15;
 
@@ -36,7 +39,7 @@ const Payments = () => {
         const controller = new AbortController();
         try {
             const getdata = async () => {
-                
+
                 const response = await paymentService.getAllPayments(controller);
                 setPayments(response.data.data);
             }
@@ -50,14 +53,14 @@ const Payments = () => {
             }
             console.log(error);
         }
-        return ()=>{
+        return () => {
             controller.abort();
         }
     }, [])
 
     const indexOfLastPayment = currentPage * paymentsPerPage;
-  const indexOfFirstStudent = indexOfLastPayment - paymentsPerPage;
-  const currentPayments = filteredPayments?.slice(indexOfFirstStudent, indexOfLastPayment);
+    const indexOfFirstStudent = indexOfLastPayment - paymentsPerPage;
+    const currentPayments = filteredPayments?.slice(indexOfFirstStudent, indexOfLastPayment);
 
     useEffect(() => {
         if (studentId && payments) {
@@ -156,41 +159,57 @@ const Payments = () => {
                     </Flex>
                 </div>
             }
-            {filteredPayments && <div>
-                FILTER:{
-                    student ?
-                        <div className='selection-btn'>
-                            {student.name}
-                            <div
-                                className='cross-filter'
-                                onClick={() => setStudent(null)}>
-                                <img
-                                    width={20}
-                                    src={CrossIcon}
-                                    alt="❌"
-                                />
-                            </div>
-                        </div>
-                        : <div className='selection-btn'>All Students</div>
-                }
-                {
-                    shift ?
-                        <div
-                            className='selection-btn'>
-                            {shift.name}
-                            <div className='cross-filter'
-                                onClick={() => setShift(null)}>
-                                <img width={20} src={CrossIcon} alt="❌" />
-                            </div>
-                        </div>
-                        : <div className='selection-btn'>All Shifts</div>
-                }
-            </div>
-            }
 
-            {
-                filteredPayments && filteredPayments.length == 0 && <div className='no-data'>No Data Found</div>
-            }
+            <div className='selection-btn-container'>
+                <div>
+                    {filteredPayments && <div>
+                        FILTER:{
+                            student ?
+                                <div className='selection-btn'>
+                                    {student.name}
+                                    <div
+                                        className='cross-filter'
+                                        onClick={() => setStudent(null)}>
+                                        <img
+                                            width={20}
+                                            src={CrossIcon}
+                                            alt="❌"
+                                        />
+                                    </div>
+                                </div>
+                                : <div className='selection-btn'>All Students</div>
+                        }
+                        {
+                            shift ?
+                                <div
+                                    className='selection-btn'>
+                                    {shift.name}
+                                    <div className='cross-filter'
+                                        onClick={() => setShift(null)}>
+                                        <img width={20} src={CrossIcon} alt="❌" />
+                                    </div>
+                                </div>
+                                : <div className='selection-btn'>All Shifts</div>
+                        }
+
+                    </div>
+                    }
+                </div>
+                <div>
+                    <button
+                    className='selection-btn'
+                    onClick={() => setIsOpen(true)}
+                    >Add Payment 
+                    <img width={20} src={addIcon} alt="+" />
+                    </button>
+                </div>
+
+            </div>
+            
+                <AddPayment
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                />
 
             {
                 filteredPayments &&
@@ -201,6 +220,11 @@ const Payments = () => {
                     onChange={(e) => { setSearchQuery(e.target.value) }}
                 />
             }
+
+            {
+                filteredPayments && filteredPayments.length == 0 && <div className='no-data'>No Data Found</div>
+            }
+
 
             <table className='payment-table'>
                 {currentPayments && <tbody>

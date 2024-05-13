@@ -1,0 +1,120 @@
+.addpayment-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.addpayment-overlay-container.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.addpayment-form-content {
+  position: relative;
+  background-color: #fff;
+  height: max-content;
+  max-height: 90%;
+  width: 500px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.addpayment-form-content.active .addpayment-form-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.addpayment-form-content .cross-icon {
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.addpayment-form-content .cross-icon:hover {
+  transform: scale(1.01);
+}
+
+.payment-form-content{
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.payment-form-content.active{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.select-student 
+.select-payment-method{
+  margin: 10px;
+}
+
+.addpayment-form-content #months {
+  display: block;
+  margin: 7px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: medium;
+}
+
+label{
+    margin: .3rem;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.addpayment-form-content .seat-details {
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.student-details{
+  margin:10px 0px;
+  border: 0.1px solid rgb(115, 115, 115);
+  box-shadow: 0 3px 5px rgb(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  color: 0.1px solid rgb(115, 115, 115);
+  color: var(--primary-text-color);
+}
+
+.profile-picture-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+  /* font-weight: 700; */
+}
+
+.profile-picture{
+  width: 80px;
+  height: 80px;
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.2);
+}

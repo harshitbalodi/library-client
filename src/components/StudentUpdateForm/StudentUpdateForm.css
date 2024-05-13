@@ -40,16 +40,15 @@
   transform: translateY(0);
 }
 
-.cross-icon {
+.form-content .cross-icon {
   position: absolute;
   top: 5px;
   right: 5px;
   cursor: pointer;
 }
 
-.cross-icon:hover {
-  transform: scale(1.05);
-  background-color: #eee;
+.form-content .cross-icon:hover {
+  transform: scale(1.01);
 }
 
 .right-block {
@@ -60,16 +59,7 @@
   flex: 1;
 }
 
-#months {
-  display: block;
-  margin: 7px;
-  border-radius: 10px;
-  padding: 10px;
-  width: 90%;
-  font-size: inherit;
-}
-
-.seat-details {
+.form-content .seat-details {
   margin-top: 20px;
   padding: 8px;
   border-radius: 5px;
@@ -145,16 +135,16 @@
   transform: translateY(-1px);
 }
 
-#payment-method,
-#address,
-#name,
-#phone,
-#desk,
-#shift,
-#mobile-no,
-#gender,
-#joining-date,
-#months {
+.form-content #payment-method,
+.form-content #address,
+.form-content #name, 
+.form-content #phone,
+.form-content #desk,
+.form-content #shift,
+.form-content #mobile-no,
+.form-content #gender,
+.form-content #joining-date,
+.form-content #months {
   display: block;
   margin: 7px;
   border-radius: 10px;
