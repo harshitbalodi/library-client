@@ -146,7 +146,7 @@ const AddPayment = ({ isOpen, setIsOpen }) => {
               </div>
             </form>
             {selectedOption && <div className="seat-details">
-              <h2>Selected Student Details</h2>
+              <h2>Payment Detail</h2>
               <p>Total Amount: {CalculateFee()}</p>
               <p>Expired: {selectedOption.value.expired ? <>Yes</> : <>No</>} </p>
               <p>Last Transaction On:{formatDate(selectedOption.value.modified_t)}</p>
