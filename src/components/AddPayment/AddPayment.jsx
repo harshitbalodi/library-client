@@ -15,6 +15,7 @@ const AddPayment = ({ isOpen, setIsOpen }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [months, setMonths] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState({
     monthError: null,
@@ -38,6 +39,13 @@ const AddPayment = ({ isOpen, setIsOpen }) => {
     setSelectedOption(selected);
   };
 
+  const handleClose = ( ) =>{
+    setIsOpen(false);
+    setSelectedOption(null);
+    setMonths(1);
+    setPaymentMethod(null);
+  }
+
   const handlePayment = async (e) => {
     e.preventDefault();
     if (months <= 0) {
@@ -53,15 +61,18 @@ const AddPayment = ({ isOpen, setIsOpen }) => {
     }
 
     try {
+      setIsButtonDisabled(true);
       const response = await paymentService.updatePayment(
         selectedOption.value.id,
         Math.round(months),
         paymentMethod.value
       );
+      setIsButtonDisabled(false);
       setIsOpen(false);
       console.log(response);
       dispatch(setSuccessMessage('Payment updated successfully'));
     } catch (error) {
+      setIsButtonDisabled(false);
       console.log(error);
       if (error.status === 401) {
         dispatch(setSuccessMessage('Your session has expired. Please login again.'));
@@ -84,11 +95,11 @@ const AddPayment = ({ isOpen, setIsOpen }) => {
       {isOpen && (
         <div
           className={`addpayment-overlay-container ${isOpen ? 'active' : ''}`}
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
         >
           <div className={`addpayment-form-content ${isOpen ? 'active' : ''}`}
             onClick={(e) => e.stopPropagation()}>
-            <div className='cross-icon' onClick={() => setIsOpen(false)}>
+            <div className='cross-icon' onClick={handleClose}>
               <img title='close' src={CrossIcon} />
             </div>
 
@@ -141,8 +152,7 @@ const AddPayment = ({ isOpen, setIsOpen }) => {
                 <label htmlFor="months">Months</label>
                 <input type="number" id='months' value={months} onChange={(e) => setMonths(e.target.value)} />
                 <div className='error'>{errorMessage.monthError}</div>
-                <button className='pay-btn'>Pay</button>
-
+                <button className={`pay-btn ${isButtonDisabled ? 'disabled' : ''}`}>Pay</button>
               </div>
             </form>
             {selectedOption && <div className="seat-details">

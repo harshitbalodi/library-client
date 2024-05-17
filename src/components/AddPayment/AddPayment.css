@@ -118,3 +118,30 @@ label{
   border-radius: 50%;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.2);
 }
+
+.addpayment-form-content .pay-btn {
+  /* background-color: #335ddc; */
+  background-color: rgb(0, 141, 218);
+  width: 100%;
+  border: none;
+  color: white;
+  padding: 8px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.addpayment-form-content .pay-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.addpayment-form-content .pay-btn:hover {
+  opacity: 1;
+}

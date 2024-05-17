@@ -13,6 +13,7 @@
   border-radius: 2px;
 }
 
+
 body,
 p,
 div {
@@ -32,7 +33,22 @@ body{
 .body-container {
   display: flex;
   flex-direction: column;
+
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  background-image:  var(--primary-background-color);
+  overflow-y: scroll;
+  overflow-x: scroll;
+  height: max-content; */
 }
+
+.sticky-block{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 
 .middle-container {
   display: flex;

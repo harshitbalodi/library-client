@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import './StudentReport.css';
 import { useEffect, useState } from "react";
-import { extractExiringSoon, extractNewBooking } from "../../utils/helper";
+import { extractExiringSoon, extractNewBooking, formatDate } from "../../utils/helper";
 import { setImageUrl } from '../../utils/helper';
 import NoProfilePicture from '../../assets/no-dp.jpg'
 // import Pagination from '../Pagination/Pagination';
@@ -100,6 +100,7 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
             <th>Student Image</th>
             <th>Shift | seat No</th>
             <th>Subscription status</th>
+            <th>Validity</th>
           </tr>
 
           {currentStudents.map(student => {
@@ -122,6 +123,9 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
                     <div className='expired'>Expired</div> :
                     <div className='active'>Active</div>
                 }
+              </td>
+              <td>
+                {formatDate(student?.valid_upto)}
               </td>
 
             </tr>

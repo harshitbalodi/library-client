@@ -13,7 +13,6 @@ import PlusIcon from '../../assets/plus-icon-circle.svg';
 import useLogoutUser from '../../hooks/useLogoutUser';
 import { Pagination, ConfigProvider } from 'antd';
 import AddPayment from '../../components/AddPayment/AddPayment';
-import addIcon from '../../assets/plus-icon.svg';
 
 const Payments = () => {
     const dispatch = useDispatch();
@@ -21,13 +20,13 @@ const Payments = () => {
     const [filteredPayments, setFilteredPayments] = useState(null);
     const [searchParams] = useSearchParams();
     const [student, setStudent] = useState(null);
-    const [shift, setShift] = useState(null);
+    // const [shift, setShift] = useState(null);
     const [studentId] = useState(() => searchParams.get('student'));
     const [dateSort, setDateSort] = useState(false);
     const [amountSort, setAmountSort] = useState(false);
     const [studentSort, setStudentSort] = useState(false);
-    const [feeSort, setFeeSort] = useState(false);
-    const [shiftSort, setShiftSort] = useState(false);
+    // const [feeSort, setFeeSort] = useState(false);
+    // const [shiftSort, setShiftSort] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [hoverStates, setHoverStates] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +40,7 @@ const Payments = () => {
             const getdata = async () => {
 
                 const response = await paymentService.getAllPayments(controller);
+                console.log("payments data",response.data.data);
                 setPayments(response.data.data);
             }
             getdata();
@@ -92,21 +92,21 @@ const Payments = () => {
         setFilteredPayments(sortedPayments);
     }, [dateSort]);
 
-    useEffect(() => {
-        if (!filteredPayments) return;
-        const sortedPayments = [...filteredPayments];
-        if (feeSort) sortedPayments.sort((a, b) => a.shift.fee - b.shift.fee);
-        else sortedPayments.sort((a, b) => b.shift.fee - a.shift.fee);
-        setFilteredPayments(sortedPayments);
-    }, [feeSort]);
+    // useEffect(() => {
+    //     if (!filteredPayments) return;
+    //     const sortedPayments = [...filteredPayments];
+    //     if (feeSort) sortedPayments.sort((a, b) => a.shift.fee - b.shift.fee);
+    //     else sortedPayments.sort((a, b) => b.shift.fee - a.shift.fee);
+    //     setFilteredPayments(sortedPayments);
+    // }, [feeSort]);
 
-    useEffect(() => {
-        if (!filteredPayments) return;
-        const sortedPayments = [...filteredPayments];
-        if (shiftSort) sortedPayments.sort((a, b) => a.shift.id - b.shift.id);
-        else sortedPayments.sort((a, b) => b.shift.id - a.shift.id);
-        setFilteredPayments(sortedPayments);
-    }, [shiftSort]);
+    // useEffect(() => {
+    //     if (!filteredPayments) return;
+    //     const sortedPayments = [...filteredPayments];
+    //     if (shiftSort) sortedPayments.sort((a, b) => a.shift.id - b.shift.id);
+    //     else sortedPayments.sort((a, b) => b.shift.id - a.shift.id);
+    //     setFilteredPayments(sortedPayments);
+    // }, [shiftSort]);
 
 
     useEffect(() => {
@@ -123,9 +123,6 @@ const Payments = () => {
         if (student) {
             filteredPayments = filteredPayments.filter((payment) => payment.student.id === student.id);
         }
-        if (shift) {
-            filteredPayments = filteredPayments.filter((payment) => payment.shift.id === shift.id);
-        }
         if (searchQuery) {
             filteredPayments = filteredPayments.filter((payment) => {
                 const existStudentID = payment.student.stu_id ? payment.student.stu_id.toLowerCase().includes(searchQuery.toLowerCase()) : false;
@@ -133,7 +130,7 @@ const Payments = () => {
             });
         }
         setFilteredPayments(filteredPayments);
-    }, [payments, student, shift, searchQuery]);
+    }, [payments, student, searchQuery]);
 
     const handleMouseEnter = (id) => {
         setHoverStates(prevState => {
@@ -179,7 +176,7 @@ const Payments = () => {
                                 </div>
                                 : <div className='selection-btn'>All Students</div>
                         }
-                        {
+                        {/* {
                             shift ?
                                 <div
                                     className='selection-btn'>
@@ -190,17 +187,16 @@ const Payments = () => {
                                     </div>
                                 </div>
                                 : <div className='selection-btn'>All Shifts</div>
-                        }
+                        } */}
 
                     </div>
                     }
                 </div>
                 <div>
                     <button
-                    className='selection-btn'
+                    className='add-payment-btn'
                     onClick={() => setIsOpen(true)}
                     >Add Payment 
-                    <img width={20} src={addIcon} alt="+" />
                     </button>
                 </div>
 
@@ -228,12 +224,13 @@ const Payments = () => {
 
             <table className='payment-table'>
                 {currentPayments && <tbody>
-                    <tr>
-                        <th>student <img onClick={() => setStudentSort(!studentSort)} src={UpDownIcon} alt="" /></th>
+                    <tr className='table-header'>
+                        <th>Student ID</th>
+                        <th>Name <img onClick={() => setStudentSort(!studentSort)} src={UpDownIcon} alt="" /></th>
                         <th>Date of Transaction <img onClick={() => setDateSort(!dateSort)} src={UpDownIcon} alt="" /></th>
-                        <th>Amount Payed<img onClick={() => setAmountSort(!amountSort)} src={UpDownIcon} alt="" /></th>
-                        <th>Shift Name<img onClick={() => setShiftSort(!shiftSort)} src={UpDownIcon} alt="" /></th>
-                        <th>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></th>
+                        <th>Amount Paid<img onClick={() => setAmountSort(!amountSort)} src={UpDownIcon} alt="" /></th>
+                        {/* <th>Shift Name<img onClick={() => setShiftSort(!shiftSort)} src={UpDownIcon} alt="" /></th> */}
+                        {/* <th>Shift Fee <img onClick={() => setFeeSort(!feeSort)} src={UpDownIcon} alt="" /></th> */}
                     </tr>
                     {
                         currentPayments.map(payment => <tr
@@ -241,6 +238,7 @@ const Payments = () => {
                             onMouseEnter={() => handleMouseEnter(payment.id)}
                             onMouseLeave={() => handleMouseLeave(payment.id)}
                         >
+                            <td>{payment.student?.stu_id}</td>
                             <td
                                 onClick={() => setStudent(payment.student)}
                             >
@@ -252,15 +250,15 @@ const Payments = () => {
                             </td>
                             <td>{formatDate(payment.payment_date)}</td>
                             <td>{payment.fee}</td>
-                            <td
+                            {/* <td
                                 onClick={() => setShift(payment.shift)}
                             >
                                 <div className='shift-name'>
                                     {payment.shift.name}
                                     {hoverStates[payment.id] && <img width={15} src={PlusIcon} />}
                                 </div>
-                            </td>
-                            <td>{payment.shift.fee}</td>
+                            </td> */}
+                            {/* <td>{payment.shift.fee}</td> */}
                         </tr>
                         )
                     }

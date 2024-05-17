@@ -31,7 +31,15 @@
 } */
 
 /* CSS */
-.pay-edit-btn{
+.choosen-student-btns{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.choosen-student-btns button{
   background-color: #FFFFFF;
   border: 1px solid rgb(209,213,219);
   border-radius: .5rem;
@@ -56,11 +64,11 @@
   gap: .1rem;
 }
 
-.pay-edit-btn:hover {
+.choosen-student-btns button:hover {
   background-color: rgb(249,250,251);
 }
 
-.pay-edit-btn:focus {
+.choosen-student-btns button:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }

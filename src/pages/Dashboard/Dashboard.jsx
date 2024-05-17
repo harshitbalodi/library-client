@@ -45,6 +45,16 @@ const Dashboard = () => {
           <h2>{lengths?.expired}</h2>
           <p>People</p>
         </div>
+        <div className="member-block expired">
+          <p>Today Collection</p>
+          <h2>{lengths?.expired}</h2>
+          <p>People</p>
+        </div>
+        <div className="member-block expired">
+          <p>Monthly Collection</p>
+          <h2>{lengths?.expired}</h2>
+          <p>People</p>
+        </div>
       </div>
       <StudentReport
         students={students}

@@ -15,7 +15,10 @@ const SidebarLink = ({ to, Icon, label }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
   return (
-    <Link to={to} className={`sidebar-link ${isActive ? 'active' : ''}`}>
+    <Link 
+    to={to} 
+    className={`sidebar-link ${isActive ? 'active' : ''}`}
+    >
       <Icon width={24} height={24} fill={isActive ? '#FF8C00' : '#0a0f45'} />
       <span className='sidebar-label'>{label}</span>
     </Link>
@@ -65,7 +68,8 @@ const Sidebar = () => {
             onClick={() => dispatch(toggleSidebar())}
           />
         </div>}
-        <div className='sidebar-header' onClick={()=>navigate('/')}>
+        <div className='sticky-block'>
+          <div className='sidebar-header' onClick={()=>navigate('/')}>
           <h3 className='application-icon'>LibraryApp</h3>
         </div>
        
@@ -73,8 +77,11 @@ const Sidebar = () => {
         <SidebarLink to="/hall" Icon={HallIcon} label="Halls" />
         <SidebarLink to="/payments" Icon={RupeeIcon} label="Payments" />
       </div>
+        </div>
+        
     </div>
   );
 };
 
 export default Sidebar;
+

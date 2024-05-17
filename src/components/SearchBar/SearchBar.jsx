@@ -10,6 +10,14 @@ import StudentUpdateForm from "../StudentUpdateForm/StudentUpdateForm";
 import { useNavigate } from "react-router-dom";
 import PenEditIcon from '../../assets/pen-edit-icon.svg';
 import TrabsactionIcon from '../../assets/transaction-icon.svg';
+import DeleteIcon from '../../assets/SvgComponents/DeleteIcon';
+import studentService from "../../services/studentService";
+import { useDispatch } from "react-redux";
+import { setSuccessMessage, setErrorMessage } from "../../store/notificationSlice";
+import useLogoutUser from "../../hooks/useLogoutUser";
+import { hallsThunk } from "../../store/hallSlice";
+import { studentThunk } from "../../store/studentsSlice";
+
 
 const SearchBar = () => {
     const students = useSelector(state => state.students);
@@ -18,11 +26,14 @@ const SearchBar = () => {
     const [choosenStudentId, setChoosenStudentId] = useState(null);
     const [choosenStudent, setChoosenStudent] = useState(null);
     const [formOpen, setFormOpen] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
     const inputRef = useRef(null);
     const detailRef = useRef(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const logoutUser = useLogoutUser();
     console.log(choosenStudentId);
-
+    console.log("choose student",choosenStudent);
     useEffect(() => {
         filterStudents();
     }, [searchQuery, students])
@@ -71,6 +82,26 @@ const SearchBar = () => {
         else setChoosenStudentId(student.id);
     }
 
+    const handleDelete= async (studentId)=>{
+        console.log(studentId);
+        const confirmation = window.confirm("Are you sure you want to delete this student?");
+        if(!confirmation) return;
+        try{
+            const response = studentService.deleteStudent(studentId);
+            console.log(response);
+            dispatch(hallsThunk());
+            dispatch(studentThunk());
+            dispatch(setSuccessMessage("Student deleted successfully"));
+        }catch(error){
+            console.log(error);
+                if (error?.response?.status === 401) {
+                    logoutUser();
+                    dispatch(setErrorMessage("Your session has expired. Please login again."));
+                } else {
+                    dispatch(setErrorMessage(error.response.data.message));
+                }
+        }
+    }
     return (
         <div className="search-container">
             <div className="search-bar" ref={inputRef}>
@@ -104,8 +135,19 @@ const SearchBar = () => {
                         <div className="profile-picture-block">
                             <img className="profile-picture" width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                             <div >{choosenStudent.name}</div>
-                            <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
-                            <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions <img width={14} src={TrabsactionIcon} alt="" /></button>
+                            <div className="choosen-student-btns">
+                               <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
+                                <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions <img width={14} src={TrabsactionIcon} alt="" /></button> 
+                                {choosenStudent.is_expired && <button 
+                                onMouseEnter={()=>setIsHovering(true)}
+                                onMouseLeave={()=>setIsHovering(false)}
+                                onClick={()=> handleDelete(choosenStudent.id)}
+                                > 
+                                <DeleteIcon isHovering={isHovering}/>
+                                </button>}
+                            </div>
+                            
+
                         </div>
                         <div className="student-suggestion-details">
                             <div>
