@@ -36,23 +36,25 @@ const Payments = () => {
 
     useEffect(() => {
         const controller = new AbortController();
-        try {
-            const getdata = async () => {
 
+        const getdata = async () => {
+            try {
                 const response = await paymentService.getAllPayments(controller);
-                console.log("payments data",response.data.data);
+                console.log("payments data", response.data.data);
                 setPayments(response.data.data);
+            } catch (error) {
+                console.log(error);
+                if (error?.response?.status === 401) {
+                    logoutUser();
+                    dispatch(setErrorMessage("Your session has expired. Please login again."));
+                } else {
+                    dispatch(setErrorMessage(error.response.data.message));
+                }
+                console.log(error);
             }
-            getdata();
-        } catch (error) {
-            if (error?.response?.status === 401) {
-                logoutUser();
-                dispatch(setErrorMessage("Your session has expired. Please login again."));
-            } else {
-                dispatch(setErrorMessage(error.response.data.message));
-            }
-            console.log(error);
         }
+        getdata();
+
         return () => {
             controller.abort();
         }
@@ -194,18 +196,18 @@ const Payments = () => {
                 </div>
                 <div>
                     <button
-                    className='add-payment-btn'
-                    onClick={() => setIsOpen(true)}
-                    >Add Payment 
+                        className='add-payment-btn'
+                        onClick={() => setIsOpen(true)}
+                    >Add Payment
                     </button>
                 </div>
 
             </div>
-            
-                <AddPayment
-                    setIsOpen={setIsOpen}
-                    isOpen={isOpen}
-                />
+
+            <AddPayment
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
+            />
 
             {
                 filteredPayments &&

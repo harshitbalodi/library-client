@@ -18,7 +18,8 @@ export const { setHalls } = hallSlice.actions;
 
 export const hallsThunk = () => {
   return async (dispatch, getState) => {
-    const isAdminLoggedIn = getState().auth.adminLoggedIn;
+    try{
+       const isAdminLoggedIn = getState().auth.adminLoggedIn;
     if(!isAdminLoggedIn){
       return;
     }
@@ -26,6 +27,11 @@ export const hallsThunk = () => {
     dispatch(setHalls(data.data));
     const halls = getState().halls;
     dispatch(setShifts(extractShifts(halls)));
+    }catch(error){
+      console.log("error in hallsThunk", error);
+      throw error;
+    }
+   
   };
 };
 

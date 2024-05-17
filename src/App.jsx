@@ -31,9 +31,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const logoutUser = useLogoutUser();
-
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
-  const [hamburgerVisible, setHamburgerVisible] = useState(true);
+  
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -56,6 +54,11 @@ function App() {
 
   useEffect(() => {
     const isUserLoggedIn = async () => {
+      const username = localStorage.getItem('username');
+      if(!username){
+        logoutUser();
+        return;
+      }
       const refresh = getCookie("refresh");
       if (refresh) {
         try {
@@ -63,7 +66,7 @@ function App() {
           dispatch(logIn());
           token.setToken(data.access);
         } catch (error) {
-          console.log(error);
+          console.log("error",error);
           if (error?.response?.status === 401) {
             logoutUser();
             dispatch(setErrorMessage("Your session has expired. Please login again."));
@@ -74,24 +77,9 @@ function App() {
       }
     }
 
-    window.addEventListener('scroll', handleScroll);
-
     isUserLoggedIn();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    }
   }, []);
 
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    const scrollDirection = currentScrollPos > prevScrollPos ? 'down' : 'up';
-
-    const buffer = 40;
-    const shouldBeVisible = scrollDirection === "up" || (currentScrollPos - prevScrollPos) < buffer;
-    setHamburgerVisible(shouldBeVisible);
-    setPrevScrollPos(currentScrollPos);
-  }
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -122,7 +110,7 @@ function App() {
               )}
             </div>
             }
-            {hamburgerVisible && !sidebar && <div
+            {!sidebar && <div
               className="hamburger-menu"
               onClick={() => dispatch(toggleSidebar())}
             >

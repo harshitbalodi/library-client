@@ -27,6 +27,7 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
       } else if (currentButton === 'renewal') {
         tempStudents = extractExiringSoon(students);
       }
+      
       setFilteredStudents(() => tempStudents.filter((student) => {
         const normalizedSearchQuery = searchQuery.toLowerCase().trim();
         const studentName = student?.name?.toLowerCase();

@@ -94,7 +94,6 @@ const SeatCard = ({ shift }) => {
                 }
             } catch (error) {
                 console.log(error);
-                // dispatch(setErrorMessage(error.message));
                 if (error?.response?.status === 401) {
                     logoutUser();
                     dispatch(setErrorMessage("Your session has expired. Please login again."));

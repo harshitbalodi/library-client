@@ -15,15 +15,15 @@
   line-height: .7rem;
 }
 
-.member-block.total{
+.member-block.voilet-gradient{
   background-image: linear-gradient(to right, #8e69ff, #ad7dfd, #c592fc, #d9a8fb, #e9c0fc);
 }
 
-.member-block.new{ 
+.member-block.blue-gradient{ 
   background-image: linear-gradient(to right, #849afa, #98aafb, #acbbfc, #c0ccfc, #d4dcfc);
 }
 
-.member-block.expired{
+.member-block.orange-gradient{
   background-image: linear-gradient(to right, #ffa02b, #feb14a, #fec167, #fed084, #ffdea1);
 }
 

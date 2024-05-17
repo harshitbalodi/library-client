@@ -7,6 +7,7 @@
   margin: 20px;
   max-width: 400px;
   overflow-y: auto;
+  overflow-x: visible;
   height: 307px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -35,6 +36,7 @@
   font-size: medium;
 }
 
+
 .seatcard-seats {
   position: relative;
   background-color: #fffcfc;
@@ -46,9 +48,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  overflow-y: auto;
-  overflow-x: auto;
-  height: 200px;
+  overflow-y: visible;
+  overflow-x: visible; 
+  height: 200px; 
 }
 
 .seat{
@@ -105,20 +107,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* text-align: center; */
-  top: 100%;
-  left: 0;
+  text-align: center;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding: 5px;
-  z-index: 2;
+  z-index: 3;
   border: none;
   opacity: 1;
   color: black;
   cursor: pointer;
   font-size: small;
+  overflow: visible;
+  /* top: calc(100% + 10px); */
+  top: 100%;
 }
+
 .dropdown-content.student-dropdown{
   text-align: center;
   width: max-content;

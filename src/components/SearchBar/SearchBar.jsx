@@ -67,7 +67,10 @@ const SearchBar = () => {
             setFilteredStudents([]);
             return;
         }
-        setFilteredStudents(() => students.filter(student => student.name.trim().toLowerCase().includes(searchQuery.toLowerCase().trim())));
+        setFilteredStudents(() => students.filter(student =>{ 
+            return student?.name.trim().toLowerCase().includes(searchQuery.toLowerCase().trim())
+            || student?.stu_id.toString().trim().toLowerCase().includes(searchQuery.toLowerCase().trim())}
+        ));
     };
 
     const handleBlur = (event) => {
@@ -93,6 +96,7 @@ const SearchBar = () => {
             dispatch(studentThunk());
             dispatch(setSuccessMessage("Student deleted successfully"));
         }catch(error){
+            console.log("catch block in delete");
             console.log(error);
                 if (error?.response?.status === 401) {
                     logoutUser();
@@ -117,7 +121,7 @@ const SearchBar = () => {
                                     <img className="student-dp" src={setImageUrl(student.image)} alt="student dp" />
                                 </div>
                                 <div className="name-status">
-                                    <div className="name">{student.name}</div>
+                                    <div className="name">{student.name} - {student?.stu_id}</div>
                                     <div className="mobile-number">
                                         <img src={MobileIcon} className="" width={30} alt="mobile icon" />
                                         +91-9399245654
@@ -134,7 +138,7 @@ const SearchBar = () => {
                         </button>
                         <div className="profile-picture-block">
                             <img className="profile-picture" width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
-                            <div >{choosenStudent.name}</div>
+                            <div >{choosenStudent.name} - {choosenStudent?.stu_id}</div>
                             <div className="choosen-student-btns">
                                <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
                                 <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions <img width={14} src={TrabsactionIcon} alt="" /></button> 
