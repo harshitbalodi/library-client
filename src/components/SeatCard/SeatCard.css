@@ -48,8 +48,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  overflow-y: visible;
-  overflow-x: visible; 
+  overflow-y: auto;
+  overflow-x: auto; 
   height: 200px; 
 }
 
