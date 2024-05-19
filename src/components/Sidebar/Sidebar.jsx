@@ -15,9 +15,9 @@ const SidebarLink = ({ to, Icon, label }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
   return (
-    <Link 
-    to={to} 
-    className={`sidebar-link ${isActive ? 'active' : ''}`}
+    <Link
+      to={to}
+      className={`sidebar-link ${isActive ? 'active' : ''}`}
     >
       <Icon width={24} height={24} fill={isActive ? '#FF8C00' : '#0a0f45'} />
       <span className='sidebar-label'>{label}</span>
@@ -27,34 +27,38 @@ const SidebarLink = ({ to, Icon, label }) => {
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const [isCloseIconVisible, setIsCloseIconVisible ] = useState(false);
+  const dispatch = useDispatch();
+  const [isCloseIconVisible, setIsCloseIconVisible] = useState(false);
+  const sidebar = useSelector(state => state.sidebar);
+  
 
-  useEffect(()=>{
-   const handleResize = () =>{
+  useEffect(() => {
+    const handleResize = () => {
       const width = window.innerWidth;
-      if(width > 600){
+      if (width > 600) {
         dispatch(setSidebarVisible());
         setIsCloseIconVisible(false);
-      }else{
+      } else {
         dispatch(setSidebarInvisible());
         setIsCloseIconVisible(true);
       }
-   }
-   window.addEventListener('resize',handleResize)
-   return ()=>{
-    window.removeEventListener('resize',handleResize);
-   }
-  })
+    }
+    window.addEventListener('resize', handleResize);
 
-  const sidebar = useSelector(state => state.sidebar);
-  const dispatch = useDispatch();
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  },[dispatch]);
+
+  
 
   console.log("sidebar", sidebar);
 
   return sidebar && (
-    <div 
-    className='sidebar-container'
-    onClick={() => dispatch(toggleSidebar())}
+    <div
+      className='sidebar-container'
+      onClick={() => dispatch(toggleSidebar())}
     >
       <div
         className={`sidebar ${sidebar ? 'active' : ''}`}
@@ -64,21 +68,22 @@ const Sidebar = () => {
           <img
             src={CloseIcon}
             alt='close-icon'
-            
+
             onClick={() => dispatch(toggleSidebar())}
           />
         </div>}
-        <div className='sticky-block'>
-          <div className='sidebar-header' onClick={()=>navigate('/')}>
-          <h3 className='application-icon'>LibraryApp</h3>
+
+        <div className='sticky-sidebar-block'>
+          <div className='sidebar-header' onClick={() => navigate('/')}>
+            <h3 className='application-icon'>LibraryApp</h3>
+          </div>
+
+          <SidebarLink to="/" Icon={DashboardIcon} label="Dashboard" />
+          <SidebarLink to="/hall" Icon={HallIcon} label="Halls" />
+          <SidebarLink to="/payments" Icon={RupeeIcon} label="Payments" />
         </div>
-       
-        <SidebarLink to="/" Icon={DashboardIcon} label="Dashboard" />
-        <SidebarLink to="/hall" Icon={HallIcon} label="Halls" />
-        <SidebarLink to="/payments" Icon={RupeeIcon} label="Payments" />
       </div>
-        </div>
-        
+
     </div>
   );
 };

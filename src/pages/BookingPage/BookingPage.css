@@ -18,6 +18,7 @@
   padding:40px 0;
   min-height: max-content;
 }
+
 .booked-successfully{
   display: flex;
   flex-direction: column;
@@ -28,16 +29,19 @@
   width: 400px;
   background-color: #fff;
 }
+
 .success-animation{
   width: 200px;
   height: 200px;  
 }
+
 .circle {
   stroke-dasharray: 1194;
   stroke-dashoffset: 1194;
   animation: dc 1s ease-in-out;
   animation-fill-mode: forwards;
 }
+
 .tick {
   stroke-dasharray: 350;
   stroke-dashoffset: 350;
@@ -72,6 +76,7 @@
   background-position: center; 
   background-size: contain;
 }
+
 .booking-form {
   display: flex;
   flex-direction: column;
@@ -99,20 +104,30 @@
   margin-bottom: 5px;
 }
 
-#address,
-#name,
-#phone,
-#desk,
-#mobile-no,
-#gender,
-#joining-date
-#months,
-#opt1,
-#opt2{
-  padding: 10px;
+.form-group #address,
+.form-group #name,
+.form-group #phone,
+.form-group #desk,
+.form-group #mobile-no,
+.form-group #gender,
+.form-group #joining-date
+.form-group #months,
+.form-group #opt1,
+.form-group #opt2{
+  /* padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 16px;
+  height: 16px; */
+  display: block;
+  margin: 7px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: medium;
 }
 
 
@@ -135,6 +150,7 @@
   cursor: pointer;
   border: none;
 }
+
 .home-button:hover{
   background-color: rgba(51, 93, 220, 0.9);
 }
