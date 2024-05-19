@@ -65,10 +65,10 @@ const CardCarousel = ({ hall }) => {
       dispatch(hallsThunk());
       console.log(response);
     } catch (error) {
-      if(error?.response?.status === 401){
+      if (error?.response?.status === 401) {
         logoutUser();
         dispatch(setErrorMessage("Your session has expired. Please login again."));
-      }else{
+      } else {
         dispatch(setErrorMessage(error.response.data.message));
       }
     }
@@ -85,10 +85,10 @@ const CardCarousel = ({ hall }) => {
       console.log(response);
     } catch (error) {
       console.log(error);
-      if(error?.response?.status === 401){
+      if (error?.response?.status === 401) {
         logoutUser();
         dispatch(setErrorMessage("Your session has expired. Please login again."));
-      }else{
+      } else {
         dispatch(setErrorMessage(error.response.data.message));
       }
     }
@@ -103,7 +103,7 @@ const CardCarousel = ({ hall }) => {
             <img src={DoneIcon} alt="done edit" title='done edit' />
           </button>
         </form> :
-         hall.name
+          hall.name
         }
         {
           isHovering && <div>

@@ -5,10 +5,10 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import HallPage from "./pages/HallPage/HallPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import Login from "./pages/Login/Login";
 import { hallsThunk, setHalls } from './store/hallSlice';
 import BookingPage from "./pages/BookingPage/BookingPage";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Error from "./pages/Error/Error";
 import TokenService from "./services/TokenService";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import token from "./services/token";
@@ -31,7 +31,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const logoutUser = useLogoutUser();
-  
+
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -55,7 +55,7 @@ function App() {
   useEffect(() => {
     const isUserLoggedIn = async () => {
       const username = localStorage.getItem('username');
-      if(!username){
+      if (!username) {
         logoutUser();
         return;
       }
@@ -66,7 +66,7 @@ function App() {
           dispatch(logIn());
           token.setToken(data.access);
         } catch (error) {
-          console.log("error",error);
+          console.log("error", error);
           if (error?.response?.status === 401) {
             logoutUser();
             dispatch(setErrorMessage("Your session has expired. Please login again."));
@@ -123,7 +123,7 @@ function App() {
               {
                 !adminLoggedIn ? (
                   <>
-                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/" element={<Login />} />
                   </>
                 )
                   : (
@@ -136,7 +136,7 @@ function App() {
                     </>
                   )
               }
-              <Route path="*" element={<ErrorPage />} />
+              <Route path="*" element={<Error />} />
             </Routes>
           </div>
         </div>

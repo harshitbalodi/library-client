@@ -1,4 +1,4 @@
-import './LoginPage.css';
+import './Login.css';
 import Form from 'antd/es/form/Form';
 import Item from 'antd/es/list/Item';
 import Input from 'antd/es/input/Input';
@@ -11,7 +11,7 @@ import token from '../../services/token';
 import { setCookie } from '../../utils/helper';
 import { logIn } from '../../store/authSlice';
 
-const LoginPage = () => {
+const Login= () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     console.log("username", username, "password", password);
@@ -90,4 +90,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default Login;

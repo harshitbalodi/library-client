@@ -1,9 +1,9 @@
 import {  useNavigate } from "react-router-dom"
-import './ErrorPage.css';
+import './Error.css';
 import '../BookingPage/BookingPage.css';
 import { useSelector } from "react-redux";
 
-const ErrorPage = () => {
+const Error = () => {
   const auth = useSelector(state => state.auth);
   const navigate = useNavigate();
   console.log(auth);
@@ -18,4 +18,4 @@ const ErrorPage = () => {
   )
 }
 
-export default ErrorPage
+export default Error;
