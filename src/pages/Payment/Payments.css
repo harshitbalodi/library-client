@@ -7,13 +7,13 @@
   padding: 0.6rem;
   overflow: hidden;
   overflow-x: auto;
+
 }
 .payment-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 95%;
   margin: .8rem;
-  
 }
 
 .selection-btn-container{

@@ -34,12 +34,12 @@ const AddHall = () => {
       }
       dispatch(hallsThunk());
     } catch (error){
-      console.log(error);
+      console.log("error in addhall useEffect",error);
       if(error?.response?.status === 401){
         logoutUser();
         dispatch(setErrorMessage("Your session has expired. Please login again."));
       }else{
-        dispatch(setErrorMessage(error.response.data.message));
+        dispatch(setErrorMessage(error.response.data.data.message));
       }
     }
   };

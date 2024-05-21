@@ -49,7 +49,7 @@ const Payments = () => {
                     logoutUser();
                     dispatch(setErrorMessage("Your session has expired. Please login again."));
                 } else {
-                    dispatch(setErrorMessage(error.response.data.message));
+                    dispatch(setErrorMessage(error.response?.data.data.message));
                 }
                 console.log(error);
             }
@@ -107,7 +107,7 @@ const Payments = () => {
         if (studentIdSort) sortedPayments.sort((a, b) => a.student.stu_id.localeCompare(b.student.stu_id));
         else sortedPayments.sort((a, b) => b.student.stu_id.localeCompare(a.student.stu_id));
         setFilteredPayments(sortedPayments);
-    })
+    },[studentIdSort]);
 
     useEffect(() => {
         if (!payments) return;

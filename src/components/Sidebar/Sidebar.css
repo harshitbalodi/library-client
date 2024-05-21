@@ -1,5 +1,4 @@
-.sidebar-container {
-  position: relative;
+/* .sidebar-container {
   height: 100%;
   overflow-y: auto;
 }
@@ -7,22 +6,20 @@
 .sidebar {
   width: 160px;
   height: 100%;
-  overflow-y: auto;
   transition: width 0.3s;
   padding-top: 10px;
   left: 0;
   top: 0;
   padding: 10px 0;
-  /* border: 1px solid black; */
-  /* background-color: white; */
+  border: 1px solid black;
   overflow: hidden;
 }
 
 .sticky-sidebar-block{
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  /* border: 1px solid black; */
+  top: 5%;
+  border: 1px solid black;
   z-index: 1;
 }
 
@@ -125,38 +122,51 @@
     width: 35px;
     height: 35px;
   }
-}
+} */
 
-/* 
-.sidebar {
-  width: 160px;
-  height: 100vh;
-  overflow-y: auto;
-  transition: width 0.3s;
-  top: 0;
-  left: 0;
-}
+/* chatgpt */
 
 .sidebar-container {
-  position: relative;
   height: 100%;
+  overflow-y: auto;
 }
 
-.sidebar-header {
+.sidebar {
+  width: 160px;
+  height: 100%;
+  overflow-y: auto;
+  transition: width 0.3s;
+  padding-top: 10px;
+  left: 0;
+  top: 0;
+  padding: 10px 0;
+  border: 1px solid black;
+}
+
+.sticky-sidebar-block {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 1;
+  background-color: 1px solid black;
+}
+
+.sidebar-content {
+  position: relative;
+  padding-top: 60px;
+}
+
+.close-icon {
+  visibility: hidden;
+}
+
+.application-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
   color: #47338a;
   font-size: large;
-  z-index: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-content {
-  padding-top: 10px;
 }
 
 .sidebar-link {
@@ -190,11 +200,7 @@
 }
 
 .sidebar-link.active .sidebar-label {
-  color: #FF8C00;
-}
-
-.close-icon {
-  visibility: hidden;
+  color: #ff8c00;
 }
 
 @media screen and (max-width: 600px) {
@@ -239,4 +245,4 @@
     width: 35px;
     height: 35px;
   }
-} */
+}

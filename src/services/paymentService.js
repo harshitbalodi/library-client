@@ -10,12 +10,13 @@ const updatePayment = async (studentId, month, paymentMethod) => {
   }
 };
 
-const getPaymentCollection = async () => {
+const getPaymentCollection = async (controller) => {
   try {
-    const response = await axiosInstance.post("/payment_collection");
+    const response = await axiosInstance.post("/payment_collection",{ signal: controller?.signal });
     return response;
   } catch (error) {
     console.log("error in fetching payment collection", error);
+    throw error;
   }
 };
 

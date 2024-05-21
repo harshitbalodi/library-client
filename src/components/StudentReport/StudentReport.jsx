@@ -92,8 +92,8 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
           </button>
         </div>
       </div>
-
-      {currentStudents && <table className='report-table'>
+    <div className='student-report-table-pagination-container'>
+       {currentStudents && <table className='report-table'>
         <tbody>
           <tr className='report-table-headers'>
             <th>Student ID</th>
@@ -103,7 +103,7 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
             <th>Subscription status</th>
             <th>Validity</th>
           </tr>
-
+          
           {currentStudents.map(student => {
             return <tr key={student.id}>
               <td className='student-id-member'>{student?.stu_id}</td>
@@ -155,6 +155,8 @@ const StudentReport = ({ students, filteredStudents, setFilteredStudents }) => {
         />
       </ConfigProvider>
       }
+    </div>
+     
 
     </div>
   )

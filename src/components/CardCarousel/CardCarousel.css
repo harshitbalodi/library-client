@@ -5,7 +5,11 @@
 }
 .hall-heading {
   display: flex;
-  align-items: center;
+  align-items:center;
+}
+.hall-heading form{
+  display: flex;
+  align-items:center;
 }
 
 .slides-container {

@@ -10,6 +10,7 @@ import ImagePicker from '../../components/ImagePicker/ImagePicker';
 import { setErrorMessage, setSuccessMessage } from '../../store/notificationSlice';
 import { hallsThunk } from '../../store/hallSlice';
 import useLogoutUser from '../../hooks/useLogoutUser';
+import SuccessAnimation from '../../components/SuccessAnimation/SuccessAnimation';
 
 const BookingPage = () => {
   const [seat, shifts] = useSelector(state => [state.seat, state.shifts]);
@@ -109,30 +110,7 @@ const BookingPage = () => {
         <div className="booking-container">
           {
             bookedSuccessfully ? (<div className='booked-successfully'>
-              <div className='success-animation'>
-                <svg width="200" height="200">
-                  <circle
-                    fill="none"
-                    stroke="#68E534"
-                    strokeWidth="10"
-                    cx="100"
-                    cy="100"
-                    r="85"
-                    strokeLinecap="round"
-                    transform="rotate(-90 100 100)"
-                    className="circle"
-                  />
-                  <polyline
-                    fill="none"
-                    stroke="#68E534"
-                    points="44,107 86.5,142 152,69"
-                    strokeWidth="12"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="tick"
-                  />
-                </svg>
-              </div>
+              <SuccessAnimation/>
               <h3>Booked Successfully!</h3>
               <p>Go back to Dashboard</p>
               <button className='home-button' onClick={() => navigate('/')}>Dashboard</button>

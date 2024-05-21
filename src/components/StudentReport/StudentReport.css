@@ -5,7 +5,6 @@
   border-radius: 1rem;
   box-shadow: 0px 5px 10px rgba(23, 23, 244, 0.2);
   overflow-x: auto;
-
 }
 
 .student-report-search-btns-container{
@@ -52,6 +51,14 @@
 .student-report-btn.active {
   background-color: var(--secondary-background-color);
   background-color: #f5f5f5;
+}
+
+.student-report-table-pagination-container{
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .report-table {

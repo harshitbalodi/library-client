@@ -60,7 +60,7 @@ const ShiftForm = ({ isOpen, onClose, hall }) => {
                 logoutUser();
                 dispatch(setErrorMessage("Your session has expired. Please login again."));
               }else{
-                dispatch(setErrorMessage(error.response.data.message));
+                dispatch(setErrorMessage(error.response.data.data.message));
               }
         }
     };

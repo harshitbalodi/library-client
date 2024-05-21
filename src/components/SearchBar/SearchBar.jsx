@@ -33,7 +33,7 @@ const SearchBar = () => {
     const dispatch = useDispatch();
     const logoutUser = useLogoutUser();
     console.log(choosenStudentId);
-    console.log("choose student",choosenStudent);
+    console.log("choose student", choosenStudent);
     useEffect(() => {
         filterStudents();
     }, [searchQuery, students])
@@ -46,7 +46,7 @@ const SearchBar = () => {
     useEffect(() => {
         if (choosenStudentId) {
             setChoosenStudent(students.find(student => student.id === choosenStudentId));
-        }else{
+        } else {
             setChoosenStudent(null);
         }
     }, [choosenStudentId, students])
@@ -67,9 +67,10 @@ const SearchBar = () => {
             setFilteredStudents([]);
             return;
         }
-        setFilteredStudents(() => students.filter(student =>{ 
+        setFilteredStudents(() => students.filter(student => {
             return student?.name.trim().toLowerCase().includes(searchQuery.toLowerCase().trim())
-            || student?.stu_id.toString().trim().toLowerCase().includes(searchQuery.toLowerCase().trim())}
+                || student?.stu_id.toString().trim().toLowerCase().includes(searchQuery.toLowerCase().trim())
+        }
         ));
     };
 
@@ -85,25 +86,28 @@ const SearchBar = () => {
         else setChoosenStudentId(student.id);
     }
 
-    const handleDelete= async (studentId)=>{
+    const handleDelete = async (studentId) => {
         console.log(studentId);
         const confirmation = window.confirm("Are you sure you want to delete this student?");
-        if(!confirmation) return;
-        try{
+        if (!confirmation) return;
+        try {
             const response = studentService.deleteStudent(studentId);
             console.log(response);
-            dispatch(hallsThunk());
-            dispatch(studentThunk());
-            dispatch(setSuccessMessage("Student deleted successfully"));
-        }catch(error){
+            if (response) {
+                dispatch(hallsThunk());
+                dispatch(studentThunk());
+                dispatch(setSuccessMessage("Student deleted successfully"));
+            }
+
+        } catch (error) {
             console.log("catch block in delete");
             console.log(error);
-                if (error?.response?.status === 401) {
-                    logoutUser();
-                    dispatch(setErrorMessage("Your session has expired. Please login again."));
-                } else {
-                    dispatch(setErrorMessage(error.response.data.message));
-                }
+            if (error?.response?.status === 401) {
+                logoutUser();
+                dispatch(setErrorMessage("Your session has expired. Please login again."));
+            } else {
+                dispatch(setErrorMessage(error.response.data.message));
+            }
         }
     }
     return (
@@ -116,7 +120,7 @@ const SearchBar = () => {
                 <div className="suggestions-wrapper" onClick={e => e.stopPropagation()}>
                     <div className="suggestions">
                         {filteredStudents.map(student => (
-                            <div key={student.id} className="suggestion" onClick={() => handleStudent( student)}>
+                            <div key={student.id} className="suggestion" onClick={() => handleStudent(student)}>
                                 <div className="student-dp-container">
                                     <img className="student-dp" src={setImageUrl(student.image)} alt="student dp" />
                                 </div>
@@ -132,7 +136,7 @@ const SearchBar = () => {
                     </div>
 
                     {choosenStudent && <div className="student-description" ref={detailRef} onClick={(e) => e.stopPropagation()}>
-                        <StudentUpdateForm student={choosenStudent} formOpen={formOpen} setFormOpen={setFormOpen}/>
+                        <StudentUpdateForm student={choosenStudent} formOpen={formOpen} setFormOpen={setFormOpen} />
                         <button className="cross-icon" onClick={handleStudent}>
                             <img src={CrossIcon} alt="" />
                         </button>
@@ -140,17 +144,17 @@ const SearchBar = () => {
                             <img className="profile-picture" width={40} src={setImageUrl(choosenStudent.image)} alt="student profile picture" />
                             <div >{choosenStudent.name} - {choosenStudent?.stu_id}</div>
                             <div className="choosen-student-btns">
-                               <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
-                                <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions <img width={14} src={TrabsactionIcon} alt="" /></button> 
-                                {choosenStudent.is_expired && <button 
-                                onMouseEnter={()=>setIsHovering(true)}
-                                onMouseLeave={()=>setIsHovering(false)}
-                                onClick={()=> handleDelete(choosenStudent.id)}
-                                > 
-                                <DeleteIcon isHovering={isHovering}/>
+                                <button className='pay-edit-btn' onClick={() => setFormOpen(true)}>Modify <img width={14} src={PenEditIcon} alt="📝" /></button>
+                                <button className="pay-edit-btn" onClick={() => navigate(`/payments?student=${choosenStudent.id}`)}>Transactions <img width={14} src={TrabsactionIcon} alt="" /></button>
+                                {choosenStudent.is_expired && <button
+                                    onMouseEnter={() => setIsHovering(true)}
+                                    onMouseLeave={() => setIsHovering(false)}
+                                    onClick={() => handleDelete(choosenStudent.id)}
+                                >
+                                    <DeleteIcon isHovering={isHovering} />
                                 </button>}
                             </div>
-                            
+
 
                         </div>
                         <div className="student-suggestion-details">

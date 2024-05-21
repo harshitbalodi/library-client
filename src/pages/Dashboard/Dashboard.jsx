@@ -21,10 +21,12 @@ const Dashboard = () => {
   const logoutUser = useLogoutUser();
 
   console.log("collectionData", collectionData);
+  
   useEffect(() => {
+    const controller = new AbortController();
     const getCollectionData = async () => {
       try {
-        const response = await paymentService.getPaymentCollection();
+        const response = await paymentService.getPaymentCollection(controller);
         console.log(response);
         setCollectionData(response.data.data);
       } catch (error) {
@@ -38,6 +40,10 @@ const Dashboard = () => {
       }
     }
     getCollectionData();
+
+    return ()=>{
+      controller.abort();
+    }
   }, []);
 
   useEffect(() => {
