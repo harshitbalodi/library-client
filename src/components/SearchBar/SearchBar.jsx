@@ -91,14 +91,11 @@ const SearchBar = () => {
         const confirmation = window.confirm("Are you sure you want to delete this student?");
         if (!confirmation) return;
         try {
-            const response = studentService.deleteStudent(studentId);
+            const response = await studentService.deleteStudent(studentId);
             console.log(response);
-            if (response) {
-                dispatch(hallsThunk());
-                dispatch(studentThunk());
-                dispatch(setSuccessMessage("Student deleted successfully"));
-            }
-
+            dispatch(hallsThunk());
+            dispatch(studentThunk());
+            dispatch(setSuccessMessage("Student deleted successfully"));
         } catch (error) {
             console.log("catch block in delete");
             console.log(error);
@@ -109,6 +106,7 @@ const SearchBar = () => {
                 dispatch(setErrorMessage(error.response.data.message));
             }
         }
+
     }
     return (
         <div className="search-container">

@@ -66,21 +66,16 @@
   margin-bottom: 5px;
 }
 
-.form-group #address,
+.form-group #address, 
 .form-group #name,
 .form-group #phone,
 .form-group #desk,
 .form-group #mobile-no,
 .form-group #gender,
-.form-group #joining-date
+.form-group #joining-date,
 .form-group #months,
 .form-group #opt1,
 .form-group #opt2{
-  /* padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 16px;
-  height: 16px; */
   display: block;
   margin: 7px;
   border-radius: 10px;

@@ -37,6 +37,8 @@ const ChangePassword = () => {
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
+    console.log(username, oldPassword, password, cpassword);
+    console.log("submit clicked");
     if (cpassword !== password) {
       setErrorMessage('New password and confirm password should be same');
       return;
@@ -69,7 +71,7 @@ const ChangePassword = () => {
     <div className='login-wrapper'>
       <div className="login-container">
         <h1>Update Password</h1>
-        <Form onSubmit={handleChangePassword}>
+        <form onSubmit={handleChangePassword}>
           <Form.Item
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
@@ -108,7 +110,7 @@ const ChangePassword = () => {
           <div>
             <Button type="primary" htmlType="submit">Submit</Button>
           </div>
-        </Form>
+        </form>
       </div>
     </div>
   );
